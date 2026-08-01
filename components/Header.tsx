@@ -76,7 +76,7 @@ export default function Header() {
   const headerServicesList = [
     { name: "Company Registration", href: "/services/company-registration", targetId: "service-company-registration" },
     { name: "Income Tax", href: "/services/income-tax", targetId: "service-incometax" },
-    { name: "GST Services", href: "/#service-gst", targetId: "service-gst" },
+    { name: "GST Services", href: "/services/gst-services", targetId: "service-gst" },
     { name: "Accounting & Bookkeeping", href: "/#service-accounting", targetId: "service-accounting" },
     { name: "Trademark & Registrations", href: "/#service-trademark", targetId: "service-trademark" },
     { name: "NGO Services", href: "/#service-ngo-registration", targetId: "service-ngo-registration" }
@@ -232,6 +232,11 @@ export default function Header() {
                         }
                       } else if (item.href === "/services/income-tax") {
                         if (pathname === "/services/income-tax") {
+                          e.preventDefault();
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }
+                      } else if (item.href === "/services/gst-services") {
+                        if (pathname === "/services/gst-services" || pathname === "/services/gst") {
                           e.preventDefault();
                           window.scrollTo({ top: 0, behavior: "smooth" });
                         }

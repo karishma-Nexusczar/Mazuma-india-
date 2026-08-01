@@ -67,8 +67,8 @@ export default function Footer() {
           <h3 className="footer-col-title">Our Services</h3>
           <ul className="footer-links-list">
             <li><Link href="/services/company-registration">Company Registration</Link></li>
-            <li><Link href="/#services">GST Registration</Link></li>
-            <li><Link href="/#services">Income Tax Return</Link></li>
+            <li><Link href="/services/gst-services">GST Services</Link></li>
+            <li><Link href="/services/income-tax">Income Tax Return</Link></li>
             <li><Link href="/#services">Accounting & Bookkeeping</Link></li>
             <li><Link href="/#services">ROC Compliance</Link></li>
             <li><Link href="/#services">More Services</Link></li>

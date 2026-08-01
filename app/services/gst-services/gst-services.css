@@ -1,0 +1,819 @@
+/* GST Services Page Dedicated Styles */
+.gst-page-wrapper {
+  background-color: #FFFFFF;
+  color: #0F2D52;
+  font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+  overflow-x: hidden;
+}
+
+.gst-section-shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Breadcrumb Bar */
+.gst-breadcrumb-bar {
+  background-color: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 12px 0;
+  font-size: 13px;
+  color: #64748B;
+}
+
+.gst-breadcrumb-shell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.gst-breadcrumb-shell a {
+  color: #64748B;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.gst-breadcrumb-shell a:hover {
+  color: #FF6B00;
+}
+
+.gst-breadcrumb-arrow {
+  color: #94A3B8;
+}
+
+.gst-breadcrumb-current {
+  color: #0F2D52;
+  font-weight: 700;
+}
+
+/* =========================================================
+   STEP 1: HERO SECTION
+   ========================================================= */
+.gst-hero-section {
+  background: #FFFFFF;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.gst-hero-grid {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 40px;
+  align-items: center;
+}
+
+.gst-hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.gst-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFF4EC;
+  color: #FF6B00;
+  padding: 6px 14px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+}
+
+.gst-hero-title {
+  font-size: clamp(32px, 3.2vw, 48px);
+  font-weight: 900;
+  color: #0F2D52;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 20px 0;
+}
+
+.gst-hero-desc {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0 0 32px 0;
+  font-weight: 450;
+}
+
+/* Hero Trust Badges Grid (4 items in a row) */
+.gst-hero-badges-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 36px;
+}
+
+.gst-trust-badge-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.gst-trust-badge-card:hover {
+  border-color: #FF6B00;
+  background: #FFF4EC;
+  transform: translateY(-2px);
+}
+
+.gst-trust-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #FFF4EC;
+  color: #FF6B00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gst-trust-badge-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0F2D52;
+  line-height: 1.25;
+}
+
+/* Hero CTAs */
+.gst-hero-cta-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gst-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: #FF6B00;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(255, 107, 0, 0.35);
+  transition: all 0.25 ease;
+}
+
+.gst-btn-primary:hover {
+  background: #E05E00;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 107, 0, 0.45);
+}
+
+.gst-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  color: #0F2D52;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1.5px solid #CBD5E1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gst-btn-secondary:hover {
+  border-color: #FF6B00;
+  color: #FF6B00;
+  background: #FFF4EC;
+}
+
+/* Hero Right Column: Image + Floating Service Menu Card */
+.gst-hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.gst-hero-img-container {
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(15, 45, 82, 0.12);
+  position: relative;
+  background: #0F2D52;
+}
+
+.gst-hero-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Floating Card Overlay on Right */
+.gst-floating-menu-card {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 20px 18px;
+  box-shadow: 0 16px 40px rgba(15, 45, 82, 0.16);
+  border: 1px solid #E2E8F0;
+  z-index: 10;
+}
+
+.gst-floating-card-title {
+  font-size: 15px;
+  font-weight: 900;
+  color: #0F2D52;
+  margin: 0 0 14px 0;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid #F1F5F9;
+  letter-spacing: -0.2px;
+}
+
+.gst-floating-service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.gst-floating-service-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.gst-floating-service-list::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+.gst-floating-service-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  background: #F8FAFC;
+}
+
+.gst-floating-service-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gst-floating-item-icon {
+  color: #FF6B00;
+  flex-shrink: 0;
+}
+
+.gst-floating-service-item:hover {
+  background: #FFF4EC;
+  color: #FF6B00;
+  transform: translateX(3px);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.12);
+}
+
+.gst-floating-service-item:hover .gst-floating-item-arrow {
+  color: #FF6B00;
+  transform: translateX(2px);
+}
+
+.gst-floating-item-arrow {
+  color: #94A3B8;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+/* =========================================================
+   SPLIT SECTIONS (STEPS 2, 3, 4, 5)
+   ========================================================= */
+.gst-split-section {
+  padding: 80px 0;
+  border-top: 1px solid #F1F5F9;
+}
+
+.gst-split-section-alt {
+  background-color: #F8FAFC;
+}
+
+.gst-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.gst-split-grid-reverse .gst-split-left {
+  order: 2;
+}
+
+.gst-split-grid-reverse .gst-split-right {
+  order: 1;
+}
+
+.gst-split-number {
+  font-size: 32px;
+  font-weight: 900;
+  color: #FF6B00;
+  margin-bottom: 8px;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.gst-split-title {
+  font-size: clamp(26px, 2.5vw, 36px);
+  font-weight: 900;
+  color: #0F2D52;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+.gst-split-desc {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+.gst-checklist-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.gst-checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E293B;
+}
+
+.gst-check-icon {
+  color: #10B981;
+  flex-shrink: 0;
+}
+
+.gst-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #FF6B00;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.gst-link-btn:hover {
+  gap: 12px;
+  color: #E05E00;
+}
+
+.gst-split-img-box {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(15, 45, 82, 0.08);
+  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+}
+
+.gst-split-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gst-split-img-box:hover .gst-split-img {
+  transform: scale(1.02);
+}
+
+/* =========================================================
+   STEP 6: OUR GST SERVICES GRID (12 Cards)
+   ========================================================= */
+.gst-services-grid-section {
+  padding: 80px 0;
+  background: #FFFFFF;
+  text-align: center;
+}
+
+.gst-section-header {
+  max-width: 680px;
+  margin: 0 auto 50px auto;
+}
+
+.gst-section-title {
+  font-size: clamp(28px, 2.8vw, 40px);
+  font-weight: 900;
+  color: #0F2D52;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+}
+
+.gst-title-divider {
+  width: 50px;
+  height: 4px;
+  background: #FF6B00;
+  margin: 0 auto;
+  border-radius: 99px;
+}
+
+.gst-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.gst-service-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  box-shadow: 0 6px 20px rgba(15, 45, 82, 0.04);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.gst-service-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: #FFF4EC;
+  color: #FF6B00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.gst-service-card-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0F2D52;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.gst-service-card-link {
+  font-size: 12px;
+  font-weight: 700;
+  color: #FF6B00;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.gst-service-card:hover {
+  border-color: #FF6B00;
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(255, 107, 0, 0.15);
+}
+
+.gst-service-card:hover .gst-service-card-icon {
+  background: #FF6B00;
+  color: #FFFFFF;
+}
+
+/* =========================================================
+   STEP 7: WHY CHOOSE MAZUMA INDIA (6 Cards)
+   ========================================================= */
+.gst-why-section {
+  padding: 80px 0;
+  background: #F8FAFC;
+  text-align: center;
+}
+
+.gst-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.gst-why-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  box-shadow: 0 4px 16px rgba(15, 45, 82, 0.03);
+  transition: all 0.3s ease;
+}
+
+.gst-why-card:hover {
+  border-color: #FF6B00;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15, 45, 82, 0.08);
+}
+
+.gst-why-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #FFF4EC;
+  color: #FF6B00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gst-why-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #0F2D52;
+  margin: 0;
+}
+
+.gst-why-desc {
+  font-size: 13.5px;
+  color: #64748B;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* =========================================================
+   STEP 8: FREQUENTLY ASKED QUESTIONS (Accordion)
+   ========================================================= */
+.gst-faq-section {
+  padding: 80px 0;
+  background: #FFFFFF;
+}
+
+.gst-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.gst-faq-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.gst-faq-item.is-active {
+  border-color: #FF6B00;
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.08);
+}
+
+.gst-faq-question-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0F2D52;
+  cursor: pointer;
+  gap: 12px;
+}
+
+.gst-faq-plus-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #FFF4EC;
+  color: #FF6B00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.gst-faq-answer {
+  padding: 0 22px 18px 22px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   STEP 9: FINAL CTA SECTION
+   ========================================================= */
+.gst-cta-section {
+  padding: 40px 0 80px 0;
+  background: #FFFFFF;
+}
+
+.gst-cta-card {
+  background: #FFF6EF;
+  border: 1.5px solid #FFD8BE;
+  border-radius: 24px;
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+  box-shadow: 0 12px 36px rgba(255, 107, 0, 0.08);
+}
+
+.gst-cta-left-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gst-cta-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #FF6B00;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.gst-cta-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: #0F2D52;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.gst-cta-desc {
+  font-size: 13.5px;
+  color: #64748B;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.gst-cta-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.gst-cta-mini-feature {
+  background: #FFFFFF;
+  border: 1px solid #FFE0CC;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+
+.gst-cta-mini-icon {
+  color: #FF6B00;
+}
+
+.gst-cta-mini-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0F2D52;
+}
+
+.gst-cta-right-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.gst-cta-phone-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.gst-cta-phone-link {
+  color: #0F2D52;
+  font-weight: 900;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.gst-cta-phone-link:hover {
+  color: #FF6B00;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================================= */
+@media (max-width: 1024px) {
+  .gst-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .gst-floating-menu-card {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    margin-top: -40px;
+  }
+
+  .gst-split-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .gst-split-grid-reverse .gst-split-left {
+    order: 1;
+  }
+
+  .gst-split-grid-reverse .gst-split-right {
+    order: 2;
+  }
+
+  .gst-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gst-cta-card {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gst-hero-badges-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gst-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gst-faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gst-hero-img {
+    height: 320px;
+  }
+
+  .gst-split-img {
+    height: 280px;
+  }
+}
