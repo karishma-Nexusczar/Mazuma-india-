@@ -1,0 +1,924 @@
+/* ============================================================
+   INCOME TAX RETURN (ITR) SERVICES PAGE STYLES
+   Scoped with --itr-* design tokens matching Image 13 layout
+   ============================================================ */
+
+:root {
+  --itr-navy: #0F2D52;
+  --itr-orange: #FF6B00;
+  --itr-orange-hover: #E56000;
+  --itr-bg-light: #F8F9FB;
+  --itr-card-bg: #FFFFFF;
+  --itr-border: #E2E8F0;
+  --itr-text-dark: #0F172A;
+  --itr-text-muted: #64748B;
+  --itr-font-head: var(--font-head, 'Outfit', sans-serif);
+  --itr-font-body: var(--font-body, 'Inter', sans-serif);
+}
+
+.itr-page-wrapper {
+  background-color: #FFFFFF;
+  min-height: 100vh;
+  font-family: var(--itr-font-body);
+  color: var(--itr-text-dark);
+}
+
+/* ------------------------------------------------------------
+   Breadcrumb Bar (White Background - Matched to Image 15)
+   ------------------------------------------------------------ */
+.itr-breadcrumb-bar {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 12px 0;
+  font-size: 13px;
+  font-family: var(--itr-font-body);
+}
+
+.itr-breadcrumb-inner {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748B;
+}
+
+.itr-breadcrumb-link {
+  color: #64748B;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.itr-breadcrumb-link:hover {
+  color: var(--itr-orange);
+}
+
+.itr-breadcrumb-current {
+  color: #1E293B;
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------
+   HERO SECTION (Matched 100% to Image 15 - 4K Ultra HD Clear Background Image)
+   ------------------------------------------------------------ */
+.itr-hero-section {
+  position: relative;
+  background-image: url('/itr-hero-tax-bg.jpg');
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  image-rendering: -webkit-optimize-contrast;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  padding: 32px 0;
+  overflow: hidden;
+}
+
+/* Gradient Overlay: Transparent to let user's exact background image render at 100% clarity */
+.itr-hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.itr-hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.itr-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+  align-items: center;
+}
+
+/* Left Hero Column */
+.itr-hero-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.itr-hero-eyebrow {
+  display: inline-block;
+  color: var(--itr-orange);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.itr-hero-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: clamp(32px, 3.8vw, 46px);
+  font-weight: 900;
+  line-height: 1.12;
+  margin: 0 0 14px 0;
+}
+
+.itr-hero-desc {
+  color: #334155;
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin-bottom: 22px;
+  max-width: 580px;
+  font-weight: 500;
+}
+
+/* 4 Trust Badges in One Row (No Background, Outline Icons) */
+.itr-trust-badges-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 26px;
+  max-width: 560px;
+}
+
+.itr-trust-badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.itr-trust-badge-icon {
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itr-trust-badge-label {
+  color: var(--itr-navy);
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* CTA Buttons */
+.itr-hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.itr-btn-primary {
+  background-color: var(--itr-orange);
+  color: #FFFFFF;
+  font-family: var(--itr-font-head);
+  font-size: 14.5px;
+  font-weight: 700;
+  padding: 12px 26px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.35);
+  text-decoration: none;
+}
+
+.itr-btn-primary-circle-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itr-btn-primary:hover {
+  background-color: var(--itr-orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 107, 0, 0.45);
+}
+
+.itr-btn-secondary {
+  background-color: #FFFFFF;
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 14.5px;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(15, 45, 82, 0.04);
+}
+
+.itr-btn-secondary:hover {
+  border-color: var(--itr-navy);
+  background-color: var(--itr-bg-light);
+  transform: translateY(-2px);
+}
+
+/* Right Hero Column: Short Floating White Services Card Shifted to Far Right End */
+.itr-hero-right {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.itr-floating-services-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid var(--itr-border);
+  box-shadow: 0 16px 44px rgba(15, 45, 82, 0.12);
+  padding: 18px 20px;
+  width: 100%;
+  max-width: 390px;
+}
+
+.itr-services-card-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 16.5px;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--itr-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.itr-services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.itr-service-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.itr-service-list-item-left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.itr-service-item-icon {
+  color: var(--itr-orange);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.itr-service-item-text {
+  color: var(--itr-text-dark);
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  line-height: 1.3;
+}
+
+.itr-service-item-chevron {
+  color: #94A3B8;
+  transition: all 0.2s ease;
+}
+
+.itr-service-list-item:hover {
+  background-color: #FFF6F0;
+  transform: translateX(3px);
+}
+
+.itr-service-list-item:hover .itr-service-item-text {
+  color: var(--itr-orange);
+}
+
+.itr-service-list-item:hover .itr-service-item-chevron {
+  color: var(--itr-orange);
+  transform: translateX(2px);
+}
+
+/* ------------------------------------------------------------
+   SECTION 2: OUR INCOME TAX RETURN SERVICES GRID (Matched 100% to Image 16)
+   ------------------------------------------------------------ */
+.itr-services-section {
+  background-color: #FFFFFF;
+  padding: 36px 0;
+  border-top: 1px solid var(--itr-border);
+  border-bottom: 1px solid var(--itr-border);
+}
+
+.itr-section-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.itr-section-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: clamp(24px, 2.8vw, 30px);
+  font-weight: 800;
+  margin: 0;
+  text-align: center;
+}
+
+/* Small Orange Divider Line directly under heading (Matched to Image 16) */
+.itr-title-divider-line {
+  width: 36px;
+  height: 3px;
+  background-color: var(--itr-orange);
+  margin: 6px auto 0 auto;
+  border-radius: 2px;
+}
+
+.itr-services-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.itr-service-card-redesign {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 20px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 210px;
+  box-shadow: 0 4px 18px rgba(15, 45, 82, 0.04);
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.itr-service-card-redesign:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(255, 107, 0, 0.12);
+  border-color: var(--itr-orange);
+}
+
+/* Direct Orange Line Icon (No Background Container Box - Matched 100% to Image 16) */
+.itr-service-card-direct-icon {
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  transition: transform 0.3s ease;
+}
+
+.itr-service-card-redesign:hover .itr-service-card-direct-icon {
+  transform: scale(1.1);
+}
+
+.itr-service-card-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 4px 0;
+  text-align: center;
+}
+
+.itr-service-card-desc {
+  color: #64748B;
+  font-size: 11.5px;
+  line-height: 1.45;
+  margin: 0 0 8px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+}
+
+.itr-service-card-link {
+  color: var(--itr-orange);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+}
+
+.itr-service-card-link:hover {
+  gap: 7px;
+}
+
+/* ------------------------------------------------------------
+   SECTION 3: ABOUT ITR & WHO SHOULD FILE ITR (Matched to Image 18)
+   ------------------------------------------------------------ */
+.itr-about-section {
+  padding: 36px 0;
+  background-color: #FFFFFF;
+}
+
+.itr-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.itr-about-left h2 {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.itr-about-left p {
+  color: #64748B;
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.itr-about-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.itr-about-badge-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 14px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(15, 45, 82, 0.03);
+  transition: all 0.2s ease;
+}
+
+.itr-about-badge-card:hover {
+  border-color: var(--itr-orange);
+  transform: translateY(-2px);
+}
+
+.itr-about-badge-card span {
+  color: var(--itr-navy);
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Who Should File ITR Grid (6 Tall Vertical Cards in 1 Row) */
+.itr-who-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.itr-who-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.itr-who-pill-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 16px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(15, 45, 82, 0.04);
+  height: 130px;
+  justify-content: center;
+}
+
+.itr-who-pill-card:hover {
+  border-color: var(--itr-orange);
+  box-shadow: 0 10px 24px rgba(255, 107, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+.itr-who-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #FFF4EC;
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itr-who-label {
+  color: var(--itr-navy);
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   SECTION 4: OUR ITR FILING PROCESS (Matched to Image 18)
+   ------------------------------------------------------------ */
+.itr-process-section {
+  background-color: #FFFFFF;
+  padding: 36px 0;
+  border-top: 1px solid var(--itr-border);
+  border-bottom: 1px solid var(--itr-border);
+}
+
+.itr-process-timeline-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.itr-process-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.itr-process-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  color: var(--itr-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 16px rgba(15, 45, 82, 0.05);
+  transition: all 0.25s ease;
+}
+
+.itr-process-step-item:hover .itr-process-icon-circle {
+  border-color: var(--itr-orange);
+  color: var(--itr-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 0, 0.15);
+}
+
+.itr-process-step-no {
+  color: var(--itr-orange);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.itr-process-step-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  max-width: 110px;
+}
+
+.itr-process-arrow-divider {
+  color: #CBD5E1;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+/* ------------------------------------------------------------
+   SECTION 5: WHY CHOOSE MAZUMA INDIA & FAQ ACCORDION (Matched to Image 18)
+   ------------------------------------------------------------ */
+.itr-why-faq-section {
+  padding: 36px 0;
+  background-color: #FFFFFF;
+}
+
+.itr-why-faq-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Why Choose Us 2-Column Grid (Matched height to 4 FAQ items) */
+.itr-why-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.itr-why-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 14px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: 0 4px 14px rgba(15, 45, 82, 0.03);
+  transition: all 0.25s ease;
+}
+
+.itr-why-card:hover {
+  border-color: var(--itr-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 0, 0.1);
+}
+
+.itr-why-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background-color: #FFF4EC;
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.itr-why-card-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.itr-why-card-title {
+  color: var(--itr-navy);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0 0 3px 0;
+}
+
+.itr-why-card-desc {
+  color: #64748B;
+  font-size: 11px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* FAQ Accordion */
+.itr-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.itr-faq-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+  box-shadow: 0 2px 8px rgba(15, 45, 82, 0.02);
+}
+
+.itr-faq-item.is-open {
+  border-color: var(--itr-orange);
+}
+
+.itr-faq-button {
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+}
+
+.itr-faq-answer {
+  padding: 0 16px 12px 16px;
+  color: #64748B;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+   SECTION 6: CTA BANNER (Soft Peach Card - Matched to Image 18)
+   ------------------------------------------------------------ */
+.itr-cta-banner-section {
+  padding: 24px 0 36px 0;
+  background-color: #FFFFFF;
+}
+
+.itr-cta-banner-card {
+  background-color: #FFF8F3;
+  border: 1px solid #FFE4D1;
+  border-radius: 20px;
+  padding: 24px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1340px;
+  margin: 0 auto;
+  gap: 24px;
+}
+
+.itr-cta-banner-left {
+  max-width: 360px;
+}
+
+.itr-cta-banner-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 6px 0;
+}
+
+.itr-cta-banner-desc {
+  color: #64748B;
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.itr-cta-banner-center {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #FFFFFF;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 16px rgba(15, 45, 82, 0.04);
+}
+
+.itr-cta-badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.itr-cta-badge-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #FFF4EC;
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itr-cta-badge-label {
+  color: var(--itr-navy);
+  font-size: 10.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.itr-cta-banner-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.itr-cta-btn-orange {
+  background-color: var(--itr-orange);
+  color: #FFFFFF;
+  font-family: var(--itr-font-head);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.3);
+}
+
+.itr-cta-btn-orange:hover {
+  background-color: var(--itr-orange-hover);
+  transform: translateY(-2px);
+}
+
+.itr-cta-phone-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--itr-text-muted);
+}
+
+.itr-cta-phone-link {
+  color: var(--itr-navy);
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Responsive Rules */
+@media (max-width: 1100px) {
+  .itr-hero-grid,
+  .itr-about-grid,
+  .itr-why-faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .itr-services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .itr-cta-banner-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .itr-cta-banner-right {
+    align-items: center;
+  }
+
+  .itr-process-timeline-container {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .itr-process-arrow-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .itr-trust-badges-row,
+  .itr-services-grid,
+  .itr-who-grid,
+  .itr-why-features-grid,
+  .itr-about-badges-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .itr-cta-banner-center {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

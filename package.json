@@ -1,0 +1,30 @@
+{
+  "name": "taxtation-mazuma-india",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@portabletext/react": "^7.0.1",
+    "framer-motion": "^12.43.0",
+    "lucide-react": "^1.27.0",
+    "media-chrome": "^4.19.2",
+    "mysql2": "^3.23.2",
+    "next": "14.2.5",
+    "next-sanity": "^9.12.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "sanity": "^6.7.0",
+    "styled-components": "^6.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.12",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "typescript": "5.5.4"
+  }
+}
