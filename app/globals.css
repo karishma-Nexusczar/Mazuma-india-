@@ -8703,6 +8703,159 @@ textarea {
   }
 }
 
+/* ============================================================
+   STEP 11 — UNIFIED SERVICE PAGES RESPONSIVE SYSTEM
+   ============================================================ */
+
+/* 1. Universal Service Breadcrumbs */
+.cr-breadcrumb,
+.gst-breadcrumb,
+.itr-breadcrumb,
+.ngo-breadcrumb,
+.ab-breadcrumb,
+.tbr-breadcrumb,
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(11.5px, 1vw, 13px);
+  color: #64748B;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 2. Universal Service Heroes (Desktop 2-Col -> Mobile 1-Col Stack) */
+@media (max-width: 1023px) {
+  .cr-hero-grid-layout,
+  .gst-hero-grid,
+  .itr-hero-grid,
+  .ngo-hero-grid,
+  .ab-hero-grid,
+  .tbr-hero-section,
+  .service-hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    min-height: auto !important;
+    padding-top: 24px !important;
+    padding-bottom: 32px !important;
+  }
+
+  .cr-hero-left-content,
+  .gst-hero-left,
+  .itr-hero-left,
+  .ngo-hero-left,
+  .ab-hero-left,
+  .tbr-hero-left {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .cr-floating-services-card,
+  .gst-hero-right,
+  .itr-hero-right,
+  .ngo-hero-right,
+  .ab-hero-right,
+  .tbr-hero-right {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* 3. Universal Service Card Grids (Desktop 3/4 -> Tablet 2 -> Mobile 1) */
+@media (max-width: 1023px) {
+  .cr-services-grid,
+  .gst-services-grid,
+  .itr-services-grid,
+  .ngo-services-grid,
+  .ab-services-grid,
+  .tbr-services-grid,
+  .service-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .cr-services-grid,
+  .gst-services-grid,
+  .itr-services-grid,
+  .ngo-services-grid,
+  .ab-services-grid,
+  .tbr-services-grid,
+  .service-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+}
+
+/* 4. Universal Service Responsive Tables */
+.cr-table-wrapper,
+.gst-table-wrapper,
+.itr-table-wrapper,
+.ab-table-wrapper,
+.tbr-table-wrapper,
+.service-table-wrapper {
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 24px;
+}
+
+.cr-table,
+.gst-table,
+.itr-table,
+.ab-table,
+.tbr-table,
+.service-table {
+  width: 100% !important;
+  min-width: 520px;
+  border-collapse: collapse;
+}
+
+/* 5. Universal Service CTA Banners */
+@media (max-width: 767px) {
+  .cr-cta-banner,
+  .gst-cta-banner,
+  .itr-cta-banner,
+  .ngo-cta-banner,
+  .ab-cta-banner,
+  .tbr-cta-banner {
+    padding: 32px 16px !important;
+    border-radius: 16px !important;
+    text-align: center !important;
+  }
+
+  .cr-cta-buttons,
+  .gst-cta-buttons,
+  .itr-cta-buttons,
+  .ngo-cta-buttons,
+  .ab-cta-buttons,
+  .tbr-cta-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+}
+
+/* 6. Universal Service FAQ Containers */
+@media (max-width: 1023px) {
+  .cr-faq-container,
+  .gst-faq-container,
+  .itr-faq-container,
+  .ngo-faq-container,
+  .ab-faq-container,
+  .tbr-faq-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+
 
 
 
