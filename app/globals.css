@@ -6593,7 +6593,37 @@ footer a:hover {
   color: #94A3B8;
   font-size: 13px;
   font-weight: 500;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
+
+.nexusczar-highlight-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  text-decoration: none !important;
+  font-weight: 800 !important;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  padding: 0 2px;
+}
+
+.nexusczar-highlight-link .nc-darkblue {
+  color: #2563EB !important; /* Vibrant Dark Blue */
+  font-weight: 800 !important;
+}
+
+.nexusczar-highlight-link .nc-lightblue {
+  color: #38BDF8 !important; /* Electric Light Blue */
+  font-weight: 800 !important;
+}
+
+.nexusczar-highlight-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
 
 .legal-links-row {
   display: flex;

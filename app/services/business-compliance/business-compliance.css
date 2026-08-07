@@ -1,0 +1,784 @@
+/* =========================================================
+   MAZUMA INDIA — BUSINESS COMPLIANCE SERVICE PAGE STYLES
+   Modern Corporate Consulting Style (Deloitte / PwC / EY Aesthetic)
+   Compact & Sleek (Minimal Whitespace & Short Cards)
+   ========================================================= */
+
+.compliance-page-wrapper {
+  background-color: #FFFFFF;
+  color: #1E293B;
+  font-family: var(--font-body, 'Plus Jakarta Sans', system-ui, sans-serif);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.compliance-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------------------------------------------------------
+   SECTION 1: HERO SECTION
+   --------------------------------------------------------- */
+.compliance-hero-section {
+  position: relative;
+  background-color: #FFFFFF;
+  color: #0F172A;
+  padding: 16px 0 36px 0;
+  overflow: hidden;
+}
+
+.compliance-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.compliance-hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+/* Breadcrumb Navigation */
+.compliance-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #64748B;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.compliance-crumb-link {
+  color: #64748B;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.compliance-crumb-link:hover {
+  color: #FF6B1A;
+}
+
+.compliance-crumb-sep {
+  color: #94A3B8;
+  font-size: 11px;
+}
+
+.compliance-crumb-current {
+  color: #0F2748;
+  font-weight: 600;
+}
+
+/* Category Label */
+.compliance-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #FFF4EC;
+  color: #FF6B1A;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 107, 26, 0.2);
+  margin-bottom: 12px;
+}
+
+.compliance-badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #FF6B1A;
+}
+
+/* Heading */
+.compliance-hero-heading {
+  font-family: var(--font-head, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #0F2748;
+  margin-bottom: 12px;
+  letter-spacing: -0.4px;
+}
+
+.compliance-hero-heading-highlight {
+  color: #FF6B1A;
+}
+
+/* Description */
+.compliance-hero-desc {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #475569;
+  margin-bottom: 18px;
+}
+
+/* Badges List */
+.compliance-hero-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-bottom: 22px;
+}
+
+.compliance-hero-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0F2748;
+}
+
+.compliance-hero-feature-item svg {
+  color: #FF6B1A;
+}
+
+/* Hero CTA Group */
+.compliance-hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.compliance-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #FF6B1A;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 11px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255, 107, 26, 0.22);
+  transition: all 0.25s ease;
+}
+
+.compliance-btn-primary:hover {
+  background-color: #E55B0F;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 26, 0.32);
+}
+
+.compliance-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #FFFFFF;
+  color: #0F2748;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 11px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1.5px solid #E2E8F0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.compliance-btn-outline:hover {
+  border-color: #0F2748;
+  background-color: #F8FAFC;
+}
+
+.compliance-hero-image-wrapper {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(15, 39, 72, 0.08);
+  border: 1px solid #E2E8F0;
+}
+
+.compliance-hero-image {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------------------------------------------------------
+   SECTION 2: COMPLIANCE SERVICES (3x3 GRID)
+   --------------------------------------------------------- */
+.compliance-services-section {
+  padding: 40px 0;
+  background-color: #FFFFFF;
+}
+
+.compliance-section-header {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 28px auto;
+}
+
+.compliance-section-title {
+  font-family: var(--font-head, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-size: 28px;
+  font-weight: 800;
+  color: #0F2748;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.compliance-section-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #64748B;
+  margin: 0;
+}
+
+.compliance-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.compliance-service-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  padding: 18px 18px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 3px 10px rgba(15, 39, 72, 0.03);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.compliance-card-top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background 0.25s ease;
+}
+
+.compliance-service-card:hover {
+  transform: translateY(-4px);
+  border-color: #FF6B1A;
+  box-shadow: 0 10px 24px rgba(255, 107, 26, 0.12);
+}
+
+.compliance-service-card:hover .compliance-card-top-bar {
+  background: #FF6B1A;
+}
+
+.compliance-card-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background-color: #FFF4EC;
+  color: #FF6B1A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  transition: all 0.25s ease;
+}
+
+.compliance-service-card:hover .compliance-card-icon-box {
+  background-color: #FF6B1A;
+  color: #FFFFFF;
+}
+
+.compliance-card-title {
+  font-family: var(--font-head);
+  font-size: 16.5px;
+  font-weight: 800;
+  color: #0F2748;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.compliance-card-desc {
+  font-size: 13px;
+  line-height: 1.45;
+  color: #475569;
+  margin: 0 0 12px 0;
+  flex-grow: 1;
+}
+
+.compliance-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #FF6B1A;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: auto;
+  transition: gap 0.2s ease;
+}
+
+.compliance-service-card:hover .compliance-card-btn {
+  gap: 8px;
+}
+
+/* ---------------------------------------------------------
+   SECTION 3: COMPLIANCE PROCESS (HORIZONTAL TIMELINE)
+   --------------------------------------------------------- */
+.compliance-process-section {
+  padding: 40px 0;
+  background-color: #F8FAFC;
+}
+
+.compliance-timeline-wrapper {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.compliance-process-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 16px 10px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(15, 39, 72, 0.03);
+  transition: all 0.25s ease;
+}
+
+.compliance-process-card:hover {
+  transform: translateY(-3px);
+  border-color: #FF6B1A;
+  box-shadow: 0 8px 20px rgba(255, 107, 26, 0.1);
+}
+
+.compliance-process-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #FFF4EC;
+  color: #FF6B1A;
+  border: 2px solid #FF6B1A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  margin: 0 auto 10px auto;
+}
+
+.compliance-process-title {
+  font-family: var(--font-head);
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0F2748;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* ---------------------------------------------------------
+   SECTION 4: WHY BUSINESSES TRUST MAZUMA INDIA
+   --------------------------------------------------------- */
+.compliance-why-section {
+  padding: 40px 0;
+  background-color: #FFFFFF;
+}
+
+.compliance-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.compliance-why-left {
+  position: relative;
+}
+
+.compliance-why-img-container {
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 28px rgba(15, 39, 72, 0.06);
+  border: 1px solid #E2E8F0;
+}
+
+.compliance-why-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.compliance-stats-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.compliance-stat-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  padding: 10px 14px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.compliance-stat-value {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 800;
+  color: #FF6B1A;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.compliance-stat-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #0F2748;
+}
+
+.compliance-why-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.compliance-feature-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.compliance-feature-box-title {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 800;
+  color: #0F2748;
+  margin: 0 0 4px 0;
+}
+
+.compliance-feature-box-desc {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #64748B;
+  margin: 0;
+}
+
+/* ---------------------------------------------------------
+   SECTION 5: BENEFITS OF BUSINESS COMPLIANCE
+   --------------------------------------------------------- */
+.compliance-benefits-section {
+  padding: 40px 0;
+  background-color: #F8FAFC;
+}
+
+.compliance-benefits-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.compliance-benefits-checklist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.compliance-check-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F2748;
+  box-shadow: 0 2px 6px rgba(15, 39, 72, 0.02);
+}
+
+.compliance-check-item svg {
+  color: #FF6B1A;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------
+   SECTION 6: WHO WE HELP
+   --------------------------------------------------------- */
+.compliance-who-section {
+  padding: 40px 0;
+  background-color: #FFFFFF;
+}
+
+.compliance-who-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.compliance-who-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 16px 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(15, 39, 72, 0.03);
+  transition: all 0.25s ease;
+}
+
+.compliance-who-card:hover {
+  transform: translateY(-3px);
+  border-color: #FF6B1A;
+  box-shadow: 0 8px 20px rgba(255, 107, 26, 0.1);
+}
+
+.compliance-who-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background-color: #FFF4EC;
+  color: #FF6B1A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px auto;
+}
+
+.compliance-who-title {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 800;
+  color: #0F2748;
+  margin: 0;
+}
+
+/* ---------------------------------------------------------
+   SECTION 7: KNOWLEDGE CENTRE
+   --------------------------------------------------------- */
+.compliance-blog-section {
+  padding: 40px 0;
+  background-color: #F8FAFC;
+}
+
+.compliance-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.compliance-blog-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(15, 39, 72, 0.03);
+  transition: all 0.25s ease;
+}
+
+.compliance-blog-card:hover {
+  transform: translateY(-3px);
+  border-color: #FF6B1A;
+  box-shadow: 0 10px 24px rgba(255, 107, 26, 0.12);
+}
+
+.compliance-blog-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.compliance-blog-content {
+  padding: 14px;
+}
+
+.compliance-blog-title {
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 800;
+  color: #0F2748;
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+}
+
+.compliance-blog-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #FF6B1A;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ---------------------------------------------------------
+   SECTION 8: FAQ ACCORDION
+   --------------------------------------------------------- */
+.compliance-faq-section {
+  padding: 40px 0;
+  background-color: #FFFFFF;
+}
+
+.compliance-faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.compliance-faq-item {
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  background: #FFFFFF;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.compliance-faq-item.is-open {
+  border-color: #FF6B1A;
+}
+
+.compliance-faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-head);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0F2748;
+  text-align: left;
+  cursor: pointer;
+}
+
+.compliance-faq-answer {
+  padding: 0 18px 14px 18px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #475569;
+}
+
+/* ---------------------------------------------------------
+   SECTION 9: FINAL CTA
+   --------------------------------------------------------- */
+.compliance-cta-section {
+  padding: 44px 0;
+  background-color: #FFF4EC;
+  border-top: 1px solid rgba(255, 107, 26, 0.15);
+}
+
+.compliance-cta-card {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.compliance-cta-title {
+  font-family: var(--font-head);
+  font-size: 30px;
+  font-weight: 800;
+  color: #0F2748;
+  margin-bottom: 10px;
+}
+
+.compliance-cta-desc {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+.compliance-cta-badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.compliance-cta-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0F2748;
+}
+
+.compliance-cta-badge-item svg {
+  color: #FF6B1A;
+}
+
+.compliance-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE DESIGN
+   --------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .compliance-hero-grid,
+  .compliance-why-grid,
+  .compliance-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .compliance-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .compliance-timeline-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .compliance-who-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .compliance-services-grid,
+  .compliance-timeline-wrapper,
+  .compliance-why-features-grid,
+  .compliance-benefits-checklist,
+  .compliance-who-grid,
+  .compliance-blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compliance-hero-heading {
+    font-size: 28px;
+  }
+
+  .compliance-section-title {
+    font-size: 24px;
+  }
+}

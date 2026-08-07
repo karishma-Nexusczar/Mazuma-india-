@@ -128,7 +128,8 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="nexusczar-highlight-link"
             >
-              NexusCzar.com
+              <span className="nc-darkblue">Nexus</span>
+              <span className="nc-lightblue">Czar.com</span>
             </a>
             . All Rights Reserved.
           </span>
