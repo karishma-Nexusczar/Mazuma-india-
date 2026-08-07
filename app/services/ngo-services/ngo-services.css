@@ -1279,18 +1279,18 @@
 }
 
 /* ---------------------------------------------------------
-   SECTION 7: FAQ ACCORDION (PREMIUM 2-COLUMN LAYOUT)
+   SECTION 7: FAQ ACCORDION (COMPACT 2-COLUMN LAYOUT)
    --------------------------------------------------------- */
 .ngo-faq-section {
   position: relative;
   background-color: #F8FAFC;
-  padding: 80px 0;
+  padding: 44px 0 48px 0;
   overflow: hidden;
   border-bottom: 1px solid #E7EAF0;
 }
 
 .ngo-faq-container {
-  max-width: 1320px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
@@ -1300,7 +1300,7 @@
 .ngo-faq-2col-layout {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 60px;
+  gap: 40px;
   align-items: start;
 }
 
@@ -1313,20 +1313,20 @@
 .ngo-faq-eyebrow-wrap {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 6px;
+  margin-bottom: 6px;
 }
 
 .ngo-faq-eyebrow {
   color: #FF6B1A;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .ngo-faq-eyebrow-line {
-  width: 24px;
+  width: 20px;
   height: 2px;
   background-color: #FF6B1A;
   display: inline-block;
@@ -1334,11 +1334,11 @@
 }
 
 .ngo-faq-title {
-  font-size: clamp(34px, 3.8vw, 48px);
+  font-size: clamp(26px, 3.2vw, 36px);
   font-weight: 800;
   color: #0F2747;
-  line-height: 1.08;
-  margin-bottom: 14px;
+  line-height: 1.12;
+  margin-bottom: 8px;
 }
 
 .ngo-faq-title-highlight {
@@ -1346,56 +1346,56 @@
 }
 
 .ngo-faq-subtitle {
-  font-size: 16px;
+  font-size: 14.5px;
   color: #64748B;
-  line-height: 1.65;
-  max-width: 620px;
-  margin-bottom: 28px;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-bottom: 20px;
 }
 
 /* ACCORDION LIST */
 .ngo-faq-accordion-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 8px;
+  margin-bottom: 18px;
 }
 
 .ngo-faq-accordion-item {
   background: #FFFFFF;
   border: 1px solid #E5EAF0;
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(15, 39, 71, 0.02);
+  box-shadow: 0 2px 10px rgba(15, 39, 71, 0.02);
 }
 
 .ngo-faq-accordion-item:hover {
   border-color: rgba(255, 107, 26, 0.3);
-  box-shadow: 0 6px 18px rgba(15, 39, 71, 0.05);
+  box-shadow: 0 4px 14px rgba(15, 39, 71, 0.04);
 }
 
 .ngo-faq-accordion-item.ngo-faq-active {
   border-color: rgba(255, 107, 26, 0.35);
-  box-shadow: 0 8px 24px rgba(255, 107, 26, 0.06);
+  box-shadow: 0 6px 18px rgba(255, 107, 26, 0.05);
 }
 
 .ngo-faq-header-btn {
   width: 100%;
   background: transparent;
   border: none;
-  padding: 16px 20px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   cursor: pointer;
   text-align: left;
 }
 
 .ngo-faq-icon-toggle {
-  width: 30px;
-  height: 30px;
-  min-width: 30px;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
   border-radius: 50%;
   border: 1.5px solid #FF6B1A;
   color: #FF6B1A;
@@ -1412,7 +1412,7 @@
 }
 
 .ngo-faq-question-text {
-  font-size: 15.5px;
+  font-size: 14.5px;
   font-weight: 700;
   color: #0F2747;
   flex: 1;
@@ -1434,7 +1434,7 @@
   position: relative;
   background-color: #FFF9F5;
   border-top: 1px solid #FFE1D0;
-  padding: 16px 20px 18px 24px;
+  padding: 12px 16px 14px 20px;
 }
 
 .ngo-faq-accent-bar {
@@ -1447,15 +1447,15 @@
 }
 
 .ngo-faq-body-content p {
-  font-size: 14.5px;
+  font-size: 13.5px;
   color: #64748B;
-  line-height: 1.65;
+  line-height: 1.55;
   margin: 0;
 }
 
 /* VIEW ALL FAQS LINK */
 .ngo-faq-view-all-wrap {
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .ngo-faq-view-all-btn {
@@ -1464,9 +1464,9 @@
   padding: 0;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   cursor: pointer;
-  font-size: 14.5px;
+  font-size: 13.5px;
   color: #0F2747;
   font-weight: 600;
   transition: opacity 0.2s ease;
@@ -1483,23 +1483,23 @@
 .ngo-faq-link-orange {
   color: #FF6B1A;
   font-weight: 700;
-  margin-left: 4px;
+  margin-left: 2px;
 }
 
 /* RIGHT COLUMN — VISUAL PANEL + CTA + TRUST STRIP */
 .ngo-faq-right-col {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 }
 
-/* 3D Question Mark Visual Panel */
+/* 3D Question Mark Visual Panel (COMPACT) */
 .ngo-faq-visual-panel {
   position: relative;
   background-color: #FFF7F1;
   border: 1px solid #FFE0D0;
-  border-radius: 28px;
-  height: 380px;
+  border-radius: 20px;
+  height: 270px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1508,8 +1508,8 @@
 
 .ngo-faq-visual-bg-glow {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 107, 26, 0.12) 0%, rgba(255, 247, 241, 0) 70%);
   pointer-events: none;
@@ -1517,19 +1517,19 @@
 
 .ngo-faq-visual-dots {
   position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 70px;
-  height: 70px;
-  opacity: 0.25;
+  top: 16px;
+  right: 16px;
+  width: 50px;
+  height: 50px;
+  opacity: 0.22;
   background-image: radial-gradient(#FF6B1A 1.5px, transparent 1.5px);
-  background-size: 9px 9px;
+  background-size: 8px 8px;
 }
 
 .ngo-faq-visual-orbit {
   position: absolute;
-  width: 260px;
-  height: 260px;
+  width: 190px;
+  height: 190px;
   border: 1.5px dashed rgba(255, 107, 26, 0.2);
   border-radius: 50%;
   pointer-events: none;
@@ -1538,8 +1538,8 @@
 /* Floating Service Icons */
 .ngo-faq-float-icon {
   position: absolute;
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background-color: #FFFFFF;
   border: 1px solid #FFD8C2;
@@ -1547,19 +1547,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 16px rgba(255, 107, 26, 0.12);
+  box-shadow: 0 4px 12px rgba(255, 107, 26, 0.1);
   z-index: 2;
   transition: transform 0.3s ease;
+}
+
+.ngo-faq-float-icon svg {
+  width: 18px;
+  height: 18px;
 }
 
 .ngo-faq-float-icon:hover {
   transform: scale(1.1);
 }
 
-.ngo-float-top-left { top: 32px; left: 36px; }
-.ngo-float-top-right { top: 28px; right: 36px; }
-.ngo-float-mid-left { bottom: 60px; left: 28px; }
-.ngo-float-mid-right { top: 140px; right: 24px; }
+.ngo-float-top-left { top: 20px; left: 24px; }
+.ngo-float-top-right { top: 18px; right: 24px; }
+.ngo-float-mid-left { bottom: 36px; left: 20px; }
+.ngo-float-mid-right { top: 95px; right: 16px; }
 
 /* 3D Question Mark Render Container */
 .ngo-faq-question-mark-wrap {
@@ -1573,42 +1578,42 @@
 
 .ngo-faq-qm-podium {
   position: absolute;
-  bottom: -20px;
-  width: 140px;
-  height: 30px;
+  bottom: -12px;
+  width: 100px;
+  height: 22px;
   background: linear-gradient(180deg, #FFEBE0 0%, #FFDACC 100%);
   border-radius: 50%;
-  box-shadow: 0 10px 24px rgba(255, 107, 26, 0.15);
+  box-shadow: 0 6px 18px rgba(255, 107, 26, 0.14);
 }
 
 .ngo-faq-qm-3d {
-  font-size: 150px;
+  font-size: 90px;
   font-weight: 900;
   line-height: 1;
   background: linear-gradient(135deg, #FF833E 0%, #FF5500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 12px 24px rgba(255, 85, 0, 0.25));
+  filter: drop-shadow(0 8px 18px rgba(255, 85, 0, 0.22));
   user-select: none;
   font-family: inherit;
 }
 
-/* Expert Guidance CTA Card */
+/* Expert Guidance CTA Card (COMPACT) */
 .ngo-faq-expert-card {
   background-color: #FFF7F1;
   border: 1px solid #FFE0D0;
-  border-radius: 18px;
-  padding: 18px 20px;
+  border-radius: 14px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
-  gap: 14px;
-  box-shadow: 0 4px 16px rgba(255, 107, 26, 0.04);
+  gap: 12px;
+  box-shadow: 0 3px 12px rgba(255, 107, 26, 0.03);
 }
 
 .ngo-faq-expert-headset {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
   border-radius: 50%;
   background-color: #FFE5D4;
   color: #FF6B1A;
@@ -1622,16 +1627,16 @@
 }
 
 .ngo-faq-expert-title {
-  font-size: 15.5px;
+  font-size: 14.5px;
   font-weight: 700;
   color: #0F2747;
   margin: 0 0 2px 0;
 }
 
 .ngo-faq-expert-desc {
-  font-size: 12.5px;
+  font-size: 12px;
   color: #64748B;
-  line-height: 1.4;
+  line-height: 1.35;
   margin: 0;
 }
 
@@ -1639,14 +1644,14 @@
   background-color: #FF6B1A;
   color: #FFFFFF;
   border: none;
-  height: 38px;
-  padding: 0 18px;
+  height: 34px;
+  padding: 0 16px;
   border-radius: 999px;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   cursor: pointer;
   transition: all 0.25s ease;
   white-space: nowrap;
@@ -1658,22 +1663,22 @@
   transform: translateY(-1px);
 }
 
-/* Small Trust Strip */
+/* Small Trust Strip (COMPACT) */
 .ngo-faq-trust-strip {
   background-color: #FFFFFF;
   border: 1px solid #E5EAF0;
-  border-radius: 14px;
-  padding: 12px 18px;
+  border-radius: 12px;
+  padding: 8px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 10px rgba(15, 39, 71, 0.02);
+  box-shadow: 0 2px 8px rgba(15, 39, 71, 0.02);
 }
 
 .ngo-faq-trust-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .ngo-trust-icon {
@@ -1683,13 +1688,23 @@
 .ngo-trust-text {
   display: flex;
   flex-direction: column;
-  font-size: 11.5px;
+  font-size: 11px;
   line-height: 1.2;
 }
 
 .ngo-trust-text strong {
   color: #0F2747;
   font-weight: 700;
+}
+
+.ngo-trust-text span {
+  color: #64748B;
+}
+
+.ngo-trust-divider {
+  width: 1px;
+  height: 20px;
+  background-color: #E5EAF0;
 }
 
 .ngo-trust-text span {
