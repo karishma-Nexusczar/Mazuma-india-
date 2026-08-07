@@ -1832,45 +1832,45 @@
 }
 
 /* ---------------------------------------------------------
-   SECTION 8: FINAL CTA BANNER (PREMIUM LIGHT THEME)
+   SECTION 8: FINAL CTA BANNER (COMPACT PREMIUM LIGHT THEME)
    --------------------------------------------------------- */
 .ngo-light-cta-section {
   position: relative;
   background-color: #F8FBFF;
-  padding: 80px 0 90px 0;
+  padding: 40px 0 44px 0;
   overflow: hidden;
 }
 
 .ngo-light-cta-container {
-  max-width: 1280px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 18px;
 }
 
-/* MAIN WHITE CARD WITH LIGHT BLUE GLOW */
+/* MAIN WHITE CARD WITH LIGHT BLUE GLOW (COMPACT) */
 .ngo-light-cta-card {
   position: relative;
   background: #FFFFFF;
   border: 1px solid #DCEAF7;
-  border-radius: 28px;
-  padding: 44px 48px;
+  border-radius: 20px;
+  padding: 28px 36px;
   display: grid;
   grid-template-columns: 1.15fr auto 0.85fr;
-  gap: 40px;
+  gap: 32px;
   align-items: center;
-  box-shadow: 0 20px 50px rgba(30, 80, 120, 0.07);
+  box-shadow: 0 12px 36px rgba(30, 80, 120, 0.05);
 }
 
 .ngo-light-cta-card::before {
   content: "";
   position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 320px;
-  height: 320px;
+  top: -30px;
+  right: -30px;
+  width: 240px;
+  height: 240px;
   background: radial-gradient(circle, rgba(37, 99, 235, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
   pointer-events: none;
   border-radius: 50%;
@@ -1885,20 +1885,20 @@
 .ngo-light-cta-eyebrow-wrap {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 6px;
+  margin-bottom: 6px;
 }
 
 .ngo-light-cta-eyebrow {
   color: #FF6B1A;
-  font-size: 13px;
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .ngo-light-cta-eyebrow-line {
-  width: 24px;
+  width: 18px;
   height: 2px;
   background-color: #FF6B1A;
   display: inline-block;
@@ -1906,11 +1906,11 @@
 }
 
 .ngo-light-cta-title {
-  font-size: clamp(32px, 3.5vw, 44px);
+  font-size: clamp(24px, 2.8vw, 34px);
   font-weight: 800;
   color: #102A43;
-  line-height: 1.15;
-  margin-bottom: 14px;
+  line-height: 1.12;
+  margin-bottom: 8px;
 }
 
 .ngo-light-cta-highlight {
@@ -1918,36 +1918,36 @@
 }
 
 .ngo-light-cta-desc {
-  font-size: 16px;
+  font-size: 14px;
   color: #64748B;
-  line-height: 1.65;
-  margin-bottom: 28px;
+  line-height: 1.5;
+  margin-bottom: 16px;
 }
 
 /* 4 TRUST BADGES GRID */
 .ngo-light-cta-badges-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px 14px;
+  gap: 8px 10px;
 }
 
 .ngo-light-cta-badge {
   background-color: #F4F8FD;
   border: 1px solid #D8EAFE;
-  border-radius: 12px;
-  padding: 10px 14px;
+  border-radius: 10px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 13px;
+  gap: 8px;
+  font-size: 12px;
   font-weight: 600;
   color: #173B63;
 }
 
 .ngo-badge-check-icon {
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
   border-radius: 50%;
   background-color: #FF6B1A;
   color: #FFFFFF;
@@ -1959,7 +1959,7 @@
 /* VERTICAL DIVIDER */
 .ngo-light-cta-divider {
   width: 1px;
-  height: 80%;
+  height: 85%;
   background: linear-gradient(180deg, rgba(220, 234, 247, 0) 0%, #DCEAF7 50%, rgba(220, 234, 247, 0) 100%);
   align-self: center;
 }
@@ -1969,14 +1969,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 14px;
 }
 
-/* CIRCULAR ORBIT DECORATION */
+/* CIRCULAR ORBIT DECORATION (COMPACT) */
 .ngo-light-cta-orbit-wrap {
   position: relative;
-  width: 190px;
-  height: 190px;
+  width: 140px;
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1991,8 +1991,8 @@
 }
 
 .ngo-light-cta-center-emblem {
-  width: 90px;
-  height: 90px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
   background: linear-gradient(135deg, #EEF6FF 0%, #E2EFFF 100%);
   border: 1px solid #D4E6FA;
@@ -2000,13 +2000,18 @@
   align-items: center;
   justify-content: center;
   color: #FF6B1A;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.08);
+}
+
+.ngo-light-cta-center-emblem svg {
+  width: 22px;
+  height: 22px;
 }
 
 .ngo-orbit-icon {
   position: absolute;
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background-color: #FFFFFF;
   border: 1px solid #DCEAF7;
@@ -2014,64 +2019,68 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(30, 80, 120, 0.08);
+  box-shadow: 0 3px 8px rgba(30, 80, 120, 0.08);
   transition: transform 0.3s ease;
+}
+
+.ngo-orbit-icon svg {
+  width: 14px;
+  height: 14px;
 }
 
 .ngo-orbit-icon:hover {
   transform: scale(1.15);
 }
 
-.ngo-orbit-top { top: -8px; left: 50%; transform: translateX(-50%); }
-.ngo-orbit-right { right: -8px; top: 50%; transform: translateY(-50%); }
-.ngo-orbit-bottom { bottom: -8px; left: 50%; transform: translateX(-50%); }
-.ngo-orbit-left { left: -8px; top: 50%; transform: translateY(-50%); }
+.ngo-orbit-top { top: -6px; left: 50%; transform: translateX(-50%); }
+.ngo-orbit-right { right: -6px; top: 50%; transform: translateY(-50%); }
+.ngo-orbit-bottom { bottom: -6px; left: 50%; transform: translateX(-50%); }
+.ngo-orbit-left { left: -6px; top: 50%; transform: translateY(-50%); }
 
-/* ACTION BUTTONS */
+/* ACTION BUTTONS (COMPACT) */
 .ngo-light-cta-actions {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .ngo-light-cta-btn-primary {
   width: 100%;
-  height: 50px;
+  height: 42px;
   background-color: #FF6B1A;
   color: #FFFFFF;
   border: none;
-  border-radius: 12px;
-  font-size: 15px;
+  border-radius: 10px;
+  font-size: 13.5px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(255, 107, 26, 0.22);
+  box-shadow: 0 3px 10px rgba(255, 107, 26, 0.2);
 }
 
 .ngo-light-cta-btn-primary:hover {
   background-color: #E0550B;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(255, 107, 26, 0.3);
+  transform: translateY(-1px);
 }
 
 .ngo-light-cta-btn-phone {
   width: 100%;
-  height: 48px;
+  height: 40px;
   background-color: #FFFFFF;
   border: 1px solid #DCEAF7;
   color: #102A43;
-  border-radius: 12px;
-  font-size: 14.5px;
+  border-radius: 10px;
+  font-size: 13px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   text-decoration: none;
   transition: all 0.25s ease;
 }
@@ -2090,38 +2099,37 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 12.5px;
+  gap: 4px;
+  font-size: 11.5px;
   color: #64748B;
-  margin-top: 2px;
 }
 
 .ngo-note-dot {
   color: #FF6B1A;
-  font-size: 14px;
+  font-size: 12px;
 }
 
-/* BOTTOM TRUST STRIP */
+/* BOTTOM TRUST STRIP (COMPACT) */
 .ngo-light-trust-strip {
   background-color: #FFFFFF;
   border: 1px solid #DCEAF7;
-  border-radius: 20px;
-  padding: 16px 28px;
+  border-radius: 14px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  box-shadow: 0 6px 20px rgba(30, 80, 120, 0.04);
+  box-shadow: 0 4px 14px rgba(30, 80, 120, 0.03);
 }
 
 .ngo-light-trust-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .ngo-light-trust-icon-box {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background-color: #FFF5EE;
   border: 1px solid #FFE0D0;
@@ -2131,17 +2139,22 @@
   justify-content: center;
 }
 
+.ngo-light-trust-icon-box svg {
+  width: 18px;
+  height: 18px;
+}
+
 .ngo-light-trust-text {
   display: flex;
   flex-direction: column;
-  font-size: 13px;
-  line-height: 1.25;
+  font-size: 12px;
+  line-height: 1.2;
 }
 
 .ngo-light-trust-text strong {
   color: #102A43;
   font-weight: 800;
-  font-size: 14.5px;
+  font-size: 13px;
 }
 
 .ngo-light-trust-text span {
@@ -2150,7 +2163,7 @@
 
 .ngo-light-trust-divider {
   width: 1px;
-  height: 32px;
+  height: 24px;
   background-color: #E2EAF2;
 }
 
