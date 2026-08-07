@@ -94,16 +94,32 @@ const homeProfessionalServices = [
     title: "NGO Services",
     description: "Trust, Society, Section 8, 12A, 80G and FCRA registration.",
     icon: Users,
-    imageIcon: "/services-ngo.png",
+    imageIcon: "/images/service-icons/ngo.png",
     href: "/services/ngo-services"
   },
   {
-    id: "service-business-compliance",
-    title: "Business Compliance",
-    description: "ROC filing, annual compliance, secretarial services and business advisory.",
+    id: "service-roc-compliance",
+    title: "ROC & Corporate Compliance",
+    description: "Annual filings, director change, share transfer, MCA e-filing.",
     icon: ShieldCheck,
-    imageIcon: "/services-companies.png",
-    href: "/services/business-compliance"
+    imageIcon: "/images/service-icons/compliance.png",
+    href: "/services/company-registration"
+  },
+  {
+    id: "service-tds-filings",
+    title: "TDS & Statutory Tax Filings",
+    description: "Quarterly TDS return filing, Form 16/16A generation & advisory.",
+    icon: FileText,
+    imageIcon: "/images/service-icons/income-tax.png",
+    href: "/services/income-tax/all-services"
+  },
+  {
+    id: "service-fssai-iec",
+    title: "FSSAI & Import Export Code (IEC)",
+    description: "Food license, IEC registration, MSME Udyam & ISO certification.",
+    icon: BadgeCheck,
+    imageIcon: "/images/service-icons/trademark.png",
+    href: "/services/gst-services/all-services"
   }
 ];
 
@@ -406,14 +422,13 @@ export default function Home() {
 
           {/* 3x2 Grid Default / Expanded All Cards Grid */}
           <div className="home-services-grid">
-            {(showAllServices ? homeProfessionalServices : homeProfessionalServices.slice(0, 6)).map((service, index) => {
+            {(showAllServices ? homeProfessionalServices : homeProfessionalServices.slice(0, 6)).map((service) => {
               const IconComponent = service.icon;
-              const isLastCard = index === 6;
               return (
                 <Link
                   key={service.id}
                   href={service.href}
-                  className={`home-service-card ${isLastCard ? "home-service-card-center" : ""}`}
+                  className="home-service-card"
                 >
                   <div className="home-card-top-bar"></div>
                   <div className="home-card-icon-box">
