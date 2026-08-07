@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Quote, Star } from "lucide-react";
+import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 
 export default function TestimonialsSection() {
@@ -16,6 +16,14 @@ export default function TestimonialsSection() {
     }, 8000);
     return () => clearInterval(interval);
   }, [isPaused]);
+
+  const handlePrev = () => {
+    setActiveSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const handleNext = () => {
+    setActiveSlide((prev) => (prev + 1) % testimonials.length);
+  };
 
   return (
     <section className="testimonials-redesign-section" id="testimonials">
@@ -40,6 +48,15 @@ export default function TestimonialsSection() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
+          {/* Left Arrow Button */}
+          <button
+            className="testimonial-nav-arrow testimonial-nav-prev"
+            onClick={handlePrev}
+            aria-label="Previous Testimonial"
+          >
+            <ChevronLeft size={22} />
+          </button>
+
           <div className="testimonials-grid-3cols">
             {testimonials.map((item, idx) => {
               const isActive = idx === activeSlide;
@@ -84,17 +101,14 @@ export default function TestimonialsSection() {
             })}
           </div>
 
-          {/* Navigation Dots */}
-          <div className="testimonials-nav-dots">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                className={`testimonials-dot-btn ${index === activeSlide ? "is-active" : ""}`}
-                onClick={() => setActiveSlide(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+          {/* Right Arrow Button */}
+          <button
+            className="testimonial-nav-arrow testimonial-nav-next"
+            onClick={handleNext}
+            aria-label="Next Testimonial"
+          >
+            <ChevronRight size={22} />
+          </button>
         </div>
       </div>
     </section>
