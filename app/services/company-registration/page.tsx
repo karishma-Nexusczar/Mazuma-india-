@@ -462,8 +462,8 @@ export default function CompanyRegistrationPage() {
                     <ArrowRight size={16} />
                   </button>
 
-                  <a
-                    href="tel:+919936351555"
+                  <button
+                    onClick={() => setIsModalOpen(true)}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
@@ -474,13 +474,13 @@ export default function CompanyRegistrationPage() {
                       color: "#0F2D52",
                       fontSize: 14,
                       fontWeight: 800,
-                      textDecoration: "none",
+                      cursor: "pointer",
                       border: "1.5px solid #FF6B00"
                     }}
                   >
                     <PhoneCall size={16} style={{ color: "#FF6B00" }} />
                     <span>Talk to Our Expert</span>
-                  </a>
+                  </button>
                 </div>
               </div>
 
