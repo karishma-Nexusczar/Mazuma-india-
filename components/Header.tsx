@@ -22,29 +22,37 @@ export default function Header() {
   const [submitted, setSubmitted] = useState(false);
   const pathname = usePathname();
 
-  const handleConsultationSubmit = (e: React.FormEvent) => {
+  const handleConsultationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`Free Consultation Request: ${formData.service} - ${formData.name}`);
-    const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI would like to request a free consultation.\n\nDetails:\n- Full Name: ${formData.name}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n- City / State: ${formData.city}\n\nPlease reach out to me as soon as possible.\n\nThank you,\n${formData.name}`
-    );
-
-    // Direct jump into opening Gmail / Mail client to compliance@mazumaindia.com
-    window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
-
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setIsModalOpen(false);
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        service: "Company Registration",
-        city: ""
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name || formData.email || "Website Client",
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service,
+          city: formData.city,
+          source: "Header Consultation Form"
+        })
       });
-    }, 4000);
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setIsModalOpen(false);
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          service: "Company Registration",
+          city: ""
+        });
+      }, 3500);
+    } catch (err) {
+      console.error("Header consultation submit error:", err);
+    }
   };
 
   useEffect(() => {
