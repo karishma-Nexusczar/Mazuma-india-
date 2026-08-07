@@ -8855,6 +8855,46 @@ textarea {
   }
 }
 
+/* ============================================================
+   STEP 12 — GLOBAL RESPONSIVE TABLES SYSTEM
+   ============================================================ */
+
+/* 1. Global Table Responsive Containers */
+.table-responsive-wrapper,
+.cr-table-wrapper,
+.gst-table-wrapper,
+.itr-table-wrapper,
+.ab-table-wrapper,
+.tbr-table-wrapper,
+.ngo-table-wrapper,
+.service-table-wrapper,
+.blog-table-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+}
+
+/* 2. Global Table Elements */
+table,
+.table,
+.cr-table,
+.gst-table,
+.itr-table,
+.ab-table,
+.tbr-table,
+.ngo-table,
+.service-table {
+  width: 100% !important;
+  min-width: 500px;
+  border-collapse: collapse;
+  box-sizing: border-box;
+}
+
+
 
 
 
