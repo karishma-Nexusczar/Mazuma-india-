@@ -8484,4 +8484,148 @@ table,
   }
 }
 
+/* ============================================================
+   STEP 8 — HOMEPAGE SECTION-BY-SECTION RESPONSIVE RULES
+   ============================================================ */
+
+/* 8.1 Trusted Section */
+.trusted-clients-section {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* 8.2 Services Grid */
+@media (max-width: 1023px) {
+  .home-services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+}
+
+/* 8.3 About Section */
+@media (max-width: 1023px) {
+  .premium-about-shell {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+  }
+
+  .about-left-content {
+    order: 1 !important;
+    width: 100% !important;
+  }
+
+  .about-right-visual {
+    order: 2 !important;
+    width: 100% !important;
+  }
+}
+
+/* 8.4 Why Choose Us */
+@media (max-width: 1023px) {
+  .why-choose-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .why-choose-col {
+    width: 100% !important;
+  }
+
+  .why-choose-col-center {
+    order: 3 !important;
+  }
+}
+
+/* 8.5 Process Timeline */
+@media (max-width: 1023px) {
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .process-grid article:not(:last-child)::after {
+    display: none !important;
+  }
+}
+
+/* 8.6 Testimonials Grid */
+@media (max-width: 1023px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+}
+
+/* 8.7 Latest Articles Grid */
+@media (max-width: 1023px) {
+  .blog-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+}
+
+/* 8.8 Expert Advice CTA Section */
+@media (max-width: 767px) {
+  .cta-banner {
+    padding: 32px 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .cta-banner-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .cta-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* 8.9 FAQ / Contact Form Section */
+@media (max-width: 1023px) {
+  .faq-contact-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+  }
+
+  .faq-left-col {
+    order: 1 !important;
+    width: 100% !important;
+  }
+
+  .faq-right-col {
+    order: 2 !important;
+    width: 100% !important;
+  }
+}
+
+
 
