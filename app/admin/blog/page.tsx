@@ -362,7 +362,7 @@ export default function AdminBlogDashboard() {
     // Extract intro, sections, FAQs, and conclusion from blocks for full backward compatibility
     const introBlock = blocks.find((b) => b.type === "intro");
     const conclusionBlock = blocks.find((b) => b.type === "conclusion");
-    
+
     // Group heading + paragraphs for standard content view
     const constructedSections: any[] = [];
     let currentSection: any = null;
@@ -1283,7 +1283,7 @@ export default function AdminBlogDashboard() {
                   {/* OpenGraph & Robots Controls */}
                   <div style={{ background: "#F8FAFC", padding: 20, borderRadius: 14, border: "1px solid #E2E8F0", display: "flex", flexDirection: "column", gap: 16 }}>
                     <h4 style={{ fontSize: 14, fontWeight: 700, color: "#051A2E", margin: 0 }}>OpenGraph (Social Cards) & Robots Control</h4>
-                    
+
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                       <div>
                         <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#475569", marginBottom: 4 }}>OG TITLE</label>
