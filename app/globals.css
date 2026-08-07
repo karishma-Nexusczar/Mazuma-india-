@@ -8286,45 +8286,66 @@ table,
    EXACT 320PX MOBILE RESPONSIVE OVERRIDES
    ============================================================ */
 
-/* Top Trust Bar (<= 640px) */
+/* Top Trust Bar Option A (<= 640px) */
 @media (max-width: 640px) {
   .top-trust-bar {
-    padding: 6px 0 !important;
+    padding: 5px 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    background: #F8FAFC !important;
+    border-bottom: 1px solid #E2E8F0 !important;
   }
 
   .top-trust-bar-inner {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-    padding: 0 12px !important;
+    padding: 0 8px !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
 
   .top-trust-stats-row {
-    display: none !important; /* Hide desktop stat items to prevent horizontal overflow */
-  }
-
-  .top-trust-right-row {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 12px !important;
     width: 100% !important;
-    flex-wrap: wrap !important;
   }
 
-  .top-trust-email-link {
-    font-size: 11.5px !important;
-    padding-right: 8px !important;
-    border-right: 1px solid #CBD5E1 !important;
+  .top-trust-stat-item {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    padding: 0 !important;
+    border-right: none !important;
+  }
+
+  .top-trust-stat-item:nth-child(n+3) {
+    display: none !important;
+  }
+
+  .top-trust-icon-box {
+    width: 20px !important;
+    height: 20px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .top-trust-icon-box svg {
+    width: 11px !important;
+    height: 11px !important;
+  }
+
+  .top-trust-stat-text {
+    font-size: 11px !important;
     white-space: nowrap !important;
   }
+
+  .top-trust-right-row {
+    display: none !important;
+  }
 }
+
 
 /* Header (<= 1023px) */
 @media (max-width: 1023px) {
