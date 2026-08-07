@@ -31,7 +31,11 @@ import {
   Leaf,
   Briefcase,
   PieChart,
-  TrendingUp
+  TrendingUp,
+  Plus,
+  Minus,
+  HelpCircle,
+  Clock
 } from "lucide-react";
 
 export default function NGOServicesPage() {
@@ -39,6 +43,8 @@ export default function NGOServicesPage() {
   const [selectedService, setSelectedService] = useState("");
   const [isExpertModalOpen, setIsExpertModalOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [isAllFaqsModalOpen, setIsAllFaqsModalOpen] = useState(false);
+  const [allFaqsOpenIndex, setAllFaqsOpenIndex] = useState<number | null>(0);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -663,45 +669,211 @@ export default function NGOServicesPage() {
       </section>
 
       {/* =========================================================
-          SECTION 7: FAQ ACCORDION (8 QUESTIONS)
+          SECTION 7: FAQ ACCORDION (PREMIUM 2-COLUMN LAYOUT)
          ========================================================= */}
       <section className="ngo-faq-section">
-        <div className="ngo-container">
-          <div className="ngo-section-header">
-            <span className="ngo-section-label">FAQ</span>
-            <h2 className="ngo-section-title">Frequently Asked Questions</h2>
-            <p className="ngo-section-subtitle">
-              Got questions about NGO registrations, 12A/80G tax exemptions, or FCRA compliance? We have answers.
-            </p>
-          </div>
-
-          <div className="ngo-faq-list">
-            {faqs.map((faq, idx) => (
-              <div key={idx} className="ngo-faq-item">
-                <button
-                  className="ngo-faq-question"
-                  onClick={() => toggleFaq(idx)}
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    size={18}
-                    style={{
-                      transform: openFaq === idx ? "rotate(180deg)" : "rotate(0deg)",
-                      transition: "transform 0.25s ease",
-                      color: openFaq === idx ? "#F36B21" : "#12284C"
-                    }}
-                  />
-                </button>
-                {openFaq === idx && (
-                  <div className="ngo-faq-answer">
-                    <p>{faq.a}</p>
-                  </div>
-                )}
+        <div className="ngo-faq-container">
+          <div className="ngo-faq-2col-layout">
+            
+            {/* LEFT COLUMN: FAQ Content & 4 Accordion Items */}
+            <div className="ngo-faq-left-col">
+              <div className="ngo-faq-eyebrow-wrap">
+                <span className="ngo-faq-eyebrow">FAQ</span>
+                <span className="ngo-faq-eyebrow-line"></span>
               </div>
-            ))}
+              <h2 className="ngo-faq-title">
+                Frequently Asked <br />
+                <span className="ngo-faq-title-highlight">Questions</span>
+              </h2>
+              <p className="ngo-faq-subtitle">
+                Got questions about NGO registrations, 12A/80G tax exemptions, or FCRA compliance? We have answers.
+              </p>
+
+              {/* Accordion List (Displaying First 4 Items Only) */}
+              <div className="ngo-faq-accordion-list">
+                {faqs.slice(0, 4).map((faq, idx) => {
+                  const isOpen = openFaq === idx;
+                  return (
+                    <div
+                      key={idx}
+                      className={`ngo-faq-accordion-item ${isOpen ? "ngo-faq-active" : ""}`}
+                    >
+                      <button
+                        className="ngo-faq-header-btn"
+                        onClick={() => toggleFaq(idx)}
+                        aria-expanded={isOpen}
+                      >
+                        <div className="ngo-faq-icon-toggle">
+                          {isOpen ? <Minus size={14} /> : <Plus size={14} />}
+                        </div>
+                        <span className="ngo-faq-question-text">{faq.q}</span>
+                        <ChevronDown
+                          size={18}
+                          className={`ngo-faq-chevron ${isOpen ? "ngo-faq-chevron-open" : ""}`}
+                        />
+                      </button>
+
+                      {isOpen && (
+                        <div className="ngo-faq-body-content">
+                          <div className="ngo-faq-accent-bar"></div>
+                          <p>{faq.a}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* View All FAQs Link */}
+              <div className="ngo-faq-view-all-wrap">
+                <button
+                  className="ngo-faq-view-all-btn"
+                  onClick={() => setIsAllFaqsModalOpen(true)}
+                >
+                  <HelpCircle size={18} className="ngo-faq-help-icon" />
+                  <span>Still have questions?</span>
+                  <span className="ngo-faq-link-orange">
+                    View All FAQs ({faqs.length}) →
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN: Premium Visual Composition + Expert CTA + Trust Strip */}
+            <div className="ngo-faq-right-col">
+              
+              {/* 3D Question Mark Visual Panel */}
+              <div className="ngo-faq-visual-panel">
+                <div className="ngo-faq-visual-bg-glow"></div>
+                <div className="ngo-faq-visual-dots"></div>
+                <div className="ngo-faq-visual-orbit"></div>
+
+                {/* 4 Floating Service Icon Circles */}
+                <div className="ngo-faq-float-icon ngo-float-top-left" title="Charitable Trusts">
+                  <Landmark size={22} />
+                </div>
+                <div className="ngo-faq-float-icon ngo-float-top-right" title="Societies">
+                  <Users size={22} />
+                </div>
+                <div className="ngo-faq-float-icon ngo-float-mid-left" title="Legal Protection">
+                  <ShieldCheck size={22} />
+                </div>
+                <div className="ngo-faq-float-icon ngo-float-mid-right" title="Compliance">
+                  <FileText size={22} />
+                </div>
+
+                {/* 3D Question Mark Render Container */}
+                <div className="ngo-faq-question-mark-wrap">
+                  <div className="ngo-faq-qm-podium"></div>
+                  <div className="ngo-faq-qm-3d">?</div>
+                </div>
+              </div>
+
+              {/* Expert Guidance CTA Card */}
+              <div className="ngo-faq-expert-card">
+                <div className="ngo-faq-expert-headset">
+                  <PhoneCall size={22} />
+                </div>
+                <div className="ngo-faq-expert-text">
+                  <h4 className="ngo-faq-expert-title">Need Expert Guidance?</h4>
+                  <p className="ngo-faq-expert-desc">
+                    Our team is here to help you with the right registration and compliance.
+                  </p>
+                </div>
+                <button
+                  className="ngo-faq-expert-btn"
+                  onClick={() => openServiceModal("FAQ Guidance")}
+                >
+                  <span>Talk to an Expert</span>
+                  <ArrowRight size={14} />
+                </button>
+              </div>
+
+              {/* Small Trust Strip */}
+              <div className="ngo-faq-trust-strip">
+                <div className="ngo-faq-trust-item">
+                  <ShieldCheck size={18} className="ngo-trust-icon" />
+                  <div className="ngo-trust-text">
+                    <strong>100%</strong>
+                    <span>Compliance</span>
+                  </div>
+                </div>
+                <div className="ngo-trust-divider"></div>
+                <div className="ngo-faq-trust-item">
+                  <Clock size={18} className="ngo-trust-icon" />
+                  <div className="ngo-trust-text">
+                    <strong>Timely</strong>
+                    <span>Support</span>
+                  </div>
+                </div>
+                <div className="ngo-trust-divider"></div>
+                <div className="ngo-faq-trust-item">
+                  <HeartHandshake size={18} className="ngo-trust-icon" />
+                  <div className="ngo-trust-text">
+                    <strong>Trusted by</strong>
+                    <span>5000+ NGOs</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
+
+      {/* ALL FAQS MODAL (When clicking View All FAQs) */}
+      {isAllFaqsModalOpen && (
+        <div className="ngo-modal-overlay" onClick={() => setIsAllFaqsModalOpen(false)}>
+          <div className="ngo-all-faqs-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="ngo-modal-header">
+              <div className="ngo-modal-title-group">
+                <h3>All Frequently Asked Questions ({faqs.length})</h3>
+                <p>Complete guide to NGO registrations, 12A/80G, and FCRA compliance.</p>
+              </div>
+              <button
+                className="ngo-modal-close-btn"
+                onClick={() => setIsAllFaqsModalOpen(false)}
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div className="ngo-modal-body">
+              <div className="ngo-faq-accordion-list">
+                {faqs.map((faq, idx) => {
+                  const isOpen = allFaqsOpenIndex === idx;
+                  return (
+                    <div
+                      key={idx}
+                      className={`ngo-faq-accordion-item ${isOpen ? "ngo-faq-active" : ""}`}
+                    >
+                      <button
+                        className="ngo-faq-header-btn"
+                        onClick={() => setAllFaqsOpenIndex(isOpen ? null : idx)}
+                      >
+                        <div className="ngo-faq-icon-toggle">
+                          {isOpen ? <Minus size={14} /> : <Plus size={14} />}
+                        </div>
+                        <span className="ngo-faq-question-text">{faq.q}</span>
+                        <ChevronDown
+                          size={18}
+                          className={`ngo-faq-chevron ${isOpen ? "ngo-faq-chevron-open" : ""}`}
+                        />
+                      </button>
+
+                      {isOpen && (
+                        <div className="ngo-faq-body-content">
+                          <div className="ngo-faq-accent-bar"></div>
+                          <p>{faq.a}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* =========================================================
           SECTION 8: FINAL CTA BANNER
