@@ -246,41 +246,49 @@ h3,
 
 @media (max-width: 768px) {
   .legacy-hero-section {
-    padding: 32px 0 28px;
+    padding: 24px 0 28px;
   }
 
   .legacy-hero-section .hero-container {
     min-height: auto;
+    width: calc(100% - 32px) !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
   }
 
   .site-header .brand {
-    width: 150px;
+    width: 140px;
   }
 
   .site-header .brand img {
-    max-height: 56px;
+    max-height: 48px;
   }
 
   .trusted-shell {
     grid-template-columns: 1fr !important;
     gap: 12px !important;
+    width: calc(100% - 32px) !important;
   }
 
   .trusted-summary {
-    justify-content: center;
+    justify-content: center !important;
+    white-space: normal !important;
+    flex-wrap: wrap !important;
+    text-align: center !important;
   }
 
   .hero-trust-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px 0;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px 10px !important;
   }
 
   .trust-stat-card {
-    padding: 0 14px;
+    padding: 10px 12px !important;
+    border-left: 1px solid #e2e8f0 !important;
   }
 
   .trust-stat-card:nth-child(3) {
-    border-left: 0;
+    border-left: 1px solid #e2e8f0 !important;
   }
 }
 
