@@ -963,12 +963,12 @@
 }
 
 /* ---------------------------------------------------------
-   SECTION 6: ORGANIZATIONS WE SUPPORT (WHO WE SERVE)
+   SECTION 6: ORGANIZATIONS WE SUPPORT (WHO WE SERVE) - COMPACT
    --------------------------------------------------------- */
 .ngo-serve-section {
   position: relative;
   background-color: #FFFFFF;
-  padding: 100px 0 110px 0;
+  padding: 50px 0 54px 0;
   overflow: hidden;
   border-bottom: 1px solid #E7EAF0;
 }
@@ -976,23 +976,23 @@
 /* Background Decorative Elements */
 .ngo-serve-bg-curve {
   position: absolute;
-  top: -60px;
-  left: -60px;
-  width: 340px;
-  height: 340px;
+  top: -40px;
+  left: -40px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 107, 26, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(255, 107, 26, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
   pointer-events: none;
   z-index: 1;
 }
 
 .ngo-serve-bg-dots {
   position: absolute;
-  top: 40px;
-  right: 40px;
-  width: 100px;
-  height: 100px;
-  opacity: 0.22;
+  top: 24px;
+  right: 24px;
+  width: 80px;
+  height: 80px;
+  opacity: 0.2;
   pointer-events: none;
   background-image: radial-gradient(#FF6B1A 1.5px, transparent 1.5px);
   background-size: 10px 10px;
@@ -1004,15 +1004,15 @@
   top: 20%;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255, 107, 26, 0.035) 0%, rgba(255, 255, 255, 0) 70%);
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(255, 107, 26, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
   pointer-events: none;
   z-index: 1;
 }
 
 .ngo-serve-container {
-  max-width: 1320px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
@@ -1022,8 +1022,8 @@
 /* Section Header */
 .ngo-serve-header {
   text-align: center;
-  max-width: 780px;
-  margin: 0 auto 50px auto;
+  max-width: 760px;
+  margin: 0 auto 30px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1033,20 +1033,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
 .ngo-serve-eyebrow {
   color: #FF6B1A;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .ngo-serve-eyebrow-line {
-  width: 24px;
+  width: 20px;
   height: 2px;
   background-color: #FF6B1A;
   display: inline-block;
@@ -1054,11 +1054,11 @@
 }
 
 .ngo-serve-title {
-  font-size: clamp(34px, 4vw, 50px);
+  font-size: clamp(26px, 3.2vw, 36px);
   font-weight: 800;
   color: #0F2747;
   line-height: 1.18;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
   text-align: center;
 }
 
@@ -1067,52 +1067,52 @@
 }
 
 .ngo-serve-subtitle {
-  font-size: 17px;
+  font-size: 14.5px;
   color: #64748B;
-  line-height: 1.7;
-  max-width: 760px;
+  line-height: 1.55;
+  max-width: 700px;
   margin: 0 auto;
   text-align: center;
 }
 
-/* 4x2 Grid of Organization Cards */
+/* 4x2 Grid of Organization Cards (COMPACT) */
 .ngo-serve-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-  margin-bottom: 45px;
+  gap: 16px;
+  margin-bottom: 28px;
 }
 
 .ngo-serve-card {
   position: relative;
   background: #FFFFFF;
   border: 1px solid #E7ECF2;
-  border-radius: 20px;
-  padding: 28px;
-  min-height: 285px;
+  border-radius: 16px;
+  padding: 20px 16px 18px 16px;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(15, 39, 71, 0.03);
+  box-shadow: 0 4px 16px rgba(15, 39, 71, 0.025);
   transition: all 0.25s ease;
   overflow: hidden;
 }
 
 .ngo-serve-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   border-color: rgba(255, 107, 26, 0.35);
-  box-shadow: 0 16px 36px rgba(15, 39, 71, 0.08);
+  box-shadow: 0 10px 24px rgba(15, 39, 71, 0.06);
 }
 
-/* Centered Icon Container (80px x 80px) */
+/* Centered Icon Container (60px x 60px) */
 .ngo-serve-icon-container {
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .ngo-serve-icon-circle {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background-color: #FFF8F2;
   border: 1px solid #FFE0CC;
   border-radius: 50%;
@@ -1120,38 +1120,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 20px rgba(255, 107, 26, 0.1);
+  box-shadow: 0 4px 12px rgba(255, 107, 26, 0.08);
   transition: transform 0.25s ease, background-color 0.25s ease;
 }
 
 .ngo-serve-card:hover .ngo-serve-icon-circle {
   transform: scale(1.05);
   background-color: #FFEFE5;
-  box-shadow: 0 8px 24px rgba(255, 107, 26, 0.18);
+  box-shadow: 0 6px 18px rgba(255, 107, 26, 0.16);
 }
 
 /* Card Title */
 .ngo-serve-card-title {
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 700;
   color: #0F2747;
-  margin: 0 0 10px 0;
+  margin: 0 0 6px 0;
   line-height: 1.3;
 }
 
 /* Card Description */
 .ngo-serve-card-desc {
-  font-size: 14.5px;
+  font-size: 13px;
   color: #64748B;
-  line-height: 1.65;
-  margin: 0 0 20px 0;
-  max-width: 270px;
+  line-height: 1.48;
+  margin: 0 0 14px 0;
+  max-width: 260px;
 }
 
 /* Bottom Orange Accent Signature Line */
 .ngo-serve-card-accent {
   margin-top: auto;
-  width: 25px;
+  width: 22px;
   height: 2px;
   background-color: #FF6B1A;
   border-radius: 999px;
@@ -1159,34 +1159,34 @@
 }
 
 .ngo-serve-card:hover .ngo-serve-card-accent {
-  width: 40px;
+  width: 36px;
 }
 
-/* PREMIUM IMPACT STRIP */
+/* COMPACT IMPACT STRIP */
 .ngo-serve-impact-strip {
   background-color: #FFF7F0;
   border: 1px solid #FFE2CF;
-  border-radius: 22px;
-  padding: 26px 32px;
+  border-radius: 16px;
+  padding: 18px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  box-shadow: 0 8px 26px rgba(255, 107, 26, 0.05);
+  gap: 20px;
+  box-shadow: 0 4px 18px rgba(255, 107, 26, 0.04);
 }
 
 .ngo-impact-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   flex: 1;
   max-width: 440px;
 }
 
 .ngo-impact-icon-circle {
-  width: 52px;
-  height: 52px;
-  min-width: 52px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   background-color: #FFE8D6;
   border-radius: 50%;
   color: #FF6B1A;
@@ -1201,24 +1201,24 @@
 }
 
 .ngo-impact-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: #0F2747;
-  margin: 0 0 4px 0;
+  margin: 0 0 2px 0;
 }
 
 .ngo-impact-desc {
-  font-size: 13.5px;
+  font-size: 12.5px;
   color: #64748B;
-  line-height: 1.5;
+  line-height: 1.45;
   margin: 0;
 }
 
 .ngo-impact-stats {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 0 16px;
+  gap: 20px;
+  padding: 0 12px;
 }
 
 .ngo-impact-stat-item {
@@ -1229,14 +1229,14 @@
 }
 
 .ngo-impact-stat-num {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 800;
   color: #FF6B1A;
   line-height: 1.2;
 }
 
 .ngo-impact-stat-lbl {
-  font-size: 12.5px;
+  font-size: 11.5px;
   color: #0F2747;
   font-weight: 600;
   margin-top: 2px;
@@ -1245,7 +1245,7 @@
 
 .ngo-impact-stat-divider {
   width: 1px;
-  height: 34px;
+  height: 28px;
   background-color: #FFD8BE;
 }
 
@@ -1258,24 +1258,24 @@
   background-color: #FF6B1A;
   color: #FFFFFF;
   border: none;
-  height: 46px;
-  padding: 0 28px;
+  height: 38px;
+  padding: 0 22px;
   border-radius: 999px;
-  font-size: 14.5px;
+  font-size: 13px;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(255, 107, 26, 0.25);
+  box-shadow: 0 3px 10px rgba(255, 107, 26, 0.22);
   white-space: nowrap;
 }
 
 .ngo-impact-cta-btn:hover {
   background-color: #E0550B;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(255, 107, 26, 0.35);
+  box-shadow: 0 5px 14px rgba(255, 107, 26, 0.32);
 }
 
 /* ---------------------------------------------------------

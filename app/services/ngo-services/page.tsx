@@ -595,10 +595,10 @@ export default function NGOServicesPage() {
               const IconComp = org.icon;
               return (
                 <div key={idx} className="ngo-serve-card">
-                  {/* Large Centered Circular Icon Container (80px x 80px) */}
+                  {/* Centered Circular Icon Container */}
                   <div className="ngo-serve-icon-container">
                     <div className="ngo-serve-icon-circle">
-                      <IconComp size={34} />
+                      <IconComp size={26} />
                     </div>
                   </div>
 
