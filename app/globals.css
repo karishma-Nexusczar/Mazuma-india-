@@ -1714,6 +1714,12 @@ html, body {
   content: '';
 }
 
+@media (max-width: 1023px) {
+  .process-grid article:not(:last-child)::after {
+    display: none !important;
+  }
+}
+
 .process-grid>article>span {
   display: grid;
   flex: 0 0 46px;
