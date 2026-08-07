@@ -65,7 +65,7 @@ export default function NGOServicesPage() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await fetch("/api/enquiries", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -73,7 +73,8 @@ export default function NGOServicesPage() {
           email: formData.email,
           phone: formData.phone,
           service: selectedService || "NGO Services",
-          message: `City: ${formData.city || "Not specified"}`
+          message: `City: ${formData.city || "Not specified"}`,
+          source: "NGO Services Page"
         })
       });
     } catch (err) {
@@ -1132,7 +1133,7 @@ export default function NGOServicesPage() {
                   />
                 </div>
                 <button type="submit" disabled={isSubmitting} className="tbr-modal-submit-btn" style={{ marginTop: "18px" }}>
-                  <span>{isSubmitting ? "Submitting..." : "Submit Enquiry"}</span>
+                  <span>{isSubmitting ? "Submitting Request..." : "Submit Enquiry"}</span>
                   <ArrowRight size={16} />
                 </button>
               </form>

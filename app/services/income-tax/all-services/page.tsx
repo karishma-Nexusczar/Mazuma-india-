@@ -39,13 +39,8 @@ export default function AllIncomeTaxServicesPage() {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`Income Tax Consultation Request: ${selectedService} - ${formData.name || formData.email}`);
-    const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI am requesting a consultation for ${selectedService}.\n\nDetails:\n- Full Name: ${formData.name || "Client"}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- City / State: ${formData.city}\n\nPlease contact me.\n\nThank you,\n${formData.name || "Client"}`
-    );
-
     try {
-      await fetch("/api/enquiries", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -57,17 +52,14 @@ export default function AllIncomeTaxServicesPage() {
           source: "All Income Tax Services Page"
         })
       });
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setIsModalOpen(false);
+      }, 3500);
     } catch (err) {
       console.error("All Tax Services API error:", err);
     }
-
-    window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
-
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setIsModalOpen(false);
-    }, 4000);
   };
 
   const allTaxServices = [

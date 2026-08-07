@@ -55,13 +55,8 @@ export default function AccountingBookkeepingPage() {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`Accounting & Bookkeeping Request: ${formData.service} - ${formData.name || formData.email}`);
-    const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI would like to request a consultation regarding ${formData.service}.\n\nDetails:\n- Full Name: ${formData.name || "Client"}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n- City / Location: ${formData.city}\n\nPlease contact me as soon as possible.\n\nThank you,\n${formData.name || "Client"}`
-    );
-
     try {
-      await fetch("/api/enquiries", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -73,15 +68,12 @@ export default function AccountingBookkeepingPage() {
           source: "Accounting & Bookkeeping Page"
         })
       });
+      setIsModalOpen(false);
+      setIsExpertModalOpen(false);
+      setFormData({ name: "", email: "", phone: "", city: "", service: "Accounting & Bookkeeping" });
     } catch (err) {
       console.error("Accounting API error:", err);
     }
-
-    window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
-
-    setIsModalOpen(false);
-    setIsExpertModalOpen(false);
-    setFormData({ name: "", email: "", phone: "", city: "", service: "Accounting & Bookkeeping" });
   };
 
   const openServiceModal = (serviceName: string) => {

@@ -1,26 +1,27 @@
 "use client";
 
 import React, { useState } from "react";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function InlineCtaForm() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
-    service: "Company Registration"
+    service: "Company Registration",
+    website_hp: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Consultation Request: ${formData.service} - ${formData.name || formData.email}`);
-    const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI would like to request a consultation.\n\nDetails:\n- Full Name: ${formData.name || "Client"}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n\nPlease reach out to me.\n\nThank you,\n${formData.name || "Client"}`
-    );
+    setIsSubmitting(true);
+    setErrorMsg("");
 
     try {
-      await fetch("/api/enquiries", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -28,23 +29,33 @@ export default function InlineCtaForm() {
           phone: formData.phone,
           email: formData.email,
           service: formData.service,
+          website_hp: formData.website_hp,
           source: "Inline CTA Form"
         })
       });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMsg(data.message || "Unable to submit your request. Please try again.");
+      }
     } catch (err) {
       console.error("Inline CTA form API error:", err);
+      setErrorMsg("Unable to submit your request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-
-    window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
   };
 
   if (submitted) {
     return (
-      <div className="au-cta-form-card au-cta-form-success">
-        <CheckCircle2 size={44} className="au-cta-success-icon" />
-        <h3>Thank You!</h3>
-        <p>Your request has been prepared for <strong>compliance@mazumaindia.com</strong>. Our team will contact you shortly.</p>
+      <div className="au-cta-form-card au-cta-form-success" style={{ textAlign: "center", padding: "32px 20px" }}>
+        <CheckCircle2 size={44} className="au-cta-success-icon" style={{ color: "#10B981", margin: "0 auto 12px auto" }} />
+        <h3 style={{ fontSize: "20px", fontWeight: 800, color: "#0F2747", marginBottom: "8px" }}>Request Submitted Successfully</h3>
+        <p style={{ fontSize: "14px", color: "#64748B", margin: 0, lineHeight: 1.5 }}>
+          Thank you for contacting Mazuma India. Your request has been received successfully. Our team will contact you shortly.
+        </p>
       </div>
     );
   }
@@ -52,13 +63,33 @@ export default function InlineCtaForm() {
   return (
     <div className="au-cta-form-card">
       <h3 className="au-cta-form-title">Request Free Consultation</h3>
+
+      {errorMsg && (
+        <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 14px", borderRadius: 8, background: "#FEF2F2", color: "#DC2626", fontSize: 13, marginBottom: 12, border: "1px solid #FCA5A5" }}>
+          <AlertCircle size={16} />
+          <span>{errorMsg}</span>
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="au-cta-form">
+        {/* Anti-Spam Honeypot Field */}
+        <input
+          type="text"
+          name="website_hp"
+          value={formData.website_hp}
+          onChange={(e) => setFormData({ ...formData, website_hp: e.target.value })}
+          style={{ display: "none" }}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+
         <div className="au-cta-form-grid">
           <div className="au-cta-form-group">
             <label>Mobile Number *</label>
             <input
               type="tel"
               required
+              placeholder="10-digit mobile"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             />
@@ -69,6 +100,7 @@ export default function InlineCtaForm() {
             <input
               type="email"
               required
+              placeholder="name@email.com"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             />
@@ -90,8 +122,8 @@ export default function InlineCtaForm() {
           </select>
         </div>
 
-        <button type="submit" className="au-cta-submit-btn">
-          <span>Book Free Consultation</span>
+        <button type="submit" disabled={isSubmitting} className="au-cta-submit-btn">
+          <span>{isSubmitting ? "Submitting Request..." : "Book Free Consultation"}</span>
           <Send size={16} />
         </button>
       </form>

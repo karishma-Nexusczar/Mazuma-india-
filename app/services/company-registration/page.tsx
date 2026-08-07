@@ -69,14 +69,10 @@ export default function CompanyRegistrationPage() {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const subject = encodeURIComponent(`Consultation Request: ${formData.companyType} - ${formData.name || formData.email}`);
-    const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI would like to request a free consultation regarding company registration.\n\nDetails:\n- Full Name: ${formData.name || "Client"}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Company Type: ${formData.companyType}\n- City / State: ${formData.city}\n\nPlease reach out to me as soon as possible.\n\nThank you,\n${formData.name || "Client"}`
-    );
+    setIsSubmitting(true);
 
     try {
-      await fetch("/api/enquiries", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -88,24 +84,23 @@ export default function CompanyRegistrationPage() {
           source: "Company Registration Page"
         })
       });
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setIsModalOpen(false);
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          companyType: "Private Limited Company",
+          city: ""
+        });
+      }, 3500);
     } catch (err) {
       console.error("Company Registration API error:", err);
+    } finally {
+      setIsSubmitting(false);
     }
-
-    window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
-
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setIsModalOpen(false);
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        companyType: "Private Limited Company",
-        city: ""
-      });
-    }, 4000);
   };
 
   // Section 1: Hero Feature Icons (4 Badges)

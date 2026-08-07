@@ -92,13 +92,8 @@ export default function TrademarkBusinessRegistrationPage() {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`Trademark / Registration Request: ${formData.service} - ${formData.email || formData.phone}`);
-    const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI would like to request a consultation regarding ${formData.service}.\n\nDetails:\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n- City / Location: ${formData.city}\n\nPlease contact me as soon as possible.\n\nThank you!`
-    );
-
     try {
-      await fetch("/api/enquiries", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -110,15 +105,12 @@ export default function TrademarkBusinessRegistrationPage() {
           source: "Trademark & Business Registration Page"
         })
       });
+      setIsModalOpen(false);
+      setIsExpertModalOpen(false);
+      setFormData({ email: "", phone: "", city: "", service: "Trademark Registration" });
     } catch (err) {
       console.error("Trademark API error:", err);
     }
-
-    window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
-
-    setIsModalOpen(false);
-    setIsExpertModalOpen(false);
-    setFormData({ email: "", phone: "", city: "", service: "Trademark Registration" });
   };
 
   const openServiceModal = (serviceName: string) => {

@@ -20,7 +20,7 @@ export default function CTASection() {
     const body = encodeURIComponent(`Client Name: ${formData.name}\nPhone Number: ${formData.phone}\nEmail Address: ${formData.email}\nInterested Service: ${formData.service}`);
     
     try {
-      await fetch("/api/enquiries", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

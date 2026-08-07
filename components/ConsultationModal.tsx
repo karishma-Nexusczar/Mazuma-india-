@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X } from "lucide-react";
+import { X, CheckCircle2, AlertCircle } from "lucide-react";
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -14,22 +14,22 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
     phone: "",
     email: "",
     service: "Company Registration",
-    city: ""
+    city: "",
+    website_hp: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const subject = encodeURIComponent(`Free Consultation Request: ${formData.service} - ${formData.name || formData.email}`);
-    const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI would like to request a free consultation.\n\nDetails:\n- Full Name: ${formData.name || "Client"}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n- City / State: ${formData.city}\n\nPlease reach out to me as soon as possible.\n\nThank you,\n${formData.name || "Client"}`
-    );
+    setIsSubmitting(true);
+    setErrorMsg("");
 
     try {
-      await fetch("/api/enquiries", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -38,25 +38,35 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
           email: formData.email,
           service: formData.service,
           city: formData.city,
+          website_hp: formData.website_hp,
           source: "Book Free Consultation Modal"
         })
       });
-    } catch (err) {
-      console.error("Consultation modal API error:", err);
-    }
 
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      onClose();
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        service: "Company Registration",
-        city: ""
-      });
-    }, 4000);
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitted(true);
+        setTimeout(() => {
+          setSubmitted(false);
+          onClose();
+          setFormData({
+            name: "",
+            phone: "",
+            email: "",
+            service: "Company Registration",
+            city: "",
+            website_hp: ""
+          });
+        }, 3500);
+      } else {
+        setErrorMsg(data.message || "Unable to submit your request. Please try again.");
+      }
+    } catch (err) {
+      console.error("Consultation modal submit error:", err);
+      setErrorMsg("Unable to submit your request. Please check your internet connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -72,14 +82,14 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
 
         {submitted ? (
           <div style={{ textAlign: "center", padding: "44px 28px" }}>
-            <div style={{ width: 60, height: 60, borderRadius: "50%", background: "#FFF4EC", color: "#FF6B00", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+            <div style={{ width: 60, height: 60, borderRadius: "50%", background: "#ECFDF5", color: "#10B981", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
+              <CheckCircle2 size={36} />
             </div>
             <h3 className="cr-modal-title" style={{ fontSize: 22, fontWeight: 800, color: "#0F2D52", marginBottom: 8 }}>
-              Thank You! Consultation Requested
+              Request Submitted Successfully
             </h3>
             <p className="cr-modal-desc" style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
-              Your details have been prepared for <strong>compliance@mazumaindia.com</strong>. Our senior CA and legal team will contact you shortly.
+              Thank you for contacting Mazuma India. Your request has been received successfully. Our team will contact you at <strong>compliance@mazumaindia.com</strong> shortly.
             </p>
           </div>
         ) : (
@@ -114,7 +124,25 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 Get instant advice from our senior CA team.
               </p>
 
+              {errorMsg && (
+                <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 14px", borderRadius: 8, background: "#FEF2F2", color: "#DC2626", fontSize: 13, marginBottom: 12, border: "1px solid #FCA5A5" }}>
+                  <AlertCircle size={16} />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit}>
+                {/* Anti-Spam Honeypot Field */}
+                <input
+                  type="text"
+                  name="website_hp"
+                  value={formData.website_hp}
+                  onChange={(e) => setFormData({ ...formData, website_hp: e.target.value })}
+                  style={{ display: "none" }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+
                 {/* Row 1: Mobile Number & Email Address */}
                 <div className="cr-form-grid-2col">
                   <div className="cr-form-group">
@@ -123,6 +151,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       type="tel"
                       className="cr-form-input"
                       required
+                      placeholder="10-digit mobile"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
@@ -134,6 +163,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       type="email"
                       className="cr-form-input"
                       required
+                      placeholder="name@email.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
@@ -148,6 +178,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       type="text"
                       className="cr-form-input"
                       required
+                      placeholder="Enter city/state"
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                     />
@@ -170,8 +201,8 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                   </div>
                 </div>
 
-                <button type="submit" className="cr-modal-submit-btn">
-                  Request Consultation <span>→</span>
+                <button type="submit" disabled={isSubmitting} className="cr-modal-submit-btn">
+                  <span>{isSubmitting ? "Submitting Request..." : "Request Consultation →"}</span>
                 </button>
               </form>
             </div>

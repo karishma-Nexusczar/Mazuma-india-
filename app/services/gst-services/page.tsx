@@ -76,13 +76,8 @@ export default function GSTServicesPage() {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`GST Service Request: ${formData.service} - ${formData.name || formData.email}`);
-    const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI would like to request a free consultation regarding GST Services.\n\nDetails:\n- Full Name: ${formData.name || "Client"}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n- City / State: ${formData.city}\n\nPlease contact me as soon as possible.\n\nThank you,\n${formData.name || "Client"}`
-    );
-
     try {
-      await fetch("/api/enquiries", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -94,36 +89,28 @@ export default function GSTServicesPage() {
           source: "GST Services Page"
         })
       });
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setIsModalOpen(false);
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          service: "GST Registration",
+          city: ""
+        });
+      }, 3500);
     } catch (err) {
       console.error("GST Services API error:", err);
     }
-
-    window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
-
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setIsModalOpen(false);
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        service: "GST Registration",
-        city: ""
-      });
-    }, 4000);
   };
 
   const handleExpertSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`EXPERT CALLBACK REQUEST (Senior GST Advisor): ${expertFormData.name || expertFormData.email}`);
-    const body = encodeURIComponent(
-      `Hello Mazuma India Expert Team,\n\nI would like to request an immediate 1-on-1 callback from a Senior GST Expert.\n\nDetails:\n- Full Name: ${expertFormData.name || "Client"}\n- Phone: ${expertFormData.phone}\n- Email: ${expertFormData.email}\n- City / State: ${expertFormData.city}\n- Topic / Query: ${expertFormData.topic}\n- Preferred Callback Time: ${expertFormData.callbackTime}\n\nPlease connect me with a Senior GST expert.\n\nThank you,\n${expertFormData.name || "Client"}`
-    );
-
     try {
-      await fetch("/api/enquiries", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -132,28 +119,26 @@ export default function GSTServicesPage() {
           email: expertFormData.email,
           service: expertFormData.topic || "GST Expert Callback",
           city: expertFormData.city,
+          preferredTime: expertFormData.callbackTime,
           source: "GST Senior Advisor Modal"
         })
       });
+      setExpertSubmitted(true);
+      setTimeout(() => {
+        setExpertSubmitted(false);
+        setIsExpertModalOpen(false);
+        setExpertFormData({
+          name: "",
+          phone: "",
+          email: "",
+          city: "",
+          topic: "GST Registration & Filing",
+          callbackTime: "Immediate (Within 15 mins)"
+        });
+      }, 3500);
     } catch (err) {
-      console.error("GST Expert API error:", err);
+      console.error("GST Expert Callback API error:", err);
     }
-
-    window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
-
-    setExpertSubmitted(true);
-    setTimeout(() => {
-      setExpertSubmitted(false);
-      setIsExpertModalOpen(false);
-      setExpertFormData({
-        name: "",
-        phone: "",
-        email: "",
-        city: "",
-        topic: "GST Registration & Filing",
-        callbackTime: "Immediate (Within 15 mins)"
-      });
-    }, 4000);
   };
 
   // Sidebar Floating Card Services List (14 Items)

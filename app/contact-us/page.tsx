@@ -21,16 +21,8 @@ export default function ContactUsPage() {
     e.preventDefault();
     setLoading(true);
 
-    const subject = encodeURIComponent(`Contact Form Enquiry: ${formData.service} - ${formData.fullName}`);
-    const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI am sending an enquiry via the website contact form.\n\nDetails:\n- Name: ${formData.fullName}\n- Email: ${formData.email}\n- Phone: ${formData.phone}\n- Service Requested: ${formData.service}\n- Message: ${formData.message}\n\nPlease contact me regarding this enquiry.\n\nThank you,\n${formData.fullName}`
-    );
-
-    // Direct mailto trigger to open Gmail/Email client to compliance@mazumaindia.com
-    window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
-
     try {
-      await fetch("/api/enquiries", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -38,13 +30,14 @@ export default function ContactUsPage() {
           email: formData.email,
           phone: formData.phone,
           service: formData.service,
-          message: formData.message
+          message: formData.message,
+          source: "Contact Us Page"
         })
       });
-    } catch (err) {
-      console.error(err);
-    } finally {
       setSubmitted(true);
+    } catch (err) {
+      console.error("Contact Us form submit error:", err);
+    } finally {
       setLoading(false);
     }
   };
@@ -395,7 +388,7 @@ export default function ContactUsPage() {
                     marginTop: 4
                   }}
                 >
-                  {loading ? "Submitting..." : <>Submit Enquiry <Send size={15} /></>}
+                  {loading ? "Submitting Request..." : <>Submit Enquiry <Send size={15} /></>}
                 </button>
               </form>
             )}

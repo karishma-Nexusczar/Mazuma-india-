@@ -27,7 +27,7 @@ export default function FaqContactSection() {
     const body = encodeURIComponent(bodyText);
 
     try {
-      await fetch("/api/enquiries", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
