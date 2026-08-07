@@ -8627,5 +8627,62 @@ table,
   }
 }
 
+/* ============================================================
+   STEP 9 — UNIFIED RESPONSIVE FORM SYSTEM
+   ============================================================ */
+
+/* Desktop 2-Column Form Grids */
+.form-grid-2col,
+.cr-form-grid-2col,
+.gst-form-grid-2col,
+.itr-form-grid-2col,
+.ab-form-grid-2col,
+.tbr-form-grid-2col,
+.au-cta-form-grid,
+.contact-form-grid,
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-full-width,
+.form-grid-full,
+textarea {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+/* Mobile 1-Column Form Grids (<= 767px) */
+@media (max-width: 767px) {
+  .form-grid-2col,
+  .cr-form-grid-2col,
+  .gst-form-grid-2col,
+  .itr-form-grid-2col,
+  .ab-form-grid-2col,
+  .tbr-form-grid-2col,
+  .au-cta-form-grid,
+  .contact-form-grid,
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  form input,
+  form select,
+  form textarea,
+  form button[type="submit"],
+  .cr-modal-submit-btn,
+  .expert-submit-btn,
+  .contact-submit-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+
 
 
