@@ -43,15 +43,6 @@ export default function FaqContactSection() {
       console.error("FaqContactSection API error:", err);
     }
 
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=compliance@mazumaindia.com&su=${subject}&body=${body}`;
-    const mailtoUrl = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
-
-    try {
-      window.open(gmailUrl, "_blank") || (window.location.href = mailtoUrl);
-    } catch (_err) {
-      window.location.href = mailtoUrl;
-    }
-
     setFormSubmitted(true);
     setTimeout(() => {
       setFormSubmitted(false);
@@ -136,9 +127,11 @@ export default function FaqContactSection() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                 >
-                  <CheckCircle2 size={40} className="success-icon" />
-                  <h4>Opening Gmail...</h4>
-                  <p>Your enquiry message has been prepared for sending to compliance@mazumaindia.com.</p>
+                  <CheckCircle2 size={40} className="success-icon" style={{ color: "#10B981", margin: "0 auto 12px auto" }} />
+                  <h4 style={{ fontSize: "18px", fontWeight: 700, color: "#0F2747", marginBottom: "6px" }}>Enquiry Submitted Successfully!</h4>
+                  <p style={{ fontSize: "13.5px", color: "#64748B", margin: 0, lineHeight: 1.5 }}>
+                    Thank you! Your enquiry has been routed to <strong>compliance@mazumaindia.com</strong>. Our senior tax expert will contact you shortly.
+                  </p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="contact-form-body">

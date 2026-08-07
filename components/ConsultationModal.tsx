@@ -45,9 +45,6 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
       console.error("Consultation modal API error:", err);
     }
 
-    // Trigger direct mailto to compliance@mazumaindia.com
-    window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
-
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);

@@ -35,15 +35,12 @@ export default function CTASection() {
       console.error("CTASection API error:", err);
     }
 
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=compliance@mazumaindia.com&su=${subject}&body=${body}`;
-    window.open(gmailUrl, "_blank");
-
     setFormSubmitted(true);
     setTimeout(() => {
       setFormSubmitted(false);
       setIsModalOpen(false);
       setFormData({ name: "", phone: "", email: "", service: "Company Registration" });
-    }, 2500);
+    }, 3000);
   };
 
   return (
@@ -97,6 +94,12 @@ export default function CTASection() {
             <a
               href="tel:+919936351555"
               className="cta-btn cta-btn-outline"
+              onClick={(e) => {
+                // If on desktop (no tel app), open modal so phone number and callback options are displayed
+                if (typeof window !== "undefined" && window.innerWidth > 768) {
+                  setIsModalOpen(true);
+                }
+              }}
             >
               <Phone size={17} />
               <span>Call Now</span>
@@ -135,8 +138,11 @@ export default function CTASection() {
               </div>
 
               {formSubmitted ? (
-                <div className="expert-modal-success">
-                  <p>Opening email to compliance@mazumaindia.com...</p>
+                <div className="expert-modal-success" style={{ textAlign: "center", padding: "20px 10px" }}>
+                  <h4 style={{ fontSize: "16px", fontWeight: 700, color: "#0F2747", marginBottom: "6px" }}>Callback Request Received!</h4>
+                  <p style={{ fontSize: "13px", color: "#64748B", margin: 0, lineHeight: 1.5 }}>
+                    Thank you! Your enquiry has been sent to <strong>compliance@mazumaindia.com</strong>. Our senior consultant will call you shortly.
+                  </p>
                 </div>
               ) : (
                 <form onSubmit={handleModalSubmit} className="expert-modal-form">

@@ -997,6 +997,7 @@ export default function NGOServicesPage() {
                 <a
                   href="tel:+919936351555"
                   className="ngo-light-cta-btn-phone"
+                  onClick={() => setIsExpertModalOpen(true)}
                 >
                   <PhoneCall size={16} className="ngo-phone-icon" />
                   <span>Call Now: +91 99363 51555</span>
