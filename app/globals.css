@@ -9018,6 +9018,65 @@ table,
   }
 }
 
+/* ============================================================
+   STEP 14 — FOOTER RESPONSIVE SYSTEM
+   ============================================================ */
+
+@media (max-width: 1023px) {
+  .footer-top-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+  }
+  .footer-col-brand {
+    grid-column: span 2 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-top-container {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .footer-col-brand {
+    grid-column: span 1 !important;
+  }
+
+  .footer-col {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .footer-newsletter-form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .footer-newsletter-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .footer-newsletter-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px 0 !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column !important;
+    gap: 12px !important;
+    text-align: center !important;
+  }
+}
+
+
 
 
 
