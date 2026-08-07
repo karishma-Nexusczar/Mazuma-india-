@@ -89,11 +89,36 @@ export default function TrademarkBusinessRegistrationPage() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`Thank you! Your request for ${formData.service} has been received. Our CA expert will call you shortly.`);
+
+    const subject = encodeURIComponent(`Trademark / Registration Request: ${formData.service} - ${formData.email || formData.phone}`);
+    const body = encodeURIComponent(
+      `Hello Mazuma India Team,\n\nI would like to request a consultation regarding ${formData.service}.\n\nDetails:\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n- City / Location: ${formData.city}\n\nPlease contact me as soon as possible.\n\nThank you!`
+    );
+
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.email || "Website Client",
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service || "Trademark & Registration",
+          city: formData.city,
+          source: "Trademark & Business Registration Page"
+        })
+      });
+    } catch (err) {
+      console.error("Trademark API error:", err);
+    }
+
+    window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
+
     setIsModalOpen(false);
     setIsExpertModalOpen(false);
+    setFormData({ email: "", phone: "", city: "", service: "Trademark Registration" });
   };
 
   const openServiceModal = (serviceName: string) => {

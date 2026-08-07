@@ -20,13 +20,29 @@ export default function FaqContactSection() {
     setOpenFaq((prev) => (prev === id ? null : id));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(`New Business Enquiry from ${formData.name || "Client"} - ${formData.service}`);
     const bodyText = `Hello Mazuma India Team,\n\nI would like to enquire about your services.\n\nFull Name: ${formData.name}\nEmail Address: ${formData.email}\nPhone Number: ${formData.phone}\nRequired Service: ${formData.service}\n\nMessage:\n${formData.message}\n\nThank you!`;
     const body = encodeURIComponent(bodyText);
 
-    // Direct Gmail Compose URL
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name || formData.email || "Website Client",
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service || "General Enquiry",
+          message: formData.message,
+          source: "Homepage FAQ Contact Section"
+        })
+      });
+    } catch (err) {
+      console.error("FaqContactSection API error:", err);
+    }
+
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=compliance@mazumaindia.com&su=${subject}&body=${body}`;
     const mailtoUrl = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
 

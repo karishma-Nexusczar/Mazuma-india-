@@ -67,13 +67,30 @@ export default function IncomeTaxPage() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`Income Tax Consultation Request: ${formData.service} - ${formData.name}`);
+    const subject = encodeURIComponent(`Income Tax Consultation Request: ${formData.service} - ${formData.name || formData.email}`);
     const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI would like to request a free consultation regarding Income Tax Return (ITR) Filing Services.\n\nDetails:\n- Full Name: ${formData.name}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n- City / State: ${formData.city}\n\nPlease contact me as soon as possible.\n\nThank you,\n${formData.name}`
+      `Hello Mazuma India Team,\n\nI would like to request a free consultation regarding Income Tax Return (ITR) Filing Services.\n\nDetails:\n- Full Name: ${formData.name || "Client"}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n- City / State: ${formData.city}\n\nPlease contact me as soon as possible.\n\nThank you,\n${formData.name || "Client"}`
     );
+
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name || formData.email || "Website Client",
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service || "Income Tax Services",
+          city: formData.city,
+          source: "Income Tax Services Page"
+        })
+      });
+    } catch (err) {
+      console.error("Income Tax API error:", err);
+    }
 
     window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
 
@@ -91,13 +108,30 @@ export default function IncomeTaxPage() {
     }, 4000);
   };
 
-  const handleExpertSubmit = (e: React.FormEvent) => {
+  const handleExpertSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`EXPERT CALLBACK REQUEST (Senior CA): ${expertFormData.name}`);
+    const subject = encodeURIComponent(`EXPERT CALLBACK REQUEST (Senior CA): ${expertFormData.name || expertFormData.email}`);
     const body = encodeURIComponent(
-      `Hello Mazuma India Expert Team,\n\nI would like to request an immediate 1-on-1 callback from a Senior CA & Tax Expert.\n\nDetails:\n- Full Name: ${expertFormData.name}\n- Phone: ${expertFormData.phone}\n- Email: ${expertFormData.email}\n- City / State: ${expertFormData.city}\n- Topic / Query: ${expertFormData.topic}\n- Preferred Callback Time: ${expertFormData.callbackTime}\n\nPlease connect me with a Senior CA expert.\n\nThank you,\n${expertFormData.name}`
+      `Hello Mazuma India Expert Team,\n\nI would like to request an immediate 1-on-1 callback from a Senior CA & Tax Expert.\n\nDetails:\n- Full Name: ${expertFormData.name || "Client"}\n- Phone: ${expertFormData.phone}\n- Email: ${expertFormData.email}\n- City / State: ${expertFormData.city}\n- Topic / Query: ${expertFormData.topic}\n- Preferred Callback Time: ${expertFormData.callbackTime}\n\nPlease connect me with a Senior CA expert.\n\nThank you,\n${expertFormData.name || "Client"}`
     );
+
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: expertFormData.name || expertFormData.email || "Website Client",
+          phone: expertFormData.phone,
+          email: expertFormData.email,
+          service: expertFormData.topic || "Income Tax Senior CA Callback",
+          city: expertFormData.city,
+          source: "Income Tax Senior Advisor Modal"
+        })
+      });
+    } catch (err) {
+      console.error("Income Tax Expert API error:", err);
+    }
 
     window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
 

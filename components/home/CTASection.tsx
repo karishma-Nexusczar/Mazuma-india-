@@ -14,10 +14,27 @@ export default function CTASection() {
     setIsModalOpen(true);
   };
 
-  const handleModalSubmit = (e: React.FormEvent) => {
+  const handleModalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Quick Callback Request from ${formData.name}`);
+    const subject = encodeURIComponent(`Quick Callback Request: ${formData.service} - ${formData.name}`);
     const body = encodeURIComponent(`Client Name: ${formData.name}\nPhone Number: ${formData.phone}\nEmail Address: ${formData.email}\nInterested Service: ${formData.service}`);
+    
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service,
+          source: "CTA Section Expert Callback"
+        })
+      });
+    } catch (err) {
+      console.error("CTASection API error:", err);
+    }
+
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=compliance@mazumaindia.com&su=${subject}&body=${body}`;
     window.open(gmailUrl, "_blank");
 

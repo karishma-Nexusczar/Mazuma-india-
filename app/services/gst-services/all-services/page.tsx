@@ -39,13 +39,30 @@ export default function AllGSTServicesPage() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`GST Service Request: ${selectedService} - ${formData.name}`);
+    const subject = encodeURIComponent(`GST Service Request: ${selectedService} - ${formData.name || formData.email}`);
     const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI am requesting a consultation for ${selectedService}.\n\nDetails:\n- Full Name: ${formData.name}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- City / State: ${formData.city}\n\nPlease contact me.\n\nThank you,\n${formData.name}`
+      `Hello Mazuma India Team,\n\nI am requesting a consultation for ${selectedService}.\n\nDetails:\n- Full Name: ${formData.name || "Client"}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- City / State: ${formData.city}\n\nPlease contact me.\n\nThank you,\n${formData.name || "Client"}`
     );
+
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name || formData.email || "Website Client",
+          phone: formData.phone,
+          email: formData.email,
+          service: selectedService || "GST Service",
+          city: formData.city,
+          source: "All GST Services Page"
+        })
+      });
+    } catch (err) {
+      console.error("All GST Services API error:", err);
+    }
 
     window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
 

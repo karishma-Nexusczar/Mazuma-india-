@@ -12,12 +12,28 @@ export default function InlineCtaForm() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Consultation Request: ${formData.service} - ${formData.name}`);
+    const subject = encodeURIComponent(`Consultation Request: ${formData.service} - ${formData.name || formData.email}`);
     const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI would like to request a consultation.\n\nDetails:\n- Full Name: ${formData.name}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n\nPlease reach out to me.\n\nThank you,\n${formData.name}`
+      `Hello Mazuma India Team,\n\nI would like to request a consultation.\n\nDetails:\n- Full Name: ${formData.name || "Client"}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n\nPlease reach out to me.\n\nThank you,\n${formData.name || "Client"}`
     );
+
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name || formData.email || "Website Visitor",
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service,
+          source: "Inline CTA Form"
+        })
+      });
+    } catch (err) {
+      console.error("Inline CTA form API error:", err);
+    }
 
     window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
     setSubmitted(true);

@@ -67,13 +67,30 @@ export default function CompanyRegistrationPage() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`Consultation Request: ${formData.companyType} - ${formData.name}`);
+    const subject = encodeURIComponent(`Consultation Request: ${formData.companyType} - ${formData.name || formData.email}`);
     const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI would like to request a free consultation regarding company registration.\n\nDetails:\n- Full Name: ${formData.name}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Company Type: ${formData.companyType}\n- City / State: ${formData.city}\n\nPlease reach out to me as soon as possible.\n\nThank you,\n${formData.name}`
+      `Hello Mazuma India Team,\n\nI would like to request a free consultation regarding company registration.\n\nDetails:\n- Full Name: ${formData.name || "Client"}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Company Type: ${formData.companyType}\n- City / State: ${formData.city}\n\nPlease reach out to me as soon as possible.\n\nThank you,\n${formData.name || "Client"}`
     );
+
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name || formData.email || "Website Client",
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.companyType || "Company Registration",
+          city: formData.city,
+          source: "Company Registration Page"
+        })
+      });
+    } catch (err) {
+      console.error("Company Registration API error:", err);
+    }
 
     window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
 

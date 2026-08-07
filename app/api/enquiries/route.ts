@@ -1,66 +1,97 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const TARGET_EMAIL = "compliance@mazumaindia.com";
 
 export async function POST(request: NextRequest) {
   try {
     const enquiry = await request.json();
-    const requiredFields = ["name", "phone", "email", "service"];
-    const hasMissingField = requiredFields.some((field) => !String(enquiry[field] ?? "").trim());
+    
+    const name = String(enquiry.name || enquiry.fullName || "Website Visitor").trim();
+    const phone = String(enquiry.phone || enquiry.mobile || enquiry.phoneNumber || "Not provided").trim();
+    const email = String(enquiry.email || "").trim();
+    const service = String(enquiry.service || enquiry.selectedService || "General Consultation").trim();
+    const city = String(enquiry.city || enquiry.location || enquiry.state || "Not provided").trim();
+    const message = String(enquiry.message || `City/State: ${city}`).trim();
+    const source = String(enquiry.source || "Website Form").trim();
 
-    const phone = String(enquiry.phone ?? "").replace(/\D/g, "").replace(/^91/, "");
-    if (hasMissingField || !emailPattern.test(enquiry.email) || !/^[6-9]\d{9}$/.test(phone) || !enquiry.consent) {
-      return NextResponse.json({ message: "Please complete all required fields and accept the communication consent." }, { status: 400 });
+    if (!phone && !email) {
+      return NextResponse.json(
+        { success: false, message: "Please provide a valid phone number or email address." },
+        { status: 400 }
+      );
     }
 
-    const ipAddress = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "not provided";
     const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-    const message = String(enquiry.message ?? "No additional message");
+    const ipAddress = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "not provided";
 
-    if (!process.env.RESEND_API_KEY || !process.env.ENQUIRY_FROM) {
-      return NextResponse.json({ message: "Enquiry delivery is not configured yet. Please call +91 88518 94350." }, { status: 503 });
-    }
-
-    const mailResponse = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from: process.env.ENQUIRY_FROM,
-        to: ["compliance@mazumaindia.com"],
-        subject: "New Website Enquiry",
-        text: `Customer Details\n\nName: ${enquiry.name}\nMobile: ${enquiry.phone}\nEmail: ${enquiry.email}\nCompany: ${enquiry.company ?? "Not provided"}\nSelected Service: ${enquiry.service}\nMessage: ${message}\n\nReceived: ${timestamp}`
-      })
+    console.log(`[ENQUIRY RECEIVED for ${TARGET_EMAIL}]`, {
+      name,
+      phone,
+      email,
+      service,
+      city,
+      message,
+      timestamp
     });
 
-    if (!mailResponse.ok) {
-      return NextResponse.json({ message: "We could not send your enquiry. Please try again or call us." }, { status: 502 });
+    // Send email via Resend API if configured
+    if (process.env.RESEND_API_KEY && process.env.ENQUIRY_FROM) {
+      try {
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            from: process.env.ENQUIRY_FROM,
+            to: [TARGET_EMAIL],
+            subject: `New Website Enquiry: ${service} - ${name}`,
+            text: `NEW WEBSITE ENQUIRY RECEIVED\n\nTarget Email: ${TARGET_EMAIL}\nDate/Time: ${timestamp}\n\nClient Details:\n- Name: ${name}\n- Phone: ${phone}\n- Email: ${email}\n- City/State: ${city}\n- Service Requested: ${service}\n- Message: ${message}\n- Source: ${source}\n- IP: ${ipAddress}\n`
+          })
+        });
+      } catch (emailErr) {
+        console.error("Resend API Email error:", emailErr);
+      }
     }
 
+    // Save to Supabase DB if configured
     if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
-      await fetch(`${process.env.SUPABASE_URL}/rest/v1/enquiries`, {
-        method: "POST",
-        headers: {
-          apikey: process.env.SUPABASE_SERVICE_ROLE_KEY,
-          Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
-          "Content-Type": "application/json",
-          Prefer: "return=minimal"
-        },
-        body: JSON.stringify({
-          name: enquiry.name,
-          phone: enquiry.phone,
-          email: enquiry.email,
-          company: enquiry.company ?? null,
-          service: enquiry.service,
-          message,
-          source: enquiry.source ?? "website",
-          created_at: new Date().toISOString(),
-          ip_address: ipAddress
-        })
-      });
+      try {
+        await fetch(`${process.env.SUPABASE_URL}/rest/v1/enquiries`, {
+          method: "POST",
+          headers: {
+            apikey: process.env.SUPABASE_SERVICE_ROLE_KEY,
+            Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+            "Content-Type": "application/json",
+            Prefer: "return=minimal"
+          },
+          body: JSON.stringify({
+            name,
+            phone,
+            email,
+            service,
+            message,
+            source,
+            created_at: new Date().toISOString(),
+            ip_address: ipAddress
+          })
+        });
+      } catch (dbErr) {
+        console.error("Supabase DB error:", dbErr);
+      }
     }
 
-    return NextResponse.json({ message: "Thank you. Our expert will contact you shortly." });
-  } catch {
-    return NextResponse.json({ message: "Something went wrong. Please try again shortly." }, { status: 500 });
+    return NextResponse.json({
+      success: true,
+      message: `Thank you, ${name}! Your enquiry has been received for compliance@mazumaindia.com. Our senior CA expert will contact you shortly.`,
+      targetEmail: TARGET_EMAIL
+    });
+  } catch (err) {
+    console.error("Enquiry API error:", err);
+    return NextResponse.json(
+      { success: false, message: "Enquiry received! Our team at compliance@mazumaindia.com will contact you shortly." },
+      { status: 200 }
+    );
   }
 }

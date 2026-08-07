@@ -73,13 +73,30 @@ export default function GSTServicesPage() {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`GST Service Request: ${formData.service} - ${formData.name}`);
+    const subject = encodeURIComponent(`GST Service Request: ${formData.service} - ${formData.name || formData.email}`);
     const body = encodeURIComponent(
-      `Hello Mazuma India Team,\n\nI would like to request a free consultation regarding GST Services.\n\nDetails:\n- Full Name: ${formData.name}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n- City / State: ${formData.city}\n\nPlease contact me as soon as possible.\n\nThank you,\n${formData.name}`
+      `Hello Mazuma India Team,\n\nI would like to request a free consultation regarding GST Services.\n\nDetails:\n- Full Name: ${formData.name || "Client"}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Service Requested: ${formData.service}\n- City / State: ${formData.city}\n\nPlease contact me as soon as possible.\n\nThank you,\n${formData.name || "Client"}`
     );
+
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name || formData.email || "Website Client",
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service || "GST Services",
+          city: formData.city,
+          source: "GST Services Page"
+        })
+      });
+    } catch (err) {
+      console.error("GST Services API error:", err);
+    }
 
     window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
 
@@ -97,13 +114,30 @@ export default function GSTServicesPage() {
     }, 4000);
   };
 
-  const handleExpertSubmit = (e: React.FormEvent) => {
+  const handleExpertSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`EXPERT CALLBACK REQUEST (Senior GST Advisor): ${expertFormData.name}`);
+    const subject = encodeURIComponent(`EXPERT CALLBACK REQUEST (Senior GST Advisor): ${expertFormData.name || expertFormData.email}`);
     const body = encodeURIComponent(
-      `Hello Mazuma India Expert Team,\n\nI would like to request an immediate 1-on-1 callback from a Senior GST Expert.\n\nDetails:\n- Full Name: ${expertFormData.name}\n- Phone: ${expertFormData.phone}\n- Email: ${expertFormData.email}\n- City / State: ${expertFormData.city}\n- Topic / Query: ${expertFormData.topic}\n- Preferred Callback Time: ${expertFormData.callbackTime}\n\nPlease connect me with a Senior GST expert.\n\nThank you,\n${expertFormData.name}`
+      `Hello Mazuma India Expert Team,\n\nI would like to request an immediate 1-on-1 callback from a Senior GST Expert.\n\nDetails:\n- Full Name: ${expertFormData.name || "Client"}\n- Phone: ${expertFormData.phone}\n- Email: ${expertFormData.email}\n- City / State: ${expertFormData.city}\n- Topic / Query: ${expertFormData.topic}\n- Preferred Callback Time: ${expertFormData.callbackTime}\n\nPlease connect me with a Senior GST expert.\n\nThank you,\n${expertFormData.name || "Client"}`
     );
+
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: expertFormData.name || expertFormData.email || "Website Client",
+          phone: expertFormData.phone,
+          email: expertFormData.email,
+          service: expertFormData.topic || "GST Expert Callback",
+          city: expertFormData.city,
+          source: "GST Senior Advisor Modal"
+        })
+      });
+    } catch (err) {
+      console.error("GST Expert API error:", err);
+    }
 
     window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
 
