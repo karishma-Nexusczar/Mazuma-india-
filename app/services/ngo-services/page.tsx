@@ -35,7 +35,8 @@ import {
   Plus,
   Minus,
   HelpCircle,
-  Clock
+  Clock,
+  CheckCircle2
 } from "lucide-react";
 
 export default function NGOServicesPage() {
@@ -45,6 +46,8 @@ export default function NGOServicesPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [isAllFaqsModalOpen, setIsAllFaqsModalOpen] = useState(false);
   const [allFaqsOpenIndex, setAllFaqsOpenIndex] = useState<number | null>(0);
+  const [submittedMessage, setSubmittedMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -54,15 +57,37 @@ export default function NGOServicesPage() {
 
   const openServiceModal = (serviceName: string) => {
     setSelectedService(serviceName);
+    setSubmittedMessage("");
     setIsModalOpen(true);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`Thank you! Our NGO specialist will contact you shortly regarding ${selectedService || "NGO Services"}.`);
-    setIsModalOpen(false);
-    setIsExpertModalOpen(false);
-    setFormData({ name: "", phone: "", email: "", city: "" });
+    setIsSubmitting(true);
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name || "NGO Client",
+          email: formData.email,
+          phone: formData.phone,
+          service: selectedService || "NGO Services",
+          message: `City: ${formData.city || "Not specified"}`
+        })
+      });
+    } catch (err) {
+      console.error("Form submission error:", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmittedMessage(`Thank you! Our NGO specialist will contact you shortly regarding ${selectedService || "NGO Services"}.`);
+      setTimeout(() => {
+        setIsModalOpen(false);
+        setIsExpertModalOpen(false);
+        setSubmittedMessage("");
+        setFormData({ name: "", phone: "", email: "", city: "" });
+      }, 2500);
+    }
   };
 
   const toggleFaq = (index: number) => {
@@ -1048,49 +1073,69 @@ export default function NGOServicesPage() {
               <X size={18} />
             </button>
             <div className="tbr-modal-header">
-              <h3 className="tbr-modal-title">Enquire for {selectedService}</h3>
+              <h3 className="tbr-modal-title">Enquire for {selectedService || "NGO Services"}</h3>
               <p className="tbr-modal-desc">Fill out your details to speak with a Mazuma CA expert.</p>
             </div>
-            <form onSubmit={handleFormSubmit} className="tbr-modal-body">
-              <div className="tbr-form-grid-2col">
-                <div className="tbr-form-group">
-                  <label className="tbr-form-label">Phone Number *</label>
+
+            {submittedMessage ? (
+              <div style={{ padding: "28px 20px", textAlign: "center" }}>
+                <CheckCircle2 size={48} style={{ color: "#10B981", margin: "0 auto 12px auto" }} />
+                <h4 style={{ fontSize: "17px", fontWeight: 700, color: "#0F2747", marginBottom: "6px" }}>Enquiry Submitted!</h4>
+                <p style={{ fontSize: "13.5px", color: "#64748B", margin: 0, lineHeight: 1.5 }}>{submittedMessage}</p>
+              </div>
+            ) : (
+              <form onSubmit={handleFormSubmit} className="tbr-modal-body">
+                <div className="tbr-form-group" style={{ marginBottom: "12px" }}>
+                  <label className="tbr-form-label">Full Name *</label>
                   <input
-                    type="tel"
+                    type="text"
                     required
-                    placeholder="Enter phone number"
+                    placeholder="Enter your full name"
                     className="tbr-form-input"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
                 </div>
-                <div className="tbr-form-group">
-                  <label className="tbr-form-label">Email Address *</label>
+                <div className="tbr-form-grid-2col">
+                  <div className="tbr-form-group">
+                    <label className="tbr-form-label">Phone Number *</label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="Enter phone number"
+                      className="tbr-form-input"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    />
+                  </div>
+                  <div className="tbr-form-group">
+                    <label className="tbr-form-label">Email Address *</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="Enter email address"
+                      className="tbr-form-input"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
+                </div>
+                <div className="tbr-form-group" style={{ marginTop: "12px" }}>
+                  <label className="tbr-form-label">City / Location</label>
                   <input
-                    type="email"
-                    required
-                    placeholder="Enter email address"
+                    type="text"
+                    placeholder="Enter your city"
                     className="tbr-form-input"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    value={formData.city}
+                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                   />
                 </div>
-              </div>
-              <div className="tbr-form-group" style={{ marginTop: "12px" }}>
-                <label className="tbr-form-label">City / Location</label>
-                <input
-                  type="text"
-                  placeholder="Enter your city"
-                  className="tbr-form-input"
-                  value={formData.city}
-                  onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                />
-              </div>
-              <button type="submit" className="tbr-modal-submit-btn" style={{ marginTop: "18px" }}>
-                <span>Submit Enquiry</span>
-                <ArrowRight size={16} />
-              </button>
-            </form>
+                <button type="submit" disabled={isSubmitting} className="tbr-modal-submit-btn" style={{ marginTop: "18px" }}>
+                  <span>{isSubmitting ? "Submitting..." : "Submit Enquiry"}</span>
+                  <ArrowRight size={16} />
+                </button>
+              </form>
+            )}
           </div>
         </div>
       )}
@@ -1111,7 +1156,7 @@ export default function NGOServicesPage() {
                   height: "44px",
                   borderRadius: "50%",
                   background: "#FFF7ED",
-                  color: "#F36B21",
+                  color: "#FF6B1A",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -1123,38 +1168,51 @@ export default function NGOServicesPage() {
               <h3 className="tbr-modal-title">Talk to Our NGO Expert</h3>
               <p className="tbr-modal-desc">Direct phone helpline for Trust, 12A/80G &amp; FCRA queries.</p>
             </div>
-            <div className="tbr-modal-body">
-              <a
-                href="tel:+919936351555"
-                className="ngo-btn-primary"
-                style={{
-                  width: "100%",
-                  justifyContent: "center",
-                  marginBottom: "16px",
-                  textDecoration: "none"
-                }}
-              >
-                <PhoneCall size={18} />
-                <span>+91 99363 51555</span>
-              </a>
-              <form onSubmit={handleFormSubmit}>
-                <div className="tbr-form-group">
-                  <label className="tbr-form-label">Your Phone Number for Instant Callback</label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="Enter 10-digit mobile number"
-                    className="tbr-form-input"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  />
-                </div>
-                <button type="submit" className="tbr-modal-submit-btn" style={{ marginTop: "14px", width: "100%" }}>
-                  <span>Request Instant Callback</span>
-                  <ArrowRight size={16} />
-                </button>
-              </form>
-            </div>
+
+            {submittedMessage ? (
+              <div style={{ padding: "28px 20px", textAlign: "center" }}>
+                <CheckCircle2 size={48} style={{ color: "#10B981", margin: "0 auto 12px auto" }} />
+                <h4 style={{ fontSize: "17px", fontWeight: 700, color: "#0F2747", marginBottom: "6px" }}>Request Received!</h4>
+                <p style={{ fontSize: "13.5px", color: "#64748B", margin: 0, lineHeight: 1.5 }}>{submittedMessage}</p>
+              </div>
+            ) : (
+              <div className="tbr-modal-body">
+                <a
+                  href="tel:+919936351555"
+                  className="ngo-btn-primary"
+                  style={{
+                    width: "100%",
+                    justifyContent: "center",
+                    marginBottom: "16px",
+                    textDecoration: "none",
+                    height: "44px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px"
+                  }}
+                >
+                  <PhoneCall size={18} />
+                  <span>Call Now: +91 99363 51555</span>
+                </a>
+                <form onSubmit={handleFormSubmit}>
+                  <div className="tbr-form-group">
+                    <label className="tbr-form-label">Your Phone Number for Instant Callback</label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="Enter 10-digit mobile number"
+                      className="tbr-form-input"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    />
+                  </div>
+                  <button type="submit" disabled={isSubmitting} className="tbr-modal-submit-btn" style={{ marginTop: "14px", width: "100%" }}>
+                    <span>{isSubmitting ? "Sending..." : "Request Instant Callback"}</span>
+                    <ArrowRight size={16} />
+                  </button>
+                </form>
+              </div>
+            )}
           </div>
         </div>
       )}
