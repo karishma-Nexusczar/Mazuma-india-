@@ -9076,6 +9076,49 @@ table,
   }
 }
 
+/* ============================================================
+   STEP 15 — FLOATING ELEMENTS & OVERLAY PROTECTION SYSTEM
+   ============================================================ */
+
+.floating-actions {
+  position: fixed !important;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9990;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+@media (max-width: 767px) {
+  .floating-actions {
+    right: 16px !important;
+    bottom: 16px !important;
+    gap: 8px !important;
+  }
+
+  .whatsapp-float-btn {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .floating-actions .to-top {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* Overlay protection: hide floating actions when modal or drawer is active */
+body:has(.cr-modal-backdrop) .floating-actions,
+body.modal-open .floating-actions {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+
 
 
 
