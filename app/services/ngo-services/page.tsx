@@ -155,14 +155,46 @@ export default function NGOServicesPage() {
 
   // Section 6 Organizations We Support (8 Cards)
   const organizationsServed = [
-    { title: "Charitable Trusts", icon: Landmark },
-    { title: "Societies", icon: Users },
-    { title: "Section 8 Companies", icon: Building2 },
-    { title: "Educational Institutions", icon: GraduationCap },
-    { title: "Religious Organizations", icon: Church },
-    { title: "Healthcare NGOs", icon: Stethoscope },
-    { title: "Environmental Organizations", icon: Leaf },
-    { title: "CSR Foundations", icon: Briefcase }
+    {
+      title: "Charitable Trusts",
+      desc: "Supporting trusts working for education, health, poverty alleviation, and community development.",
+      icon: Landmark
+    },
+    {
+      title: "Societies",
+      desc: "Helping societies promote arts, culture, education, sports, and social welfare activities.",
+      icon: Users
+    },
+    {
+      title: "Section 8 Companies",
+      desc: "Enabling non-profit companies to operate with transparency and government recognition.",
+      icon: Building2
+    },
+    {
+      title: "Educational Institutions",
+      desc: "Assisting schools, colleges, and training institutes in legal registration and compliance.",
+      icon: GraduationCap
+    },
+    {
+      title: "Religious Organizations",
+      desc: "Supporting religious trusts and organizations in registration and legal compliance.",
+      icon: Church
+    },
+    {
+      title: "Healthcare NGOs",
+      desc: "Helping NGOs provide healthcare services and manage operations with legal recognition.",
+      icon: Stethoscope
+    },
+    {
+      title: "Environmental Organizations",
+      desc: "Encouraging organizations working for nature, sustainability, and environment conservation.",
+      icon: Leaf
+    },
+    {
+      title: "CSR Foundations",
+      desc: "Guiding CSR foundations to implement impactful initiatives and ensure proper compliance.",
+      icon: HeartHandshake
+    }
   ];
 
   // Section 7 FAQ (8 Questions)
@@ -536,27 +568,96 @@ export default function NGOServicesPage() {
           SECTION 6: ORGANIZATIONS WE SUPPORT (WHO WE SERVE)
          ========================================================= */}
       <section className="ngo-serve-section">
-        <div className="ngo-container">
-          <div className="ngo-section-header">
-            <span className="ngo-section-label">WHO WE SERVE</span>
-            <h2 className="ngo-section-title">Organizations We Support</h2>
-            <p className="ngo-section-subtitle">
+        {/* Soft Background Decorative Glows */}
+        <div className="ngo-serve-bg-curve"></div>
+        <div className="ngo-serve-bg-dots"></div>
+        <div className="ngo-serve-bg-glow"></div>
+
+        <div className="ngo-serve-container">
+          {/* Section Header */}
+          <div className="ngo-serve-header">
+            <div className="ngo-serve-eyebrow-wrap">
+              <span className="ngo-serve-eyebrow-line"></span>
+              <span className="ngo-serve-eyebrow">WHO WE SERVE</span>
+              <span className="ngo-serve-eyebrow-line"></span>
+            </div>
+            <h2 className="ngo-serve-title">
+              Organizations <span className="ngo-serve-highlight">We Support</span>
+            </h2>
+            <p className="ngo-serve-subtitle">
               Empowering diverse non-profit and social welfare organizations across India.
             </p>
           </div>
 
+          {/* 4x2 Grid of 8 Organization Cards */}
           <div className="ngo-serve-grid">
             {organizationsServed.map((org, idx) => {
               const IconComp = org.icon;
               return (
                 <div key={idx} className="ngo-serve-card">
-                  <div className="ngo-serve-icon">
-                    <IconComp size={22} />
+                  {/* Large Centered Circular Icon Container (80px x 80px) */}
+                  <div className="ngo-serve-icon-container">
+                    <div className="ngo-serve-icon-circle">
+                      <IconComp size={34} />
+                    </div>
                   </div>
-                  <h3 className="ngo-serve-name">{org.title}</h3>
+
+                  {/* Card Title */}
+                  <h3 className="ngo-serve-card-title">{org.title}</h3>
+
+                  {/* Card Description */}
+                  <p className="ngo-serve-card-desc">{org.desc}</p>
+
+                  {/* Bottom Orange Accent Signature Line */}
+                  <div className="ngo-serve-card-accent"></div>
                 </div>
               );
             })}
+          </div>
+
+          {/* Premium Impact Strip */}
+          <div className="ngo-serve-impact-strip">
+            {/* Left: Community Icon & Impact Text */}
+            <div className="ngo-impact-left">
+              <div className="ngo-impact-icon-circle">
+                <HeartHandshake size={26} />
+              </div>
+              <div className="ngo-impact-text-content">
+                <h4 className="ngo-impact-title">Together, We Create Impact</h4>
+                <p className="ngo-impact-desc">
+                  We partner with organizations that are committed to building a better society and a stronger tomorrow.
+                </p>
+              </div>
+            </div>
+
+            {/* Center: 3 Key Statistics */}
+            <div className="ngo-impact-stats">
+              <div className="ngo-impact-stat-item">
+                <span className="ngo-impact-stat-num">5000+</span>
+                <span className="ngo-impact-stat-lbl">Organizations Served</span>
+              </div>
+              <div className="ngo-impact-stat-divider"></div>
+              <div className="ngo-impact-stat-item">
+                <span className="ngo-impact-stat-num">10+</span>
+                <span className="ngo-impact-stat-lbl">Years of Experience</span>
+              </div>
+              <div className="ngo-impact-stat-divider"></div>
+              <div className="ngo-impact-stat-item">
+                <span className="ngo-impact-stat-num">99%</span>
+                <span className="ngo-impact-stat-lbl">Client Satisfaction</span>
+              </div>
+            </div>
+
+            {/* Right: CTA Button */}
+            <div className="ngo-impact-right">
+              <button
+                className="ngo-impact-cta-btn"
+                onClick={() => openServiceModal("Work With Us")}
+              >
+                <span>Work With Us</span>
+                <ArrowRight size={16} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
