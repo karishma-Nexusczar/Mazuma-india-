@@ -54,34 +54,39 @@ const homeProfessionalServices = [
     title: "Company Registration",
     description: "Private Limited, LLP, OPC, Section 8 Company, ROC compliance, DIN & DSC services.",
     icon: Building2,
+    imageIcon: "/images/service-icons/company-registration.png",
     href: "/services/company-registration"
   },
   {
     id: "service-gst",
-    title: "GST Services",
+    title: "GST Registration & Compliance",
     description: "GST registration, return filing, GST audit, refunds, notices and compliance.",
     icon: ReceiptText,
+    imageIcon: "/images/service-icons/gst-registration.png",
     href: "/services/gst-services"
   },
   {
     id: "service-incometax",
-    title: "Income Tax",
+    title: "Income Tax Return (ITR) Filing",
     description: "ITR filing, TDS returns, tax planning and income tax compliance.",
     icon: FileText,
+    imageIcon: "/images/service-icons/income-tax.png",
     href: "/services/income-tax"
   },
   {
     id: "service-accounting",
-    title: "Accounting & Bookkeeping",
+    title: "ACCOUNTING & BOOKKEEPING",
     description: "Bookkeeping, payroll, financial reporting and audit support.",
     icon: Calculator,
+    imageIcon: "/images/service-icons/accounting.png",
     href: "/services/accounting-bookkeeping"
   },
   {
     id: "service-trademark",
-    title: "Trademark & Business Registration",
+    title: "Trademark & Business Registrations",
     description: "Trademark, MSME, FSSAI, Startup India, IEC and ISO.",
     icon: BadgeCheck,
+    imageIcon: "/images/service-icons/trademark.png",
     href: "/services/business-registrations"
   },
   {
@@ -89,6 +94,7 @@ const homeProfessionalServices = [
     title: "NGO Services",
     description: "Trust, Society, Section 8, 12A, 80G and FCRA registration.",
     icon: Users,
+    imageIcon: "/services-ngo.png",
     href: "/services/ngo-services"
   },
   {
@@ -96,6 +102,7 @@ const homeProfessionalServices = [
     title: "Business Compliance",
     description: "ROC filing, annual compliance, secretarial services and business advisory.",
     icon: ShieldCheck,
+    imageIcon: "/services-companies.png",
     href: "/services/business-compliance"
   }
 ];
@@ -410,7 +417,15 @@ export default function Home() {
                 >
                   <div className="home-card-top-bar"></div>
                   <div className="home-card-icon-box">
-                    <IconComponent size={24} />
+                    {service.imageIcon ? (
+                      <img
+                        src={service.imageIcon}
+                        alt={service.title}
+                        className="home-card-custom-icon"
+                      />
+                    ) : (
+                      <IconComponent size={24} />
+                    )}
                   </div>
                   <h3 className="home-card-title">{service.title}</h3>
                   <p className="home-card-desc">{service.description}</p>
