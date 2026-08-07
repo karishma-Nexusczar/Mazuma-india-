@@ -8068,96 +8068,45 @@ table,
 
 /* Tablet (768px - 1023px) */
 @media (max-width: 1023px) {
-  .top-trust-stats-row {
-    display: none !important;
+  .top-trust-bar {
+    padding: 4px 0 !important;
   }
 
   .top-trust-bar-inner {
-    padding: 0 12px !important;
-    justify-content: space-between !important;
-    flex-wrap: nowrap !important;
-  }
-
-  .top-trust-right-row {
-    width: 100% !important;
-    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
     gap: 8px !important;
-  }
-
-  .top-trust-email-link {
-    font-size: 11.5px !important;
-    padding-right: 0 !important;
-    border-right: none !important;
-    max-width: 190px !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    white-space: nowrap !important;
   }
 
   .site-header {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    height: 68px !important;
-    min-height: 68px !important;
+    height: 72px !important;
+    min-height: 72px !important;
     padding: 0 16px !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    box-sizing: border-box !important;
   }
 
-  .site-header nav:not(.open) {
-    display: none !important;
-  }
-
-  .site-header nav.open {
-    display: flex !important;
-    flex-direction: column !important;
-    position: fixed !important;
-    top: 0 !important;
-    right: 0 !important;
-    width: 280px !important;
-    max-width: 85vw !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-    background: #ffffff !important;
-    z-index: 1001 !important;
-    padding: 76px 20px 24px 20px !important;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.15) !important;
-    overflow-y: auto !important;
-    gap: 16px !important;
-    align-items: stretch !important;
-  }
-
-  .site-header .header-cta-desktop {
+  .site-header nav,
+  .site-header .header-cta {
     display: none !important;
   }
 
   .menu-toggle {
     display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
   }
 
   .hero-container,
-  .hero-top-row,
   .cr-hero-grid-layout,
   .gst-hero-grid,
   .itr-hero-grid,
   .ngo-hero-grid,
   .ab-hero-grid,
   .tbr-hero-section {
-    display: flex !important;
-    flex-direction: column !important;
     grid-template-columns: 1fr !important;
     min-height: auto !important;
-    padding-top: 20px !important;
-    padding-bottom: 28px !important;
-    width: calc(100% - 32px) !important;
-    max-width: 100% !important;
-    margin-inline: auto !important;
-    box-sizing: border-box !important;
-    overflow: hidden !important;
+    padding-top: 24px !important;
+    padding-bottom: 32px !important;
   }
 
   .hero-right-visual,
@@ -8180,169 +8129,29 @@ table,
   .ab-hero-left {
     order: 1 !important;
     width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    overflow: hidden !important;
   }
 
-  .hero-title,
-  .legacy-hero-section .hero-title {
-    font-size: clamp(24px, 6.5vw, 42px) !important;
-    line-height: 1.2 !important;
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
-  .hero-description,
-  .legacy-hero-section .hero-description {
-    font-size: clamp(13.5px, 3.8vw, 15.5px) !important;
-    line-height: 1.6 !important;
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
-    max-width: 100% !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    margin-bottom: 24px !important;
-  }
-
-  .hero-cta-group,
-  .legacy-hero-section .hero-cta-group {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    gap: 12px !important;
-    align-items: stretch !important;
-    margin-bottom: 24px !important;
-    box-sizing: border-box !important;
-  }
-
-  .hero-btn-main,
-  .hero-btn-sub,
-  .hero-cta-group button,
-  .hero-cta-group a {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-height: 48px !important;
-    height: 48px !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Force 2-column statistics grid on mobile */
   .hero-trust-stats-grid,
-  .hero-compact-stats-row {
-    display: grid !important;
+  .services-grid,
+  .features-grid,
+  .cr-services-grid,
+  .gst-services-grid,
+  .itr-services-grid,
+  .ngo-services-grid,
+  .ab-services-grid,
+  .tbr-services-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px !important;
-    margin-top: 20px !important;
-    padding-top: 16px !important;
-    border-top: 1px solid #e2e8f0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    flex-wrap: wrap !important;
-  }
-
-  .compact-stat-divider {
-    display: none !important;
-  }
-
-  .trust-stat-card,
-  .compact-stat-item {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 10px 12px !important;
-    background: #f8fafc !important;
-    border-radius: 10px !important;
-    border: 1px solid #e2e8f0 !important;
-    border-left: 1px solid #e2e8f0 !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    overflow: hidden !important;
-    text-align: left !important;
-  }
-
-  .trust-stat-card + .trust-stat-card {
-    border-left: 1px solid #e2e8f0 !important;
-  }
-
-  .stat-text-wrap strong,
-  .compact-stat-item strong {
-    font-size: 15px !important;
-    font-weight: 800 !important;
-    line-height: 1.1 !important;
-    color: #f36b21 !important;
-    white-space: normal !important;
-    word-break: break-word !important;
-  }
-
-  .stat-text-wrap span,
-  .compact-stat-item span {
-    font-size: 11px !important;
-    line-height: 1.2 !important;
-    color: #10284a !important;
-    white-space: normal !important;
-    word-break: break-word !important;
-    margin-top: 2px !important;
-  }
-
-  .stat-text-wrap small {
-    font-size: 10px !important;
-    color: #64748b !important;
-    white-space: normal !important;
-  }
-
-  /* Fixed Floating WhatsApp Button on Mobile */
-  .floating-actions {
-    position: fixed !important;
-    right: 14px !important;
-    bottom: 14px !important;
-    z-index: 9999 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-    pointer-events: auto !important;
-  }
-
-  .whatsapp-float-btn {
-    width: 48px !important;
-    height: 48px !important;
-    flex: 0 0 48px !important;
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4) !important;
-  }
-
-  /* Single Column Footer */
-  .footer-top-container {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .footer-col-brand {
-    max-width: 100% !important;
-  }
-
-  .footer-bottom-inner {
-    flex-direction: column !important;
-    gap: 10px !important;
-    text-align: center !important;
+    gap: 16px !important;
   }
 }
 
 /* Mobile & Small Mobile (320px - 767px) */
 @media (max-width: 767px) {
-  .top-trust-stat-item {
+  .top-trust-stat-item:nth-child(n+3) {
     display: none !important;
   }
 
+  .hero-trust-stats-grid,
   .services-grid,
   .features-grid,
   .cr-services-grid,
@@ -8359,6 +8168,7 @@ table,
     gap: 12px !important;
   }
 
+  .hero-cta-group,
   .cr-hero-cta-row,
   .gst-hero-cta-row,
   .itr-hero-cta-group,
@@ -8368,6 +8178,8 @@ table,
     width: 100% !important;
   }
 
+  .hero-cta-group button,
+  .hero-cta-group a,
   .cr-hero-cta-btn,
   .gst-btn-primary,
   .gst-btn-secondary,
@@ -8388,12 +8200,6 @@ table,
     margin-top: 16px !important;
   }
 
-  .hero-main-card {
-    height: 240px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
   .cr-modal-card,
   .expert-modal-card,
   .tbr-modal-card {
@@ -8404,6 +8210,187 @@ table,
 
   .expert-modal-header-title {
     font-size: 16px !important;
+  }
+}
+
+/* ============================================================
+   EXACT 320PX MOBILE RESPONSIVE OVERRIDES
+   ============================================================ */
+
+/* Top Trust Bar (<= 640px) */
+@media (max-width: 640px) {
+  .top-trust-bar {
+    padding: 6px 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .top-trust-bar-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    padding: 0 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .top-trust-stats-row {
+    display: none !important; /* Hide desktop stat items to prevent horizontal overflow */
+  }
+
+  .top-trust-right-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    flex-wrap: wrap !important;
+  }
+
+  .top-trust-email-link {
+    font-size: 11.5px !important;
+    padding-right: 8px !important;
+    border-right: 1px solid #CBD5E1 !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Header (<= 1023px) */
+@media (max-width: 1023px) {
+  .sticky-header-wrapper {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    width: 100% !important;
+  }
+
+  .site-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 64px !important;
+    min-height: 64px !important;
+    padding: 0 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .site-header .brand {
+    width: auto !important;
+    max-width: 140px !important;
+  }
+
+  .site-header .brand img {
+    max-height: 38px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  .header-cta-desktop,
+  .site-header .button-primary.header-cta-desktop,
+  .header-cta {
+    display: none !important;
+  }
+
+  .menu-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* Hero Section & Text Containment (<= 767px) */
+@media (max-width: 767px) {
+  .hero-section {
+    min-height: auto !important;
+    padding: 24px 0 32px !important;
+    overflow: hidden !important;
+  }
+
+  .hero-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    min-height: auto !important;
+    width: min(1320px, calc(100% - 32px)) !important;
+    margin-inline: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-left-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    align-items: flex-start !important;
+  }
+
+  .hero-title {
+    font-size: clamp(24px, 7.2vw, 36px) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 16px !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .hero-description {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    margin-bottom: 24px !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .hero-cta-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 24px !important;
+  }
+
+  .hero-btn-main,
+  .hero-btn-sub,
+  .hero-cta-group .button {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-height: 48px !important;
+    height: auto !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    white-space: normal !important;
+  }
+}
+
+/* WhatsApp Floating Action Button (<= 767px) */
+@media (max-width: 767px) {
+  .floating-actions {
+    position: fixed !important;
+    right: 14px !important;
+    bottom: 14px !important;
+    z-index: 9999 !important;
+    gap: 8px !important;
+  }
+
+  .whatsapp-float-btn {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .floating-actions .to-top {
+    width: 40px !important;
+    height: 40px !important;
   }
 }
 

@@ -246,49 +246,41 @@ h3,
 
 @media (max-width: 768px) {
   .legacy-hero-section {
-    padding: 24px 0 28px;
+    padding: 32px 0 28px;
   }
 
   .legacy-hero-section .hero-container {
     min-height: auto;
-    width: calc(100% - 32px) !important;
-    max-width: 100% !important;
-    margin-inline: auto !important;
   }
 
   .site-header .brand {
-    width: 140px;
+    width: 150px;
   }
 
   .site-header .brand img {
-    max-height: 48px;
+    max-height: 56px;
   }
 
   .trusted-shell {
     grid-template-columns: 1fr !important;
     gap: 12px !important;
-    width: calc(100% - 32px) !important;
   }
 
   .trusted-summary {
-    justify-content: center !important;
-    white-space: normal !important;
-    flex-wrap: wrap !important;
-    text-align: center !important;
+    justify-content: center;
   }
 
   .hero-trust-stats-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px 10px !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 0;
   }
 
   .trust-stat-card {
-    padding: 10px 12px !important;
-    border-left: 1px solid #e2e8f0 !important;
+    padding: 0 14px;
   }
 
   .trust-stat-card:nth-child(3) {
-    border-left: 1px solid #e2e8f0 !important;
+    border-left: 0;
   }
 }
 
@@ -764,58 +756,90 @@ h3,
   }
 }
 
-/* Compact Stats Row below hero CTA buttons - Single Row layout */
+/* Compact Stats Row below hero CTA buttons */
 .hero-compact-stats-row {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  flex-wrap: nowrap !important;
-  gap: clamp(8px, 1.3vw, 18px) !important;
-  margin-top: 26px !important;
-  padding-top: 20px !important;
-  border-top: 1px solid #edf2f7 !important;
-  width: 100% !important;
-  max-width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: clamp(10px, 1.4vw, 20px);
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid #edf2f7;
+  width: 100%;
+  max-width: 100%;
 }
 
 .compact-stat-item {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  flex-shrink: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
 }
 
 .compact-stat-item strong {
-  color: #f36b21 !important;
-  font-family: var(--font-head) !important;
-  font-size: clamp(16px, 1.4vw, 20px) !important;
-  font-weight: 800 !important;
-  line-height: 1.1 !important;
-  white-space: nowrap !important;
+  color: #f36b21;
+  font-family: var(--font-head);
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 800;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .compact-stat-item span {
-  color: #10284a !important;
-  font-family: var(--font-head) !important;
-  font-size: clamp(11px, 0.9vw, 13px) !important;
-  font-weight: 600 !important;
-  white-space: nowrap !important;
-  margin-top: 2px !important;
+  color: #10284a;
+  font-family: var(--font-head);
+  font-size: clamp(11px, 0.9vw, 13px);
+  font-weight: 600;
+  white-space: nowrap;
+  margin-top: 2px;
 }
 
 .compact-stat-divider {
-  width: 1px !important;
-  height: 24px !important;
-  background: #e2e8f0 !important;
-  flex-shrink: 0 !important;
+  width: 1px;
+  height: 24px;
+  background: #e2e8f0;
+  flex-shrink: 0;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 640px) {
   .hero-compact-stats-row {
-    gap: 8px !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-top: 20px !important;
+    padding-top: 16px !important;
+    border-top: 1px solid #e2e8f0 !important;
+  }
+
+  .compact-stat-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .compact-stat-item strong {
+    font-size: 18px !important;
+    line-height: 1.15 !important;
+  }
+
+  .compact-stat-item span {
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+  }
+
+  .compact-stat-divider {
+    display: none !important;
   }
 }
+
 
 
 
