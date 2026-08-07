@@ -876,42 +876,165 @@ export default function NGOServicesPage() {
       )}
 
       {/* =========================================================
-          SECTION 8: FINAL CTA BANNER
+          SECTION 8: FINAL CTA BANNER (PREMIUM LIGHT THEME)
          ========================================================= */}
-      <section className="ngo-cta-section">
-        <div className="ngo-container">
-          <div className="ngo-cta-banner">
-            <div className="ngo-cta-left">
-              <h2 className="ngo-cta-title">Start Your NGO Journey Today</h2>
-              <p className="ngo-cta-desc">
+      <section className="ngo-light-cta-section">
+        <div className="ngo-light-cta-container">
+          
+          {/* Main White Card with Light Blue Accent Glow */}
+          <div className="ngo-light-cta-card">
+            
+            {/* LEFT SIDE CONTENT */}
+            <div className="ngo-light-cta-left">
+              <div className="ngo-light-cta-eyebrow-wrap">
+                <span className="ngo-light-cta-eyebrow">READY TO GET STARTED?</span>
+                <span className="ngo-light-cta-eyebrow-line"></span>
+              </div>
+
+              <h2 className="ngo-light-cta-title">
+                Start Your <span className="ngo-light-cta-highlight">NGO</span> <br />
+                Journey Today
+              </h2>
+
+              <p className="ngo-light-cta-desc">
                 Whether you're establishing a charitable trust, society, or Section 8 company, our experts ensure a smooth registration process and ongoing compliance support.
               </p>
-              <div className="ngo-cta-feats">
-                <span className="ngo-cta-feat-tag">✓ Expert NGO Consultants</span>
-                <span className="ngo-cta-feat-tag">✓ Government Registration Support</span>
-                <span className="ngo-cta-feat-tag">✓ Tax Exemption Assistance</span>
-                <span className="ngo-cta-feat-tag">✓ End-to-End Compliance</span>
+
+              {/* 4 Trust Badges */}
+              <div className="ngo-light-cta-badges-grid">
+                <div className="ngo-light-cta-badge">
+                  <div className="ngo-badge-check-icon">
+                    <Check size={12} />
+                  </div>
+                  <span>Expert NGO Consultants</span>
+                </div>
+                <div className="ngo-light-cta-badge">
+                  <div className="ngo-badge-check-icon">
+                    <Check size={12} />
+                  </div>
+                  <span>Government Registration Support</span>
+                </div>
+                <div className="ngo-light-cta-badge">
+                  <div className="ngo-badge-check-icon">
+                    <Check size={12} />
+                  </div>
+                  <span>Tax Exemption Assistance</span>
+                </div>
+                <div className="ngo-light-cta-badge">
+                  <div className="ngo-badge-check-icon">
+                    <Check size={12} />
+                  </div>
+                  <span>End-to-End Compliance</span>
+                </div>
               </div>
             </div>
 
-            <div className="ngo-cta-right">
-              <button
-                className="ngo-btn-primary"
-                onClick={() => openServiceModal("NGO Services")}
-              >
-                <span>Book Free Consultation</span>
-                <ArrowRight size={16} />
-              </button>
-              <a
-                href="tel:+919936351555"
-                className="ngo-btn-outline"
-                style={{ textDecoration: "none" }}
-              >
-                <PhoneCall size={16} style={{ color: "#F36B21" }} />
-                <span>Call Now: +91 99363 51555</span>
-              </a>
+            {/* VERTICAL DIVIDER */}
+            <div className="ngo-light-cta-divider"></div>
+
+            {/* RIGHT SIDE VISUAL ORBIT & ACTION BUTTONS */}
+            <div className="ngo-light-cta-right">
+              
+              {/* Circular Decorative Orbit Visual */}
+              <div className="ngo-light-cta-orbit-wrap">
+                <div className="ngo-light-cta-orbit-ring"></div>
+                
+                {/* Center Emblem */}
+                <div className="ngo-light-cta-center-emblem">
+                  <Landmark size={28} />
+                </div>
+
+                {/* 4 Floating Icons around Orbit */}
+                <div className="ngo-orbit-icon ngo-orbit-top">
+                  <Landmark size={16} />
+                </div>
+                <div className="ngo-orbit-icon ngo-orbit-right">
+                  <FileCheck2 size={16} />
+                </div>
+                <div className="ngo-orbit-icon ngo-orbit-bottom">
+                  <ShieldCheck size={16} />
+                </div>
+                <div className="ngo-orbit-icon ngo-orbit-left">
+                  <Users size={16} />
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="ngo-light-cta-actions">
+                <button
+                  className="ngo-light-cta-btn-primary"
+                  onClick={() => openServiceModal("NGO Services CTA")}
+                >
+                  <span>Book Free Consultation</span>
+                  <ArrowRight size={16} />
+                </button>
+
+                <a
+                  href="tel:+919936351555"
+                  className="ngo-light-cta-btn-phone"
+                >
+                  <PhoneCall size={16} className="ngo-phone-icon" />
+                  <span>Call Now: +91 99363 51555</span>
+                </a>
+
+                <div className="ngo-light-cta-note">
+                  <span className="ngo-note-dot">•</span>
+                  <span>Speak with an expert today</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Bottom Trust Indicators Strip */}
+          <div className="ngo-light-trust-strip">
+            <div className="ngo-light-trust-item">
+              <div className="ngo-light-trust-icon-box">
+                <ShieldCheck size={20} />
+              </div>
+              <div className="ngo-light-trust-text">
+                <strong>100%</strong>
+                <span>Compliance</span>
+              </div>
+            </div>
+
+            <div className="ngo-light-trust-divider"></div>
+
+            <div className="ngo-light-trust-item">
+              <div className="ngo-light-trust-icon-box">
+                <PhoneCall size={20} />
+              </div>
+              <div className="ngo-light-trust-text">
+                <strong>Timely</strong>
+                <span>Support</span>
+              </div>
+            </div>
+
+            <div className="ngo-light-trust-divider"></div>
+
+            <div className="ngo-light-trust-item">
+              <div className="ngo-light-trust-icon-box">
+                <HeartHandshake size={20} />
+              </div>
+              <div className="ngo-light-trust-text">
+                <strong>Trusted by</strong>
+                <span>5000+ NGOs</span>
+              </div>
+            </div>
+
+            <div className="ngo-light-trust-divider"></div>
+
+            <div className="ngo-light-trust-item">
+              <div className="ngo-light-trust-icon-box">
+                <Coins size={20} />
+              </div>
+              <div className="ngo-light-trust-text">
+                <strong>Affordable</strong>
+                <span>& Transparent</span>
+              </div>
             </div>
           </div>
+
         </div>
       </section>
 
