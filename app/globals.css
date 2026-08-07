@@ -5574,6 +5574,20 @@ footer a:hover {
   margin: 0;
 }
 
+.nexusczar-highlight-link {
+  color: #FF6B00 !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: all 0.2s ease;
+}
+
+.nexusczar-highlight-link:hover {
+  color: #FF8533 !important;
+  text-decoration-color: #FF8533 !important;
+}
+
+
 
 /* ============================================================
    2. LATEST ARTICLES SECTION REDESIGN (COMPACT & SLEEK)

@@ -121,7 +121,16 @@ export default function Footer() {
       <div className="footer-bottom-bar">
         <div className="footer-bottom-inner section-shell">
           <span className="copyright-text">
-            © 2025 NexusCzar.com. All Rights Reserved.
+            © 2025{" "}
+            <a
+              href="https://nexusczar.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nexusczar-highlight-link"
+            >
+              NexusCzar.com
+            </a>
+            . All Rights Reserved.
           </span>
           <div className="legal-links-row">
             <Link href="/contact-us">Privacy Policy</Link>
