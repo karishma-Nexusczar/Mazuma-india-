@@ -63,52 +63,37 @@ export default function NGOServicesPage() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  // Section 2 Services Grid (9 Items)
+  // Section 2 Services Grid
   const ngoServices = [
     {
       title: "Trust Registration",
       desc: "Register a Public or Private Trust with complete legal documentation and deed drafting.",
-      icon: Landmark
+      img: "/services/ngo/trust-registration.png"
     },
     {
       title: "Society Registration",
       desc: "Registration under the Societies Registration Act with end-to-end support.",
-      icon: Users
+      img: "/services/ngo/society-registration.png"
     },
     {
       title: "Section 8 Company",
       desc: "Register a not-for-profit company under the Companies Act, 2013 with central government approval.",
-      icon: Building2
+      img: "/services/ngo/section-8-company.png"
     },
     {
       title: "12A Registration",
       desc: "Obtain income tax exemption for charitable organizations under Section 12A / 12AB.",
-      icon: BadgePercent
+      img: "/services/ngo/12a-registration.png"
     },
     {
       title: "80G Registration",
       desc: "Enable donors to claim 50% or 100% tax deductions on contributions under Section 80G.",
-      icon: Coins
+      img: "/services/ngo/80g-registration.png"
     },
     {
       title: "CSR Registration",
       desc: "Form CSR-1 registration to receive Corporate Social Responsibility funds from companies.",
-      icon: HeartHandshake
-    },
-    {
-      title: "FCRA Registration",
-      desc: "Receive foreign contributions legally through FCRA registration and prior permission compliance.",
-      icon: Globe2
-    },
-    {
-      title: "NGO Accounting & Compliance",
-      desc: "Comprehensive accounting, bookkeeping, audit support, and financial reporting for non-profits.",
-      icon: BookOpenCheck
-    },
-    {
-      title: "Annual Filing",
-      desc: "Annual ROC filing, Form 10BD donation returns, IT filings, audit reports, and statutory compliance.",
-      icon: CalendarCheck
+      img: "/services/ngo/csr-registration.png"
     }
   ];
 
@@ -322,39 +307,41 @@ export default function NGOServicesPage() {
           </div>
 
           <div className="ngo-grid-3col">
-            {ngoServices.map((service, idx) => {
-              const IconComp = service.icon;
-              return (
-                <div key={idx} className="ngo-service-card">
-                  {/* Top Subtle Orange Accent Line */}
-                  <div className="ngo-card-top-accent"></div>
+            {ngoServices.map((service, idx) => (
+              <div key={idx} className="ngo-service-card">
+                {/* Top Subtle Orange Accent Line */}
+                <div className="ngo-card-top-accent"></div>
 
-                  {/* Centered Icon Container (52px x 52px) */}
-                  <div className="ngo-card-icon-container">
-                    <div className="ngo-icon-circle">
-                      <IconComp size={22} />
-                    </div>
-                  </div>
-
-                  {/* Service Title */}
-                  <h3 className="ngo-card-title">{service.title}</h3>
-
-                  {/* Short Description */}
-                  <p className="ngo-card-desc">{service.desc}</p>
-
-                  {/* Centered Enquiry CTA Button */}
-                  <div className="ngo-card-btn-wrapper">
-                    <button
-                      className="ngo-service-cta-btn"
-                      onClick={() => openServiceModal(service.title)}
-                    >
-                      <span>Enquiry Now</span>
-                      <ArrowRight size={14} className="ngo-cta-arrow" />
-                    </button>
+                {/* Centered High Pixel Image Container */}
+                <div className="ngo-card-icon-container">
+                  <div className="ngo-icon-circle">
+                    <img
+                      src={service.img}
+                      alt={`${service.title} Icon`}
+                      className="ngo-card-service-img"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
-              );
-            })}
+
+                {/* Service Title */}
+                <h3 className="ngo-card-title">{service.title}</h3>
+
+                {/* Short Description */}
+                <p className="ngo-card-desc">{service.desc}</p>
+
+                {/* Centered Enquiry CTA Button */}
+                <div className="ngo-card-btn-wrapper">
+                  <button
+                    className="ngo-service-cta-btn"
+                    onClick={() => openServiceModal(service.title)}
+                  >
+                    <span>Enquiry Now</span>
+                    <ArrowRight size={14} className="ngo-cta-arrow" />
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
