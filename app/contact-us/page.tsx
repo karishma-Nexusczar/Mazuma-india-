@@ -407,11 +407,11 @@ export default function ContactUsPage() {
       <section style={{ background: "#F8FAFC", padding: "36px 24px", borderTop: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 20 }}>
-            <h2 style={{ fontSize: 22, fontWeight: 900, color: "#0F172A", margin: "0 0 4px 0" }}>
+            <h2 style={{ fontSize: 22, fontWeight: 900, color: "#0F172A", margin: "0 0 6px 0" }}>
               Find Our Office
             </h2>
-            <p style={{ fontSize: 13, color: "#64748B", margin: 0 }}>
-              B-236, 2nd Floor, IT Tower-2, Grandthum, Plot No. 7, Techzone-4, Greater Noida West, UP 201308
+            <p style={{ fontSize: 13, color: "#64748B", margin: 0, lineHeight: 1.5 }}>
+              B-236, 2nd Floor, IT Tower-2, Grandthum, Plot No. 7, Techzone-4, Greater Noida West, Gautam Budh Nagar, Uttar Pradesh – 201308, India.
             </p>
           </div>
 
@@ -424,9 +424,9 @@ export default function ContactUsPage() {
           }}>
             <iframe
               title="Mazuma India Grandthum Office Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.497554904576!2d77.4475!3d28.5845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cee3d5c555555%3A0x123456789abcdef!2sGrandthum%2C%20Techzone%204%2C%20Greater%20Noida%20West!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              src="https://maps.google.com/maps?q=Grandthum+by+Group+108+Plot+no+7+Tech+Zone+IV+Greater+Noida+West+Uttar+Pradesh+201308&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
-              height="280"
+              height="320"
               style={{ border: 0, display: "block" }}
               allowFullScreen={true}
               loading="lazy"

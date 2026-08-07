@@ -19,6 +19,7 @@ import {
   BadgeIndianRupee,
   ShieldCheck,
   Users,
+  BadgeCheck,
   Factory,
   ScanLine,
   ClipboardCheck,
@@ -47,60 +48,55 @@ import {
   ArrowRight
 } from "lucide-react";
 
-const legalRaastaServices = [
+const homeProfessionalServices = [
   {
     id: "service-company-registration",
-    num: "01",
-    tag: "Corporate Setup",
     title: "Company Registration",
-    description: "Fast & hassle-free Private Limited, OPC, LLP, and Section 8 company incorporation with expert legal support.",
+    description: "Private Limited, LLP, OPC, Section 8 Company, ROC compliance, DIN & DSC services.",
     icon: Building2,
     href: "/services/company-registration"
   },
   {
-    id: "service-incometax",
-    num: "02",
-    tag: "Tax Compliance",
-    title: "Income Tax",
-    description: "Complete ITR filing, income tax planning, TDS compliance, and strategic tax saving guidance.",
+    id: "service-gst",
+    title: "GST Services",
+    description: "GST registration, return filing, GST audit, refunds, notices and compliance.",
     icon: ReceiptText,
+    href: "/services/gst-services"
+  },
+  {
+    id: "service-incometax",
+    title: "Income Tax",
+    description: "ITR filing, TDS returns, tax planning and income tax compliance.",
+    icon: FileText,
     href: "/services/income-tax"
   },
   {
-    id: "service-gst",
-    num: "03",
-    tag: "GST & Returns",
-    title: "GST Services",
-    description: "GST registration, monthly return filing, reconciliation, GST audit, and notice response support.",
-    icon: ScanLine,
-    href: "/#service-gst"
-  },
-  {
     id: "service-accounting",
-    num: "04",
-    tag: "Bookkeeping & Audit",
     title: "Accounting & Bookkeeping",
-    description: "End-to-end bookkeeping, annual return filing, financial statement preparation, and statutory audit support.",
+    description: "Bookkeeping, payroll, financial reporting and audit support.",
     icon: Calculator,
-    href: "/#service-accounting"
+    href: "/services/accounting-bookkeeping"
   },
   {
     id: "service-trademark",
-    num: "05",
-    tag: "IP & Licensing",
-    title: "Trademark & Registrations",
-    description: "Trademark search & registration, ISO certification, IEC code, and FSSAI food business licensing.",
-    icon: ShieldCheck,
-    href: "/#service-trademark"
+    title: "Trademark & Business Registration",
+    description: "Trademark, MSME, FSSAI, Startup India, IEC and ISO.",
+    icon: BadgeCheck,
+    href: "/services/business-registrations"
   },
   {
     id: "service-ngo-registration",
-    num: "06",
-    tag: "Non-Profit & CSR",
     title: "NGO Services",
-    description: "Trust, Society, Section 8 registration, 12A/80G tax exemption certificates, and FCRA compliance.",
+    description: "Trust, Society, Section 8, 12A, 80G and FCRA registration.",
     icon: Users,
-    href: "/#service-ngo-registration"
+    href: "/services/ngo-services"
+  },
+  {
+    id: "service-business-compliance",
+    title: "Business Compliance",
+    description: "ROC filing, annual compliance, secretarial services and business advisory.",
+    icon: ShieldCheck,
+    href: "/services/business-compliance"
   }
 ];
 
@@ -262,6 +258,7 @@ export default function Home() {
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [activeReview, setActiveReview] = useState(0);
   const [showTop, setShowTop] = useState(false);
+  const [showAllServices, setShowAllServices] = useState(false);
 
   useEffect(() => {
     const timer = window.setInterval(() => setActiveReview((current) => (current + 1) % testimonials.length), 5000);
@@ -334,7 +331,7 @@ export default function Home() {
               </h1>
 
               <p className="hero-description">
-                Mazuma is a team of experienced tax, compliance and business advisory specialists, delivering clear guidance and dependable financial solutions.
+                Mazuma Professional Services Private Limited (Mazuma India) helps startups, SMEs, companies, professionals, and individuals with taxation, accounting, GST, compliance, business registration, and financial advisory services. We simplify complex regulations so you can focus on growing your business.
               </p>
 
               <div className="hero-cta-group">
@@ -388,71 +385,59 @@ export default function Home() {
 
       <TrustedSection />
 
-      {/* ── Services Section (Below Hero & TrustedSection, Above About Us) ── */}
-      <section id="services" className="legalraasta-services-section">
-        <div className="services-container section-shell">
-          <div className="services-header-center">
-            <p className="services-eyebrow-brand">OUR SERVICES</p>
-            <h2 className="services-title-navy">Professional Registration &amp; Compliance Services</h2>
-            <p className="services-subtitle">Expert guidance across company formation, taxation, compliance &amp; licensing — all under one roof.</p>
+      {/* ── Homepage Our Professional Services Section (3x2 Grid Default) ── */}
+      <section id="services" className="home-services-section">
+        <div className="section-shell">
+          <div className="home-services-header">
+            <span className="home-services-eyebrow">OUR SERVICES</span>
+            <h2 className="home-services-title">Our Professional Services</h2>
+            <p className="home-services-subtitle">
+              Complete business registration, taxation, accounting, compliance, and advisory services under one roof.
+            </p>
+            <div className="home-services-title-divider"></div>
           </div>
 
-          <div className="legalraasta-grid">
-            {legalRaastaServices.map((service) => {
+          {/* 3x2 Grid Default / Expanded All Cards Grid */}
+          <div className="home-services-grid">
+            {(showAllServices ? homeProfessionalServices : homeProfessionalServices.slice(0, 6)).map((service, index) => {
               const IconComponent = service.icon;
-              const isCompanyReg = service.title === "Company Registration";
-              const isIncomeTax = service.title === "Income Tax";
-              const getServiceHref = () => {
-                if (isCompanyReg) return "/services/company-registration";
-                if (isIncomeTax) return "/services/income-tax";
-                return "#contact-us";
-              };
-
+              const isLastCard = index === 6;
               return (
-                <article key={service.title} id={service.id} className="lr-service-card">
-                  <div className="lr-card-top">
-                    <div className="lr-icon-box">
-                      <IconComponent size={22} className="lr-icon-svg" />
-                    </div>
+                <Link
+                  key={service.id}
+                  href={service.href}
+                  className={`home-service-card ${isLastCard ? "home-service-card-center" : ""}`}
+                >
+                  <div className="home-card-top-bar"></div>
+                  <div className="home-card-icon-box">
+                    <IconComponent size={24} />
                   </div>
-                  <h3 className="lr-card-title">{service.title}</h3>
-                  <p className="lr-card-desc">{service.description}</p>
-                  {isCompanyReg || isIncomeTax ? (
-                    <Link
-                      href={getServiceHref()}
-                      className="lr-card-arrow-btn"
-                      aria-label={`Read more about ${service.title}`}
-                    >
-                      <span className="lr-card-arrow-text">Read More</span>
-                      <ArrowRight size={15} className="lr-card-arrow-icon" />
-                    </Link>
-                  ) : (
-                    <a
-                      href="#contact-us"
-                      className="lr-card-arrow-btn"
-                      onClick={(e) => handleNavClick(e, "contact-us")}
-                      aria-label={`Read more about ${service.title}`}
-                    >
-                      <span className="lr-card-arrow-text">Read More</span>
-                      <ArrowRight size={15} className="lr-card-arrow-icon" />
-                    </a>
-                  )}
-                </article>
+                  <h3 className="home-card-title">{service.title}</h3>
+                  <p className="home-card-desc">{service.description}</p>
+                  <span className="home-card-btn">
+                    <span>Explore Services</span>
+                    <ArrowRight size={14} className="home-card-btn-arrow" />
+                  </span>
+                </Link>
               );
             })}
           </div>
 
-          <div className="services-explore-row">
-            <a
-              href="#contact-us"
-              className="services-explore-btn"
-              onClick={(e) => handleNavClick(e, "contact-us")}
+          {/* View All Services / Show Less Toggle Button */}
+          <div className="home-services-all-cta">
+            <button
+              className="home-view-all-services-btn"
+              onClick={() => setShowAllServices(!showAllServices)}
             >
-              <span>Explore More Services</span>
-              <div className="services-explore-btn-icon">
-                <ArrowRight size={16} />
-              </div>
-            </a>
+              <span>{showAllServices ? "Show Less Services" : "View All Services"}</span>
+              <ArrowRight
+                size={16}
+                style={{
+                  transform: showAllServices ? "rotate(-90deg)" : "rotate(90deg)",
+                  transition: "transform 0.3s ease"
+                }}
+              />
+            </button>
           </div>
         </div>
       </section>
@@ -480,13 +465,13 @@ export default function Home() {
 
             <div className="about-description-text">
               <p>
-                Mazuma India is a trusted taxation and business compliance consultancy helping Startups, MSMEs, Companies, Professionals and NGOs manage registrations, taxation and regulatory compliance with confidence.
+                Mazuma Professional Services Private Limited, established on 07 October 2021, operates under the brand name Mazuma India and provides professional taxation, accounting, compliance, and business advisory services.
               </p>
               <p>
-                With years of industry expertise, we simplify complex business processes through transparent guidance, timely execution and dedicated professional support.
+                We assist startups, SMEs, companies, professionals, and individuals with Income Tax, GST, ROC compliance, accounting, payroll, TDS, business registrations, financial reporting, and regulatory compliance.
               </p>
               <p>
-                Our mission is to become the most trusted compliance partner for businesses across India by delivering reliable, efficient and client-focused solutions.
+                With a client-first approach and technology-driven processes, we deliver reliable, transparent, and practical solutions that help businesses remain compliant while achieving sustainable growth.
               </p>
             </div>
 
@@ -498,10 +483,10 @@ export default function Home() {
                 <span>Book Free Consultation</span>
               </button>
 
-              <a className="about-btn-secondary" href="#services">
+              <Link className="about-btn-secondary" href="/about-us">
                 <span>Learn More</span>
                 <span className="btn-arrow">→</span>
-              </a>
+              </Link>
             </div>
           </div>
 

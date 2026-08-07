@@ -53,7 +53,7 @@ export default function Footer() {
           <h3 className="footer-col-title">Quick Links</h3>
           <ul className="footer-links-list">
             <li><Link href="/">Home</Link></li>
-            <li><Link href="/#about-us">About Us</Link></li>
+            <li><Link href="/about-us">About Us</Link></li>
             <li><Link href="/#services">Services</Link></li>
             <li><Link href="/#services">Industries</Link></li>
             <li><Link href="/blog">Blog</Link></li>
@@ -68,10 +68,11 @@ export default function Footer() {
           <ul className="footer-links-list">
             <li><Link href="/services/company-registration">Company Registration</Link></li>
             <li><Link href="/services/gst-services">GST Services</Link></li>
-            <li><Link href="/services/income-tax">Income Tax Return</Link></li>
+            <li><Link href="/services/income-tax">Income Tax</Link></li>
             <li><Link href="/#services">Accounting & Bookkeeping</Link></li>
-            <li><Link href="/#services">ROC Compliance</Link></li>
-            <li><Link href="/#services">More Services</Link></li>
+            <li><Link href="/#services">Trademark & Business Registrations</Link></li>
+            <li><Link href="/#services">NGO Services</Link></li>
+            <li><Link href="/#services">Business Compliance</Link></li>
           </ul>
         </div>
 
@@ -89,7 +90,7 @@ export default function Footer() {
             </div>
             <div className="footer-contact-item">
               <MapPin size={18} className="contact-lucide-icon" style={{ marginTop: "2px" }} />
-              <span>123, Business Hub, Sector 62, Noida, Uttar Pradesh - 201309</span>
+              <span>B-236, 2nd Floor, IT Tower-2, Grandthum, Plot No. 7, Techzone-4, Greater Noida West, Gautam Budh Nagar, Uttar Pradesh – 201308, India.</span>
             </div>
           </div>
         </div>

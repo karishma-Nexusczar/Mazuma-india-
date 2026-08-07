@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="100%" height="100%">
+  <!-- Top Orange Line -->
+  <line x1="25" y1="20" x2="185" y2="20" stroke="#F36B21" stroke-width="4.5" stroke-linecap="round" />
+
+  <!-- Bottom Green Line -->
+  <line x1="15" y1="70" x2="175" y2="70" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round" />
+
+  <!-- FSSAI Typography -->
+  <g font-family="Georgia, 'Times New Roman', serif" font-style="italic">
+    <!-- f -->
+    <text x="20" y="64" font-size="62" font-weight="900" fill="#233876">f</text>
+    <!-- ssai -->
+    <text x="50" y="60" font-size="44" font-weight="800" fill="#233876" font-style="italic">ssa</text>
+    <text x="142" y="60" font-size="48" font-weight="900" fill="#F36B21" font-style="italic">i</text>
+  </g>
+
+  <!-- Green Leaf Accent over the i dot -->
+  <path d="M 148 14 Q 158 5, 160 16 Q 148 18, 148 14 Z" fill="#16A34A" />
+</svg>

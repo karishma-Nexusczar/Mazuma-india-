@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Users, Award, FileText, Mail, X, Menu, Calendar } from "lucide-react";
+import ConsultationModal from "@/components/ConsultationModal";
 
 export default function Header() {
   const [showTop, setShowTop] = useState(false);
@@ -75,11 +76,12 @@ export default function Header() {
 
   const headerServicesList = [
     { name: "Company Registration", href: "/services/company-registration", targetId: "service-company-registration" },
-    { name: "Income Tax", href: "/services/income-tax", targetId: "service-incometax" },
     { name: "GST Services", href: "/services/gst-services", targetId: "service-gst" },
-    { name: "Accounting & Bookkeeping", href: "/#service-accounting", targetId: "service-accounting" },
-    { name: "Trademark & Registrations", href: "/#service-trademark", targetId: "service-trademark" },
-    { name: "NGO Services", href: "/#service-ngo-registration", targetId: "service-ngo-registration" }
+    { name: "Income Tax", href: "/services/income-tax", targetId: "service-incometax" },
+    { name: "Accounting & Bookkeeping", href: "/services/accounting-bookkeeping", targetId: "service-accounting" },
+    { name: "Trademark & Business Registrations", href: "/services/trademark-business-registration", targetId: "service-trademark" },
+    { name: "NGO Services", href: "/services/ngo-services", targetId: "service-ngo-registration" },
+    { name: "Business Compliance", href: "/services/business-compliance", targetId: "services" }
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -179,7 +181,7 @@ export default function Header() {
             <span>Home</span>
           </Link>
           
-          <Link href="/#about-us" onClick={(e) => handleNavClick(e, "about-us")}>
+          <Link href="/about-us" onClick={() => { setMenuOpen(false); setServicesOpen(false); setResourcesOpen(false); }}>
             <span>About Us</span>
           </Link>
 
@@ -225,23 +227,9 @@ export default function Header() {
                     onClick={(e) => {
                       setServicesOpen(false);
                       setMenuOpen(false);
-                      if (item.href === "/services/company-registration") {
-                        if (pathname === "/services/company-registration") {
-                          e.preventDefault();
-                          window.scrollTo({ top: 0, behavior: "smooth" });
-                        }
-                      } else if (item.href === "/services/income-tax") {
-                        if (pathname === "/services/income-tax") {
-                          e.preventDefault();
-                          window.scrollTo({ top: 0, behavior: "smooth" });
-                        }
-                      } else if (item.href === "/services/gst-services") {
-                        if (pathname === "/services/gst-services" || pathname === "/services/gst") {
-                          e.preventDefault();
-                          window.scrollTo({ top: 0, behavior: "smooth" });
-                        }
-                      } else if (pathname === "/") {
-                        handleNavClick(e, item.targetId);
+                      if (pathname === item.href) {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: "smooth" });
                       }
                     }}
                   >
@@ -326,139 +314,7 @@ export default function Header() {
       </header>
 
       {/* HEADER CONSULTATION POPUP MODAL */}
-      {isModalOpen && (
-        <div className="cr-modal-backdrop" onClick={() => setIsModalOpen(false)}>
-          <div className="cr-modal-card" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="cr-modal-close"
-              onClick={() => setIsModalOpen(false)}
-              aria-label="Close modal"
-            >
-              <X size={20} />
-            </button>
-
-            {submitted ? (
-              <div style={{ textAlign: "center", padding: "44px 28px" }}>
-                <div style={{ width: 60, height: 60, borderRadius: "50%", background: "#FFF4EC", color: "#FF6B00", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
-                </div>
-                <h3 className="cr-modal-title" style={{ fontSize: 22, fontWeight: 800, color: "#0F2D52", marginBottom: 8 }}>
-                  Thank You! Consultation Requested
-                </h3>
-                <p className="cr-modal-desc" style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
-                  Your details have been prepared for <strong>compliance@mazumaindia.com</strong>. Our senior CA and legal team will contact you shortly.
-                </p>
-              </div>
-            ) : (
-              <div className="cr-modal-grid">
-                {/* LEFT SIDE: EXPERT BANNER */}
-                <div className="cr-modal-left">
-                  <div>
-                    <img
-                      src="/why-choose-office.jpg"
-                      alt="Consultation Expert"
-                      className="cr-modal-left-img"
-                    />
-                    <h4 className="cr-modal-left-title">Talk to Our Expert</h4>
-                    <div className="cr-modal-left-bullets">
-                      <div className="cr-modal-bullet-item">
-                        ✓ 100% Free Consultation
-                      </div>
-                      <div className="cr-modal-bullet-item">
-                        ✓ Instant Legal Guidance
-                      </div>
-                      <div className="cr-modal-bullet-item">
-                        ✓ 100% Data Confidentiality
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* RIGHT SIDE: CONSULTATION FORM */}
-                <div className="cr-modal-right">
-                  <h3 className="cr-modal-title">Book Free Consultation</h3>
-                  <p className="cr-modal-desc">
-                    Get instant advice from our senior CA team.
-                  </p>
-
-                  <form onSubmit={handleConsultationSubmit}>
-                    {/* Row 1: Full Name & Mobile Number */}
-                    <div className="cr-form-grid-2col">
-                      <div className="cr-form-group">
-                        <label className="cr-form-label">Full Name *</label>
-                        <input
-                          type="text"
-                          className="cr-form-input"
-                          required
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        />
-                      </div>
-
-                      <div className="cr-form-group">
-                        <label className="cr-form-label">Mobile Number *</label>
-                        <input
-                          type="tel"
-                          className="cr-form-input"
-                          required
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Row 2: Email Address & City / State */}
-                    <div className="cr-form-grid-2col">
-                      <div className="cr-form-group">
-                        <label className="cr-form-label">Email Address *</label>
-                        <input
-                          type="email"
-                          className="cr-form-input"
-                          required
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        />
-                      </div>
-
-                      <div className="cr-form-group">
-                        <label className="cr-form-label">City / State *</label>
-                        <input
-                          type="text"
-                          className="cr-form-input"
-                          required
-                          value={formData.city}
-                          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Row 3: Service Required */}
-                    <div className="cr-form-group">
-                      <label className="cr-form-label">Service Required *</label>
-                      <select
-                        className="cr-form-select"
-                        value={formData.service}
-                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      >
-                        <option value="Company Registration">Company Registration</option>
-                        <option value="Income Tax / GST">Income Tax / GST</option>
-                        <option value="Accounting & Bookkeeping">Accounting & Bookkeeping</option>
-                        <option value="Trademark & ISO">Trademark & ISO</option>
-                        <option value="Firm & MSME">Firm & MSME</option>
-                        <option value="NGO Registration">NGO Registration</option>
-                      </select>
-                    </div>
-
-                    <button type="submit" className="cr-modal-submit-btn">
-                      Request Consultation <span>→</span>
-                    </button>
-                  </form>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

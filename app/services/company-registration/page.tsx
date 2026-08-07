@@ -38,20 +38,21 @@ import {
   TrendingUp,
   Repeat,
   Award,
-  KeyRound,
   Send,
   CreditCard,
-  Building,
   Receipt,
   Mail,
-  PieChart,
   FileCode2,
   Sparkles,
-  PhoneCall
+  PhoneCall,
+  ChevronDown,
+  HelpCircle,
+  Check
 } from "lucide-react";
 
 export default function CompanyRegistrationPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [activeTab, setActiveTab] = useState<"pvt-ltd" | "llp" | "opc" | "public-ltd" | "roc" | "dsc">("pvt-ltd");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -74,7 +75,6 @@ export default function CompanyRegistrationPage() {
       `Hello Mazuma India Team,\n\nI would like to request a free consultation regarding company registration.\n\nDetails:\n- Full Name: ${formData.name}\n- Phone: ${formData.phone}\n- Email: ${formData.email}\n- Company Type: ${formData.companyType}\n- City / State: ${formData.city}\n\nPlease reach out to me as soon as possible.\n\nThank you,\n${formData.name}`
     );
 
-    // Jump directly to Gmail / Email Client with compliance@mazumaindia.com
     window.location.href = `mailto:compliance@mazumaindia.com?subject=${subject}&body=${body}`;
 
     setSubmitted(true);
@@ -91,238 +91,188 @@ export default function CompanyRegistrationPage() {
     }, 4000);
   };
 
-  // Hero Section 4 Trust Badges (Row 1: 3 items, Row 2: 1 item - exact match to Image 3)
+  // Section 1: Hero Feature Icons (4 Badges)
   const heroTrustBadgesRow1 = [
     { title: "MCA Approved", icon: ShieldCheck },
-    { title: "Expert CA Support", icon: UserCheck },
-    { title: "Fast & Easy Process", icon: Zap }
+    { title: "Expert CA Support", icon: UserCheck }
   ];
 
   const heroTrustBadgesRow2 = [
+    { title: "Fast Processing", icon: Zap },
     { title: "100% Legal Compliance", icon: FileCheck }
   ];
 
-  // Floating Services Card 12 Items
+  // Section 2: Sidebar Services (12 Comprehensive Core Items - No Cropping)
   const floatingServices = [
-    { title: "Private Limited Company", icon: Building2, href: "#pvt-ltd" },
-    { title: "Public Limited Company", icon: Landmark, href: "#pub-ltd" },
-    { title: "LLP Incorporation", icon: Handshake, href: "#llp" },
-    { title: "ROC Annual Compliances", icon: ClipboardCheck, href: "#roc" },
-    { title: "DIN Related Filings", icon: BadgeCheck, href: "#din" },
-    { title: "Digital Signature", icon: PenSquare, href: "#dsc" },
-    { title: "Company ITR Filing", icon: FileText, href: "#itr" },
-    { title: "Statutory Register", icon: BookOpen, href: "#statutory" },
-    { title: "Minutes Book", icon: Notebook, href: "#minutes" },
-    { title: "Accounting & Bookkeeping", icon: Calculator, href: "#accounting" },
-    { title: "Tax Compliance Management", icon: Scale, href: "#tax-compliance" },
-    { title: "Financial Reporting & Analysis", icon: BarChart3, href: "#financial-reporting" }
+    { title: "Private Limited Company", icon: Building2 },
+    { title: "Public Limited Company", icon: Landmark },
+    { title: "OPC Registration", icon: Briefcase },
+    { title: "LLP Registration", icon: Handshake },
+    { title: "Partnership Firm Registration", icon: Users },
+    { title: "Section 8 Company", icon: HeartHandshake },
+    { title: "Nidhi & Producer Company", icon: PiggyBank },
+    { title: "ROC Annual Compliance", icon: ClipboardCheck },
+    { title: "DIN Related Filings", icon: BadgeCheck },
+    { title: "Digital Signature (DSC)", icon: PenSquare },
+    { title: "Company ITR & Tax Filing", icon: FileText },
+    { title: "Accounting & Statutory Books", icon: Calculator }
   ];
 
-  // Section 2: Choose Your Company Type (8 Cards with short descriptions)
+  // Section 3: Company Type Cards (with extra line below each)
   const companyRegistrationTypes = [
     {
       title: "Private Limited Company",
-      desc: "Preferred corporate entity for tech startups & venture capital funding.",
+      desc: "Ideal for startups & growing businesses",
       icon: Building2,
       linkText: "Register Now"
     },
     {
       title: "Public Limited Company",
-      desc: "Designed for large enterprises planning public share issuance.",
+      desc: "Suitable for large businesses",
       icon: Landmark,
       linkText: "Register Now"
     },
     {
-      title: "LLP Incorporation",
-      desc: "Partnership structure with limited liability & minimal statutory filings.",
+      title: "LLP Registration",
+      desc: "Flexible structure with limited liability",
       icon: Handshake,
       linkText: "Register Now"
     },
     {
       title: "OPC Registration",
-      desc: "Single-founder structure offering 100% control & limited liability.",
+      desc: "Perfect for solo entrepreneurs",
       icon: Briefcase,
       linkText: "Register Now"
     },
     {
       title: "Section 8 Company",
-      desc: "Non-profit setup for promoting social welfare, education & charity.",
+      desc: "For non-profit, social & charitable causes",
       icon: HeartHandshake,
       linkText: "Register Now"
     },
     {
       title: "Nidhi Company",
-      desc: "Non-banking financial entity to cultivate mutual savings & thrift.",
+      desc: "For mutual benefit thrift & financial savings",
       icon: PiggyBank,
       linkText: "Register Now"
     },
     {
       title: "Producer Company",
-      desc: "Special company entity for agricultural producers & farm businesses.",
+      desc: "For agricultural producers & farm enterprises",
       icon: Wheat,
       linkText: "Register Now"
     },
     {
       title: "Partnership Firm",
-      desc: "Simple legal structure under Partnership Act for traditional business.",
+      desc: "Traditional partnership setup under Partnership Act",
       icon: Users,
       linkText: "Register Now"
     }
   ];
 
-  // Overview Highlights
-  const overviewHighlights = [
-    {
-      title: "Separate Legal Entity",
-      desc: "Independent legal existence distinct from its owners",
-      icon: Building2
-    },
-    {
-      title: "Limited Liability",
-      desc: "Personal assets protected from business debts",
-      icon: ShieldCheck
-    },
-    {
-      title: "Business Credibility",
-      desc: "Build immediate trust with banks, vendors & investors",
-      icon: Award
-    }
-  ];
-
-  // Registration Process Timeline (7 steps matching Image 3)
+  // Section 5: Registration Process (7 Steps)
   const timelineSteps = [
-    { step: "01", title: "Consultation & Business Discussion", icon: Users },
-    { step: "02", title: "Document Collection", icon: FileCheck },
-    { step: "03", title: "DSC & DIN Allotment", icon: PenSquare },
-    { step: "04", title: "Name Approval", icon: ShieldCheck },
-    { step: "05", title: "MCA Application Filing", icon: Send },
-    { step: "06", title: "Certificate of Incorporation", icon: Award },
-    { step: "07", title: "Post Incorporation Compliance", icon: FileText }
+    { step: "1️⃣", title: "Free Consultation", icon: Users },
+    { step: "2️⃣", title: "Document Verification", icon: FileCheck },
+    { step: "3️⃣", title: "DSC & DIN Generation", icon: PenSquare },
+    { step: "4️⃣", title: "Company Name Approval", icon: ShieldCheck },
+    { step: "5️⃣", title: "MCA Filing", icon: Send },
+    { step: "6️⃣", title: "Certificate of Incorporation", icon: Award },
+    { step: "7️⃣", title: "Post Registration Compliance", icon: FileText }
   ];
 
-  // Benefits Section (6 items matching Image 3)
+  // Section 6: Benefits (6 Items with 2-line descriptions)
   const benefitsList = [
     {
       title: "Limited Liability",
-      desc: "Protect personal assets from business liabilities.",
+      desc: "Protects the personal assets of shareholders against business liabilities.",
       icon: ShieldCheck
     },
     {
-      title: "Separate Legal Entity",
-      desc: "Company has its own legal identity.",
+      title: "Separate Legal Identity",
+      desc: "A registered company has its own legal existence independent of its owners.",
       icon: Building2
     },
     {
-      title: "Better Credibility",
-      desc: "Build trust with customers, banks & investors.",
-      icon: TrendingUp
-    },
-    {
-      title: "Easy Access to Funding",
-      desc: "Easier to raise capital and attract investors.",
+      title: "Easy Funding",
+      desc: "Improves credibility with banks, investors, and financial institutions.",
       icon: Coins
     },
     {
-      title: "Perpetual Succession",
-      desc: "Business continues even if owners change.",
-      icon: Repeat
+      title: "Better Brand Image",
+      desc: "Build trust among clients, vendors, and government authorities.",
+      icon: TrendingUp
     },
     {
       title: "Tax Benefits",
-      desc: "Eligible for various tax benefits & incentives.",
+      desc: "Avail deductions and government incentives wherever applicable.",
       icon: Award
+    },
+    {
+      title: "Business Continuity",
+      desc: "The company continues regardless of ownership changes.",
+      icon: Repeat
     }
   ];
 
-  // Documents Required (7 items matching Image 3)
-  const documentsRequired = [
-    { title: "PAN Card", icon: CreditCard },
-    { title: "Aadhaar Card", icon: Landmark },
-    { title: "Passport Size Photo", icon: UserCheck },
-    { title: "Electricity Bill / Address Proof", icon: Receipt },
-    { title: "Rental Agreement (If Rented Office)", icon: FileCode2 },
-    { title: "Email ID & Mobile Number", icon: Mail },
-    { title: "Office Address Proof", icon: Building2 }
+  // Section 7: Documents Required (Divided into 2 Columns)
+  const directorDocuments = [
+    { title: "PAN Card (Mandatory for Indian Directors)", icon: CreditCard },
+    { title: "Aadhaar Card / Voter ID / Passport", icon: Landmark },
+    { title: "Passport Size Photograph", icon: UserCheck },
+    { title: "Email Address & Mobile Number", icon: Mail }
   ];
 
-  // All Company Services 12 Items (Matching Image 4 layout)
+  const officeDocuments = [
+    { title: "Electricity Bill / Utility Bill (Max 2 Months Old)", icon: Receipt },
+    { title: "Rent Agreement / Property Ownership Proof", icon: FileCode2 },
+    { title: "NOC from Property Owner", icon: Building2 },
+    { title: "Registered Office Address Proof", icon: FileText }
+  ];
+
+  // Section 8: Services Grid (2-3 Detailed Lines Each)
   const allCompanyServices = [
     {
       title: "Private Limited Company",
-      desc: "Register your private limited company with full legal compliance.",
+      desc: "Register your business with limited liability protection, separate legal identity, and enhanced business credibility.",
       icon: Building2
     },
     {
-      title: "Public Limited Company",
-      desc: "Register your public limited company for larger business operations.",
-      icon: Landmark
-    },
-    {
-      title: "Accounting & Bookkeeping",
-      desc: "Maintain accurate books of accounts for your business.",
-      icon: Calculator
-    },
-    {
-      title: "LLP Incorporation",
-      desc: "Incorporate LLP with minimal compliance and maximum benefits.",
+      title: "LLP Registration",
+      desc: "An ideal business structure combining operational flexibility with limited liability.",
       icon: Handshake
     },
     {
-      title: "ROC Annual Compliances",
-      desc: "Timely ROC filings and compliance management.",
+      title: "ROC Compliance",
+      desc: "Annual filing, board resolutions, and MCA compliance managed by experts.",
       icon: ClipboardCheck
     },
     {
-      title: "Minutes Book",
-      desc: "Maintain minutes of meetings and corporate decisions.",
-      icon: Notebook
-    },
-    {
-      title: "DIN Related Filings",
-      desc: "Apply for DIN and manage all DIN related services.",
-      icon: BadgeCheck
-    },
-    {
-      title: "Digital Signature",
-      desc: "Get DSC for directors and company officials.",
+      title: "Digital Signature (DSC)",
+      desc: "Secure Class-3 DSC for MCA filings, GST registration, Income Tax, and eTendering.",
       icon: PenSquare
     },
     {
-      title: "Tax Compliance Management",
-      desc: "Ensure GST, TDS, and other tax compliance on time.",
-      icon: Scale
+      title: "Accounting & Bookkeeping",
+      desc: "Maintain accurate financial records using professional accounting standards.",
+      icon: Calculator
     },
     {
       title: "Company ITR Filing",
-      desc: "File your company income tax return accurately and on time.",
+      desc: "Timely corporate income tax return filing with maximum compliance.",
       icon: FileText
-    },
-    {
-      title: "Statutory Register",
-      desc: "Maintain statutory registers as per Companies Act.",
-      icon: BookOpen
-    },
-    {
-      title: "Financial Reporting & Analysis",
-      desc: "Get detailed financial reports and business insights.",
-      icon: BarChart3
     }
   ];
 
-  // Why Choose Mazuma India
+  // Section 10: Why Choose Mazuma India (6 Cards)
   const whyChooseUs = [
     {
-      title: "10+ Years Experience",
+      title: "10+ Years Industry Experience",
       desc: "A decade of stellar experience guiding startups, SMEs, and corporates through complex legal frameworks.",
       icon: Award
     },
     {
-      title: "5000+ Companies Registered",
-      desc: "Over 5,000 successful company incorporations completed seamlessly across all states of India.",
-      icon: Building2
-    },
-    {
-      title: "Expert CA Team",
+      title: "Qualified CA & Compliance Experts",
       desc: "In-house senior Chartered Accountants, CS professionals, and tax attorneys handling your filings directly.",
       icon: UserCheck
     },
@@ -332,72 +282,86 @@ export default function CompanyRegistrationPage() {
       icon: Coins
     },
     {
-      title: "Fast Processing",
-      desc: "Streamlined workflow and rapid document verification ensuring incorporation in 5-7 days.",
+      title: "End-to-End Documentation",
+      desc: "Complete assistance from name reservation and MOA/AOA drafting to final Certificate of Incorporation.",
+      icon: FileText
+    },
+    {
+      title: "Fast Turnaround Time",
+      desc: "Streamlined workflow ensuring rapid document verification and company incorporation in 5-7 days.",
       icon: Zap
     },
     {
-      title: "Dedicated Support",
+      title: "Dedicated Support Team",
       desc: "Assigned corporate relationship manager providing step-by-step assistance and continuous updates.",
       icon: PhoneCall
     }
   ];
 
-  // FAQ List
+  // Section 11: 8 Comprehensive FAQs
   const faqList = [
     {
-      q: "What is the minimum number of directors required for a Private Limited Company?",
-      a: "A minimum of 2 directors and 2 shareholders are required to register a Private Limited Company in India. A single individual can act as both a director and a shareholder. At least one director must be an Indian resident."
+      q: "What is a Private Limited Company?",
+      a: "A Private Limited Company (Pvt Ltd) is a legal corporate structure registered under the Companies Act, 2013. It offers limited liability protection to its shareholders, holds a separate legal identity, and is the most preferred structure for startups seeking venture capital funding."
     },
     {
-      q: "How long does it take to register a company in India?",
-      a: "The entire process typically takes 5 to 7 working days, subject to MCA portal response times and prompt document submission by directors."
+      q: "How many directors are required to register a company?",
+      a: "A minimum of 2 directors and 2 shareholders are required for a Private Limited Company (up to a maximum of 200 shareholders). A One Person Company (OPC) requires only 1 director. At least one director must be a resident of India."
     },
     {
-      q: "Is physical presence required during the company registration process?",
-      a: "No, physical presence is not required. The complete registration process is 100% online and paperless. Documents can be digitally signed using a Class 3 Digital Signature Certificate (DSC)."
+      q: "How much time does company registration take?",
+      a: "The company registration process in India typically takes 5 to 7 working days, depending on MCA portal response times and prompt document submission by directors."
     },
     {
-      q: "What is a Digital Signature Certificate (DSC) and why is it needed?",
-      a: "A DSC is an encrypted electronic signature key used by directors to sign digital e-forms submitted to the Ministry of Corporate Affairs (MCA) securely."
+      q: "What documents are required for company registration?",
+      a: "Required documents include PAN card, Aadhaar card/Passport, recent passport photograph, bank statement/utility bill for address proof, and electricity bill with NOC for the registered office address."
     },
     {
-      q: "What is Director Identification Number (DIN)?",
-      a: "DIN is a unique 8-digit identification number granted by the MCA to individuals who wish to serve as directors of an Indian company. It is allocated through the SPICe+ registration form."
+      q: "Is GST registration mandatory for a newly registered company?",
+      a: "GST registration is mandatory if your annual turnover exceeds ₹40 Lakhs for goods (₹20 Lakhs for services), or if you engage in inter-state sales or e-commerce operations. However, companies can voluntarily register for GST at any time."
     },
     {
-      q: "Can a foreign national or NRI be a director in an Indian company?",
-      a: "Yes, NRIs and foreign nationals can be directors and shareholders in an Indian company. However, at least one director must be a resident of India (resided in India for at least 182 days in the preceding financial year)."
+      q: "Can NRIs or Foreign Nationals register a company in India?",
+      a: "Yes, NRIs, foreign nationals, and foreign entities can register a company in India and hold 100% FDI equity through the automatic route in most business sectors. At least one director must be an Indian resident."
     },
     {
-      q: "What are the key documents needed for company registration?",
-      a: "Required documents include PAN card, Aadhaar card/Passport, recent bank statement or utility bill as address proof, recent passport photo, and utility bill/rent agreement for the registered office address."
+      q: "What is the minimum capital requirement for company registration?",
+      a: "There is no minimum paid-up capital requirement to register a company in India under the Companies Act, 2013. You can start a Private Limited Company with an authorized capital of ₹1 Lakh."
     },
     {
-      q: "What happens after obtaining the Certificate of Incorporation?",
-      a: "Once incorporated, your company receives its Corporate Identification Number (CIN), PAN, and TAN. You can then open a corporate current bank account, apply for GST registration, and begin commercial operations."
-    },
-    {
-      q: "What is the difference between an LLP and a Private Limited Company?",
-      a: "An LLP offers lower compliance costs and no requirement for statutory audit until revenue crosses ₹40 Lakhs. A Private Limited Company is preferred by startups seeking VC funding because equity shares can be easily issued to investors."
-    },
-    {
-      q: "What annual ROC compliances are mandatory for a newly registered company?",
-      a: "Mandatory annual compliances include holding the First Board Meeting, appointing an Auditor (Form ADT-1), filing Financial Statements (Form AOC-4), Annual Return (Form MGT-7), and completing Director KYC (DIR-3 KYC)."
+      q: "What is the government company registration fee?",
+      a: "Government fees for SPICe+ MCA filing for companies with authorized capital up to ₹15 Lakhs have been waived by the Ministry of Corporate Affairs. Only nominal name approval (RUN) fees, PAN/TAN fees, and state stamp duty apply."
     }
   ];
 
+  const jsonLdCompanyReg = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Company Registration Services",
+    provider: {
+      "@type": "Organization",
+      name: "Mazuma India",
+      url: "https://mazumaindia.com"
+    },
+    areaServed: "India",
+    description: "Complete company registration solutions including Private Limited, LLP, OPC, Section 8, MCA filings and annual corporate ROC compliance.",
+    url: "https://mazumaindia.com/services/company-registration"
+  };
+
   return (
     <div className="cr-page-wrapper">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdCompanyReg) }}
+      />
+
       <Header />
 
       <main>
         {/* ============================================================
             SECTION 1: HERO SECTION
-            Hero background ends EXACTLY at the bottom of CTA button (Image 3)
             ============================================================ */}
         <section className="cr-hero-section">
-          {/* Full Width Background Image & Gradient Overlay */}
           <div className="cr-hero-bg-wrapper">
             <img
               src="/company-registration-hero.png"
@@ -408,7 +372,7 @@ export default function CompanyRegistrationPage() {
           </div>
 
           <div className="cr-container">
-            {/* Breadcrumb Navigation - Small Gray Text */}
+            {/* Breadcrumb Navigation */}
             <div className="cr-breadcrumb-bar">
               <ul className="cr-breadcrumb-list">
                 <li>
@@ -428,7 +392,7 @@ export default function CompanyRegistrationPage() {
             </div>
 
             <div className="cr-hero-grid-layout">
-              {/* LEFT SIDE CONTENT OVERLAY */}
+              {/* LEFT SIDE CONTENT */}
               <div className="cr-hero-left-content">
                 <span className="cr-hero-label">COMPANY REGISTRATION</span>
 
@@ -437,10 +401,10 @@ export default function CompanyRegistrationPage() {
                 </h1>
 
                 <p className="cr-hero-paragraph">
-                  Register your company in India with ease. We handle end-to-end registration, documentation, and compliance to help you start your business the right way.
+                  Register your business with confidence through Mazuma India. We provide end-to-end company registration, legal documentation, MCA filings, and compliance support to help startups, entrepreneurs, and growing businesses establish a strong legal foundation.
                 </p>
 
-                {/* Trust Badges - Arranged in 2 rows as in Image 3 */}
+                {/* Feature Icons (4 Badges) */}
                 <div className="cr-trust-badges-container">
                   <div className="cr-trust-badges-row">
                     {heroTrustBadgesRow1.map((badge, idx) => {
@@ -471,20 +435,42 @@ export default function CompanyRegistrationPage() {
                   </div>
                 </div>
 
-                {/* CTA Button */}
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="cr-hero-cta-btn"
-                >
-                  Talk to Our Expert
-                  <ArrowRight size={16} />
-                </button>
+                {/* Hero CTA Buttons */}
+                <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="cr-hero-cta-btn"
+                  >
+                    Book Free Consultation
+                    <ArrowRight size={16} />
+                  </button>
+
+                  <a
+                    href="tel:+919936351555"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "12px 24px",
+                      borderRadius: 12,
+                      background: "#FFFFFF",
+                      color: "#0F2D52",
+                      fontSize: 14,
+                      fontWeight: 800,
+                      textDecoration: "none",
+                      border: "1.5px solid #FF6B00"
+                    }}
+                  >
+                    <PhoneCall size={16} style={{ color: "#FF6B00" }} />
+                    <span>Talk to Our Expert</span>
+                  </a>
+                </div>
               </div>
 
-              {/* RIGHT SIDE: Floating Services Card */}
+              {/* RIGHT SIDE: COMPANY REGISTRATION SERVICES SIDEBAR */}
               <div className="cr-floating-services-card">
                 <div className="cr-floating-card-title">
-                  <span>For Companies</span>
+                  <span>Company Registration Services</span>
                   <Building2 size={18} color="#FF6B00" />
                 </div>
 
@@ -494,7 +480,7 @@ export default function CompanyRegistrationPage() {
                     return (
                       <a
                         key={idx}
-                        href={service.href}
+                        href="#company-types"
                         onClick={(e) => {
                           e.preventDefault();
                           setIsModalOpen(true);
@@ -516,10 +502,9 @@ export default function CompanyRegistrationPage() {
         </section>
 
         {/* ============================================================
-            SECTION 2: CHOOSE YOUR COMPANY TYPE
-            Cards grid shifted left so right floating badge card doesn't overlap them!
+            SECTION 2: COMPANY TYPE CARDS
             ============================================================ */}
-        <section className="cr-company-types-section">
+        <section className="cr-company-types-section" id="company-types">
           <div className="cr-container">
             <div className="cr-types-left-container">
               <div className="cr-section-header-centered">
@@ -527,7 +512,6 @@ export default function CompanyRegistrationPage() {
                 <div className="cr-orange-divider"></div>
               </div>
 
-              {/* 4 Columns Grid shifted left to clear right 310px badge column */}
               <div className="cr-types-4col-grid">
                 {companyRegistrationTypes.map((card, idx) => {
                   const CardIcon = card.icon;
@@ -539,9 +523,10 @@ export default function CompanyRegistrationPage() {
                     >
                       <div>
                         <div className="cr-card-top-icon">
-                          <CardIcon size={34} />
+                          <CardIcon size={32} />
                         </div>
                         <h3 className="cr-card-heading-title">{card.title}</h3>
+                        <p className="cr-card-desc-short">{card.desc}</p>
                       </div>
 
                       <div className="cr-card-bottom-link">
@@ -557,35 +542,35 @@ export default function CompanyRegistrationPage() {
         </section>
 
         {/* ============================================================
-            SECTIONS 3-10: UNCHANGED
+            SECTION 4: WHY REGISTER YOUR COMPANY?
             ============================================================ */}
-        
-        {/* 3. OVERVIEW SECTION (Compact style - Matched to Reference Image 2) */}
         <section className="cr-overview-compact-section">
           <div className="cr-container">
             <div className="cr-overview-grid">
               <div className="cr-overview-img-box">
                 <img
                   src="/company-overview-laptop.png"
-                  alt="Overview of Company Registration - Mazuma India"
+                  alt="Why Register Your Company - Mazuma India"
                   className="cr-overview-img"
                 />
               </div>
 
               <div className="cr-overview-content">
-                <h2 className="cr-overview-title">Overview of Company Registration</h2>
+                <h2 className="cr-overview-title">Why Register Your Company?</h2>
                 <p className="cr-overview-text">
-                  Company registration is the legal process of forming a business entity under the Companies Act, 2013. It provides a separate legal identity, limited liability protection, and credibility in the market. Whether you are a startup, small business, or an established enterprise, registering your company is the first step towards long-term growth and success.
+                  Starting a registered business provides legal recognition, builds trust among customers and investors, protects owners through limited liability, and ensures compliance with Indian corporate laws. Whether you're launching a startup or expanding an existing business, choosing the right business structure is the first step toward long-term success.
                 </p>
                 <p className="cr-overview-text" style={{ marginBottom: 0 }}>
-                  We provide complete assistance in name approval, documentation, MCA filing, and post-registration compliance to ensure a smooth and hassle-free experience.
+                  Mazuma India assists entrepreneurs throughout the complete registration journey—from selecting the ideal entity type and preparing documentation to obtaining government approvals and maintaining post-registration compliance.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 4. REGISTRATION PROCESS (TIMELINE - Matched to Image 3) */}
+        {/* ============================================================
+            SECTION 5: REGISTRATION PROCESS (7 STEPS)
+            ============================================================ */}
         <section className="cr-section">
           <div className="cr-container">
             <div className="cr-section-header-unified">
@@ -613,7 +598,9 @@ export default function CompanyRegistrationPage() {
           </div>
         </section>
 
-        {/* 5. BENEFITS SECTION (6 Columns - Matched to Image 3) */}
+        {/* ============================================================
+            SECTION 6: BENEFITS SECTION (2 LINES EACH)
+            ============================================================ */}
         <section className="cr-section-light">
           <div className="cr-container">
             <div className="cr-section-header-unified">
@@ -638,35 +625,67 @@ export default function CompanyRegistrationPage() {
           </div>
         </section>
 
-        {/* 6. DOCUMENTS REQUIRED (Unified Card Box - Matched to Image 6) */}
+        {/* ============================================================
+            SECTION 7: DOCUMENTS REQUIRED (2 CLEAR COLUMNS)
+            ============================================================ */}
         <section className="cr-section">
           <div className="cr-container">
             <div className="cr-docs-unified-card">
               <div className="cr-section-header-unified" style={{ marginBottom: "28px" }}>
-                <h2 className="cr-section-title-unified">Documents Required</h2>
+                <h2 className="cr-section-title-unified">Documents Required for Company Registration</h2>
                 <div className="cr-section-divider-unified"></div>
               </div>
 
-              <div className="cr-docs-7col-grid">
-                {documentsRequired.map((doc, idx) => {
-                  const DocIcon = doc.icon;
-                  return (
-                    <div className="cr-doc-pill-card" key={idx}>
-                      <DocIcon size={18} className="cr-doc-pill-icon" />
-                      <span className="cr-doc-pill-text">{doc.title}</span>
-                    </div>
-                  );
-                })}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
+                {/* Column 1: Director Documents */}
+                <div style={{ background: "#F8FAFC", padding: "24px 28px", borderRadius: 14, border: "1px solid #E2E8F0" }}>
+                  <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0F2D52", margin: "0 0 16px 0", display: "flex", alignItems: "center", gap: 8 }}>
+                    <UserCheck size={20} style={{ color: "#FF6B00" }} />
+                    <span>Director &amp; Shareholder Documents</span>
+                  </h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    {directorDocuments.map((doc, idx) => {
+                      const DocIcon = doc.icon;
+                      return (
+                        <div key={idx} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "#1E293B", fontWeight: 600 }}>
+                          <CheckCircle2 size={18} style={{ color: "#10B981", flexShrink: 0 }} />
+                          <span>{doc.title}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Column 2: Registered Office Documents */}
+                <div style={{ background: "#F8FAFC", padding: "24px 28px", borderRadius: 14, border: "1px solid #E2E8F0" }}>
+                  <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0F2D52", margin: "0 0 16px 0", display: "flex", alignItems: "center", gap: 8 }}>
+                    <Building2 size={20} style={{ color: "#FF6B00" }} />
+                    <span>Registered Office Documents</span>
+                  </h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    {officeDocuments.map((doc, idx) => {
+                      const DocIcon = doc.icon;
+                      return (
+                        <div key={idx} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "#1E293B", fontWeight: 600 }}>
+                          <CheckCircle2 size={18} style={{ color: "#10B981", flexShrink: 0 }} />
+                          <span>{doc.title}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
 
               <div className="cr-docs-bottom-note">
-                <strong className="cr-note-orange">Note:</strong> Documents may vary depending on the type of company and business structure.
+                <strong className="cr-note-orange">Note:</strong> All director documents must be self-attested. For foreign directors or NRIs, passport and utility bills must be notarized or apostilled.
               </div>
             </div>
           </div>
         </section>
 
-        {/* 7. ALL COMPANY SERVICES (Compact 3-Column Unified Box - Matched to Image 4) */}
+        {/* ============================================================
+            SECTION 8: SERVICES GRID (2-3 DETAILED LINES EACH)
+            ============================================================ */}
         <section className="cr-section-light">
           <div className="cr-container">
             <div className="cr-section-header-unified">
@@ -684,7 +703,7 @@ export default function CompanyRegistrationPage() {
                       className="cr-service-compact-item"
                       onClick={() => setIsModalOpen(true)}
                     >
-                      <SvcIcon size={24} className="cr-service-compact-icon" />
+                      <SvcIcon size={26} className="cr-service-compact-icon" />
                       <div>
                         <h3 className="cr-service-compact-title">{svc.title}</h3>
                         <p className="cr-service-compact-desc">{svc.desc}</p>
@@ -695,58 +714,335 @@ export default function CompanyRegistrationPage() {
               </div>
             </div>
 
-            {/* Detailed Service Overview Highlights */}
-            <div className="cr-service-deepdive-container" style={{ marginTop: "32px" }}>
-              {/* 1. Private Limited Company Overview */}
-              <div className="cr-deepdive-card">
-                <div className="cr-deepdive-badge">Private Limited Company</div>
-                <h3 className="cr-deepdive-title">Overview of Private Limited Company Registration in India</h3>
-                <p className="cr-deepdive-text">
-                  One of the most common company structures in India is the Private Limited Company, which is governed by the Companies Act of 2013. It is essential for entrepreneurs who want to start a business in India to register as a Private Limited Company. This gives directors the benefit of limited liability in addition to encouraging the growth of a solid corporate structure.
-                </p>
-                <p className="cr-deepdive-text">
-                  A company must register with the ROC (Registrar of Companies) in accordance with the rules and regulations established by the MCA in order to be registered under the Companies Act, 2013. Mazuma India provides an affordable service to streamline the Private Limited Company Registration procedure. You obtain a Certificate of Incorporation upon successful registration.
-                </p>
-              </div>
-
-              {/* 2. Digital Signature Certificate (DSC) Overview */}
-              <div className="cr-deepdive-card">
-                <div className="cr-deepdive-badge">Digital Signature (DSC)</div>
-                <h3 className="cr-deepdive-title">Register Your Digital Signature Certificate (DSC)</h3>
-                <p className="cr-deepdive-text">
-                  DSC stands for an electronic signature corresponding to the analogue of the pen-and-ink signature as legalised by Act Information Technology-2000 for authentication in individuals and organisations pertaining to electronically secure identity sign or execute online business documents. Issued by a Certifying Authority (CA), under the supervision of the Controller of Authorities (CCA), DSC ensures security, legal validity, and data integrity in digital communications.
-                </p>
-                <p className="cr-deepdive-text">
-                  DSCs include Class 3 security levels used for filing income tax returns, company registration with ROC, e-commerce, and MCA e-filings. Services such as Mazuma India provide full support in preparing documents, submitting applications, and issuing secure USB tokens for personal and business purposes.
+            {/* ============================================================
+                SECTION 9: DETAILED SERVICES (MAJOR ACCORDION TABS SECTION)
+                ============================================================ */}
+            <div className="cr-service-deepdive-container" style={{ marginTop: "40px" }}>
+              <div style={{ textAlign: "center", marginBottom: 24 }}>
+                <h3 style={{ fontSize: 24, fontWeight: 900, color: "#0F2D52", margin: "0 0 8px 0" }}>
+                  Detailed Service Breakdown &amp; Legal Guidelines
+                </h3>
+                <p style={{ fontSize: 14, color: "#64748B", margin: 0 }}>
+                  Select a service entity below to review eligibility, documents, benefits, and compliance workflows.
                 </p>
               </div>
 
-              {/* 3. Limited Liability Partnership (LLP) Overview */}
-              <div className="cr-deepdive-card">
-                <div className="cr-deepdive-badge">LLP Incorporation</div>
-                <h3 className="cr-deepdive-title">Limited Liability Partnership (LLP) Registration - Overview</h3>
-                <p className="cr-deepdive-text">
-                  LLP is one of the popular forms under which the registration often takes place for startups and small businesses. Blending the features of both partnership and private company, it is popular among start-ups due to its key features and no minimum capital requirement. First, a unique business name is determined via the RUN-LLP service on the Ministry of Corporate Affairs (MCA) portal.
-                </p>
-                <p className="cr-deepdive-text">
-                  To get registered, applicants file Form FiLLiP with the MCA. Once formed, the LLP agreement outlines partner roles and profit-sharing ratios. LLPs are a very flexible way of management where the personal assets of partners are safeguarded with lesser compliance required compared to a private limited company.
-                </p>
+              {/* Service Tab Pills */}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center", marginBottom: 24 }}>
+                {[
+                  { id: "pvt-ltd", label: "Private Limited Company" },
+                  { id: "llp", label: "LLP Registration" },
+                  { id: "opc", label: "OPC Registration" },
+                  { id: "public-ltd", label: "Public Limited Company" },
+                  { id: "roc", label: "ROC Compliance" },
+                  { id: "dsc", label: "Digital Signature (DSC)" }
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => setActiveTab(tab.id as any)}
+                    style={{
+                      padding: "10px 20px",
+                      borderRadius: 10,
+                      fontSize: 13,
+                      fontWeight: 800,
+                      border: "none",
+                      cursor: "pointer",
+                      background: activeTab === tab.id ? "#FF6B00" : "#F8FAFC",
+                      color: activeTab === tab.id ? "#FFFFFF" : "#0F2D52",
+                      boxShadow: activeTab === tab.id ? "0 4px 14px rgba(255,107,0,0.3)" : "none",
+                      transition: "all 0.2s ease"
+                    }}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
               </div>
+
+              {/* Tab 1: Private Limited Company */}
+              {activeTab === "pvt-ltd" && (
+                <div className="cr-deepdive-card">
+                  <div className="cr-deepdive-badge">Private Limited Company</div>
+                  <h3 className="cr-deepdive-title">Private Limited Company Registration in India</h3>
+                  <p className="cr-deepdive-text">
+                    A Private Limited Company is the most popular legal entity for startups, technology firms, and venture-backed businesses in India. Registered under the Companies Act, 2013, it provides shareholders with limited liability, protecting personal assets against business losses.
+                  </p>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Eligibility Requirements</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>Minimum 2 Directors &amp; 2 Shareholders</li>
+                        <li>At least 1 Director must be an Indian Resident</li>
+                        <li>Registered Office Address in India</li>
+                        <li>Digital Signature Certificate (DSC) for Directors</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Key Benefits</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>Separate legal corporate entity</li>
+                        <li>Easy equity fundraising from VCs &amp; Angel Investors</li>
+                        <li>Perpetual succession &amp; brand credibility</li>
+                        <li>100% limited financial liability</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <p className="cr-deepdive-text" style={{ margin: 0 }}>
+                    <strong>Process &amp; Timeline:</strong> SPICe+ MCA filing takes 5-7 working days. Upon approval, you receive your Certificate of Incorporation, CIN, PAN, and TAN.
+                  </p>
+                </div>
+              )}
+
+              {/* Tab 2: LLP Registration */}
+              {activeTab === "llp" && (
+                <div className="cr-deepdive-card">
+                  <div className="cr-deepdive-badge">LLP Incorporation</div>
+                  <h3 className="cr-deepdive-title">Limited Liability Partnership (LLP) Registration</h3>
+                  <p className="cr-deepdive-text">
+                    LLP is an ideal business structure for professional firms, consultants, and service partners combining operational flexibility with limited liability protection under the LLP Act, 2008.
+                  </p>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Key Advantages</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>No minimum capital requirement</li>
+                        <li>Lower statutory compliance costs</li>
+                        <li>No audit required unless turnover exceeds ₹40 Lakhs</li>
+                        <li>No dividend distribution tax</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Registration Workflow</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>RUN-LLP Name Reservation</li>
+                        <li>FiLLiP Incorporation Form Submission</li>
+                        <li>Drafting &amp; Filing Form 3 LLP Agreement</li>
+                        <li>Issuance of Certificate of Incorporation</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 3: OPC Registration */}
+              {activeTab === "opc" && (
+                <div className="cr-deepdive-card">
+                  <div className="cr-deepdive-badge">OPC Registration</div>
+                  <h3 className="cr-deepdive-title">One Person Company (OPC) Registration</h3>
+                  <p className="cr-deepdive-text">
+                    An OPC allows a single entrepreneur to operate a corporate entity with 100% sole ownership control, full limited liability protection, and separate corporate identity.
+                  </p>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Eligibility Criteria</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>Only 1 Director &amp; 1 Shareholder required</li>
+                        <li>Mandatory Nominee appointment</li>
+                        <li>Founder must be an Indian Resident</li>
+                        <li>Class-3 DSC for the sole founder</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Key Features</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>Complete 100% business control</li>
+                        <li>Exemption from AGM requirements</li>
+                        <li>Easier access to bank loans &amp; credit lines</li>
+                        <li>Protection of personal assets</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 4: Public Limited Company */}
+              {activeTab === "public-ltd" && (
+                <div className="cr-deepdive-card">
+                  <div className="cr-deepdive-badge">Public Limited Company</div>
+                  <h3 className="cr-deepdive-title">Public Limited Company Registration</h3>
+                  <p className="cr-deepdive-text">
+                    Designed for large-scale enterprise operations planning public capital raising or stock exchange listing under MCA regulations.
+                  </p>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Structure Requirements</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>Minimum 3 Directors</li>
+                        <li>Minimum 7 Shareholders (No upper limit)</li>
+                        <li>Mandatory Secretarial Audit</li>
+                        <li>Public financial disclosures</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Primary Benefits</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>Ability to issue public shares &amp; debentures</li>
+                        <li>Highest market reputation &amp; stature</li>
+                        <li>Unrestricted transferability of shares</li>
+                        <li>Substantial borrowing capacity</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 5: ROC Compliance */}
+              {activeTab === "roc" && (
+                <div className="cr-deepdive-card">
+                  <div className="cr-deepdive-badge">ROC Compliance</div>
+                  <h3 className="cr-deepdive-title">Annual ROC Compliance &amp; MCA Filings</h3>
+                  <p className="cr-deepdive-text">
+                    Every company incorporated in India must complete annual statutory filings with the Registrar of Companies to avoid heavy late penalties and disqualification of directors.
+                  </p>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Mandatory Annual Forms</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>Form AOC-4 (Financial Statements Filing)</li>
+                        <li>Form MGT-7 / MGT-7A (Annual Return Filing)</li>
+                        <li>Form ADT-1 (Auditor Appointment)</li>
+                        <li>DIR-3 KYC (Director Annual KYC)</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Mazuma Managed Services</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>Drafting Board Resolutions &amp; Minutes</li>
+                        <li>Maintenance of Statutory Registers</li>
+                        <li>CA Audit certification &amp; e-filing</li>
+                        <li>Zero penalty assurance</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 6: DSC Registration */}
+              {activeTab === "dsc" && (
+                <div className="cr-deepdive-card">
+                  <div className="cr-deepdive-badge">Digital Signature (DSC)</div>
+                  <h3 className="cr-deepdive-title">Class-3 Digital Signature Certificate (DSC)</h3>
+                  <p className="cr-deepdive-text">
+                    A Class-3 DSC is a secure cryptographic token issued by Controller of Certifying Authorities (CCA) approved vendors, required for electronic signing of MCA forms, GST returns, and corporate ITR.
+                  </p>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Applications &amp; Uses</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>SPICe+ Company &amp; LLP e-filing</li>
+                        <li>GST &amp; Income Tax Portal signing</li>
+                        <li>e-Tendering &amp; Trademark filing</li>
+                        <li>Import Export Code (IEC) authorization</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Service Highlights</h4>
+                      <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
+                        <li>Paperless video verification in 15 mins</li>
+                        <li>2-Year or 3-Year validity option</li>
+                        <li>Secure USB Crypto Token delivery</li>
+                        <li>Dedicated tech support for driver setup</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </section>
 
-        {/* CTA BANNER SECTION (Matched 100% to Image 5) */}
+        {/* ============================================================
+            SECTION 10: WHY CHOOSE MAZUMA INDIA? (6 CARDS)
+            ============================================================ */}
+        <section className="cr-section">
+          <div className="cr-container">
+            <div className="cr-section-header-unified">
+              <h2 className="cr-section-title-unified">Why Choose Mazuma India?</h2>
+              <div className="cr-section-divider-unified"></div>
+            </div>
+
+            <div className="cr-why-3col-grid">
+              {whyChooseUs.map((item, idx) => {
+                const ItemIcon = item.icon;
+                return (
+                  <div className="cr-why-card-compact" key={idx}>
+                    <div className="cr-why-icon-orange">
+                      <ItemIcon size={22} />
+                    </div>
+                    <div>
+                      <h3 className="cr-why-title-bold">{item.title}</h3>
+                      <p className="cr-why-desc-short">{item.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================
+            SECTION 11: FREQUENTLY ASKED QUESTIONS (8 FAQS)
+            ============================================================ */}
+        <section className="cr-section-light">
+          <div className="cr-container">
+            <div className="cr-section-header-unified">
+              <h2 className="cr-section-title-unified">Frequently Asked Questions</h2>
+              <div className="cr-section-divider-unified"></div>
+            </div>
+
+            <div className="cr-faq-list">
+              {faqList.map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div key={idx} className={`cr-faq-item ${isOpen ? "is-open" : ""}`}>
+                    <button
+                      type="button"
+                      className="cr-faq-question"
+                      onClick={() => toggleFaq(idx)}
+                    >
+                      <span>{faq.q}</span>
+                      <div className="cr-faq-toggle-icon">
+                        <ChevronDown size={16} />
+                      </div>
+                    </button>
+                    {isOpen && (
+                      <div className="cr-faq-answer">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================
+            SECTION 12: CALL TO ACTION (CTA)
+            ============================================================ */}
         <section className="cr-cta-banner-section">
           <div className="cr-container">
             <div className="cr-cta-banner-card">
               {/* Left Column: Heading & Subtitle */}
               <div className="cr-cta-banner-left">
                 <h2 className="cr-cta-banner-title">
-                  Ready to Register<br />Your Company?
+                  Start Your Business<br />with Confidence
                 </h2>
                 <p className="cr-cta-banner-desc">
-                  Let our experts handle the process while you focus on growing your business.
+                  Register your company quickly with expert guidance from Mazuma India. Our professionals handle the legal formalities while you focus on building your business.
                 </p>
               </div>
 
@@ -756,32 +1052,32 @@ export default function CompanyRegistrationPage() {
                   <div className="cr-cta-badge-circle">
                     <UserCheck size={22} />
                   </div>
-                  <span className="cr-cta-badge-label">Expert Guidance</span>
+                  <span className="cr-cta-badge-label">✔ Expert Guidance</span>
                 </div>
 
                 <div className="cr-cta-badge-item">
                   <div className="cr-cta-badge-circle">
                     <ShieldCheck size={22} />
                   </div>
-                  <span className="cr-cta-badge-label">100% Compliance</span>
+                  <span className="cr-cta-badge-label">✔ 100% Compliance</span>
                 </div>
 
                 <div className="cr-cta-badge-item">
                   <div className="cr-cta-badge-circle">
                     <Clock size={22} />
                   </div>
-                  <span className="cr-cta-badge-label">Quick Turnaround</span>
+                  <span className="cr-cta-badge-label">✔ Quick Processing</span>
                 </div>
 
                 <div className="cr-cta-badge-item">
                   <div className="cr-cta-badge-circle">
                     <Handshake size={22} />
                   </div>
-                  <span className="cr-cta-badge-label">End-to-End Support</span>
+                  <span className="cr-cta-badge-label">✔ Dedicated Support</span>
                 </div>
               </div>
 
-              {/* Right Column: CTA Button & Phone */}
+              {/* Right Column: CTA Buttons & Phone */}
               <div className="cr-cta-banner-right">
                 <button
                   onClick={() => setIsModalOpen(true)}
@@ -802,120 +1098,125 @@ export default function CompanyRegistrationPage() {
         </section>
       </main>
 
-      {/* INTERACTIVE CONSULTATION MODAL - Pure White Compact Design */}
+      {/* INTERACTIVE CONSULTATION MODAL */}
       {isModalOpen && (
-        <div className="expert-modal-backdrop" onClick={() => setIsModalOpen(false)}>
-          <div className="expert-modal-card" onClick={(e) => e.stopPropagation()}>
+        <div className="cr-modal-backdrop" onClick={() => setIsModalOpen(false)}>
+          <div className="cr-modal-card" onClick={(e) => e.stopPropagation()}>
             <button
-              className="expert-modal-close-btn"
+              className="cr-modal-close"
               onClick={() => setIsModalOpen(false)}
               aria-label="Close modal"
             >
-              <X size={18} />
+              <X size={20} />
             </button>
 
-            {/* Modal Header */}
-            <div className="expert-modal-header">
-              <div className="expert-circle-icon-wrapper">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/contact-us-icon.png" alt="Contact Icon" className="expert-contact-circle-img" />
-              </div>
-              <p className="expert-modal-header-sub">
-                Get instant advice on company incorporation &amp; MCA compliance.
-              </p>
-            </div>
-
-            {/* Modal Body */}
-            <div className="expert-modal-body">
-              {submitted ? (
-                <div style={{ textAlign: "center", padding: "30px 16px" }}>
-                  <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#FFF4EC", color: "#FF6B00", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
-                    <CheckCircle2 size={30} />
+            <div className="cr-modal-grid">
+              {/* LEFT SIDE: EXPERT BANNER */}
+              <div className="cr-modal-left">
+                <div>
+                  <img
+                    src="/why-choose-office.jpg"
+                    alt="Consultation Expert"
+                    className="cr-modal-left-img"
+                  />
+                  <h4 className="cr-modal-left-title">Talk to Our Expert</h4>
+                  <div className="cr-modal-left-bullets">
+                    <div className="cr-modal-bullet-item">
+                      <Check size={14} /> 100% Free Consultation
+                    </div>
+                    <div className="cr-modal-bullet-item">
+                      <Check size={14} /> Instant Legal Guidance
+                    </div>
+                    <div className="cr-modal-bullet-item">
+                      <Check size={14} /> 100% Data Confidentiality
+                    </div>
                   </div>
-                  <h3 style={{ fontSize: 20, fontWeight: 800, color: "#0F2D52", marginBottom: 8 }}>
-                    Consultation Requested!
-                  </h3>
-                  <p style={{ color: "#64748B", fontSize: 13.5, lineHeight: 1.55, margin: 0 }}>
-                    We have prepared your request for <strong>compliance@mazumaindia.com</strong>. A Senior CA will call you back within 15 minutes.
-                  </p>
                 </div>
-              ) : (
-                <form onSubmit={handleFormSubmit}>
-                  {/* Row 1: Full Name & Phone Number */}
-                  <div className="cr-form-grid-2col">
-                    <div className="cr-form-group">
-                      <label className="cr-form-label">Full Name *</label>
-                      <input
-                        type="text"
-                        className="cr-form-input"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      />
-                    </div>
+              </div>
 
-                    <div className="cr-form-group">
-                      <label className="cr-form-label">Phone Number *</label>
-                      <input
-                        type="tel"
-                        className="cr-form-input"
-                        required
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      />
-                    </div>
+              {/* RIGHT SIDE: CONSULTATION FORM */}
+              <div className="cr-modal-right">
+                <h3 className="cr-modal-title">Book Free Consultation</h3>
+                <p className="cr-modal-desc">
+                  Get instant advice from our senior CA team.
+                </p>
+
+                {submitted ? (
+                  <div style={{ textAlign: "center", padding: "24px 12px" }}>
+                    <CheckCircle2 size={36} style={{ color: "#16A34A", margin: "0 auto 10px auto" }} />
+                    <h4 style={{ fontSize: 16, fontWeight: 800, color: "#0F2D52", marginBottom: 6 }}>
+                      Consultation Requested!
+                    </h4>
+                    <p style={{ color: "#64748B", fontSize: 12.5, margin: 0, lineHeight: 1.5 }}>
+                      We have prepared your request for <strong>compliance@mazumaindia.com</strong>.
+                    </p>
                   </div>
+                ) : (
+                  <form onSubmit={handleFormSubmit}>
+                    <div className="cr-form-grid-2col">
+                      <div className="cr-form-group">
+                        <label className="cr-form-label">Phone Number *</label>
+                        <input
+                          type="tel"
+                          className="cr-form-input"
+                          required
+                          placeholder="10-digit mobile number"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        />
+                      </div>
 
-                  {/* Row 2: Email Address & City / State */}
-                  <div className="cr-form-grid-2col">
-                    <div className="cr-form-group">
-                      <label className="cr-form-label">Email Address *</label>
-                      <input
-                        type="email"
-                        className="cr-form-input"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      />
+                      <div className="cr-form-group">
+                        <label className="cr-form-label">Email Address *</label>
+                        <input
+                          type="email"
+                          className="cr-form-input"
+                          required
+                          placeholder="Enter email"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        />
+                      </div>
                     </div>
 
-                    <div className="cr-form-group">
-                      <label className="cr-form-label">City / State *</label>
-                      <input
-                        type="text"
-                        className="cr-form-input"
-                        required
-                        value={formData.city}
-                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      />
+                    <div className="cr-form-grid-2col">
+                      <div className="cr-form-group">
+                        <label className="cr-form-label">City / State *</label>
+                        <input
+                          type="text"
+                          className="cr-form-input"
+                          required
+                          value={formData.city}
+                          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                        />
+                      </div>
+
+                      <div className="cr-form-group">
+                        <label className="cr-form-label">Company Type *</label>
+                        <select
+                          className="cr-form-select"
+                          value={formData.companyType}
+                          onChange={(e) => setFormData({ ...formData, companyType: e.target.value })}
+                        >
+                          <option value="Private Limited Company">Private Limited Company</option>
+                          <option value="Public Limited Company">Public Limited Company</option>
+                          <option value="LLP Incorporation">LLP Incorporation</option>
+                          <option value="OPC Registration">OPC Registration</option>
+                          <option value="Section 8 Company">Section 8 Company</option>
+                          <option value="Nidhi Company">Nidhi Company</option>
+                          <option value="Producer Company">Producer Company</option>
+                          <option value="Partnership Firm">Partnership Firm</option>
+                        </select>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Row 3: Company Type */}
-                  <div className="cr-form-group">
-                    <label className="cr-form-label">Company Type *</label>
-                    <select
-                      className="cr-form-select"
-                      value={formData.companyType}
-                      onChange={(e) => setFormData({ ...formData, companyType: e.target.value })}
-                    >
-                      <option value="Private Limited Company">Private Limited Company</option>
-                      <option value="Public Limited Company">Public Limited Company</option>
-                      <option value="LLP Incorporation">LLP Incorporation</option>
-                      <option value="OPC Registration">OPC Registration</option>
-                      <option value="Section 8 Company">Section 8 Company</option>
-                      <option value="Nidhi Company">Nidhi Company</option>
-                      <option value="Producer Company">Producer Company</option>
-                      <option value="Partnership Firm">Partnership Firm</option>
-                    </select>
-                  </div>
-
-                  <button type="submit" className="expert-submit-btn">
-                    <span>Request Callback</span>
-                    <ArrowRight size={16} />
-                  </button>
-                </form>
-              )}
+                    <button type="submit" className="cr-modal-submit-btn">
+                      <span>Request Callback</span>
+                      <ArrowRight size={16} />
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
         </div>

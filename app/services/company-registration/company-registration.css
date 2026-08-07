@@ -105,7 +105,6 @@
   object-position: center right;
 }
 
-/* Gradient Overlay */
 .cr-hero-bg-overlay {
   position: absolute;
   top: 0;
@@ -115,11 +114,10 @@
   background: linear-gradient(
     90deg,
     #FFFFFF 0%,
-    #FFFFFF 38%,
-    rgba(255, 255, 255, 0.95) 48%,
-    rgba(255, 255, 255, 0.4) 65%,
-    rgba(255, 255, 255, 0.05) 85%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(255, 255, 255, 0.98) 42%,
+    rgba(255, 255, 255, 0.70) 50%,
+    rgba(255, 255, 255, 0) 56%,
+    transparent 100%
   );
 }
 
@@ -248,19 +246,21 @@
   border-radius: var(--cr-radius-floating);
   box-shadow: 0 16px 45px rgba(15, 45, 82, 0.12);
   border: 1px solid var(--cr-border);
-  padding: 20px 22px;
+  padding: 18px 18px;
   position: absolute;
-  right: -100px;
+  right: 0;
   top: 10px;
   z-index: 10;
+  max-height: none;
+  overflow: visible;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cr-floating-card-title {
   color: var(--cr-navy);
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 8px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--cr-border);
   display: flex;
@@ -271,18 +271,26 @@
 .cr-floating-services-list {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
+  overflow: visible;
+  max-height: none;
+}
+
+.cr-floating-services-list::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .cr-floating-service-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 7px 8px;
-  border-radius: 8px;
+  padding: 5px 8px;
+  border-radius: 6px;
   color: #334155;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease;
 }

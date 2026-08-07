@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100" width="100%" height="100%">
+  <!-- MSME Vector Typography -->
+  <g fill="#233876">
+    <!-- M -->
+    <path d="M 10 20 L 22 20 L 22 45 L 34 20 L 46 20 L 46 60 L 36 60 L 36 38 L 27 55 L 19 55 L 10 38 L 10 60 L 0 60 L 0 20 Z" />
+    <!-- S -->
+    <path d="M 52 20 L 85 20 L 85 30 L 63 30 L 63 36 L 85 39 L 85 60 L 52 60 L 52 50 L 74 50 L 74 44 L 52 41 Z" />
+    <!-- M -->
+    <path d="M 91 20 L 103 20 L 103 45 L 115 20 L 127 20 L 127 60 L 117 60 L 117 38 L 108 55 L 100 55 L 91 38 L 91 60 L 81 60 L 81 20 Z" />
+    <!-- E -->
+    <path d="M 133 20 L 165 20 L 165 30 L 144 30 L 144 35 L 162 35 L 162 44 L 144 44 L 144 50 L 165 50 L 165 60 L 133 60 Z" />
+  </g>
+  
+  <!-- Divider Line -->
+  <rect x="0" y="66" width="165" height="3" fill="#233876" />
+  
+  <!-- Subtext -->
+  <text x="82.5" y="79" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="9" font-weight="700" fill="#233876" text-anchor="middle">सूक्ष्म, लघु एवं मध्यम उद्यम</text>
+  <text x="82.5" y="93" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="7.5" font-weight="800" fill="#233876" text-anchor="middle" letter-spacing="0.2">MICRO, SMALL &amp; MEDIUM ENTERPRISES</text>
+</svg>

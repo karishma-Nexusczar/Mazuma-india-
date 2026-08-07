@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- Blue Container -->
+  <rect x="5" y="5" width="90" height="90" rx="10" fill="#0266B3" />
+
+  <!-- IEC Text -->
+  <text x="50" y="60" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">IEC</text>
+
+  <!-- Speed Lines & Dot -->
+  <rect x="20" y="70" width="45" height="3" fill="#FFFFFF" opacity="0.9" />
+  <rect x="20" y="76" width="35" height="3" fill="#FFFFFF" opacity="0.9" />
+  <circle cx="75" cy="74" r="4.5" fill="#FFFFFF" />
+</svg>

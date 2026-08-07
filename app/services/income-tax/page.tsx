@@ -36,7 +36,9 @@ import {
   Building,
   Laptop,
   Calendar,
-  PieChart
+  PieChart,
+  Link2,
+  FileCheck
 } from "lucide-react";
 
 export default function IncomeTaxPage() {
@@ -47,7 +49,7 @@ export default function IncomeTaxPage() {
     name: "",
     phone: "",
     email: "",
-    service: "ITR Filing for Individuals",
+    service: "Individual ITR Filing",
     city: ""
   });
   const [expertFormData, setExpertFormData] = useState({
@@ -83,7 +85,7 @@ export default function IncomeTaxPage() {
         name: "",
         phone: "",
         email: "",
-        service: "ITR Filing for Individuals",
+        service: "Individual ITR Filing",
         city: ""
       });
     }, 4000);
@@ -114,128 +116,203 @@ export default function IncomeTaxPage() {
     }, 4000);
   };
 
-  // 11 Floating Card Service Items (Step 1 Right Content)
+  // Sidebar Floating Card Services List (13 Items)
   const itrServicesList = [
-    { title: "ITR Filing for Individuals", icon: FileText },
-    { title: "Business Income Tax Return", icon: Briefcase },
+    { title: "Individual ITR Filing", icon: FileText },
+    { title: "Business ITR Filing", icon: Briefcase },
     { title: "Salaried Employee ITR", icon: UserCheck },
-    { title: "Freelancers & Professionals", icon: Laptop },
-    { title: "Belated & Updated ITR", icon: Calendar },
-    { title: "Tax Computation & Planning", icon: Calculator },
-    { title: "Capital Gains Assistance", icon: TrendingUp },
-    { title: "Revised Returns & Rectifications", icon: RotateCcw },
-    { title: "Late Fee & Penalty Assistance", icon: AlertTriangle },
+    { title: "Professional & Freelancer ITR", icon: Laptop },
+    { title: "TDS Return Filing", icon: FileCheck },
+    { title: "Belated Return Filing", icon: Calendar },
+    { title: "Updated Return Filing", icon: RotateCcw },
+    { title: "Revised Return Filing", icon: RotateCcw },
+    { title: "Tax Planning & Computation", icon: Calculator },
+    { title: "Capital Gains Tax Assistance", icon: TrendingUp },
     { title: "AIS / TIS Compliance", icon: PieChart },
-    { title: "Aadhaar-PAN Linking Support", icon: CheckCircle2 }
+    { title: "Aadhaar–PAN Linking", icon: Link2 },
+    { title: "Late Fee & Penalty Assistance", icon: AlertTriangle }
   ];
 
-  // 10 Income Tax Return Services Grid (Section 2 - Matched 100% to Image 16)
+  // 12 Income Tax Return Services Grid (Symmetric 4x3 Grid)
   const itrGridServices = [
     {
-      title: "ITR Filing for Individuals",
-      desc: "File ITR for various income sources including salary, house property, FD, interest and more.",
+      title: "Individual ITR Filing",
+      desc: "Accurate income tax return filing for salaried employees, pensioners, house property owners, interest income, capital gains and other individual taxpayers.",
       icon: FileText
     },
     {
-      title: "Business Income Tax Return",
-      desc: "ITR filing for proprietorships, partnership firms, LLPs and private limited companies.",
+      title: "Business ITR Filing",
+      desc: "Complete income tax return filing for proprietorships, partnership firms, LLPs, private limited companies and other business entities.",
       icon: Briefcase
     },
     {
       title: "Salaried Employee ITR",
-      desc: "Hassle-free ITR filing for salaried employees with accurate tax calculation and refund claims.",
+      desc: "Professional tax filing with salary computation, deductions, exemptions and refund assistance.",
       icon: UserCheck
     },
     {
-      title: "Freelancers & Professionals",
-      desc: "Specialized ITR filing for freelancers, consultants, doctors, architects and other professionals.",
+      title: "Professional & Freelancer ITR",
+      desc: "Specialized tax filing for consultants, doctors, architects, designers, software professionals and freelancers.",
       icon: Laptop
     },
     {
-      title: "Belated & Updated ITR",
-      desc: "File belated returns or updated ITR with ease and avoid heavy penalties and notices.",
+      title: "TDS Return Filing",
+      desc: "Preparation and filing of quarterly TDS returns, correction statements, Form 24Q, 26Q, 27Q and complete TDS compliance.",
+      icon: FileCheck
+    },
+    {
+      title: "Belated & Updated ITR Filing",
+      desc: "File delayed income tax returns or update previously filed returns to disclose omitted income and minimize penalties.",
       icon: Calendar
     },
     {
-      title: "Tax Computation & Planning",
-      desc: "Accurate tax computation and planning to help you save more and stay compliant.",
-      icon: Calculator
-    },
-    {
-      title: "Capital Gains Assistance",
-      desc: "Guidance on capital gains tax, exemptions, indexation and investment planning.",
-      icon: TrendingUp
-    },
-    {
-      title: "Revised Returns & Rectifications",
-      desc: "File revised returns and rectify errors to ensure accurate tax compliance.",
+      title: "Revised Return & Rectifications",
+      desc: "Correct mistakes, update information, and revise previously filed returns before the prescribed legal deadline.",
       icon: RotateCcw
     },
     {
-      title: "Late Fee & Penalty Assistance",
-      desc: "Get help with penalty waivers, late fee resolutions and notice management.",
-      icon: AlertTriangle
+      title: "Tax Planning & Computation",
+      desc: "Comprehensive tax planning to legally reduce tax liability while maximizing deductions and exemptions under the Income Tax Act.",
+      icon: Calculator
+    },
+    {
+      title: "Capital Gains Tax Assistance",
+      desc: "Expert guidance on property sales, equity investments, mutual funds, indexation benefits and exemption planning.",
+      icon: TrendingUp
     },
     {
       title: "AIS / TIS Compliance",
-      desc: "Assistance with Annual Information Statement (AIS) and Taxpayer Information Summary (TIS).",
+      desc: "Review Annual Information Statement (AIS) and Taxpayer Information Summary (TIS) to ensure accurate income reporting.",
       icon: PieChart
+    },
+    {
+      title: "Aadhaar–PAN Linking",
+      desc: "Quick Aadhaar-PAN linking support along with PAN correction and compliance assistance.",
+      icon: Link2
+    },
+    {
+      title: "Late Fee & Penalty Assistance",
+      desc: "Professional assistance for notices, penalties, interest calculations and delayed filing compliance.",
+      icon: AlertTriangle
     }
   ];
 
-  // Who Should File ITR (Section 3 Right)
+  // Who Should File ITR (10 Items)
   const whoShouldFile = [
     { label: "Salaried Employees", icon: Users },
+    { label: "Self-Employed Professionals", icon: UserCheck },
+    { label: "Freelancers & Consultants", icon: Laptop },
     { label: "Business Owners", icon: Building2 },
-    { label: "Freelancers & Professionals", icon: Briefcase },
-    { label: "Companies & Firms", icon: Landmark },
+    { label: "Partnership Firms", icon: Briefcase },
+    { label: "LLPs", icon: Landmark },
+    { label: "Private Limited Companies", icon: Building },
     { label: "NRIs", icon: Users },
-    { label: "Senior Citizens", icon: UserCheck }
+    { label: "Senior Citizens", icon: UserCheck },
+    { label: "Investors with Capital Gains", icon: TrendingUp }
   ];
 
-  // 7 Step Timeline (Section 4)
+  // 7 Step Process Timeline
   const itrSteps = [
-    { no: "Step 01", title: "Consultation", icon: Users },
-    { no: "Step 02", title: "Document Collection", icon: FileText },
-    { no: "Step 03", title: "Tax Calculation & Planning", icon: Calculator },
+    { no: "Step 01", title: "Free Tax Consultation", icon: Users },
+    { no: "Step 02", title: "Document Collection & Review", icon: FileText },
+    { no: "Step 03", title: "Income & Tax Computation", icon: Calculator },
     { no: "Step 04", title: "Return Preparation", icon: CheckCircle2 },
-    { no: "Step 05", title: "Verification", icon: ShieldCheck },
-    { no: "Step 06", title: "ITR Filing", icon: TrendingUp },
-    { no: "Step 07", title: "Acknowledgement & Support", icon: Award }
+    { no: "Step 05", title: "Verification & Review", icon: ShieldCheck },
+    { no: "Step 06", title: "Income Tax Return Filing", icon: TrendingUp },
+    { no: "Step 07", title: "Acknowledgement & Post Filing Support", icon: Award }
   ];
 
-  // Why Choose Us (Section 5 Left)
+  // Why Choose Mazuma India (6 Cards)
   const whyChooseUs = [
-    { title: "Expert Tax Advisors", desc: "10+ years experience guiding individuals & corporate tax clients.", icon: UserCheck },
-    { title: "Maximum Tax Savings", desc: "Strategic deduction optimization claiming all eligible exemptions under Section 80C, 80D & more.", icon: Coins },
-    { title: "100% Secure & Confidential", desc: "Bank-grade data privacy and secure cloud filing environment.", icon: ShieldCheck },
-    { title: "Quick & Accurate Filing", desc: "Streamlined workflow ensuring error-free ITR filing in 24-48 hours.", icon: Zap },
-    { title: "Affordable Pricing", desc: "Clear itemized quote with zero hidden charges guarantee.", icon: BadgePercent },
-    { title: "Dedicated Support", desc: "Assigned CA manager providing step-by-step assistance and continuous updates.", icon: Headset }
+    {
+      title: "Expert Tax Advisors",
+      desc: "Experienced professionals handling individual and corporate tax matters with complete accuracy.",
+      icon: UserCheck
+    },
+    {
+      title: "Maximum Tax Savings",
+      desc: "Claim all eligible deductions, exemptions and rebates available under the Income Tax Act.",
+      icon: Coins
+    },
+    {
+      title: "100% Secure & Confidential",
+      desc: "Your financial information is protected using secure document management practices.",
+      icon: ShieldCheck
+    },
+    {
+      title: "Fast & Accurate Filing",
+      desc: "Efficient tax filing process with minimal turnaround time and complete compliance.",
+      icon: Zap
+    },
+    {
+      title: "Transparent Pricing",
+      desc: "Affordable professional services with no hidden charges.",
+      icon: BadgePercent
+    },
+    {
+      title: "Dedicated Client Support",
+      desc: "Personalized assistance from consultation until successful ITR filing and future compliance.",
+      icon: Headset
+    }
   ];
 
-  // FAQ Accordion (Section 5 Right - 4 Key Questions)
+  // FAQ Accordion (8 Questions)
   const faqs = [
     {
-      q: "Who should file an Income Tax Return (ITR)?",
-      a: "Any individual whose gross total income exceeds the basic exemption limit (₹2.5 Lakhs under Old Tax Regime or ₹3 Lakhs under New Tax Regime) is required to file an Income Tax Return. It is also recommended for claiming tax refunds and applying for visas or loans."
+      q: "Who should file an Income Tax Return?",
+      a: "Individuals, professionals, businesses and companies whose income exceeds the prescribed exemption limit or who wish to claim refunds should file an Income Tax Return."
     },
     {
       q: "What documents are required for ITR filing?",
-      a: "Key documents include Form 16 (for salaried persons), PAN card, Aadhaar card, bank statements, investment proofs (80C, 80D, etc.), Form 26AS, AIS/TIS statement, and capital gains statements."
+      a: "PAN Card, Aadhaar Card, Form 16, Form 26AS, AIS, bank statements, investment proofs, interest certificates and other applicable financial documents."
     },
     {
-      q: "What is the last date to file ITR for individuals?",
-      a: "The standard due date for non-audit individual taxpayers is July 31st of the relevant Assessment Year, unless extended by the Income Tax Department."
+      q: "What is the last date for filing ITR?",
+      a: "The due date varies each financial year depending on taxpayer category and government notifications (typically July 31st for non-audit individuals)."
     },
     {
-      q: "What happens if I miss the ITR deadline?",
-      a: "If you miss the July 31st deadline, you can file a Belated Return up to December 31st with a late fee under Section 234F (up to ₹5,000) and interest on unpaid tax."
+      q: "What happens if I miss the due date?",
+      a: "Late filing may attract penalties under Section 234F, interest under Section 234A/B/C, and restrictions on carrying forward certain losses."
+    },
+    {
+      q: "Can I revise my Income Tax Return?",
+      a: "Yes. A filed return can generally be revised within the time limit prescribed by the Income Tax Act to rectify any mistakes or omissions."
+    },
+    {
+      q: "What is a Belated Return?",
+      a: "A Belated Return allows taxpayers to file an Income Tax Return after the original due date, subject to applicable late fee provisions."
+    },
+    {
+      q: "What is an Updated Return?",
+      a: "An Updated Return enables taxpayers to voluntarily update previously filed returns within the prescribed legal time frame to disclose additional income."
+    },
+    {
+      q: "Why choose Mazuma India for ITR filing?",
+      a: "Mazuma India offers expert tax consultation, accurate filing, maximum tax optimization, secure documentation and complete post-filing support."
     }
   ];
 
+  const jsonLdITR = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Income Tax Return (ITR) Filing Services",
+    provider: {
+      "@type": "Organization",
+      name: "Mazuma India",
+      url: "https://mazumaindia.com"
+    },
+    areaServed: "India",
+    description: "Complete Income Tax Return filing services for individuals, salaried employees, freelancers, businesses, TDS filing, belated & revised ITR.",
+    url: "https://mazumaindia.com/services/income-tax"
+  };
+
   return (
     <div className="itr-page-wrapper">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdITR) }}
+      />
+
       <Header />
 
       {/* Breadcrumb Bar */}
@@ -251,10 +328,9 @@ export default function IncomeTaxPage() {
 
       <main>
         {/* ============================================================
-            STEP 1 – HERO SECTION (Matched 100% to Image 14 Design)
+            STEP 1 – HERO SECTION
            ============================================================ */}
         <section className="itr-hero-section">
-          {/* Smooth White-to-Transparent Gradient Overlay over Full Background Image */}
           <div className="itr-hero-gradient-overlay"></div>
 
           <div className="itr-hero-container">
@@ -269,41 +345,41 @@ export default function IncomeTaxPage() {
                 </h1>
 
                 <p className="itr-hero-desc">
-                  Expert assistance for accurate ITR filing, maximum tax savings and complete compliance. We make tax filing simple, secure and stress-free.
+                  File your Income Tax Return with confidence through Mazuma India. Our experienced tax professionals help individuals, salaried employees, freelancers, businesses, and companies file accurate ITRs, maximize eligible tax savings, and ensure complete compliance with the Income Tax Act.
                 </p>
 
-                {/* Four Trust Badges in One Row (Outline Icons, No Background) */}
+                {/* Four Feature Icons */}
                 <div className="itr-trust-badges-row">
                   <div className="itr-trust-badge-item">
                     <div className="itr-trust-badge-icon">
                       <UserCheck size={22} />
                     </div>
-                    <span className="itr-trust-badge-label">Expert Tax Consultants</span>
+                    <span className="itr-trust-badge-label">✔ Expert Tax Consultants</span>
                   </div>
 
                   <div className="itr-trust-badge-item">
                     <div className="itr-trust-badge-icon">
                       <Coins size={22} />
                     </div>
-                    <span className="itr-trust-badge-label">Maximum Tax Savings</span>
+                    <span className="itr-trust-badge-label">✔ Maximum Tax Savings</span>
                   </div>
 
                   <div className="itr-trust-badge-item">
                     <div className="itr-trust-badge-icon">
                       <ShieldCheck size={22} />
                     </div>
-                    <span className="itr-trust-badge-label">100% Secure &amp; Compliant</span>
+                    <span className="itr-trust-badge-label">✔ Secure &amp; Confidential Filing</span>
                   </div>
 
                   <div className="itr-trust-badge-item">
                     <div className="itr-trust-badge-icon">
                       <Zap size={22} />
                     </div>
-                    <span className="itr-trust-badge-label">Quick Processing</span>
+                    <span className="itr-trust-badge-label">✔ Fast Processing</span>
                   </div>
                 </div>
 
-                {/* CTA Buttons (Exact match to Image 14) */}
+                {/* CTA Buttons */}
                 <div className="itr-hero-cta-group">
                   <button
                     className="itr-btn-primary"
@@ -320,16 +396,16 @@ export default function IncomeTaxPage() {
                     onClick={() => setIsExpertModalOpen(true)}
                   >
                     <PhoneCall size={16} color="#0F2D52" />
-                    <span>Talk to Expert</span>
+                    <span>Talk to Our Expert</span>
                   </button>
                 </div>
               </div>
 
-              {/* RIGHT COLUMN: Floating White Card "Our ITR Services" */}
+              {/* RIGHT COLUMN: Floating White Card "Our Income Tax Services" */}
               <div className="itr-hero-right">
                 <div className="itr-floating-services-card">
                   <h3 className="itr-services-card-title">
-                    Our ITR Services
+                    Our Income Tax Services
                   </h3>
 
                   <div className="itr-services-list">
@@ -346,10 +422,10 @@ export default function IncomeTaxPage() {
                           style={{ cursor: "pointer" }}
                         >
                           <div className="itr-service-list-item-left">
-                            <IconComp size={15} className="itr-service-item-icon" />
+                            <IconComp size={14} className="itr-service-item-icon" />
                             <span className="itr-service-item-text">{item.title}</span>
                           </div>
-                          <ChevronRight size={15} className="itr-service-item-chevron" />
+                          <ChevronRight size={14} className="itr-service-item-chevron" />
                         </div>
                       );
                     })}
@@ -362,7 +438,7 @@ export default function IncomeTaxPage() {
         </section>
 
         {/* ============================================================
-            SECTION 2 – OUR INCOME TAX RETURN SERVICES GRID (Step 2 Prompt)
+            SECTION 2 – OUR INCOME TAX RETURN SERVICES GRID (3x2 Desktop Grid - 6 Cards Only)
            ============================================================ */}
         <section className="itr-services-section" id="itr-services-grid">
           <div className="itr-section-header">
@@ -371,15 +447,17 @@ export default function IncomeTaxPage() {
           </div>
 
           <div className="itr-services-grid">
-            {itrGridServices.map((service, idx) => {
+            {itrGridServices.slice(0, 6).map((service, idx) => {
               const IconComp = service.icon;
               return (
                 <article key={idx} className="itr-service-card-redesign">
-                  <div className="itr-service-card-direct-icon">
-                    <IconComp size={34} />
+                  <div>
+                    <div className="itr-service-card-direct-icon">
+                      <IconComp size={36} />
+                    </div>
+                    <h3 className="itr-service-card-title">{service.title}</h3>
+                    <p className="itr-service-card-desc">{service.desc}</p>
                   </div>
-                  <h3 className="itr-service-card-title">{service.title}</h3>
-                  <p className="itr-service-card-desc">{service.desc}</p>
                   <button
                     className="itr-service-card-link"
                     style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
@@ -389,51 +467,59 @@ export default function IncomeTaxPage() {
                     }}
                   >
                     <span>Learn More</span>
-                    <ArrowRight size={13} />
+                    <ArrowRight size={14} />
                   </button>
                 </article>
               );
             })}
           </div>
+
+          {/* View All Services Button -> Navigates to Separate Full Details Page */}
+          <div className="itr-view-all-btn-wrapper">
+            <Link href="/services/income-tax/all-services" className="itr-view-all-btn">
+              <span>View All Income Tax Services</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </section>
 
         {/* ============================================================
-            SECTION 3 – ABOUT ITR & WHO SHOULD FILE ITR (Matched to Image 18)
+            SECTION 3 – ABOUT INCOME TAX RETURN & WHO SHOULD FILE
            ============================================================ */}
         <section className="itr-about-section">
           <div className="itr-about-grid">
             
-            {/* Left Column: About ITR */}
+            {/* Left Column: About Income Tax Return (ITR) */}
             <div className="itr-about-left">
               <h2>About Income Tax Return (ITR)</h2>
               <p>
-                Income Tax Return (ITR) is a statement of your income, deductions, tax payable and refund (if any) filed with the Income Tax Department. Filing ITR is mandatory for individuals and entities whose income exceeds the basic exemption limit.
+                Income Tax Return (ITR) is an official declaration of your annual income, deductions, taxes paid and refund claims submitted to the Income Tax Department of India. Filing your ITR accurately helps maintain legal compliance, strengthens your financial profile and avoids unnecessary penalties.
               </p>
               <p>
-                Timely and accurate ITR filing helps you avoid penalties, claim refunds, build a strong financial record and stay compliant with the law.
+                Whether you are an individual taxpayer, salaried employee, freelancer, business owner or company, timely ITR filing is essential for smooth financial and legal operations.
               </p>
 
               <div className="itr-about-badges-grid">
                 <div className="itr-about-badge-card">
-                  <ShieldCheck size={22} color="#FF6B00" />
-                  <span>Legal Compliance</span>
+                  <ShieldCheck size={20} color="#FF6B00" />
+                  <span>Legal Tax Compliance</span>
                 </div>
                 <div className="itr-about-badge-card">
-                  <Coins size={22} color="#FF6B00" />
-                  <span>Claim Refunds</span>
+                  <Coins size={20} color="#FF6B00" />
+                  <span>Faster Tax Refunds</span>
                 </div>
                 <div className="itr-about-badge-card">
-                  <Landmark size={22} color="#FF6B00" />
-                  <span>Loan &amp; Visa Approvals</span>
+                  <Landmark size={20} color="#FF6B00" />
+                  <span>Loan &amp; Visa Support</span>
                 </div>
                 <div className="itr-about-badge-card">
-                  <Award size={22} color="#FF6B00" />
-                  <span>Financial Credibility</span>
+                  <Award size={20} color="#FF6B00" />
+                  <span>Strong Financial Record</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Who Should File ITR (6 Tall Vertical Cards) */}
+            {/* Right Column: Who Should File ITR? */}
             <div className="itr-about-right">
               <h3 className="itr-who-title">Who Should File ITR?</h3>
               <div className="itr-who-grid">
@@ -455,7 +541,7 @@ export default function IncomeTaxPage() {
         </section>
 
         {/* ============================================================
-            SECTION 4 – OUR ITR FILING PROCESS (7-Step Horizontal Timeline)
+            SECTION 4 – OUR ITR FILING PROCESS (7-Step Timeline)
            ============================================================ */}
         <section className="itr-process-section">
           <div className="itr-section-header">
@@ -492,7 +578,7 @@ export default function IncomeTaxPage() {
         <section className="itr-why-faq-section">
           <div className="itr-why-faq-grid">
             
-            {/* Left Side: Why Choose Mazuma India */}
+            {/* Left Side: Why Choose Mazuma India? */}
             <div className="itr-why-left">
               <h2 className="itr-section-title" style={{ textAlign: "left", marginBottom: 0 }}>
                 Why Choose Mazuma India?
@@ -517,7 +603,7 @@ export default function IncomeTaxPage() {
               </div>
             </div>
 
-            {/* Right Side: FAQ Accordion */}
+            {/* Right Side: Frequently Asked Questions */}
             <div className="itr-faq-right">
               <h2 className="itr-section-title" style={{ textAlign: "left", marginBottom: 12 }}>
                 Frequently Asked Questions
@@ -550,16 +636,16 @@ export default function IncomeTaxPage() {
         </section>
 
         {/* ============================================================
-            SECTION 6 – CTA BANNER (Soft Peach Card - Matched to Image 18)
+            SECTION 6 – FINAL CALL TO ACTION (CTA)
            ============================================================ */}
         <section className="itr-cta-banner-section">
           <div className="itr-cta-banner-card">
             
             {/* Left Title & Desc */}
             <div className="itr-cta-banner-left">
-              <h3 className="itr-cta-banner-title">Need Help Filing Your Income Tax Return?</h3>
+              <h3 className="itr-cta-banner-title">Need Expert Help with Your Income Tax Return?</h3>
               <p className="itr-cta-banner-desc">
-                Save time, avoid penalties and maximize your tax savings with expert assistance from Mazuma India.
+                Let Mazuma India's experienced tax professionals handle your Income Tax Return while you focus on your career or business. We ensure accurate filing, timely compliance and maximum eligible tax savings.
               </p>
             </div>
 
@@ -569,28 +655,28 @@ export default function IncomeTaxPage() {
                 <div className="itr-cta-badge-circle">
                   <UserCheck size={20} />
                 </div>
-                <span className="itr-cta-badge-label">Expert CA Consultation</span>
+                <span className="itr-cta-badge-label">✔ Expert CA Consultation</span>
               </div>
 
               <div className="itr-cta-badge-item">
                 <div className="itr-cta-badge-circle">
                   <ShieldCheck size={20} />
                 </div>
-                <span className="itr-cta-badge-label">100% Accurate &amp; Secure</span>
+                <span className="itr-cta-badge-label">✔ Accurate &amp; Secure Filing</span>
               </div>
 
               <div className="itr-cta-badge-item">
                 <div className="itr-cta-badge-circle">
                   <Coins size={20} />
                 </div>
-                <span className="itr-cta-badge-label">Maximum Tax Savings</span>
+                <span className="itr-cta-badge-label">✔ Maximum Tax Savings</span>
               </div>
 
               <div className="itr-cta-badge-item">
                 <div className="itr-cta-badge-circle">
                   <Headset size={20} />
                 </div>
-                <span className="itr-cta-badge-label">End-to-End Support</span>
+                <span className="itr-cta-badge-label">✔ End-to-End Tax Support</span>
               </div>
             </div>
 
@@ -615,7 +701,7 @@ export default function IncomeTaxPage() {
         </section>
       </main>
 
-      {/* INTERACTIVE CONSULTATION MODAL (Short Compact 2-Column Row-Wise Layout) */}
+      {/* INTERACTIVE CONSULTATION MODAL */}
       {isModalOpen && (
         <div className="cr-modal-backdrop" onClick={() => setIsModalOpen(false)}>
           <div className="cr-modal-card" onClick={(e) => e.stopPropagation()}>
@@ -664,7 +750,7 @@ export default function IncomeTaxPage() {
                   </div>
                 </div>
 
-                {/* RIGHT SIDE: SHORT FORM */}
+                {/* RIGHT SIDE: FORM */}
                 <div className="cr-modal-right">
                   <h3 className="cr-modal-title">Book Free Consultation</h3>
                   <p className="cr-modal-desc">
@@ -672,44 +758,33 @@ export default function IncomeTaxPage() {
                   </p>
 
                   <form onSubmit={handleFormSubmit}>
-                    {/* Row 1: Full Name & Phone Number */}
                     <div className="cr-form-grid-2col">
-                      <div className="cr-form-group">
-                        <label className="cr-form-label">Full Name *</label>
-                        <input
-                          type="text"
-                          className="cr-form-input"
-                          required
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        />
-                      </div>
-
                       <div className="cr-form-group">
                         <label className="cr-form-label">Phone Number *</label>
                         <input
                           type="tel"
                           className="cr-form-input"
                           required
+                          placeholder="10-digit mobile number"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         />
                       </div>
-                    </div>
 
-                    {/* Row 2: Email Address & City / State */}
-                    <div className="cr-form-grid-2col">
                       <div className="cr-form-group">
                         <label className="cr-form-label">Email Address *</label>
                         <input
                           type="email"
                           className="cr-form-input"
                           required
+                          placeholder="Enter email"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         />
                       </div>
+                    </div>
 
+                    <div className="cr-form-grid-2col">
                       <div className="cr-form-group">
                         <label className="cr-form-label">City / State *</label>
                         <input
@@ -720,27 +795,29 @@ export default function IncomeTaxPage() {
                           onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                         />
                       </div>
-                    </div>
 
-                    {/* Row 3: Service Required */}
-                    <div className="cr-form-group">
-                      <label className="cr-form-label">Service Required *</label>
-                      <select
-                        className="cr-form-select"
-                        value={formData.service}
-                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      >
-                        <option value="ITR Filing for Individuals">ITR Filing for Individuals</option>
-                        <option value="Business Income Tax Return">Business Income Tax Return</option>
-                        <option value="Salaried Employee ITR">Salaried Employee ITR</option>
-                        <option value="Freelancers & Professionals">Freelancers &amp; Professionals</option>
-                        <option value="Belated & Updated ITR">Belated &amp; Updated ITR</option>
-                        <option value="Tax Computation & Planning">Tax Computation &amp; Planning</option>
-                        <option value="Capital Gains Assistance">Capital Gains Assistance</option>
-                        <option value="Revised Returns & Rectifications">Revised Returns &amp; Rectifications</option>
-                        <option value="Late Fee & Penalty Assistance">Late Fee &amp; Penalty Assistance</option>
-                        <option value="AIS / TIS Compliance">AIS / TIS Compliance</option>
-                      </select>
+                      <div className="cr-form-group">
+                        <label className="cr-form-label">Service Required *</label>
+                        <select
+                          className="cr-form-select"
+                          value={formData.service}
+                          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                        >
+                          <option value="Individual ITR Filing">Individual ITR Filing</option>
+                          <option value="Business ITR Filing">Business ITR Filing</option>
+                          <option value="Salaried Employee ITR">Salaried Employee ITR</option>
+                          <option value="Professional & Freelancer ITR">Professional &amp; Freelancer ITR</option>
+                          <option value="TDS Return Filing">TDS Return Filing</option>
+                          <option value="Belated Return Filing">Belated Return Filing</option>
+                          <option value="Updated Return Filing">Updated Return Filing</option>
+                          <option value="Revised Return Filing">Revised Return Filing</option>
+                          <option value="Tax Planning & Computation">Tax Planning &amp; Computation</option>
+                          <option value="Capital Gains Tax Assistance">Capital Gains Tax Assistance</option>
+                          <option value="AIS / TIS Compliance">AIS / TIS Compliance</option>
+                          <option value="Aadhaar–PAN Linking">Aadhaar–PAN Linking</option>
+                          <option value="Late Fee & Penalty Assistance">Late Fee &amp; Penalty Assistance</option>
+                        </select>
+                      </div>
                     </div>
 
                     <button type="submit" className="cr-modal-submit-btn">
@@ -754,7 +831,7 @@ export default function IncomeTaxPage() {
         </div>
       )}
 
-      {/* DEDICATED "TALK TO EXPERT" REDESIGNED MODAL */}
+      {/* DEDICATED "TALK TO EXPERT" MODAL */}
       {isExpertModalOpen && (
         <div className="expert-modal-backdrop" onClick={() => setIsExpertModalOpen(false)}>
           <div className="expert-modal-card" onClick={(e) => e.stopPropagation()}>
@@ -766,7 +843,6 @@ export default function IncomeTaxPage() {
               <X size={18} />
             </button>
 
-            {/* Modal Header */}
             <div className="expert-modal-header">
               <div className="expert-circle-icon-wrapper">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -777,7 +853,6 @@ export default function IncomeTaxPage() {
               </p>
             </div>
 
-            {/* Modal Body */}
             <div className="expert-modal-body">
               {expertSubmitted ? (
                 <div style={{ textAlign: "center", padding: "30px 16px" }}>
@@ -793,19 +868,7 @@ export default function IncomeTaxPage() {
                 </div>
               ) : (
                 <form onSubmit={handleExpertSubmit}>
-                  {/* Row 1: Full Name & Phone Number */}
                   <div className="cr-form-grid-2col">
-                    <div className="cr-form-group">
-                      <label className="cr-form-label">Full Name *</label>
-                      <input
-                        type="text"
-                        className="cr-form-input"
-                        required
-                        value={expertFormData.name}
-                        onChange={(e) => setExpertFormData({ ...expertFormData, name: e.target.value })}
-                      />
-                    </div>
-
                     <div className="cr-form-group">
                       <label className="cr-form-label">Phone Number *</label>
                       <input
@@ -816,10 +879,7 @@ export default function IncomeTaxPage() {
                         onChange={(e) => setExpertFormData({ ...expertFormData, phone: e.target.value })}
                       />
                     </div>
-                  </div>
 
-                  {/* Row 2: Email Address & City / State */}
-                  <div className="cr-form-grid-2col">
                     <div className="cr-form-group">
                       <label className="cr-form-label">Email Address *</label>
                       <input
@@ -830,20 +890,19 @@ export default function IncomeTaxPage() {
                         onChange={(e) => setExpertFormData({ ...expertFormData, email: e.target.value })}
                       />
                     </div>
-
-                    <div className="cr-form-group">
-                      <label className="cr-form-label">City / State *</label>
-                      <input
-                        type="text"
-                        className="cr-form-input"
-                        required
-                        value={expertFormData.city}
-                        onChange={(e) => setExpertFormData({ ...expertFormData, city: e.target.value })}
-                      />
-                    </div>
                   </div>
 
-                  {/* Row 3: Topic / Query */}
+                  <div className="cr-form-group" style={{ marginBottom: 16 }}>
+                    <label className="cr-form-label">City / State *</label>
+                    <input
+                      type="text"
+                      className="cr-form-input"
+                      required
+                      value={expertFormData.city}
+                      onChange={(e) => setExpertFormData({ ...expertFormData, city: e.target.value })}
+                    />
+                  </div>
+
                   <div className="cr-form-grid-2col">
                     <div className="cr-form-group">
                       <label className="cr-form-label">Consultation Topic *</label>
@@ -856,7 +915,7 @@ export default function IncomeTaxPage() {
                         <option value="Business & Startup Tax">Business &amp; Startup Tax</option>
                         <option value="Capital Gains Tax">Capital Gains Tax</option>
                         <option value="Belated & Revised Return">Belated &amp; Revised Return</option>
-                        <option value="Tax Notice Assistance">Tax Notice Assistance</option>
+                        <option value="TDS Filing & Notice">TDS Filing &amp; Notice</option>
                         <option value="General Tax Advice">General Tax Advice</option>
                       </select>
                     </div>

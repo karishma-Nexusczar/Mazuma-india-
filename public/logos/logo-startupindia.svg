@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="100%" height="100%">
+  <!-- State Emblem (Ashoka Emblem Stylized) -->
+  <g fill="#202020" transform="translate(5, 5) scale(0.7)">
+    <path d="M25 5 C30 5, 35 10, 35 15 C35 22, 28 25, 25 30 C22 25, 15 22, 15 15 C15 10, 20 5, 25 5 Z" />
+    <path d="M12 25 L38 25 L34 50 L16 50 Z" />
+    <circle cx="25" cy="58" r="7" stroke="#202020" stroke-width="2" fill="none" />
+    <rect x="8" y="68" width="34" height="4" rx="2" fill="#202020" />
+    <text x="25" y="82" font-size="7" font-weight="900" text-anchor="middle" fill="#202020">सत्यमेव जयते</text>
+  </g>
+
+  <!-- DPIIT Text -->
+  <text x="50" y="38" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="34" font-weight="900" fill="#000000" letter-spacing="-0.5">DPIIT</text>
+
+  <!-- #startupindia Text -->
+  <text x="50" y="62" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="22" font-weight="800" fill="#E85D22">#startup<tspan fill="#3B5998">ind</tspan><tspan fill="#E85D22">ia</tspan></text>
+  
+  <!-- Tricolor accent step -->
+  <path d="M 195 65 L 225 65 L 225 72 L 205 72" fill="none" stroke="#22C55E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
