@@ -1,19 +1,8 @@
 node_modules/
 .next/
 tsconfig.tsbuildinfo
-.env
 .env.local
 .env*.local
 *.zip
 out/
 
-# Ignore files copied to the root for Hostinger (which belong in /public)
-/*.jpg
-/*.png
-/*.ico
-/*.xml
-/*.txt
-/logos/
-/images/
-/services/
-copy-public.js
