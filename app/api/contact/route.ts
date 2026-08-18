@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+
+export const dynamic = "force-static";
 // @ts-ignore
 import nodemailer from "nodemailer";
 
@@ -199,6 +201,19 @@ export async function POST(request: NextRequest) {
       } catch (dbErr) {
         console.error("Supabase DB error:", dbErr);
       }
+    }
+
+    // 8. MySQL Database Persistence
+    try {
+      // @ts-ignore
+      const { query } = await import("@/lib/db/mysql");
+      await query(
+        `INSERT INTO enquiries (name, phone, email, service, message, source, ip_address) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [name, phone, email, service, message, source, ipAddress]
+      );
+      console.log(`[MySQL Saved successfully]`);
+    } catch (mysqlErr) {
+      console.error("MySQL Insert error:", mysqlErr);
     }
 
     return NextResponse.json({

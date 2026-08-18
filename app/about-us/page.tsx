@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CompanyIntroSection from "@/components/CompanyIntroSection";
@@ -68,34 +69,25 @@ export default function AboutUsPage() {
 
       {/* ── 1. HERO BANNER ── */}
       <section className="au-hero-section">
-        <div className="au-shell">
-          <nav className="au-breadcrumb" aria-label="Breadcrumb">
+        <div className="au-shell au-hero-shell relative">
+          <div className="au-breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Home</Link>
             <span className="au-breadcrumb-sep">&gt;</span>
             <span className="current">About Us</span>
-          </nav>
+          </div>
 
           <div className="au-hero-content-wrapper">
             <div className="au-hero-left">
               <span className="au-eyebrow">ABOUT MAZUMA INDIA</span>
               <h1 className="au-hero-title">
-                India&apos;s Trusted Tax &amp;<br />
-                Business Compliance Partner
+                India&apos;s Trusted<br />
+                Tax &amp; Business<br />
+                <span className="highlight-orange">Compliance Partner</span>
               </h1>
 
               <div className="au-hero-desc-group">
                 <p className="au-hero-desc-p">
-                  Mazuma Professional Services Private Limited, operating under the brand name <strong>Mazuma India</strong>, has been helping individuals, startups, SMEs, companies, and professionals simplify taxation, accounting, compliance, and business advisory since its incorporation.
-                </p>
-
-                <div className="au-inc-badge">
-                  <div className="au-inc-icon"><Award size={15} /></div>
-                  <span className="au-inc-label">Incorporated:</span>
-                  <span className="au-inc-date">07 October 2021</span>
-                </div>
-
-                <p className="au-hero-desc-p">
-                  Our experienced professionals deliver accurate, transparent, and practical solutions that enable businesses to remain compliant while focusing on long-term growth.
+                  Mazuma Professional Services Private Limited, established on 07 October 2021, operates under the brand name Mazuma India and provides professional taxation, accounting, compliance, and business advisory services.
                 </p>
               </div>
 
@@ -104,10 +96,23 @@ export default function AboutUsPage() {
                   <span>Book Free Consultation</span>
                   <ArrowRight size={16} />
                 </button>
-                <Link href="/contact-us" className="au-btn-outline">
-                  <span>Contact Us</span>
+                <Link href="/#services" className="au-btn-outline">
+                  <span>Our Services</span>
                   <ArrowRight size={16} />
                 </Link>
+              </div>
+            </div>
+
+            <div className="au-hero-right">
+              <div className="au-hero-img-card">
+                <Image
+                  src="/images/mazuma-group-about-bg.jpg"
+                  alt="Mazuma India corporate office reception desk and logo board"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="au-hero-img"
+                />
               </div>
             </div>
           </div>
@@ -332,7 +337,7 @@ export default function AboutUsPage() {
 
                 <a href="tel:+919936351555" className="au-btn-call">
                   <Phone size={18} />
-                  <span>Call Now +91 99363 51555</span>
+                  <span style={{ display: "flex", flexDirection: "column", gap: "2px" }}><span>Call Now: +91 99363 51555</span><span>Call Now: +91 99998 65586</span></span>
                 </a>
               </div>
             </div>

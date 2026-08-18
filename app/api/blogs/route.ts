@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { query, BlogRow } from "@/lib/db/mysql";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 // GET /api/blogs - List blogs with categories and tags
 export async function GET(request: Request) {

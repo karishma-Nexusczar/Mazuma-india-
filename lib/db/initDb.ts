@@ -78,6 +78,21 @@ export async function initializeDatabase() {
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
   `);
 
+  // 6. Enquiries Table
+  await query(`
+    CREATE TABLE IF NOT EXISTS enquiries (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      phone VARCHAR(50) NULL,
+      email VARCHAR(255) NULL,
+      service VARCHAR(255) NULL,
+      message TEXT NULL,
+      source VARCHAR(255) NULL,
+      ip_address VARCHAR(100) NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `);
+
   // Seed default categories
   const categories = [
     ["Income Tax", "income-tax", "Guides on ITR filing, tax slabs, capital gains, and deductions."],

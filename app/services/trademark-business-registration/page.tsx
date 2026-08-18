@@ -84,6 +84,8 @@ export default function TrademarkBusinessRegistrationPage() {
   });
 
   const [showAllServices, setShowAllServices] = useState(false);
+  const [showAllTbrServices, setShowAllTbrServices] = useState(false);
+  const [showAllTbrProcess, setShowAllTbrProcess] = useState(false);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -374,23 +376,47 @@ export default function TrademarkBusinessRegistrationPage() {
           </div>
 
           <div className="tbr-services-trust-grid">
-            {registrationServices.map((service, idx) => (
-              <div key={idx} className="tbr-service-trust-card">
-                <div className="tbr-trust-top-content">
-                  <div className="tbr-trust-logo-box">
-                    <ServiceLogoBadge title={service.title} />
+            {registrationServices.map((service, idx) => {
+              const hideMobileClass = idx >= 3 && !showAllTbrServices ? "tbr-service-hide-mobile" : "";
+              return (
+                <div key={idx} className={`tbr-service-trust-card ${hideMobileClass}`}>
+                  <div className="tbr-trust-top-content">
+                    <div className="tbr-trust-logo-box">
+                      <ServiceLogoBadge title={service.title} />
+                    </div>
+                    <h3 className="tbr-trust-service-title">{service.title}</h3>
                   </div>
-                  <h3 className="tbr-trust-service-title">{service.title}</h3>
-                </div>
 
-                <button
-                  className="tbr-trust-contact-btn"
-                  onClick={() => openServiceModal(service.title)}
-                >
-                  Enquiry Now
-                </button>
-              </div>
-            ))}
+                  <p className="tbr-service-desc">{service.desc}</p>
+
+                  <button
+                    className="tbr-trust-contact-btn"
+                    onClick={() => openServiceModal(service.title)}
+                  >
+                    <span>Enquiry Now</span>
+                    <span className="tbr-btn-mini-arrow">→</span>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Toggle Button for Mobile Services */}
+          <div className="tbr-services-view-all-wrapper" style={{ textAlign: "center", marginTop: "24px" }}>
+            <button
+              type="button"
+              className="tbr-who-toggle-btn"
+              onClick={() => setShowAllTbrServices(!showAllTbrServices)}
+            >
+              <span>{showAllTbrServices ? "Show Less Services" : "View All 10 Services"}</span>
+              <ArrowRight
+                size={14}
+                style={{
+                  transform: showAllTbrServices ? "rotate(-90deg)" : "rotate(90deg)",
+                  transition: "transform 0.3s ease"
+                }}
+              />
+            </button>
           </div>
         </div>
       </section>
@@ -411,13 +437,14 @@ export default function TrademarkBusinessRegistrationPage() {
           <div className="tbr-process-horizontal-flow">
             {processSteps.map((pStep, index) => {
               const IconComp = pStep.icon;
+              const hideMobileClass = index >= 2 && !showAllTbrProcess ? "tbr-process-hide-mobile" : "";
               return (
-                <div key={pStep.step} className="tbr-process-flow-item">
+                <div key={pStep.step} className={`tbr-process-flow-item ${hideMobileClass}`}>
                   <div className="tbr-process-icon-circle">
-                    <IconComp size={28} className="tbr-step-svg-icon" />
+                    <IconComp size={24} className="tbr-step-svg-icon" />
                   </div>
                   {index < processSteps.length - 1 && (
-                    <div className="tbr-flow-connector">
+                    <div className={`tbr-flow-connector ${hideMobileClass}`}>
                       <div className="tbr-connector-line"></div>
                       <ChevronRight size={14} className="tbr-connector-arrow" />
                     </div>
@@ -429,6 +456,24 @@ export default function TrademarkBusinessRegistrationPage() {
                 </div>
               );
             })}
+          </div>
+
+          {/* Toggle Button for Mobile Process */}
+          <div className="tbr-process-view-all-wrapper" style={{ textAlign: "center", marginTop: "24px" }}>
+            <button
+              type="button"
+              className="tbr-who-toggle-btn"
+              onClick={() => setShowAllTbrProcess(!showAllTbrProcess)}
+            >
+              <span>{showAllTbrProcess ? "Show Less Registration Steps" : "View All 6 Registration Steps"}</span>
+              <ArrowRight
+                size={14}
+                style={{
+                  transform: showAllTbrProcess ? "rotate(-90deg)" : "rotate(90deg)",
+                  transition: "transform 0.3s ease"
+                }}
+              />
+            </button>
           </div>
         </div>
       </section>
@@ -456,8 +501,10 @@ export default function TrademarkBusinessRegistrationPage() {
                       <div className="tbr-mini-icon-circle">
                         <IconComp size={18} />
                       </div>
-                      <h3 className="tbr-mini-title">{feat.title}</h3>
-                      <p className="tbr-mini-desc">{feat.desc}</p>
+                      <div className="tbr-why-card-info">
+                        <h3 className="tbr-mini-title">{feat.title}</h3>
+                        <p className="tbr-mini-desc">{feat.desc}</p>
+                      </div>
                     </div>
                   );
                 })}
@@ -575,7 +622,7 @@ export default function TrademarkBusinessRegistrationPage() {
                 style={{ textDecoration: "none", justifyContent: "center" }}
               >
                 <PhoneCall size={16} style={{ color: "#FF6B1A" }} />
-                <span>Call Now: +91 99363 51555</span>
+                <span style={{ display: "flex", flexDirection: "column", gap: "2px" }}><span>Call Now: +91 99363 51555</span><span>Call Now: +91 99998 65586</span></span>
               </a>
             </div>
           </div>
@@ -670,7 +717,7 @@ export default function TrademarkBusinessRegistrationPage() {
                 }}
               >
                 <PhoneCall size={18} />
-                <span>+91 99363 51555</span>
+                <span style={{ display: "flex", flexDirection: "column", gap: "2px" }}><span>+91 99363 51555</span><span>+91 99998 65586</span></span>
               </a>
               <form onSubmit={handleFormSubmit}>
                 <div className="cr-form-group">

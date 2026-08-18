@@ -83,13 +83,16 @@ export default function Header() {
   }, [pathname]);
 
   const headerServicesList = [
-    { name: "Company Registration", href: "/services/company-registration", targetId: "service-company-registration" },
-    { name: "GST Services", href: "/services/gst-services", targetId: "service-gst" },
-    { name: "Income Tax", href: "/services/income-tax", targetId: "service-incometax" },
-    { name: "Accounting & Bookkeeping", href: "/services/accounting-bookkeeping", targetId: "service-accounting" },
-    { name: "Trademark & Business Registrations", href: "/services/trademark-business-registration", targetId: "service-trademark" },
-    { name: "NGO Services", href: "/services/ngo-services", targetId: "service-ngo-registration" },
-    { name: "Business Compliance", href: "/services/business-compliance", targetId: "services" }
+    { name: "Company Registration", href: "/services/company-registration" },
+    { name: "GST Services", href: "/services/gst-services" },
+    { name: "Income Tax", href: "/services/income-tax" },
+    { name: "Accounting & Bookkeeping", href: "/services/accounting-bookkeeping" },
+    { name: "Trademark & Business Registrations", href: "/services/trademark-business-registration" },
+    { name: "MSME (Udyam) Registration", href: "/services/msme-startup-india-registration#msme-udyam" },
+    { name: "Startup India Registration", href: "/services/msme-startup-india-registration#startup-india" },
+    { name: "NGO Services", href: "/services/ngo-services" },
+    { name: "Business Compliance", href: "/services/business-compliance" },
+    { name: "FFMC / AD-II / NBFC Registration", href: "/services/ffmc-ad-nbfc-registration" }
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -111,6 +114,8 @@ export default function Header() {
           behavior: "smooth"
         });
       }
+    } else {
+      window.location.href = `/#${targetId}`;
     }
   };
 
@@ -176,7 +181,7 @@ export default function Header() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          <Menu size={24} />
         </button>
 
         {/* Mobile menu backdrop */}
@@ -185,6 +190,18 @@ export default function Header() {
         )}
 
         <nav className={menuOpen ? "open" : ""}>
+          {/* Mobile Drawer Header with Logo & Close button */}
+          <div className="mobile-drawer-header">
+            <img src="/mazuma-logo-transparent.png" alt="Mazuma India" className="mobile-drawer-logo" />
+            <button
+              className="mobile-drawer-close-btn"
+              aria-label="Close navigation menu"
+              onClick={() => setMenuOpen(false)}
+            >
+              <X size={20} />
+            </button>
+          </div>
+
           <Link href="/" onClick={(e) => handleNavClick(e, "home")}>
             <span>Home</span>
           </Link>
@@ -213,7 +230,8 @@ export default function Header() {
               onClick={(e) => {
                 if (typeof window !== "undefined" && window.innerWidth <= 900) {
                   e.preventDefault();
-                  setServicesOpen(!servicesOpen);
+                  setServicesOpen((prev) => !prev);
+                  setResourcesOpen(false);
                 } else {
                   handleNavClick(e, "services");
                 }
@@ -235,13 +253,32 @@ export default function Header() {
                     onClick={(e) => {
                       setServicesOpen(false);
                       setMenuOpen(false);
-                      if (pathname === item.href) {
-                        e.preventDefault();
-                        window.scrollTo({ top: 0, behavior: "smooth" });
+
+                      if (typeof window !== "undefined") {
+                        const [urlPath, hash] = item.href.split("#");
+                        if (pathname === urlPath && hash) {
+                          e.preventDefault();
+                          const targetEl = document.getElementById(hash);
+                          if (targetEl) {
+                            const headerWrapper = document.querySelector(".sticky-header-wrapper");
+                            const headerHeight = headerWrapper ? headerWrapper.getBoundingClientRect().height : 90;
+                            const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+                            const offsetPosition = Math.max(0, elementPosition - headerHeight + 10);
+
+                            window.scrollTo({
+                              top: offsetPosition,
+                              behavior: "smooth"
+                            });
+                            window.history.pushState(null, "", item.href);
+                          }
+                        } else if (pathname === item.href) {
+                          e.preventDefault();
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }
                       }
                     }}
                   >
-                    {item.name}
+                    <span>{item.name}</span>
                   </Link>
                 );
               })}
@@ -268,7 +305,8 @@ export default function Header() {
               onClick={(e) => {
                 if (typeof window !== "undefined" && window.innerWidth <= 900) {
                   e.preventDefault();
-                  setResourcesOpen(!resourcesOpen);
+                  setResourcesOpen((prev) => !prev);
+                  setServicesOpen(false);
                 } else {
                   setMenuOpen(false);
                 }
@@ -281,10 +319,21 @@ export default function Header() {
             </Link>
 
             <div className={`services-dropdown-menu ${resourcesOpen ? "is-open" : ""}`}>
-              <Link href="/blog" className="services-dropdown-link" onClick={() => setMenuOpen(false)}>Latest Articles</Link>
+              <Link href="/blog" className="services-dropdown-link" onClick={() => { setResourcesOpen(false); setMenuOpen(false); }}>Latest Articles</Link>
               <Link href="/#testimonials" className="services-dropdown-link" onClick={(e) => handleNavClick(e, "testimonials")}>Client Testimonials</Link>
-              <Link href="/#contact-us" className="services-dropdown-link" onClick={(e) => handleNavClick(e, "contact-us")}>FAQ</Link>
-              <Link href="/#contact-us" className="services-dropdown-link" onClick={(e) => handleNavClick(e, "contact-us")}>Free Consultation</Link>
+              <Link href="/#faq" className="services-dropdown-link" onClick={(e) => handleNavClick(e, "faq")}>FAQ</Link>
+              <button
+                type="button"
+                className="services-dropdown-link"
+                style={{ textAlign: "left", background: "none", border: "none", width: "100%", cursor: "pointer", font: "inherit" }}
+                onClick={() => {
+                  setResourcesOpen(false);
+                  setMenuOpen(false);
+                  setIsModalOpen(true);
+                }}
+              >
+                Free Consultation
+              </button>
             </div>
           </div>
 
@@ -296,8 +345,11 @@ export default function Header() {
             <span>Contact Us</span>
           </Link>
 
-          {/* Mobile menu action button inside drawer */}
+          {/* Mobile menu action buttons inside drawer */}
           <div className="mobile-drawer-cta">
+            <a href="tel:+919936351555" className="button button-secondary mobile-call-button" onClick={() => setMenuOpen(false)}>
+              <span style={{ display: "flex", flexDirection: "column", gap: "2px" }}><span>Call Now: +91 99363 51555</span><span>Call Now: +91 99998 65586</span></span>
+            </a>
             <button
               className="button button-primary mobile-cta-button"
               onClick={() => {
@@ -311,14 +363,33 @@ export default function Header() {
           </div>
         </nav>
 
-        {/* Desktop CTA Button */}
-        <button
-          className="button button-primary header-cta-desktop"
-          onClick={() => setIsModalOpen(true)}
-        >
-          <Calendar size={16} />
-          <span>Book Free Consultation</span>
-        </button>
+        {/* Desktop CTA Action Buttons */}
+        <div className="header-actions-desktop" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <a href="tel:+919936351555" className="header-call-btn" style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "6px",
+            padding: "8px 14px",
+            borderRadius: "10px",
+            border: "1px solid #E2E8F0",
+            backgroundColor: "#F8FAFC",
+            color: "#0F2748",
+            fontSize: "13px",
+            fontWeight: "600",
+            textDecoration: "none",
+            transition: "all 0.2s ease"
+          }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>Call Now</span>
+          </a>
+          <button
+            className="button button-primary header-cta-desktop"
+            onClick={() => setIsModalOpen(true)}
+          >
+            <Calendar size={16} />
+            <span>Book Free Consultation</span>
+          </button>
+        </div>
       </header>
 
       {/* HEADER CONSULTATION POPUP MODAL */}

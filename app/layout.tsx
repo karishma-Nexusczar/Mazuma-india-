@@ -11,11 +11,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://mazumaindia.com"),
   title: {
-    default: "Mazuma India | Tax, Compliance & Business Advisory | mazumaindia.com",
+    default: "Mazuma India | Tax, Compliance & Business Growth",
     template: "%s | Mazuma India",
   },
   description:
-    "Mazuma India (mazumaindia.com) - Premier Tax, GST registration, company incorporation, ITR filing, accounting & business compliance advisory services in India.",
+    "Mazuma India provides professional taxation, accounting, GST, compliance, business registration and financial advisory services for startups, SMEs, companies, professionals and individuals.",
   keywords: [
     "Mazuma India",
     "mazumaindia.com",
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://mazumaindia.com",
     siteName: "Mazuma India",
-    title: "Mazuma India | Tax, Compliance & Business Advisory | mazumaindia.com",
+    title: "Mazuma India | Tax, Compliance & Business Growth",
     description:
-      "Clear advice. Confident decisions. Compliant growth. Expert tax, GST, and corporate compliance services across India.",
+      "Professional taxation, accounting, GST, compliance, business registration and financial advisory services by Mazuma India.",
     images: [
       {
         url: "/mazuma-logo-transparent.png",
@@ -69,8 +69,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mazuma India | Tax, Compliance & Business Advisory",
-    description: "Tax, GST, company registration and compliance support for ambitious Indian businesses.",
+    title: "Mazuma India | Tax, Compliance & Business Growth",
+    description: "Professional taxation, accounting, GST, compliance, business registration and financial advisory services by Mazuma India.",
     images: ["/mazuma-hero-office.png"],
   },
   robots: {
@@ -100,8 +100,8 @@ export default function RootLayout({
       {
         "@type": "Organization",
         "@id": "https://mazumaindia.com/#organization",
-        name: "Mazuma India",
-        alternateName: ["mazumaindia.com", "Mazuma Logo", "Mazuma", "Mazuma India Tax"],
+        name: "Mazuma Professional Services Private Limited",
+        alternateName: ["Mazuma India", "mazumaindia.com", "Mazuma Logo", "Mazuma", "Mazuma India Tax"],
         url: "https://mazumaindia.com",
         logo: {
           "@type": "ImageObject",
@@ -110,7 +110,7 @@ export default function RootLayout({
         },
         image: "https://mazumaindia.com/mazuma-logo-transparent.png",
         description:
-          "Mazuma India is a leading tax, GST, company incorporation, and financial compliance services firm in India.",
+          "Mazuma India provides professional taxation, accounting, GST, compliance, business registration and financial advisory services.",
         contactPoint: {
           "@type": "ContactPoint",
           telephone: "+91-9876543210",

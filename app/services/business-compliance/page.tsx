@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ConsultationModal from "@/components/ConsultationModal";
 import "./business-compliance.css";
 import {
   ChevronRight,
@@ -93,47 +94,56 @@ export default function BusinessCompliancePage() {
     {
       title: "ROC Compliance",
       desc: "Annual ROC filing, DIR-3 KYC, DPT-3, MGT-7, AOC-4, and MCA compliance.",
-      icon: ShieldCheck
+      icon: ShieldCheck,
+      imageIcon: "/services/compliance/roc-compliance.png"
     },
     {
       title: "Annual Filing",
       desc: "Timely annual return filing to ensure statutory compliance and avoid penalties.",
-      icon: CalendarCheck
+      icon: CalendarCheck,
+      imageIcon: "/services/compliance/annual-filing.png"
     },
     {
       title: "Company Compliance",
       desc: "Ongoing compliance management for Private Limited Companies, LLPs, and OPCs.",
-      icon: Building2
+      icon: Building2,
+      imageIcon: "/services/compliance/company-compliance.png"
     },
     {
       title: "TDS Return Filing",
       desc: "Quarterly TDS return filing, correction statements, and compliance support.",
-      icon: FileText
+      icon: FileText,
+      imageIcon: "/services/compliance/tds-return-filing.png"
     },
     {
       title: "PAN & TAN Services",
       desc: "PAN, TAN application, correction, and business registration support.",
-      icon: FileCode
+      icon: FileCode,
+      imageIcon: "/services/compliance/pan-tan-services.png"
     },
     {
       title: "Secretarial Compliance",
       desc: "Board resolutions, meeting documentation, registers, and Companies Act compliance.",
-      icon: ClipboardCheck
+      icon: ClipboardCheck,
+      imageIcon: "/services/compliance/secretarial-compliance.png"
     },
     {
       title: "Compliance Health Check",
       desc: "Comprehensive review of your business compliance status with expert recommendations.",
-      icon: SearchCheck
+      icon: SearchCheck,
+      imageIcon: "/services/compliance/compliance-health-check.png"
     },
     {
       title: "Corporate Advisory",
       desc: "Strategic guidance on corporate governance, restructuring, and compliance planning.",
-      icon: Scale
+      icon: Scale,
+      imageIcon: "/services/compliance/corporate-advisory.png"
     },
     {
       title: "Business Documentation",
       desc: "Preparation of agreements, resolutions, legal documents, and statutory records.",
-      icon: FileCheck2
+      icon: FileCheck2,
+      imageIcon: "/services/compliance/business-documentation.png"
     }
   ];
 
@@ -261,16 +271,16 @@ export default function BusinessCompliancePage() {
       {/* SECTION 1 — HERO SECTION */}
       <section className="compliance-hero-section">
         <div className="compliance-container">
+          <nav className="compliance-breadcrumb" aria-label="Breadcrumb">
+            <Link href="/" className="compliance-crumb-link">Home</Link>
+            <ChevronRight size={12} className="compliance-crumb-sep" />
+            <span className="compliance-crumb-link">Services</span>
+            <ChevronRight size={12} className="compliance-crumb-sep" />
+            <span className="compliance-crumb-current">Business Compliance</span>
+          </nav>
+
           <div className="compliance-hero-grid">
             <div className="compliance-hero-content">
-              <nav className="compliance-breadcrumb" aria-label="Breadcrumb">
-                <Link href="/" className="compliance-crumb-link">Home</Link>
-                <ChevronRight size={12} className="compliance-crumb-sep" />
-                <span className="compliance-crumb-link">Services</span>
-                <ChevronRight size={12} className="compliance-crumb-sep" />
-                <span className="compliance-crumb-current">Business Compliance</span>
-              </nav>
-
               <div className="compliance-hero-badge">
                 <span className="compliance-badge-dot"></span>
                 <span>BUSINESS COMPLIANCE</span>
@@ -301,15 +311,18 @@ export default function BusinessCompliancePage() {
               </div>
 
               <div className="compliance-hero-cta-group">
-                <button
+                <a
+                  href="https://wa.me/919936351555?text=Hello%20Mazuma%20India,%20I%20want%20to%20book%20a%20free%20consultation%20for%20Business%20Compliance."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="compliance-btn-primary"
-                  onClick={() => openServiceModal("Business Compliance Package")}
                 >
-                  Book Free Consultation <ArrowRight size={16} />
-                </button>
+                  <span>Book Free Consultation</span> <ArrowRight size={16} />
+                </a>
                 <button
                   className="compliance-btn-outline"
-                  onClick={() => setIsExpertModalOpen(true)}
+                  onClick={() => setIsModalOpen(true)}
+                  style={{ cursor: "pointer" }}
                 >
                   Talk to Expert
                 </button>
@@ -350,7 +363,15 @@ export default function BusinessCompliancePage() {
                 >
                   <div className="compliance-card-top-bar"></div>
                   <div className="compliance-card-icon-box">
-                    <IconComp size={22} />
+                    {service.imageIcon ? (
+                      <img
+                        src={service.imageIcon}
+                        alt={service.title}
+                        className="compliance-card-custom-icon"
+                      />
+                    ) : (
+                      <IconComp size={22} />
+                    )}
                   </div>
                   <h3 className="compliance-card-title">{service.title}</h3>
                   <p className="compliance-card-desc">{service.desc}</p>
@@ -501,59 +522,69 @@ export default function BusinessCompliancePage() {
 
           <div className="compliance-blog-grid">
             {blogCards.map((blog, i) => (
-              <div key={i} className="compliance-blog-card">
+              <Link key={i} href={blog.link} className="compliance-blog-card">
                 <img src={blog.img} alt={blog.title} className="compliance-blog-img" />
                 <div className="compliance-blog-content">
                   <h4 className="compliance-blog-title">{blog.title}</h4>
-                  <Link href={blog.link} className="compliance-blog-link">
-                    Read More <ArrowRight size={14} />
-                  </Link>
                 </div>
-              </div>
+              </Link>
             ))}
-          </div>
-
-          <div style={{ textAlign: "center", marginTop: "32px" }}>
-            <Link href="/blog" className="compliance-btn-outline">
-              View All Articles
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* SECTION 8 — FAQ */}
+      {/* SECTION 8 — FAQ (COMPACT 2-COLUMN LEFT/RIGHT LAYOUT - 4 QUESTIONS) */}
       <section className="compliance-faq-section">
         <div className="compliance-container">
-          <div className="compliance-section-header">
-            <h2 className="compliance-section-title">Frequently Asked Questions</h2>
-            <p className="compliance-section-desc">
-              Got questions regarding ROC filing, annual compliance, or secretarial services? Find quick answers below.
-            </p>
-          </div>
-
-          <div className="compliance-faq-list">
-            {faqItems.map((faq, index) => {
-              const isOpen = openFaq === index;
-              return (
-                <div
-                  key={index}
-                  className={`compliance-faq-item ${isOpen ? "is-open" : ""}`}
+          <div className="compliance-faq-layout">
+            
+            {/* Left Column: Title & Advisory Box */}
+            <div className="compliance-faq-left">
+              <span className="compliance-faq-label">HELP &amp; ADVISORY</span>
+              <h2 className="compliance-section-title">Frequently Asked Questions</h2>
+              <p className="compliance-section-desc">
+                Got questions regarding ROC filing, annual compliance, or secretarial services? Find quick answers below.
+              </p>
+              
+              <div className="compliance-faq-support-card">
+                <p>Have specific questions about your business compliance?</p>
+                <button
+                  className="compliance-btn-primary"
+                  onClick={() => openServiceModal("Talk to CA Expert")}
                 >
-                  <button
-                    className="compliance-faq-question"
-                    onClick={() => toggleFaq(index)}
-                  >
-                    <span>{faq.q}</span>
-                    {isOpen ? <Minus size={18} /> : <Plus size={18} />}
-                  </button>
-                  {isOpen && (
-                    <div className="compliance-faq-answer">
-                      <p>{faq.a}</p>
+                  Talk to CA Expert <ArrowRight size={15} />
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: 4 Accordion FAQs */}
+            <div className="compliance-faq-right">
+              <div className="compliance-faq-list">
+                {faqItems.slice(0, 4).map((faq, index) => {
+                  const isOpen = openFaq === index;
+                  return (
+                    <div
+                      key={index}
+                      className={`compliance-faq-item ${isOpen ? "is-open" : ""}`}
+                    >
+                      <button
+                        className="compliance-faq-question"
+                        onClick={() => toggleFaq(index)}
+                      >
+                        <span>{faq.q}</span>
+                        {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                      </button>
+                      {isOpen && (
+                        <div className="compliance-faq-answer">
+                          <p>{faq.a}</p>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -600,10 +631,10 @@ export default function BusinessCompliancePage() {
       </section>
 
       {/* CONSULTATION MODAL */}
-      {isModalOpen && (
-        <div className="modal-backdrop" onClick={() => setIsModalOpen(false)}>
+      {(isModalOpen || isExpertModalOpen) && (
+        <div className="modal-backdrop" onClick={() => { setIsModalOpen(false); setIsExpertModalOpen(false); }}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={() => setIsModalOpen(false)}>
+            <button className="modal-close-btn" onClick={() => { setIsModalOpen(false); setIsExpertModalOpen(false); }}>
               <X size={20} />
             </button>
             <h3 className="modal-title">Book Free Compliance Consultation</h3>
@@ -660,57 +691,8 @@ export default function BusinessCompliancePage() {
         </div>
       )}
 
-      {/* TALK TO EXPERT MODAL */}
-      {isExpertModalOpen && (
-        <div className="modal-backdrop" onClick={() => setIsExpertModalOpen(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={() => setIsExpertModalOpen(false)}>
-              <X size={20} />
-            </button>
-            <h3 className="modal-title">Talk to a Compliance Specialist</h3>
-            <p className="modal-subtitle">Get direct advisory on ROC filings, secretarial compliance, and TDS returns.</p>
-            {submittedMessage ? (
-              <div className="modal-success-msg">{submittedMessage}</div>
-            ) : (
-              <form onSubmit={handleFormSubmit} className="modal-form">
-                <div className="form-group">
-                  <label>Full Name</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Enter your name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Phone Number</label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="Enter phone number"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Email Address</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="Enter email address"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
-                </div>
-                <button type="submit" className="compliance-btn-primary" disabled={isSubmitting}>
-                  {isSubmitting ? "Connecting..." : "Request Callback Now"}
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
+      {/* CONSULTATION POPUP MODAL */}
+      <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       <Footer />
     </div>

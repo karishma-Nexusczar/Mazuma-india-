@@ -442,15 +442,37 @@
 
 .gst-section-header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+}
+
+.gst-section-eyebrow {
+  display: inline-block;
+  color: #FF6B00;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  background: #FFF4EC;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
 }
 
 .gst-section-title {
-  font-size: clamp(24px, 2.6vw, 30px);
+  font-size: clamp(24px, 2.6vw, 32px);
   font-weight: 900;
   color: #0F2D52;
-  margin: 0 0 6px 0;
+  margin: 0 0 8px 0;
   letter-spacing: -0.5px;
+}
+
+.gst-section-subtitle {
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0 auto 12px auto;
+  max-width: 640px;
+  font-weight: 500;
 }
 
 .gst-title-divider {
@@ -485,6 +507,8 @@
   padding: 14px 34px;
   border-radius: 50px;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
   box-shadow: 0 6px 20px rgba(255, 107, 0, 0.35);
   transition: all 0.25s ease;
 }
@@ -705,78 +729,291 @@
 }
 
 /* =========================================================
-   STEP 6.5: OUR GST PROCESS (7 STEPS)
+   ABOUT GST & WHO NEEDS GST REGISTRATION SECTION
+   ========================================================= */
+.gst-about-section {
+  padding: 48px 0;
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.gst-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.gst-about-left h2 {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0F2D52;
+  margin: 0 0 14px 0;
+  line-height: 1.25;
+}
+
+.gst-about-left p {
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 14px 0;
+}
+
+.gst-about-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.gst-about-badge-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0F2D52;
+  box-shadow: 0 2px 8px rgba(15, 45, 82, 0.03);
+  transition: all 0.2s ease;
+}
+
+.gst-about-badge-card:hover {
+  border-color: #FF6B00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 107, 0, 0.1);
+}
+
+.gst-about-badge-card svg {
+  flex-shrink: 0;
+}
+
+.gst-about-right {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 18px;
+  padding: 26px 22px;
+  box-shadow: 0 8px 24px rgba(15, 45, 82, 0.05);
+}
+
+.gst-who-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #0F2D52;
+  margin: 0 0 18px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #FFF4EC;
+}
+
+.gst-who-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.gst-who-pill-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.gst-who-pill-card:hover {
+  background: #FFF4EC;
+  border-color: #FF6B00;
+  transform: translateX(3px);
+}
+
+.gst-who-icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #FF6B00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.gst-who-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1E293B;
+  line-height: 1.3;
+}
+
+.gst-who-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FF6B00;
+  color: #FFFFFF;
+  border: 1.5px solid #FF6B00;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 10px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35);
+}
+
+.gst-who-toggle-btn:hover {
+  background: #E56000;
+  border-color: #E56000;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 107, 0, 0.45);
+}
+
+/* =========================================================
+   OUR GST PROCESS (7 STEPS REDESIGNED TO PREMIER MODERN LAYOUT)
    ========================================================= */
 .gst-process-section {
-  padding: 44px 0;
-  background: #FFFFFF;
+  padding: 64px 0;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.gst-section-eyebrow {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #FF6B00;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: #FFF4EC;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.gst-section-subtitle {
+  font-size: 14.5px;
+  color: #64748B;
+  max-width: 620px;
+  margin: 6px auto 16px auto;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.gst-process-timeline-wrapper {
+  margin-top: 32px;
 }
 
 .gst-process-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 12px;
-  max-width: 1340px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1280px;
   margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .gst-process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gst-process-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .gst-process-step-card {
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
-  border-radius: 14px;
-  padding: 16px 10px;
+  border-radius: 16px;
+  padding: 22px 18px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
-  position: relative;
-  box-shadow: 0 4px 14px rgba(15, 45, 82, 0.03);
-  transition: all 0.25s ease;
+  align-items: flex-start;
+  text-align: left;
+  gap: 12px;
+  box-shadow: 0 4px 18px rgba(15, 45, 82, 0.04);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 
 .gst-process-step-card:hover {
   border-color: #FF6B00;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(255, 107, 0, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(255, 107, 0, 0.14);
 }
 
-.gst-process-step-no {
-  display: inline-block;
+.gst-process-card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.gst-process-card-badge {
   font-size: 11px;
-  font-weight: 900;
+  font-weight: 800;
   color: #FF6B00;
   background: #FFF4EC;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 20px;
   letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 107, 0, 0.15);
 }
 
-.gst-process-icon-box {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: #F8FAFC;
+.gst-process-phase-tag {
+  font-size: 11px;
+  color: #94A3B8;
+  font-weight: 600;
+}
+
+.gst-process-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FFF4EC 0%, #FFE8D6 100%);
   color: #FF6B00;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #E2E8F0;
-  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.08);
 }
 
-.gst-process-step-card:hover .gst-process-icon-box {
-  background: #FF6B00;
+.gst-process-step-card:hover .gst-process-icon-circle {
+  background: linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%);
   color: #FFFFFF;
   border-color: #FF6B00;
+  box-shadow: 0 6px 18px rgba(255, 107, 0, 0.3);
 }
 
 .gst-process-step-title {
-  font-size: 12.5px;
-  font-weight: 800;
+  font-size: 15.5px;
+  font-weight: 700;
   color: #0F2D52;
   margin: 0;
   line-height: 1.3;
+}
+
+.gst-process-step-desc {
+  font-size: 12.5px;
+  color: #64748B;
+  line-height: 1.5;
+  margin: 0;
+  fontWeight: 400;
 }
 
 /* =========================================================
@@ -1311,18 +1548,50 @@
   transform: translateY(-2px);
 }
 
-/* RESPONSIVE DESIGN */
-@media (max-width: 1024px) {
+/* =========================================================
+   RESPONSIVE DESIGN & DESKTOP PRESERVATION
+   ========================================================= */
+
+/* DESKTOP LAYOUT (MIN-WIDTH 1025PX) - 100% RESTORED FULL GRIDS */
+@media (min-width: 1025px) {
+  .gst-featured-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .gst-services-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 22px !important;
+  }
+
+  .gst-about-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 40px !important;
+  }
+
+  .gst-why-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .gst-gov-trust-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .gst-card-hide-mobile {
+    display: flex !important;
+  }
+
+  .gst-view-all-mobile-only {
+    display: none !important;
+  }
+}
+
+/* TABLET LAYOUT (769PX - 1024PX) */
+@media (min-width: 769px) and (max-width: 1024px) {
   .gst-hero-section {
     padding: 40px 0;
     min-height: auto;
-    background-image: linear-gradient(
-      to bottom,
-      #ffffff 0%,
-      rgba(255, 255, 255, 0.95) 70%,
-      rgba(255, 255, 255, 0.8) 100%
-    ),
-    url("/gst-hero-laptop-desk-wide.png");
   }
 
   .gst-hero-grid {
@@ -1340,34 +1609,146 @@
   }
 
   .gst-featured-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
-  .gst-split-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
+  .gst-services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
-  .gst-why-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .gst-about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
   }
 
-  .gst-cta-card {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 28px 24px;
+  .gst-card-hide-mobile {
+    display: flex !important;
   }
 
-  .gst-gov-trust-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .gst-process-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .gst-view-all-mobile-only {
+    display: none !important;
   }
 }
 
-@media (max-width: 640px) {
+/* MOBILE LAYOUT (MAX-WIDTH 768PX) */
+@media (max-width: 768px) {
+  .gst-hero-section {
+    background-image: none !important;
+    background-color: #FFFFFF !important;
+    padding: 24px 0 32px 0 !important;
+    min-height: auto !important;
+  }
+
+  .gst-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .gst-hero-left {
+    max-width: 100% !important;
+  }
+
+  .gst-hero-title {
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .gst-hero-desc {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .gst-hero-badges-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .gst-trust-badge-card {
+    background: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 10px !important;
+    padding: 10px 8px !important;
+  }
+
+  .gst-hero-cta-row {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .gst-btn-primary,
+  .gst-btn-secondary {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .gst-floating-menu-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .gst-featured-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .gst-services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .gst-feat-card-img-box {
+    height: 180px !important;
+  }
+
+  .gst-feat-card-content {
+    padding: 18px 16px !important;
+  }
+
+  .gst-feat-title {
+    font-size: 17px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .gst-feat-desc {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .gst-feat-checklist {
+    padding: 10px 0 !important;
+    gap: 6px !important;
+  }
+
+  .gst-feat-check-item {
+    font-size: 12.5px !important;
+    justify-content: flex-start !important;
+  }
+
+  .gst-feat-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 10px 20px !important;
+    font-size: 13.5px !important;
+    margin-top: 6px !important;
+  }
+
+  .gst-about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .gst-about-right {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 24px 20px !important;
+  }
+
   .gst-hero-badges-row {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1377,7 +1758,14 @@
   }
 
   .gst-process-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .gst-process-step-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 20px 18px !important;
   }
 
   .gst-why-grid {
@@ -1386,5 +1774,110 @@
 
   .gst-faq-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gst-cta-card {
+    grid-template-columns: 1fr !important;
+    padding: 28px 20px !important;
+    gap: 24px !important;
+    text-align: center !important;
+  }
+
+  .gst-cta-left-content {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .gst-cta-title {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+  }
+
+  .gst-cta-desc {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  .gst-cta-features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .gst-cta-mini-feature {
+    padding: 10px 8px !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .gst-cta-mini-label {
+    font-size: 11.5px !important;
+    line-height: 1.2 !important;
+  }
+
+  .gst-cta-right-content {
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  .gst-cta-right-content .gst-btn-primary {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .gst-cta-phone-row {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+
+  .gst-card-hide-mobile,
+  .gst-process-hide-mobile {
+    display: none !important;
+  }
+
+  .gst-view-all-mobile-only {
+    display: block !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .gst-about-badges-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .gst-who-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .gst-who-pill-card {
+    padding: 8px 10px !important;
+    gap: 8px !important;
+  }
+
+  .gst-who-label {
+    font-size: 12px !important;
+    word-break: break-word !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .gst-who-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .gst-about-badges-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* DESKTOP PROCESS HIDE CLASS (COLLAPSED STATE) */
+@media (min-width: 769px) {
+  .gst-process-hide-desktop {
+    display: none !important;
   }
 }

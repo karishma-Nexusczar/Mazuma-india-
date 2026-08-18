@@ -61,7 +61,7 @@ export default function FaqContactSection() {
       <div className="faq-contact-container">
         <div className="faq-contact-grid">
           {/* LEFT 55%: FAQ Accordion */}
-          <div className="faq-left-col">
+          <div className="faq-left-col" id="faq">
             <div className="faq-eyebrow-badge">
               <span className="badge-dot"></span>
               <span>COMMON QUESTIONS</span>

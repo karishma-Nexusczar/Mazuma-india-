@@ -8,12 +8,31 @@ export default function Footer() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setEmail("");
-      setTimeout(() => setSubscribed(false), 4000);
+    if (email.trim() && !loading) {
+      setLoading(true);
+      try {
+        await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: email,
+            name: "Newsletter Subscriber",
+            service: "Newsletter Subscription",
+            message: "User subscribed to newsletter from the footer."
+          }),
+        });
+      } catch (error) {
+        console.error("Subscription failed:", error);
+      } finally {
+        setLoading(false);
+        setSubscribed(true);
+        setEmail("");
+        setTimeout(() => setSubscribed(false), 4000);
+      }
     }
   };
 
@@ -48,32 +67,38 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Col 2: Quick Links */}
-        <div className="footer-col">
-          <h3 className="footer-col-title">Quick Links</h3>
-          <ul className="footer-links-list">
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/about-us">About Us</Link></li>
-            <li><Link href="/#services">Services</Link></li>
-            <li><Link href="/#services">Industries</Link></li>
-            <li><Link href="/blog">Blog</Link></li>
-            <li><Link href="/admin/blog">Admin Portal</Link></li>
-            <li><Link href="/contact-us">Contact Us</Link></li>
-          </ul>
-        </div>
+        {/* Combined Mobile Row for Quick Links & Our Services */}
+        <div className="footer-links-group-mobile">
+          {/* Col 2: Quick Links */}
+          <div className="footer-col">
+            <h3 className="footer-col-title">Quick Links</h3>
+            <ul className="footer-links-list">
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/about-us">About Us</Link></li>
+              <li><Link href="/#services">Services</Link></li>
+              <li><Link href="/#services">Industries</Link></li>
+              <li><Link href="/blog">Blog</Link></li>
+              <li><Link href="/admin/blog">Admin Portal</Link></li>
+              <li><Link href="/contact-us">Contact Us</Link></li>
+            </ul>
+          </div>
 
-        {/* Col 3: Our Services */}
-        <div className="footer-col">
-          <h3 className="footer-col-title">Our Services</h3>
-          <ul className="footer-links-list">
-            <li><Link href="/services/company-registration">Company Registration</Link></li>
-            <li><Link href="/services/gst-services">GST Services</Link></li>
-            <li><Link href="/services/income-tax">Income Tax</Link></li>
-            <li><Link href="/#services">Accounting & Bookkeeping</Link></li>
-            <li><Link href="/#services">Trademark & Business Registrations</Link></li>
-            <li><Link href="/#services">NGO Services</Link></li>
-            <li><Link href="/#services">Business Compliance</Link></li>
-          </ul>
+          {/* Col 3: Our Services */}
+          <div className="footer-col">
+            <h3 className="footer-col-title">Our Services</h3>
+            <ul className="footer-links-list">
+              <li><Link href="/services/company-registration">Company Registration</Link></li>
+              <li><Link href="/services/gst-services">GST Services</Link></li>
+              <li><Link href="/services/income-tax">Income Tax</Link></li>
+              <li><Link href="/services/msme-startup-india-registration">MSME &amp; Startup India</Link></li>
+              <li><Link href="/services/accounting-bookkeeping">Accounting &amp; Bookkeeping</Link></li>
+              <li><Link href="/services/trademark-business-registration">Trademark &amp; Registrations</Link></li>
+              <li><Link href="/services/ngo-services">NGO Services</Link></li>
+              <li><Link href="/services/business-compliance">Business Compliance</Link></li>
+              <li><Link href="/services/business-registrations">Business Registrations</Link></li>
+              <li><Link href="/services/ffmc-ad-nbfc-registration">FFMC / AD-II / NBFC</Link></li>
+            </ul>
+          </div>
         </div>
 
         {/* Col 4: Contact Info */}
@@ -82,7 +107,7 @@ export default function Footer() {
           <div className="footer-contact-list">
             <div className="footer-contact-item">
               <Phone size={16} className="contact-lucide-icon" />
-              <a href="tel:+919936351555">+91 99363 51555</a>
+              <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}><a href="tel:+919936351555">+91 99363 51555</a><a href="tel:+919999865586">+91 99998 65586</a></div>
             </div>
             <div className="footer-contact-item">
               <Mail size={16} className="contact-lucide-icon" />
@@ -110,8 +135,8 @@ export default function Footer() {
               className="footer-newsletter-input"
               required
             />
-            <button type="submit" className="footer-newsletter-btn">
-              {subscribed ? "Subscribed!" : "Subscribe"}
+            <button type="submit" className="footer-newsletter-btn" disabled={loading}>
+              {loading ? "Subscribing..." : subscribed ? "Subscribed!" : "Subscribe"}
             </button>
           </form>
         </div>
@@ -121,7 +146,7 @@ export default function Footer() {
       <div className="footer-bottom-bar">
         <div className="footer-bottom-inner section-shell">
           <span className="copyright-text">
-            © 2025{" "}
+            © 2026{" "}
             <a
               href="https://nexusczar.com"
               target="_blank"
@@ -152,6 +177,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp"
         >
+          <span className="whatsapp-tooltip">Chat with us on WhatsApp</span>
           <svg className="wa-icon" viewBox="0 0 32 32" width="32" height="32" fill="none">
             <path
               d="M16 2C8.268 2 2 8.268 2 16c0 2.66.744 5.15 2.036 7.28L2 30l6.892-1.99C11.01 29.31 13.432 30 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.44c-2.28 0-4.408-.62-6.242-1.7l-.448-.262-4.108 1.185 1.203-3.992-.288-.458C5.008 20.354 4.36 18.25 4.36 16 4.36 9.582 9.582 4.36 16 4.36S27.64 9.582 27.64 16 22.418 27.44 16 27.44zm7.256-8.775c-.398-.199-2.355-1.162-2.72-1.295-.365-.133-.631-.199-.896.199-.265.398-1.028 1.295-1.26 1.56-.232.265-.464.298-.862.099-.398-.199-1.68-.619-3.201-1.974-1.183-1.055-1.983-2.358-2.215-2.756-.232-.398-.025-.613.174-.811.179-.178.398-.464.597-.696.199-.232.265-.398.398-.663.133-.265.066-.497-.033-.696-.099-.199-.896-2.155-1.228-2.951-.323-.775-.651-.67-.896-.682-.232-.012-.497-.012-.763-.012-.265 0-.696.099-1.061.497-.365.398-1.393 1.36-1.393 3.316 0 1.956 1.426 3.846 1.625 4.111.199.265 2.805 4.283 6.796 6.006.949.409 1.69.654 2.268.838.953.303 1.821.26 2.507.158.765-.114 2.355-.962 2.686-1.89.332-.928.332-1.724.232-1.89-.099-.166-.365-.265-.763-.464z"

@@ -62,6 +62,8 @@ export default function IncomeTaxPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [expertSubmitted, setExpertSubmitted] = useState(false);
+  const [showAllWhoShouldFile, setShowAllWhoShouldFile] = useState(false);
+  const [showAllItrProcessSteps, setShowAllItrProcessSteps] = useState(false);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -542,7 +544,7 @@ export default function IncomeTaxPage() {
             <div className="itr-about-right">
               <h3 className="itr-who-title">Who Should File ITR?</h3>
               <div className="itr-who-grid">
-                {whoShouldFile.map((item, idx) => {
+                {(showAllWhoShouldFile ? whoShouldFile : whoShouldFile.slice(0, 4)).map((item, idx) => {
                   const IconC = item.icon;
                   return (
                     <div key={idx} className="itr-who-pill-card">
@@ -553,6 +555,24 @@ export default function IncomeTaxPage() {
                     </div>
                   );
                 })}
+              </div>
+
+              {/* View All 10 Taxpayers Toggle Button */}
+              <div style={{ textAlign: "center", marginTop: "18px" }}>
+                <button
+                  type="button"
+                  className="itr-who-toggle-btn"
+                  onClick={() => setShowAllWhoShouldFile(!showAllWhoShouldFile)}
+                >
+                  <span>{showAllWhoShouldFile ? "Show Less Taxpayers" : "View All 10 Taxpayers"}</span>
+                  <ArrowRight
+                    size={14}
+                    style={{
+                      transform: showAllWhoShouldFile ? "rotate(-90deg)" : "rotate(90deg)",
+                      transition: "transform 0.3s ease"
+                    }}
+                  />
+                </button>
               </div>
             </div>
 
@@ -571,23 +591,44 @@ export default function IncomeTaxPage() {
           <div className="itr-process-timeline-container">
             {itrSteps.map((step, idx) => {
               const IconC = step.icon;
+              const hideMobileClass = idx >= 2 && !showAllItrProcessSteps ? "itr-process-hide-mobile" : "";
               return (
                 <React.Fragment key={idx}>
-                  <div className="itr-process-step-item">
+                  <div className={`itr-process-step-item ${hideMobileClass}`}>
                     <div className="itr-process-icon-circle">
                       <IconC size={22} />
                     </div>
-                    <span className="itr-process-step-no">{step.no}</span>
-                    <span className="itr-process-step-title">{step.title}</span>
+                    <div className="itr-process-step-info">
+                      <span className="itr-process-step-no">{step.no}</span>
+                      <span className="itr-process-step-title">{step.title}</span>
+                    </div>
                   </div>
                   {idx < itrSteps.length - 1 && (
-                    <div className="itr-process-arrow-divider">
+                    <div className={`itr-process-arrow-divider ${hideMobileClass}`}>
                       <ArrowRight size={18} />
                     </div>
                   )}
                 </React.Fragment>
               );
             })}
+          </div>
+
+          {/* Toggle Button for Mobile */}
+          <div className="itr-process-view-all-wrapper" style={{ textAlign: "center", marginTop: "24px" }}>
+            <button
+              type="button"
+              className="itr-who-toggle-btn"
+              onClick={() => setShowAllItrProcessSteps(!showAllItrProcessSteps)}
+            >
+              <span>{showAllItrProcessSteps ? "Show Less Process Steps" : "View All 7 Process Steps"}</span>
+              <ArrowRight
+                size={14}
+                style={{
+                  transform: showAllItrProcessSteps ? "rotate(-90deg)" : "rotate(90deg)",
+                  transition: "transform 0.3s ease"
+                }}
+              />
+            </button>
           </div>
         </section>
 
@@ -674,28 +715,28 @@ export default function IncomeTaxPage() {
                 <div className="itr-cta-badge-circle">
                   <UserCheck size={20} />
                 </div>
-                <span className="itr-cta-badge-label">✔ Expert CA Consultation</span>
+                <span className="itr-cta-badge-label">Expert CA Consultation</span>
               </div>
 
               <div className="itr-cta-badge-item">
                 <div className="itr-cta-badge-circle">
                   <ShieldCheck size={20} />
                 </div>
-                <span className="itr-cta-badge-label">✔ Accurate &amp; Secure Filing</span>
+                <span className="itr-cta-badge-label">Accurate &amp; Secure Filing</span>
               </div>
 
               <div className="itr-cta-badge-item">
                 <div className="itr-cta-badge-circle">
                   <Coins size={20} />
                 </div>
-                <span className="itr-cta-badge-label">✔ Maximum Tax Savings</span>
+                <span className="itr-cta-badge-label">Maximum Tax Savings</span>
               </div>
 
               <div className="itr-cta-badge-item">
                 <div className="itr-cta-badge-circle">
                   <Headset size={20} />
                 </div>
-                <span className="itr-cta-badge-label">✔ End-to-End Tax Support</span>
+                <span className="itr-cta-badge-label">End-to-End Tax Support</span>
               </div>
             </div>
 
@@ -711,7 +752,7 @@ export default function IncomeTaxPage() {
                 <span>or call us at</span>
                 <a href="tel:+919936351555" className="itr-cta-phone-link">
                   <PhoneCall size={14} color="#0F2D52" />
-                  +91 99363 51555
+                  +91 99363 51555 <br /> +91 99998 65586
                 </a>
               </div>
             </div>

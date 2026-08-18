@@ -13,9 +13,9 @@
 }
 
 .compliance-container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 32px;
 }
 
 /* ---------------------------------------------------------
@@ -25,14 +25,14 @@
   position: relative;
   background-color: #FFFFFF;
   color: #0F172A;
-  padding: 16px 0 36px 0;
+  padding: 24px 0 44px 0;
   overflow: hidden;
 }
 
 .compliance-hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 32px;
+  grid-template-columns: 1fr 0.92fr;
+  gap: 52px;
   align-items: center;
 }
 
@@ -48,8 +48,12 @@
   gap: 6px;
   font-size: 13px;
   color: #64748B;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   font-weight: 500;
+  justify-content: flex-start;
+  align-self: flex-start;
+  text-align: left;
+  width: 100%;
 }
 
 .compliance-crumb-link {
@@ -99,12 +103,12 @@
 /* Heading */
 .compliance-hero-heading {
   font-family: var(--font-head, 'Plus Jakarta Sans', system-ui, sans-serif);
-  font-size: 36px;
-  font-weight: 800;
-  line-height: 1.15;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.22;
   color: #0F2748;
-  margin-bottom: 12px;
-  letter-spacing: -0.4px;
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
 }
 
 .compliance-hero-heading-highlight {
@@ -194,15 +198,16 @@
 
 .compliance-hero-image-wrapper {
   position: relative;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 12px 32px rgba(15, 39, 72, 0.08);
+  box-shadow: 0 14px 34px rgba(15, 39, 72, 0.09);
   border: 1px solid #E2E8F0;
+  background-color: #F8FAFC;
 }
 
 .compliance-hero-image {
   width: 100%;
-  height: 320px;
+  height: 350px;
   object-fit: cover;
   display: block;
 }
@@ -248,9 +253,11 @@
   background: #FFFFFF;
   border: 1px solid #E5E7EB;
   border-radius: 14px;
-  padding: 18px 18px 16px 18px;
+  padding: 22px 20px 20px 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   height: 100%;
   box-shadow: 0 3px 10px rgba(15, 39, 72, 0.03);
   transition: all 0.25s ease;
@@ -271,8 +278,8 @@
 
 .compliance-service-card:hover {
   transform: translateY(-4px);
-  border-color: #FF6B1A;
-  box-shadow: 0 10px 24px rgba(255, 107, 26, 0.12);
+  border-color: #FED7AA;
+  box-shadow: 0 10px 24px rgba(255, 107, 26, 0.10);
 }
 
 .compliance-service-card:hover .compliance-card-top-bar {
@@ -280,21 +287,38 @@
 }
 
 .compliance-card-icon-box {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background-color: #FFF4EC;
+  width: 100%;
+  height: 52px;
+  border-radius: 0;
+  background-color: transparent;
   color: #FF6B1A;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   transition: all 0.25s ease;
 }
 
 .compliance-service-card:hover .compliance-card-icon-box {
-  background-color: #FF6B1A;
-  color: #FFFFFF;
+  background-color: transparent;
+  color: #FF6B1A;
+}
+
+.compliance-card-custom-icon {
+  height: 48px !important;
+  max-height: 48px !important;
+  width: auto !important;
+  max-width: 150px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  transition: transform 0.25s ease;
+  filter: none !important;
+}
+
+.compliance-service-card:hover .compliance-card-custom-icon {
+  transform: scale(1.06);
+  filter: none !important;
 }
 
 .compliance-card-title {
@@ -304,20 +328,24 @@
   color: #0F2748;
   margin: 0 0 6px 0;
   line-height: 1.3;
+  text-align: center;
 }
 
 .compliance-card-desc {
   font-size: 13px;
-  line-height: 1.45;
+  line-height: 1.48;
   color: #475569;
-  margin: 0 0 12px 0;
+  margin: 0 0 14px 0;
   flex-grow: 1;
+  text-align: center;
+  max-width: 320px;
 }
 
 .compliance-card-btn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 6px;
   color: #FF6B1A;
   font-size: 13px;
   font-weight: 700;
@@ -326,7 +354,7 @@
 }
 
 .compliance-service-card:hover .compliance-card-btn {
-  gap: 8px;
+  gap: 10px;
 }
 
 /* ---------------------------------------------------------
@@ -595,18 +623,25 @@
   overflow: hidden;
   box-shadow: 0 3px 10px rgba(15, 39, 72, 0.03);
   transition: all 0.25s ease;
+  text-decoration: none !important;
+  display: block;
 }
 
 .compliance-blog-card:hover {
   transform: translateY(-3px);
-  border-color: #FF6B1A;
-  box-shadow: 0 10px 24px rgba(255, 107, 26, 0.12);
+  border-color: #FED7AA;
+  box-shadow: 0 10px 24px rgba(255, 107, 26, 0.10);
 }
 
 .compliance-blog-img {
   width: 100%;
   height: 150px;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.compliance-blog-card:hover .compliance-blog-img {
+  transform: scale(1.04);
 }
 
 .compliance-blog-content {
@@ -633,19 +668,73 @@
 }
 
 /* ---------------------------------------------------------
-   SECTION 8: FAQ ACCORDION
+   SECTION 8: FAQ ACCORDION (COMPACT 2-COLUMN LEFT/RIGHT LAYOUT)
    --------------------------------------------------------- */
 .compliance-faq-section {
-  padding: 40px 0;
+  padding: 44px 0;
   background-color: #FFFFFF;
 }
 
+.compliance-faq-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.compliance-faq-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.compliance-faq-label {
+  color: #FF6B1A;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.compliance-faq-left .compliance-section-title {
+  text-align: left;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.compliance-faq-left .compliance-section-desc {
+  text-align: left;
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin-bottom: 22px;
+}
+
+.compliance-faq-support-card {
+  background: #FFF4EC;
+  border: 1px solid rgba(255, 107, 26, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.compliance-faq-support-card p {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0F2748;
+  margin: 0 0 12px 0;
+}
+
+.compliance-faq-right {
+  width: 100%;
+}
+
 .compliance-faq-list {
-  max-width: 760px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
 }
 
 .compliance-faq-item {
@@ -683,13 +772,20 @@
   color: #475569;
 }
 
+@media (max-width: 900px) {
+  .compliance-faq-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
 /* ---------------------------------------------------------
    SECTION 9: FINAL CTA
    --------------------------------------------------------- */
 .compliance-cta-section {
   padding: 44px 0;
-  background-color: #FFF4EC;
-  border-top: 1px solid rgba(255, 107, 26, 0.15);
+  background-color: #FFFFFF !important;
+  border-top: 1px solid #E2E8F0 !important;
 }
 
 .compliance-cta-card {
@@ -761,6 +857,68 @@
 
   .compliance-who-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .compliance-cta-badges {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-bottom: 22px !important;
+    width: 100% !important;
+  }
+
+  .compliance-cta-badge-item {
+    background: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 10px !important;
+    padding: 9px 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #0F2748 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .compliance-cta-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .compliance-cta-buttons .compliance-btn-primary {
+    width: 100% !important;
+    justify-content: center !important;
+    background: #FF6B1A !important;
+    color: #FFFFFF !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    border: none !important;
+    box-shadow: 0 4px 14px rgba(255, 107, 26, 0.28) !important;
+  }
+
+  .compliance-cta-buttons .compliance-btn-outline {
+    width: 100% !important;
+    justify-content: center !important;
+    background: #FFFFFF !important;
+    color: #0F2748 !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    border: 1px solid #CBD5E1 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
   }
 }
 

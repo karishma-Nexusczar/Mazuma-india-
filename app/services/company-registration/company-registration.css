@@ -369,6 +369,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+  align-items: stretch;
 }
 
 .cr-type-card-redesign {
@@ -376,8 +377,9 @@
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(15, 45, 82, 0.05);
   border: 1.5px solid var(--cr-border);
-  padding: 20px 16px;
-  height: 175px;
+  padding: 22px 16px;
+  min-height: 225px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -387,37 +389,48 @@
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 .cr-type-card-redesign:hover {
   transform: translateY(-6px);
   border-color: var(--cr-orange);
-  box-shadow: 0 16px 36px rgba(15, 45, 82, 0.12);
+  box-shadow: 0 16px 36px rgba(255, 107, 0, 0.14);
 }
 
 .cr-card-top-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: #FFF4EC;
   color: var(--cr-orange);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto 12px auto;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.cr-type-card-redesign:hover .cr-card-top-icon {
+  background-color: var(--cr-orange);
+  color: #FFFFFF;
 }
 
 .cr-card-heading-title {
   color: var(--cr-navy);
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-top: 10px;
-  margin-bottom: 0;
+  font-size: 16.5px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 6px 0;
   text-align: center;
 }
 
 .cr-card-desc-short {
   color: #64748B;
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.45;
-  margin-top: 6px;
-  margin-bottom: 0;
+  margin: 0;
   text-align: center;
 }
 
@@ -427,8 +440,10 @@
   justify-content: center;
   gap: 6px;
   color: var(--cr-orange);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13.5px;
+  font-weight: 800;
+  margin-top: 16px;
+  padding-top: 8px;
   transition: gap 0.25s ease;
   width: 100%;
 }
@@ -1321,26 +1336,31 @@
 }
 
 .cr-modal-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: #F1F5F9;
-  border: none;
-  color: var(--cr-text-muted);
-  cursor: pointer;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  z-index: 10;
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  background: #0F2747 !important;
+  border: 2px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+  cursor: pointer !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 14px rgba(15, 45, 82, 0.35) !important;
+  z-index: 99999 !important;
 }
 
 .cr-modal-close:hover {
-  background-color: #E2E8F0;
-  color: var(--cr-navy);
+  background-color: #FF6B00 !important;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  transform: scale(1.1) !important;
 }
 
 .cr-modal-title {
@@ -1420,6 +1440,54 @@
   box-shadow: 0 6px 20px rgba(255, 107, 0, 0.45);
 }
 
+.cr-docs-two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.cr-docs-card-box {
+  background: #F8FAFC;
+  padding: 24px 28px;
+  border-radius: 14px;
+  border: 1px solid #E2E8F0;
+}
+
+.cr-docs-card-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #0F2D52;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cr-docs-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cr-docs-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #1E293B;
+  font-weight: 600;
+}
+
+.cr-docs-check-icon {
+  color: #10B981;
+  flex-shrink: 0;
+}
+
+/* Responsive Styles */
+.cr-view-more-mobile-wrapper {
+  display: none !important;
+}
+
 /* Responsive Styles */
 @media (max-width: 1100px) {
   .cr-hero-grid-layout {
@@ -1445,11 +1513,6 @@
 
   .cr-types-left-container {
     max-width: 100%;
-  }
-
-  .cr-types-4col-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
   }
 
   .cr-overview-grid,
@@ -1492,7 +1555,6 @@
     gap: 10px;
   }
 
-  .cr-types-4col-grid,
   .cr-services-grid,
   .cr-benefits-grid,
   .cr-why-grid,
@@ -1507,5 +1569,521 @@
 
   .cr-highlights-row {
     grid-template-columns: 1fr;
+  }
+
+  /* Choose Your Company Type - 2 Cards per Row Mobile Grid */
+  .cr-types-4col-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .cr-mobile-card-hidden {
+    display: none !important;
+  }
+
+  .cr-type-card-redesign {
+    padding: 14px 10px !important;
+    min-height: 180px !important;
+    border-radius: 12px !important;
+  }
+
+  .cr-card-top-icon {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 10px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .cr-card-top-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .cr-card-heading-title {
+    font-size: 13px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .cr-card-desc-short {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+
+  .cr-card-bottom-link {
+    font-size: 11.5px !important;
+    margin-top: 8px !important;
+  }
+
+  .cr-view-more-mobile-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 16px !important;
+    width: 100% !important;
+  }
+
+  .cr-view-more-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 10px 20px !important;
+    border-radius: 10px !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #FF6B00 !important;
+    color: #FF6B00 !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.1) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .cr-view-more-btn:hover {
+    background: #FFF4EE !important;
+  }
+
+  /* 1. Company Registration Process (7 Steps) Mobile Card Stacking */
+  .cr-timeline-track-redesign {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    position: relative !important;
+  }
+
+  .cr-timeline-line-dotted {
+    display: none !important;
+  }
+
+  .cr-timeline-step-redesign {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+    gap: 14px !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 14px !important;
+    padding: 14px 16px !important;
+    box-shadow: 0 4px 14px rgba(15, 45, 82, 0.04) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cr-step-icon-circle {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .cr-step-number-text {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    background: var(--cr-orange) !important;
+    color: #FFFFFF !important;
+    border-radius: 50% !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .cr-step-label-title {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: var(--cr-navy) !important;
+    line-height: 1.35 !important;
+  }
+
+  /* 2. Benefits Section Mobile Row Cards */
+  .cr-benefits-6col-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .cr-benefit-card-redesign {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 14px !important;
+    padding: 16px 16px !important;
+    border-radius: 14px !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid var(--cr-border) !important;
+    box-shadow: 0 4px 14px rgba(15, 45, 82, 0.04) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cr-benefit-icon-orange {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    border-radius: 10px !important;
+    background: #FFF4EC !important;
+    color: var(--cr-orange) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .cr-benefit-content-box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  .cr-benefit-title-bold {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: var(--cr-navy) !important;
+    margin-bottom: 4px !important;
+    line-height: 1.35 !important;
+    word-break: normal !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    width: 100% !important;
+  }
+
+  .cr-benefit-desc-short {
+    font-size: 13px !important;
+    color: #64748B !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* 3. Documents Required Mobile 1-Column Stacking */
+  .cr-docs-unified-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .cr-docs-two-col-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .cr-docs-card-box {
+    background: #FFFFFF !important;
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 14px !important;
+    padding: 20px 16px !important;
+    box-shadow: 0 4px 14px rgba(15, 45, 82, 0.04) !important;
+  }
+
+  .cr-docs-card-title {
+    font-size: 15.5px !important;
+    font-weight: 800 !important;
+    color: #0F2D52 !important;
+    margin: 0 0 12px 0 !important;
+    padding-bottom: 10px !important;
+    border-bottom: 1px dashed #E2E8F0 !important;
+  }
+
+  .cr-docs-list-wrapper {
+    gap: 10px !important;
+  }
+
+  .cr-docs-list-item {
+    font-size: 13.5px !important;
+    line-height: 1.4 !important;
+    gap: 10px !important;
+    align-items: flex-start !important;
+  }
+
+  .cr-docs-check-icon {
+    margin-top: 2px !important;
+  }
+
+  .cr-docs-bottom-note {
+    background: #FFF4EC !important;
+    border: 1px solid #FFD8BE !important;
+    border-left: 4px solid #FF6B00 !important;
+    border-radius: 12px !important;
+    padding: 14px 16px !important;
+    margin-top: 20px !important;
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    color: #334155 !important;
+    text-align: left !important;
+  }
+
+.cr-deepdive-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 20px 0;
+}
+
+  /* 4. Services Grid Mobile 1-Column */
+  .cr-services-unified-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .cr-services-3col-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .cr-service-compact-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 14px !important;
+    padding: 16px 16px !important;
+    border-radius: 14px !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid var(--cr-border) !important;
+    box-shadow: 0 4px 14px rgba(15, 45, 82, 0.04) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cr-service-compact-icon {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    border-radius: 10px !important;
+    background: #FFF4EC !important;
+    color: var(--cr-orange) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .cr-service-compact-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  .cr-service-compact-title {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: var(--cr-navy) !important;
+    margin-bottom: 4px !important;
+    line-height: 1.35 !important;
+  }
+
+  .cr-service-compact-desc {
+    font-size: 13px !important;
+    color: #64748B !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+  }
+
+  /* 5. Detailed Service Breakdown Sub-Grid Mobile Stacking */
+  .cr-service-deepdive-container {
+    margin-top: 24px !important;
+    padding: 0 !important;
+  }
+
+  .cr-deepdive-card {
+    padding: 20px 16px !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  .cr-deepdive-title {
+    font-size: 17px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .cr-deepdive-text {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  .cr-deepdive-sub-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin: 16px 0 !important;
+  }
+
+  .cr-deepdive-sub-grid h4 {
+    font-size: 15px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .cr-deepdive-sub-grid ul {
+    padding-left: 18px !important;
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* 6. Why Choose Mazuma India Mobile 1-Column Cards */
+  .cr-why-3col-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .cr-why-card-compact {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 14px !important;
+    padding: 16px 16px !important;
+    border-radius: 14px !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid var(--cr-border) !important;
+    box-shadow: 0 4px 14px rgba(15, 45, 82, 0.04) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cr-why-icon-orange {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    border-radius: 10px !important;
+    background: #FFF4EC !important;
+    color: var(--cr-orange) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .cr-why-content-box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  .cr-why-title-bold {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: var(--cr-navy) !important;
+    margin-bottom: 4px !important;
+    line-height: 1.35 !important;
+    word-break: normal !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    width: 100% !important;
+  }
+
+  .cr-why-desc-short {
+    font-size: 13px !important;
+    color: #64748B !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* 7. FAQ Section Mobile Optimization */
+  .cr-mobile-faq-hidden {
+    display: none !important;
+  }
+
+  .cr-faq-question {
+    padding: 16px 14px !important;
+    font-size: 14.5px !important;
+    line-height: 1.4 !important;
+  }
+
+  .cr-faq-answer {
+    padding: 0 14px 16px 14px !important;
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 8. Bottom CTA Banner Mobile Stacking */
+  .cr-cta-banner-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 24px 16px !important;
+    border-radius: 16px !important;
+    gap: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cr-cta-banner-left {
+    max-width: 100% !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .cr-cta-banner-title {
+    font-size: 22px !important;
+    margin-bottom: 8px !important;
+    line-height: 1.3 !important;
+    word-break: normal !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    width: 100% !important;
+  }
+
+  .cr-cta-banner-desc {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    width: 100% !important;
+  }
+
+  .cr-cta-banner-center {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 16px 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cr-cta-badge-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 6px !important;
+  }
+
+  .cr-cta-badge-label {
+    font-size: 12px !important;
+  }
+
+  .cr-cta-banner-right {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .cr-cta-btn-orange {
+    width: 100% !important;
+    justify-content: center !important;
   }
 }

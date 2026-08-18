@@ -1,28 +1,28 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 
 export default function TestimonialsSection() {
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % testimonials.length);
-    }, 8000);
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, 6000);
     return () => clearInterval(interval);
   }, [isPaused]);
 
   const handlePrev = () => {
-    setActiveSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const handleNext = () => {
-    setActiveSlide((prev) => (prev + 1) % testimonials.length);
+    setActiveIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   return (
@@ -48,62 +48,110 @@ export default function TestimonialsSection() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Left Arrow Button */}
+          {/* DESKTOP VIEW: All 3 Testimonials in 1 Single Row */}
+          <div className="testimonials-grid-desktop">
+            {testimonials.map((item, idx) => (
+              <div
+                key={item.id}
+                className={`testimonial-redesign-card ${idx === activeIndex ? "is-active-card" : ""}`}
+              >
+                <div className="testimonial-card-top">
+                  <div className="quote-icon-box">
+                    <Quote size={20} className="quote-icon-svg" />
+                  </div>
+                  <div className="star-rating-row">
+                    {[...Array(item.rating)].map((_, i) => (
+                      <Star key={i} size={15} fill="#FF6B1A" color="#FF6B1A" />
+                    ))}
+                  </div>
+                </div>
+
+                <p className="testimonial-quote-text">
+                  &ldquo;{item.quote}&rdquo;
+                </p>
+
+                <div className="testimonial-client-row">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="client-avatar-img"
+                  />
+                  <div className="client-info">
+                    <h4 className="client-name">{item.name}</h4>
+                    <p className="client-role">{item.designation}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* MOBILE VIEW: Single Active Card Carousel with Left & Right Arrows */}
+          <div className="testimonials-mobile-carousel">
+            <button
+              className="testimonial-mobile-arrow testimonial-mobile-prev"
+              onClick={handlePrev}
+              aria-label="Previous Testimonial"
+            >
+              <ChevronLeft size={20} />
+            </button>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={testimonials[activeIndex].id}
+                className="testimonial-redesign-card testimonial-mobile-active-card"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="testimonial-card-top">
+                  <div className="quote-icon-box">
+                    <Quote size={20} className="quote-icon-svg" />
+                  </div>
+                  <div className="star-rating-row">
+                    {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
+                      <Star key={i} size={15} fill="#FF6B1A" color="#FF6B1A" />
+                    ))}
+                  </div>
+                </div>
+
+                <p className="testimonial-quote-text">
+                  &ldquo;{testimonials[activeIndex].quote}&rdquo;
+                </p>
+
+                <div className="testimonial-client-row">
+                  <img
+                    src={testimonials[activeIndex].image}
+                    alt={testimonials[activeIndex].name}
+                    className="client-avatar-img"
+                  />
+                  <div className="client-info">
+                    <h4 className="client-name">{testimonials[activeIndex].name}</h4>
+                    <p className="client-role">{testimonials[activeIndex].designation}</p>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            <button
+              className="testimonial-mobile-arrow testimonial-mobile-next"
+              onClick={handleNext}
+              aria-label="Next Testimonial"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          {/* Desktop Left / Right Navigation Arrows */}
           <button
-            className="testimonial-nav-arrow testimonial-nav-prev"
+            className="testimonial-nav-arrow testimonial-nav-prev desktop-only-arrow"
             onClick={handlePrev}
             aria-label="Previous Testimonial"
           >
             <ChevronLeft size={22} />
           </button>
-
-          <div className="testimonials-grid-3cols">
-            {testimonials.map((item, idx) => {
-              const isActive = idx === activeSlide;
-              return (
-                <motion.article
-                  key={item.id}
-                  className={`testimonial-redesign-card ${isActive ? "is-active-slide" : ""}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  whileHover={{ y: -6 }}
-                >
-                  <div className="testimonial-card-top">
-                    <div className="quote-icon-box">
-                      <Quote size={20} className="quote-icon-svg" />
-                    </div>
-                    <div className="star-rating-row">
-                      {[...Array(item.rating)].map((_, i) => (
-                        <Star key={i} size={16} fill="#FF6B1A" color="#FF6B1A" />
-                      ))}
-                    </div>
-                  </div>
-
-                  <p className="testimonial-quote-text">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
-
-                  <div className="testimonial-client-row">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="client-avatar-img"
-                    />
-                    <div className="client-info">
-                      <h4 className="client-name">{item.name}</h4>
-                      <p className="client-role">{item.designation}</p>
-                    </div>
-                  </div>
-                </motion.article>
-              );
-            })}
-          </div>
-
-          {/* Right Arrow Button */}
           <button
-            className="testimonial-nav-arrow testimonial-nav-next"
+            className="testimonial-nav-arrow testimonial-nav-next desktop-only-arrow"
             onClick={handleNext}
             aria-label="Next Testimonial"
           >

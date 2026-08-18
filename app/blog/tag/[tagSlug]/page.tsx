@@ -31,6 +31,13 @@ function formatTagFromSlug(slug: string): string {
   return map[slug.toLowerCase()] || slug.replace(/-/g, " ").toUpperCase();
 }
 
+export async function generateStaticParams() {
+  const tags = ["income-tax", "startup-tax", "tds-filing", "gst-returns", "pvt-ltd", "company-incorporation", "roc-filing", "bookkeeping", "trademark", "msme-udyam"];
+  return tags.map((tagSlug) => ({
+    tagSlug,
+  }));
+}
+
 export async function generateMetadata({ params }: TagPageProps) {
   const tagName = formatTagFromSlug(params.tagSlug);
   return {

@@ -9,6 +9,7 @@ import TrustedSection from "../components/TrustedSection";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
+import ProcessSection from "@/components/home/ProcessSection";
 import ArticlesSection from "@/components/home/ArticlesSection";
 import CTASection from "@/components/home/CTASection";
 import FaqContactSection from "@/components/home/FaqContactSection";
@@ -365,42 +366,42 @@ export default function Home() {
                   Explore Services <span>→</span>
                 </a>
               </div>
-
-              <div className="hero-compact-stats-row">
-                <div className="compact-stat-item">
-                  <strong>5000+</strong>
-                  <span>Happy Clients</span>
-                </div>
-                <div className="compact-stat-divider"></div>
-                <div className="compact-stat-item">
-                  <strong>1,00,000+</strong>
-                  <span>Tax Filings</span>
-                </div>
-                <div className="compact-stat-divider"></div>
-                <div className="compact-stat-item">
-                  <strong>3000+</strong>
-                  <span>Businesses</span>
-                </div>
-                <div className="compact-stat-divider"></div>
-                <div className="compact-stat-item">
-                  <strong>4.9/5</strong>
-                  <span>Client Rating</span>
-                </div>
-              </div>
             </div>
 
             {/* Right Visual Image Card */}
             <div className="hero-right-visual">
               <div className="hero-main-card">
                 <Image
-                  src="/mazuma-hero-right-card.jpg"
-                  alt="Mazuma India team professionals at work in Noida office"
+                  src="/mazuma-directors.jpg"
+                  alt="Mazuma India founders and directors sitting at their office desk under the Mazuma Group company board"
                   className="hero-main-img"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
+            </div>
+          </div>
+
+          <div className="hero-compact-stats-row">
+            <div className="compact-stat-item">
+              <strong>5000+</strong>
+              <span>Happy Clients</span>
+            </div>
+            <div className="compact-stat-divider"></div>
+            <div className="compact-stat-item">
+              <strong>1,00,000+</strong>
+              <span>Tax Filings</span>
+            </div>
+            <div className="compact-stat-divider"></div>
+            <div className="compact-stat-item">
+              <strong>3000+</strong>
+              <span>Businesses</span>
+            </div>
+            <div className="compact-stat-divider"></div>
+            <div className="compact-stat-item">
+              <strong>4.9/5</strong>
+              <span>Client Rating</span>
             </div>
           </div>
         </div>
@@ -489,8 +490,7 @@ export default function Home() {
             </div>
 
             <h2 className="about-main-title">
-              India&apos;s Trusted Tax &amp;<br />
-              Business Compliance Partner
+              India&apos;s Trusted Tax &amp; Business Compliance Partner
             </h2>
 
             <div className="about-description-text">
@@ -612,7 +612,8 @@ export default function Home() {
 
 
 
-      <section className="section process-section section-shell"><div className="section-heading"><p className="eyebrow">Our process</p><h2>Simple, structured and supportive.</h2></div><div className="process-grid">{[["01", "Consultation", "Understand your goals and requirements."], ["02", "Documentation", "Quick, guided collection of the right paperwork."], ["03", "Processing", "Expert review, filings and clear status updates."], ["04", "Compliance support", "Ongoing guidance to keep you confidently compliant."]].map(([number, title, text]) => <article key={number}><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></section>
+      {/* Our Process Section */}
+      <ProcessSection />
 
       {/* 1. Client Testimonials */}
       <TestimonialsSection />
@@ -628,22 +629,6 @@ export default function Home() {
 
       <Footer />
 
-      <div className="floating-actions">
-        <a
-          className="whatsapp-float-btn"
-          href="https://wa.me/919936351555"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Chat on WhatsApp"
-        >
-          <svg className="wa-icon" viewBox="0 0 32 32" width="32" height="32" fill="none">
-            <path
-              d="M16 2C8.268 2 2 8.268 2 16c0 2.66.744 5.15 2.036 7.28L2 30l6.892-1.99C11.01 29.31 13.432 30 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.44c-2.28 0-4.408-.62-6.242-1.7l-.448-.262-4.108 1.185 1.203-3.992-.288-.458C5.008 20.354 4.36 18.25 4.36 16 4.36 9.582 9.582 4.36 16 4.36S27.64 9.582 27.64 16 22.418 27.44 16 27.44zm7.256-8.775c-.398-.199-2.355-1.162-2.72-1.295-.365-.133-.631-.199-.896.199-.265.398-1.028 1.295-1.26 1.56-.232.265-.464.298-.862.099-.398-.199-1.68-.619-3.201-1.974-1.183-1.055-1.983-2.358-2.215-2.756-.232-.398-.025-.613.174-.811.179-.178.398-.464.597-.696.199-.232.265-.398.398-.663.133-.265.066-.497-.033-.696-.099-.199-.896-2.155-1.228-2.951-.323-.775-.651-.67-.896-.682-.232-.012-.497-.012-.763-.012-.265 0-.696.099-1.061.497-.365.398-1.393 1.36-1.393 3.316 0 1.956 1.426 3.846 1.625 4.111.199.265 2.805 4.283 6.796 6.006.949.409 1.69.654 2.268.838.953.303 1.821.26 2.507.158.765-.114 2.355-.962 2.686-1.89.332-.928.332-1.724.232-1.89-.099-.166-.365-.265-.763-.464z"
-              fill="#FFFFFF"
-            />
-          </svg>
-        </a>
-      </div>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "ProfessionalService", name: "Mazuma India", email: "compliance@mazumaindia.com", telephone: "+919936351555", address: { "@type": "PostalAddress", streetAddress: "A-9, Sector 4", addressLocality: "Noida", addressRegion: "Uttar Pradesh", postalCode: "201301", addressCountry: "IN" } }) }} />
     </main>

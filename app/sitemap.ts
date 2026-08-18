@@ -7,19 +7,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Static routes
   const staticRoutes: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
+    { url: baseUrl, lastModified: new Date(), changeFrequency: "daily", priority: 1.0 },
+    { url: `${baseUrl}/about-us`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/contact-us`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "daily", priority: 0.9 },
   ];
+
+  const servicePages = [
+    "company-registration",
+    "gst-services",
+    "income-tax",
+    "accounting-bookkeeping",
+    "trademark-business-registration",
+    "msme-startup-india-registration",
+    "ngo-services",
+    "business-compliance",
+    "business-registrations",
+    "ffmc-ad-nbfc-registration"
+  ];
+
+  const serviceRoutes: MetadataRoute.Sitemap = servicePages.map((page) => ({
+    url: `${baseUrl}/services/${page}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.9,
+  }));
 
   // Dynamic Blog article routes
   const articleRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
@@ -38,5 +50,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...articleRoutes, ...categoryRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...articleRoutes, ...categoryRoutes];
 }

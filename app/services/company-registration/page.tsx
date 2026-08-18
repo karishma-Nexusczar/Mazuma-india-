@@ -54,6 +54,8 @@ export default function CompanyRegistrationPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [activeTab, setActiveTab] = useState<"pvt-ltd" | "llp" | "opc" | "public-ltd" | "roc" | "dsc">("pvt-ltd");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showAllTypesMobile, setShowAllTypesMobile] = useState(false);
+  const [showAllFaqsMobile, setShowAllFaqsMobile] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -185,13 +187,13 @@ export default function CompanyRegistrationPage() {
 
   // Section 5: Registration Process (7 Steps)
   const timelineSteps = [
-    { step: "1️⃣", title: "Free Consultation", icon: Users },
-    { step: "2️⃣", title: "Document Verification", icon: FileCheck },
-    { step: "3️⃣", title: "DSC & DIN Generation", icon: PenSquare },
-    { step: "4️⃣", title: "Company Name Approval", icon: ShieldCheck },
-    { step: "5️⃣", title: "MCA Filing", icon: Send },
-    { step: "6️⃣", title: "Certificate of Incorporation", icon: Award },
-    { step: "7️⃣", title: "Post Registration Compliance", icon: FileText }
+    { step: "1", title: "Free Consultation", icon: Users },
+    { step: "2", title: "Document Verification", icon: FileCheck },
+    { step: "3", title: "DSC & DIN Generation", icon: PenSquare },
+    { step: "4", title: "Company Name Approval", icon: ShieldCheck },
+    { step: "5", title: "MCA Filing", icon: Send },
+    { step: "6", title: "Certificate of Incorporation", icon: Award },
+    { step: "7", title: "Post Registration Compliance", icon: FileText }
   ];
 
   // Section 6: Benefits (6 Items with 2-line descriptions)
@@ -527,11 +529,12 @@ export default function CompanyRegistrationPage() {
 
               <div className="cr-types-4col-grid">
                 {companyRegistrationTypes.map((card, idx) => {
+                  const isHiddenOnMobile = !showAllTypesMobile && idx >= 2;
                   const CardIcon = card.icon;
                   return (
                     <div
                       key={idx}
-                      className="cr-type-card-redesign"
+                      className={`cr-type-card-redesign ${isHiddenOnMobile ? "cr-mobile-card-hidden" : ""}`}
                       onClick={() => setIsModalOpen(true)}
                     >
                       <div>
@@ -549,6 +552,24 @@ export default function CompanyRegistrationPage() {
                     </div>
                   );
                 })}
+              </div>
+
+              {/* View More Button for Mobile */}
+              <div className="cr-view-more-mobile-wrapper">
+                <button
+                  type="button"
+                  className="cr-view-more-btn"
+                  onClick={() => setShowAllTypesMobile(!showAllTypesMobile)}
+                >
+                  <span>{showAllTypesMobile ? "View Less" : "View More Company Types"}</span>
+                  <ChevronDown
+                    size={16}
+                    style={{
+                      transform: showAllTypesMobile ? "rotate(180deg)" : "rotate(0deg)",
+                      transition: "transform 0.25s ease"
+                    }}
+                  />
+                </button>
               </div>
             </div>
           </div>
@@ -627,10 +648,12 @@ export default function CompanyRegistrationPage() {
                 return (
                   <div className="cr-benefit-card-redesign" key={idx}>
                     <div className="cr-benefit-icon-orange">
-                      <BenefitIcon size={26} />
+                      <BenefitIcon size={24} />
                     </div>
-                    <h3 className="cr-benefit-title-bold">{benefit.title}</h3>
-                    <p className="cr-benefit-desc-short">{benefit.desc}</p>
+                    <div className="cr-benefit-content-box">
+                      <h3 className="cr-benefit-title-bold">{benefit.title}</h3>
+                      <p className="cr-benefit-desc-short">{benefit.desc}</p>
+                    </div>
                   </div>
                 );
               })}
@@ -649,19 +672,18 @@ export default function CompanyRegistrationPage() {
                 <div className="cr-section-divider-unified"></div>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
+              <div className="cr-docs-two-col-grid">
                 {/* Column 1: Director Documents */}
-                <div style={{ background: "#F8FAFC", padding: "24px 28px", borderRadius: 14, border: "1px solid #E2E8F0" }}>
-                  <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0F2D52", margin: "0 0 16px 0", display: "flex", alignItems: "center", gap: 8 }}>
+                <div className="cr-docs-card-box">
+                  <h3 className="cr-docs-card-title">
                     <UserCheck size={20} style={{ color: "#FF6B00" }} />
                     <span>Director &amp; Shareholder Documents</span>
                   </h3>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  <div className="cr-docs-list-wrapper">
                     {directorDocuments.map((doc, idx) => {
-                      const DocIcon = doc.icon;
                       return (
-                        <div key={idx} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "#1E293B", fontWeight: 600 }}>
-                          <CheckCircle2 size={18} style={{ color: "#10B981", flexShrink: 0 }} />
+                        <div key={idx} className="cr-docs-list-item">
+                          <CheckCircle2 size={18} className="cr-docs-check-icon" />
                           <span>{doc.title}</span>
                         </div>
                       );
@@ -670,17 +692,16 @@ export default function CompanyRegistrationPage() {
                 </div>
 
                 {/* Column 2: Registered Office Documents */}
-                <div style={{ background: "#F8FAFC", padding: "24px 28px", borderRadius: 14, border: "1px solid #E2E8F0" }}>
-                  <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0F2D52", margin: "0 0 16px 0", display: "flex", alignItems: "center", gap: 8 }}>
+                <div className="cr-docs-card-box">
+                  <h3 className="cr-docs-card-title">
                     <Building2 size={20} style={{ color: "#FF6B00" }} />
                     <span>Registered Office Documents</span>
                   </h3>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  <div className="cr-docs-list-wrapper">
                     {officeDocuments.map((doc, idx) => {
-                      const DocIcon = doc.icon;
                       return (
-                        <div key={idx} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "#1E293B", fontWeight: 600 }}>
-                          <CheckCircle2 size={18} style={{ color: "#10B981", flexShrink: 0 }} />
+                        <div key={idx} className="cr-docs-list-item">
+                          <CheckCircle2 size={18} className="cr-docs-check-icon" />
                           <span>{doc.title}</span>
                         </div>
                       );
@@ -716,8 +737,8 @@ export default function CompanyRegistrationPage() {
                       className="cr-service-compact-item"
                       onClick={() => setIsModalOpen(true)}
                     >
-                      <SvcIcon size={26} className="cr-service-compact-icon" />
-                      <div>
+                      <SvcIcon size={24} className="cr-service-compact-icon" />
+                      <div className="cr-service-compact-content">
                         <h3 className="cr-service-compact-title">{svc.title}</h3>
                         <p className="cr-service-compact-desc">{svc.desc}</p>
                       </div>
@@ -781,7 +802,7 @@ export default function CompanyRegistrationPage() {
                     A Private Limited Company is the most popular legal entity for startups, technology firms, and venture-backed businesses in India. Registered under the Companies Act, 2013, it provides shareholders with limited liability, protecting personal assets against business losses.
                   </p>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                  <div className="cr-deepdive-sub-grid">
                     <div>
                       <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Eligibility Requirements</h4>
                       <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
@@ -818,7 +839,7 @@ export default function CompanyRegistrationPage() {
                     LLP is an ideal business structure for professional firms, consultants, and service partners combining operational flexibility with limited liability protection under the LLP Act, 2008.
                   </p>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                  <div className="cr-deepdive-sub-grid">
                     <div>
                       <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Key Advantages</h4>
                       <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
@@ -851,7 +872,7 @@ export default function CompanyRegistrationPage() {
                     An OPC allows a single entrepreneur to operate a corporate entity with 100% sole ownership control, full limited liability protection, and separate corporate identity.
                   </p>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                  <div className="cr-deepdive-sub-grid">
                     <div>
                       <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Eligibility Criteria</h4>
                       <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
@@ -884,7 +905,7 @@ export default function CompanyRegistrationPage() {
                     Designed for large-scale enterprise operations planning public capital raising or stock exchange listing under MCA regulations.
                   </p>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                  <div className="cr-deepdive-sub-grid">
                     <div>
                       <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Structure Requirements</h4>
                       <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
@@ -917,7 +938,7 @@ export default function CompanyRegistrationPage() {
                     Every company incorporated in India must complete annual statutory filings with the Registrar of Companies to avoid heavy late penalties and disqualification of directors.
                   </p>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                  <div className="cr-deepdive-sub-grid">
                     <div>
                       <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Mandatory Annual Forms</h4>
                       <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
@@ -950,7 +971,7 @@ export default function CompanyRegistrationPage() {
                     A Class-3 DSC is a secure cryptographic token issued by Controller of Certifying Authorities (CCA) approved vendors, required for electronic signing of MCA forms, GST returns, and corporate ITR.
                   </p>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, margin: "20px 0" }}>
+                  <div className="cr-deepdive-sub-grid">
                     <div>
                       <h4 style={{ fontSize: 15, fontWeight: 800, color: "#0F2D52", margin: "0 0 8px 0" }}>Applications &amp; Uses</h4>
                       <ul style={{ paddingLeft: 18, margin: 0, fontSize: 13.5, color: "#475569", lineHeight: 1.6 }}>
@@ -995,7 +1016,7 @@ export default function CompanyRegistrationPage() {
                     <div className="cr-why-icon-orange">
                       <ItemIcon size={22} />
                     </div>
-                    <div>
+                    <div className="cr-why-content-box">
                       <h3 className="cr-why-title-bold">{item.title}</h3>
                       <p className="cr-why-desc-short">{item.desc}</p>
                     </div>
@@ -1018,9 +1039,13 @@ export default function CompanyRegistrationPage() {
 
             <div className="cr-faq-list">
               {faqList.map((faq, idx) => {
+                const isHiddenOnMobile = !showAllFaqsMobile && idx >= 3;
                 const isOpen = openFaq === idx;
                 return (
-                  <div key={idx} className={`cr-faq-item ${isOpen ? "is-open" : ""}`}>
+                  <div
+                    key={idx}
+                    className={`cr-faq-item ${isOpen ? "is-open" : ""} ${isHiddenOnMobile ? "cr-mobile-faq-hidden" : ""}`}
+                  >
                     <button
                       type="button"
                       className="cr-faq-question"
@@ -1028,7 +1053,13 @@ export default function CompanyRegistrationPage() {
                     >
                       <span>{faq.q}</span>
                       <div className="cr-faq-toggle-icon">
-                        <ChevronDown size={16} />
+                        <ChevronDown
+                          size={16}
+                          style={{
+                            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                            transition: "transform 0.25s ease"
+                          }}
+                        />
                       </div>
                     </button>
                     {isOpen && (
@@ -1039,6 +1070,24 @@ export default function CompanyRegistrationPage() {
                   </div>
                 );
               })}
+            </div>
+
+            {/* View All / View Less Button for Mobile */}
+            <div className="cr-view-more-mobile-wrapper">
+              <button
+                type="button"
+                className="cr-view-more-btn"
+                onClick={() => setShowAllFaqsMobile(!showAllFaqsMobile)}
+              >
+                <span>{showAllFaqsMobile ? "View Less FAQs" : "View All FAQs"}</span>
+                <ChevronDown
+                  size={16}
+                  style={{
+                    transform: showAllFaqsMobile ? "rotate(180deg)" : "rotate(0deg)",
+                    transition: "transform 0.25s ease"
+                  }}
+                />
+              </button>
             </div>
           </div>
         </section>
@@ -1102,7 +1151,7 @@ export default function CompanyRegistrationPage() {
                   <span className="cr-cta-phone-sub">or call us at</span>
                   <a href="tel:+919936351555" className="cr-cta-phone-link">
                     <PhoneCall size={16} color="#0F2D52" />
-                    +91 99363 51555
+                    +91 99363 51555 <br /> +91 99998 65586
                   </a>
                 </div>
               </div>

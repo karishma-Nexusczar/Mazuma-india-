@@ -43,6 +43,9 @@ export default function NGOServicesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
   const [isExpertModalOpen, setIsExpertModalOpen] = useState(false);
+  const [showAllNgoProcess, setShowAllNgoProcess] = useState(false);
+  const [showAllNgoBenefits, setShowAllNgoBenefits] = useState(false);
+  const [showAllNgoServe, setShowAllNgoServe] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [isAllFaqsModalOpen, setIsAllFaqsModalOpen] = useState(false);
   const [allFaqsOpenIndex, setAllFaqsOpenIndex] = useState<number | null>(0);
@@ -426,10 +429,14 @@ export default function NGOServicesPage() {
           <div className="ngo-process-timeline">
             {processSteps.map((pStep, index) => {
               const IconComp = pStep.icon;
+              const isHiddenOnMobile = index >= 2 && !showAllNgoProcess;
               return (
-                <div key={pStep.step} className="ngo-process-step">
+                <div
+                  key={pStep.step}
+                  className={`ngo-process-step ${isHiddenOnMobile ? "ngo-process-hide-mobile" : ""}`}
+                >
                   <div className="ngo-step-icon-box">
-                    <IconComp size={26} />
+                    <IconComp size={24} />
                   </div>
                   {index < processSteps.length - 1 && (
                     <div className="ngo-step-connector">
@@ -444,6 +451,27 @@ export default function NGOServicesPage() {
                 </div>
               );
             })}
+          </div>
+
+          {/* View All Toggle Button for Mobile */}
+          <div className="ngo-process-view-all-wrapper">
+            <button
+              className="ngo-process-view-all-btn"
+              onClick={() => setShowAllNgoProcess(!showAllNgoProcess)}
+            >
+              <span>
+                {showAllNgoProcess
+                  ? "Show Less Steps"
+                  : `View All ${processSteps.length} Registration Steps`}
+              </span>
+              <ChevronDown
+                size={18}
+                style={{
+                  transform: showAllNgoProcess ? "rotate(180deg)" : "rotate(0deg)",
+                  transition: "transform 0.3s ease"
+                }}
+              />
+            </button>
           </div>
         </div>
       </section>
@@ -580,8 +608,12 @@ export default function NGOServicesPage() {
                   { title: "Long-Term Sustainability & Growth", icon: TrendingUp }
                 ].map((benefit, idx) => {
                   const IconComp = benefit.icon;
+                  const isHiddenOnMobile = idx >= 4 && !showAllNgoBenefits;
                   return (
-                    <div key={idx} className="ngo-benefit-card-item">
+                    <div
+                      key={idx}
+                      className={`ngo-benefit-card-item ${isHiddenOnMobile ? "ngo-benefit-hide-mobile" : ""}`}
+                    >
                       <div className="ngo-benefit-card-icon">
                         <IconComp size={20} />
                       </div>
@@ -589,6 +621,27 @@ export default function NGOServicesPage() {
                     </div>
                   );
                 })}
+              </div>
+
+              {/* View All Benefits Toggle Button for Mobile */}
+              <div className="ngo-benefits-view-all-wrapper">
+                <button
+                  className="ngo-benefits-view-all-btn"
+                  onClick={() => setShowAllNgoBenefits(!showAllNgoBenefits)}
+                >
+                  <span>
+                    {showAllNgoBenefits
+                      ? "Show Less Benefits"
+                      : "View All 8 Benefits"}
+                  </span>
+                  <ChevronDown
+                    size={18}
+                    style={{
+                      transform: showAllNgoBenefits ? "rotate(180deg)" : "rotate(0deg)",
+                      transition: "transform 0.3s ease"
+                    }}
+                  />
+                </button>
               </div>
             </div>
 
@@ -625,8 +678,12 @@ export default function NGOServicesPage() {
           <div className="ngo-serve-grid">
             {organizationsServed.map((org, idx) => {
               const IconComp = org.icon;
+              const isHiddenOnMobile = idx >= 3 && !showAllNgoServe;
               return (
-                <div key={idx} className="ngo-serve-card">
+                <div
+                  key={idx}
+                  className={`ngo-serve-card ${isHiddenOnMobile ? "ngo-serve-hide-mobile" : ""}`}
+                >
                   {/* Centered Circular Icon Container */}
                   <div className="ngo-serve-icon-container">
                     <div className="ngo-serve-icon-circle">
@@ -645,6 +702,27 @@ export default function NGOServicesPage() {
                 </div>
               );
             })}
+          </div>
+
+          {/* View All Organizations Toggle Button for Mobile */}
+          <div className="ngo-serve-view-all-wrapper">
+            <button
+              className="ngo-serve-view-all-btn"
+              onClick={() => setShowAllNgoServe(!showAllNgoServe)}
+            >
+              <span>
+                {showAllNgoServe
+                  ? "Show Less Organizations"
+                  : `View All ${organizationsServed.length} Organizations`}
+              </span>
+              <ChevronDown
+                size={18}
+                style={{
+                  transform: showAllNgoServe ? "rotate(180deg)" : "rotate(0deg)",
+                  transition: "transform 0.3s ease"
+                }}
+              />
+            </button>
           </div>
 
           {/* Premium Impact Strip */}
@@ -729,9 +807,6 @@ export default function NGOServicesPage() {
                         onClick={() => toggleFaq(idx)}
                         aria-expanded={isOpen}
                       >
-                        <div className="ngo-faq-icon-toggle">
-                          {isOpen ? <Minus size={14} /> : <Plus size={14} />}
-                        </div>
                         <span className="ngo-faq-question-text">{faq.q}</span>
                         <ChevronDown
                           size={18}
@@ -741,7 +816,6 @@ export default function NGOServicesPage() {
 
                       {isOpen && (
                         <div className="ngo-faq-body-content">
-                          <div className="ngo-faq-accent-bar"></div>
                           <p>{faq.a}</p>
                         </div>
                       )}
@@ -1001,7 +1075,7 @@ export default function NGOServicesPage() {
                   onClick={() => setIsExpertModalOpen(true)}
                 >
                   <PhoneCall size={16} className="ngo-phone-icon" />
-                  <span>Call Now: +91 99363 51555</span>
+                  <span style={{ display: "flex", flexDirection: "column", gap: "2px" }}><span>Call Now: +91 99363 51555</span><span>Call Now: +91 99998 65586</span></span>
                 </a>
 
                 <div className="ngo-light-cta-note">
@@ -1194,7 +1268,7 @@ export default function NGOServicesPage() {
                   }}
                 >
                   <PhoneCall size={18} />
-                  <span>Call Now: +91 99363 51555</span>
+                  <span style={{ display: "flex", flexDirection: "column", gap: "2px" }}><span>Call Now: +91 99363 51555</span><span>Call Now: +91 99998 65586</span></span>
                 </a>
                 <form onSubmit={handleFormSubmit}>
                   <div className="tbr-form-group">

@@ -68,6 +68,10 @@ export default function GSTServicesPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [expertSubmitted, setExpertSubmitted] = useState(false);
+  const [showAllCoreSolutions, setShowAllCoreSolutions] = useState(false);
+  const [showAllGstServices, setShowAllGstServices] = useState(false);
+  const [showAllProcessSteps, setShowAllProcessSteps] = useState(false);
+  const [showAllWhoNeedsGst, setShowAllWhoNeedsGst] = useState(false);
 
   const toggleFaq = (index: number) => {
     setActiveFaq(activeFaq === index ? null : index);
@@ -157,6 +161,65 @@ export default function GSTServicesPage() {
     { name: "E-Way Bill", icon: Truck },
     { name: "GST Accounting", icon: Building2 },
     { name: "GST Compliance Health Check", icon: FileSearch }
+  ];
+
+  const coreSolutionsData = [
+    {
+      num: "01",
+      title: "GST Registration",
+      desc: "Register your business under GST with complete documentation, application filing, verification, and GSTIN issuance.",
+      img: "/gst-card-01-registration.png",
+      checklist: [
+        "New GST Registration",
+        "GST Amendment",
+        "GST Cancellation",
+        "Voluntary Registration",
+        "Composition Scheme"
+      ],
+      serviceName: "GST Registration"
+    },
+    {
+      num: "02",
+      title: "GST Return Filing",
+      desc: "Timely filing of GST returns to ensure complete compliance and avoid penalties. Monthly, quarterly, and annual returns.",
+      img: "/gst-card-02-return-filing.png",
+      checklist: [
+        "GSTR-1 Outward Supplies",
+        "GSTR-3B Summary Return",
+        "GSTR-9 Annual Return",
+        "Nil Return Filing",
+        "Late Return Support"
+      ],
+      serviceName: "GST Return Filing"
+    },
+    {
+      num: "03",
+      title: "Input Tax Credit (ITC)",
+      desc: "Maximize your eligible Input Tax Credit through proper reconciliation and invoice verification while ensuring compliance.",
+      img: "/gst-card-03-itc.png",
+      checklist: [
+        "ITC Reconciliation",
+        "ITC Claim Assistance",
+        "Purchase Verification",
+        "ITC Optimization",
+        "Vendor Reconciliation"
+      ],
+      serviceName: "Input Tax Credit (ITC)"
+    },
+    {
+      num: "04",
+      title: "GST Notices & Legal",
+      desc: "Professional representation for GST notices, departmental inquiries, audits, and assessments to protect your business.",
+      img: "/gst-card-04-notices-legal.png",
+      checklist: [
+        "GST Notice Reply",
+        "GST Audit Support",
+        "Dept Representation",
+        "Health Check Review",
+        "Litigation Assistance"
+      ],
+      serviceName: "GST Notices"
+    }
   ];
 
   // 14 GST Services Cards Grid
@@ -249,13 +312,13 @@ export default function GSTServicesPage() {
 
   // 7 Step Process
   const gstSteps = [
-    { no: "Step 01", title: "Free GST Consultation", icon: Users },
-    { no: "Step 02", title: "Document Collection", icon: FileText },
-    { no: "Step 03", title: "Application Preparation", icon: Calculator },
-    { no: "Step 04", title: "GST Registration / Return Preparation", icon: CheckCircle2 },
-    { no: "Step 05", title: "Verification & Review", icon: ShieldCheck },
-    { no: "Step 06", title: "GST Filing / GSTIN Approval", icon: TrendingUp },
-    { no: "Step 07", title: "Ongoing Compliance Support", icon: Award }
+    { no: "01", title: "Free GST Consultation", desc: "Expert assessment of your business structure, threshold applicability & GST obligations.", icon: Users },
+    { no: "02", title: "Document Collection", desc: "Digital collection & verification of PAN, Aadhaar, address proof & bank details.", icon: FileText },
+    { no: "03", title: "Application Drafting", desc: "Accurate drafting & classification under correct HSN/SAC codes for zero errors.", icon: Calculator },
+    { no: "04", title: "GST Portal Filing", desc: "ARN generation and real-time application tracking on official GST portal.", icon: CheckCircle2 },
+    { no: "05", title: "Verification & Queries", desc: "Direct handling of officer queries, clarification requests & site verifications.", icon: ShieldCheck },
+    { no: "06", title: "GSTIN Certificate Issuance", desc: "Official 15-digit GSTIN allotment & downloadable GST Certificate delivery.", icon: TrendingUp },
+    { no: "07", title: "Ongoing Filing Support", desc: "Dedicated CA support for monthly return filings, GSTR-1/3B & ITC reconciliation.", icon: Award }
   ];
 
   // Why Choose Mazuma India (6 Cards)
@@ -476,218 +539,72 @@ export default function GSTServicesPage() {
       <section className="gst-featured-section">
         <div className="gst-section-shell">
           <div className="gst-section-header">
+            <span className="gst-section-eyebrow">CORE SOLUTIONS</span>
             <h2 className="gst-section-title">Core GST Solutions &amp; Compliance</h2>
+            <p className="gst-section-subtitle">
+              Complete end-to-end GST registration, return filing, ITC reconciliation, and notice resolution services.
+            </p>
             <div className="gst-title-divider"></div>
           </div>
 
           <div className="gst-featured-grid">
-            {/* Card 1 */}
-            <div className="gst-feat-card">
-              <div className="gst-feat-card-img-box">
-                <img
-                  src="/gst-card-01-registration.png"
-                  alt="GST Registration"
-                  className="gst-feat-card-img"
-                />
-              </div>
-              <div className="gst-feat-card-content">
-                <div className="gst-feat-card-top-info">
-                  <span className="gst-feat-number">01</span>
-                  <h3 className="gst-feat-title">GST Registration</h3>
-                  <p className="gst-feat-desc">
-                    Register your business under GST with complete documentation, application filing, verification, and GSTIN issuance.
-                  </p>
-                  <div className="gst-feat-checklist">
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>New GST Registration</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>GST Amendment</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>GST Cancellation</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>Voluntary Registration</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>Composition Scheme</span>
+            {coreSolutionsData.map((card, idx) => (
+              <div
+                key={idx}
+                className={`gst-feat-card ${idx >= 2 && !showAllCoreSolutions ? "gst-card-hide-mobile" : ""}`}
+              >
+                <div className="gst-feat-card-img-box">
+                  <img
+                    src={card.img}
+                    alt={card.title}
+                    className="gst-feat-card-img"
+                  />
+                </div>
+                <div className="gst-feat-card-content">
+                  <div className="gst-feat-card-top-info">
+                    <span className="gst-feat-number">{card.num}</span>
+                    <h3 className="gst-feat-title">{card.title}</h3>
+                    <p className="gst-feat-desc">{card.desc}</p>
+                    <div className="gst-feat-checklist">
+                      {card.checklist.map((item, cIdx) => (
+                        <div key={cIdx} className="gst-feat-check-item">
+                          <CheckCircle2 size={14} style={{ color: "#10B981" }} />
+                          <span>{item}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
+                  <button
+                    className="gst-feat-btn"
+                    onClick={() => {
+                      setFormData(prev => ({ ...prev, service: card.serviceName }));
+                      setIsModalOpen(true);
+                    }}
+                  >
+                    <span>Learn More</span>
+                    <ArrowRight size={14} />
+                  </button>
                 </div>
-                <button
-                  className="gst-feat-btn"
-                  onClick={() => {
-                    setFormData(prev => ({ ...prev, service: "GST Registration" }));
-                    setIsModalOpen(true);
-                  }}
-                >
-                  <span>Learn More</span>
-                  <ArrowRight size={14} />
-                </button>
               </div>
-            </div>
+            ))}
+          </div>
 
-            {/* Card 2 */}
-            <div className="gst-feat-card">
-              <div className="gst-feat-card-img-box">
-                <img
-                  src="/gst-card-02-return-filing.png"
-                  alt="GST Return Filing"
-                  className="gst-feat-card-img"
-                />
-              </div>
-              <div className="gst-feat-card-content">
-                <div className="gst-feat-card-top-info">
-                  <span className="gst-feat-number">02</span>
-                  <h3 className="gst-feat-title">GST Return Filing</h3>
-                  <p className="gst-feat-desc">
-                    Timely filing of GST returns to ensure complete compliance and avoid penalties. Monthly, quarterly, and annual returns.
-                  </p>
-                  <div className="gst-feat-checklist">
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>GSTR-1 Outward Supplies</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>GSTR-3B Summary Return</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>GSTR-9 Annual Return</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>Nil Return Filing</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>Late Return Support</span>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  className="gst-feat-btn"
-                  onClick={() => {
-                    setFormData(prev => ({ ...prev, service: "GST Return Filing" }));
-                    setIsModalOpen(true);
-                  }}
-                >
-                  <span>Learn More</span>
-                  <ArrowRight size={14} />
-                </button>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="gst-feat-card">
-              <div className="gst-feat-card-img-box">
-                <img
-                  src="/gst-card-03-itc.png"
-                  alt="Input Tax Credit"
-                  className="gst-feat-card-img"
-                />
-              </div>
-              <div className="gst-feat-card-content">
-                <div className="gst-feat-card-top-info">
-                  <span className="gst-feat-number">03</span>
-                  <h3 className="gst-feat-title">Input Tax Credit (ITC)</h3>
-                  <p className="gst-feat-desc">
-                    Maximize your eligible Input Tax Credit through proper reconciliation and invoice verification while ensuring compliance.
-                  </p>
-                  <div className="gst-feat-checklist">
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>ITC Reconciliation</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>ITC Claim Assistance</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>Purchase Verification</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>ITC Optimization</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>Vendor Reconciliation</span>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  className="gst-feat-btn"
-                  onClick={() => {
-                    setFormData(prev => ({ ...prev, service: "Input Tax Credit (ITC)" }));
-                    setIsModalOpen(true);
-                  }}
-                >
-                  <span>Learn More</span>
-                  <ArrowRight size={14} />
-                </button>
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className="gst-feat-card">
-              <div className="gst-feat-card-img-box">
-                <img
-                  src="/gst-card-04-notices-legal.png"
-                  alt="GST Notices"
-                  className="gst-feat-card-img"
-                />
-              </div>
-              <div className="gst-feat-card-content">
-                <div className="gst-feat-card-top-info">
-                  <span className="gst-feat-number">04</span>
-                  <h3 className="gst-feat-title">GST Notices &amp; Legal</h3>
-                  <p className="gst-feat-desc">
-                    Professional representation for GST notices, departmental inquiries, audits, and assessments to protect your business.
-                  </p>
-                  <div className="gst-feat-checklist">
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>GST Notice Reply</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>GST Audit Support</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>Dept Representation</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>Health Check Review</span>
-                    </div>
-                    <div className="gst-feat-check-item">
-                      <CheckCircle2 size={14} style={{ color: "#10B981" }} />
-                      <span>Litigation Assistance</span>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  className="gst-feat-btn"
-                  onClick={() => {
-                    setFormData(prev => ({ ...prev, service: "GST Notices" }));
-                    setIsModalOpen(true);
-                  }}
-                >
-                  <span>Learn More</span>
-                  <ArrowRight size={14} />
-                </button>
-              </div>
-            </div>
+          {/* View All Core Solutions Toggle Button (Mobile Only) */}
+          <div className="gst-view-all-btn-wrapper gst-view-all-mobile-only" style={{ marginTop: "28px" }}>
+            <button
+              type="button"
+              className="gst-view-all-btn"
+              onClick={() => setShowAllCoreSolutions(!showAllCoreSolutions)}
+            >
+              <span>{showAllCoreSolutions ? "Show Less Core Solutions" : "View All Core Solutions"}</span>
+              <ArrowRight
+                size={16}
+                style={{
+                  transform: showAllCoreSolutions ? "rotate(-90deg)" : "rotate(90deg)",
+                  transition: "transform 0.3s ease"
+                }}
+              />
+            </button>
           </div>
         </div>
       </section>
@@ -708,7 +625,7 @@ export default function GSTServicesPage() {
               return (
                 <div
                   key={index}
-                  className="gst-service-card"
+                  className={`gst-service-card ${index >= 3 && !showAllGstServices ? "gst-card-hide-mobile" : ""}`}
                   onClick={() => {
                     setFormData(prev => ({ ...prev, service: service.title }));
                     setIsModalOpen(true);
@@ -729,12 +646,22 @@ export default function GSTServicesPage() {
             })}
           </div>
 
-          {/* View All GST Services Button */}
-          <div className="gst-view-all-btn-wrapper">
-            <Link href="/services/gst-services/all-services" className="gst-view-all-btn">
-              <span>View All GST Services</span>
-              <ArrowRight size={16} />
-            </Link>
+          {/* View All GST Services Button (Mobile Only) */}
+          <div className="gst-view-all-btn-wrapper gst-view-all-mobile-only">
+            <button
+              type="button"
+              className="gst-view-all-btn"
+              onClick={() => setShowAllGstServices(!showAllGstServices)}
+            >
+              <span>{showAllGstServices ? "Show Less GST Services" : "View All GST Services"}</span>
+              <ArrowRight
+                size={16}
+                style={{
+                  transform: showAllGstServices ? "rotate(-90deg)" : "rotate(90deg)",
+                  transition: "transform 0.3s ease"
+                }}
+              />
+            </button>
           </div>
         </div>
       </section>
@@ -788,7 +715,7 @@ export default function GSTServicesPage() {
             <div className="gst-about-right">
               <h3 className="gst-who-title">Who Needs GST Registration?</h3>
               <div className="gst-who-grid">
-                {whoNeedsGst.map((item, idx) => {
+                {(showAllWhoNeedsGst ? whoNeedsGst : whoNeedsGst.slice(0, 4)).map((item, idx) => {
                   const IconC = item.icon;
                   return (
                     <div key={idx} className="gst-who-pill-card">
@@ -799,6 +726,24 @@ export default function GSTServicesPage() {
                     </div>
                   );
                 })}
+              </div>
+
+              {/* View All 10 Entities Toggle Button */}
+              <div style={{ textAlign: "center", marginTop: "18px" }}>
+                <button
+                  type="button"
+                  className="gst-who-toggle-btn"
+                  onClick={() => setShowAllWhoNeedsGst(!showAllWhoNeedsGst)}
+                >
+                  <span>{showAllWhoNeedsGst ? "Show Less Entities" : "View All 10 Entities"}</span>
+                  <ArrowRight
+                    size={14}
+                    style={{
+                      transform: showAllWhoNeedsGst ? "rotate(-90deg)" : "rotate(90deg)",
+                      transition: "transform 0.3s ease"
+                    }}
+                  />
+                </button>
               </div>
             </div>
 
@@ -812,23 +757,53 @@ export default function GSTServicesPage() {
       <section className="gst-process-section">
         <div className="gst-section-shell">
           <div className="gst-section-header">
-            <h2 className="gst-section-title">Our GST Process</h2>
+            <span className="gst-section-eyebrow">STEP-BY-STEP WORKFLOW</span>
+            <h2 className="gst-section-title">Our 7-Step GST Execution Process</h2>
+            <p className="gst-section-subtitle">
+              A transparent, hassle-free procedure designed to get your GSTIN issued fast and keep your tax filings 100% compliant.
+            </p>
             <div className="gst-title-divider"></div>
           </div>
 
-          <div className="gst-process-grid">
-            {gstSteps.map((step, idx) => {
-              const IconC = step.icon;
-              return (
-                <div key={idx} className="gst-process-step-card">
-                  <span className="gst-process-step-no">{step.no}</span>
-                  <div className="gst-process-icon-box">
-                    <IconC size={20} />
+          <div className="gst-process-timeline-wrapper">
+            <div className="gst-process-grid">
+              {gstSteps.map((step, idx) => {
+                const IconC = step.icon;
+                const hideMobileClass = idx >= 2 && !showAllProcessSteps ? "gst-process-hide-mobile" : "";
+                const hideDesktopClass = idx >= 4 && !showAllProcessSteps ? "gst-process-hide-desktop" : "";
+                return (
+                  <div key={idx} className={`gst-process-step-card ${hideMobileClass} ${hideDesktopClass}`}>
+                    <div className="gst-process-card-top-row">
+                      <span className="gst-process-card-badge">STEP {step.no}</span>
+                      <span className="gst-process-phase-tag">Phase {idx + 1}</span>
+                    </div>
+                    <div className="gst-process-icon-circle">
+                      <IconC size={22} />
+                    </div>
+                    <h3 className="gst-process-step-title">{step.title}</h3>
+                    <p className="gst-process-step-desc">{step.desc}</p>
                   </div>
-                  <h3 className="gst-process-step-title">{step.title}</h3>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+
+            {/* View All 7 Process Steps Toggle Button */}
+            <div className="gst-view-all-btn-wrapper" style={{ marginTop: "32px" }}>
+              <button
+                type="button"
+                className="gst-view-all-btn"
+                onClick={() => setShowAllProcessSteps(!showAllProcessSteps)}
+              >
+                <span>{showAllProcessSteps ? "Show Less Process Steps" : "View All 7 Process Steps"}</span>
+                <ArrowRight
+                  size={16}
+                  style={{
+                    transform: showAllProcessSteps ? "rotate(-90deg)" : "rotate(90deg)",
+                    transition: "transform 0.3s ease"
+                  }}
+                />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -950,7 +925,7 @@ export default function GSTServicesPage() {
                 <Phone size={15} style={{ color: "#FF6B00" }} />
                 <span>or call us at</span>
                 <a href="tel:+919936351555" className="gst-cta-phone-link">
-                  +91 99363 51555
+                  +91 99363 51555 <br /> +91 99998 65586
                 </a>
               </div>
             </div>

@@ -575,6 +575,30 @@
   text-align: center;
 }
 
+.itr-who-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FF6B00;
+  color: #FFFFFF;
+  border: 1.5px solid #FF6B00;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 10px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35);
+}
+
+.itr-who-toggle-btn:hover {
+  background: #E56000;
+  border-color: #E56000;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 107, 0, 0.45);
+}
+
 /* ------------------------------------------------------------
    SECTION 4: OUR ITR FILING PROCESS (7 Steps)
    ------------------------------------------------------------ */
@@ -815,14 +839,14 @@
 }
 
 .itr-cta-banner-center {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  background: #FFFFFF;
-  padding: 18px 26px;
+  background-color: #FFFFFF;
   border-radius: 16px;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 16px rgba(15, 45, 82, 0.04);
+  padding: 18px 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  box-shadow: 0 4px 20px rgba(15, 45, 82, 0.05);
+  border: 1px solid #F1F5F9;
 }
 
 .itr-cta-badge-item {
@@ -830,24 +854,28 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
+  text-align: center;
 }
 
 .itr-cta-badge-circle {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background-color: #FFF4EC;
   color: var(--itr-orange);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .itr-cta-badge-label {
   color: var(--itr-navy);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
 }
 
 .itr-cta-banner-right {
@@ -855,6 +883,7 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .itr-cta-btn-orange {
@@ -869,6 +898,7 @@
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 6px 18px rgba(255, 107, 0, 0.3);
+  white-space: nowrap;
 }
 
 .itr-cta-btn-orange:hover {
@@ -882,6 +912,7 @@
   gap: 6px;
   font-size: 13.5px;
   color: var(--itr-text-muted);
+  white-space: nowrap;
 }
 
 /* All Income Tax Services Directory CSS Rules */
@@ -1073,6 +1104,28 @@
 }
 
 /* Responsive Rules */
+@media (max-width: 1320px) {
+  .itr-cta-banner-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+    padding: 32px 24px;
+  }
+
+  .itr-cta-banner-left {
+    max-width: 100%;
+  }
+
+  .itr-cta-banner-center {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .itr-cta-banner-right {
+    align-items: center;
+  }
+}
+
 @media (max-width: 1100px) {
   .itr-hero-grid,
   .itr-about-grid,
@@ -1082,15 +1135,6 @@
 
   .itr-services-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .itr-cta-banner-card {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .itr-cta-banner-right {
-    align-items: center;
   }
 
   .itr-process-timeline-container {
@@ -1104,8 +1148,181 @@
   }
 }
 
+/* DESKTOP LAYOUT (MIN-WIDTH 1025PX) - 100% UNTOUCHED PRESERVATION */
+@media (min-width: 1025px) {
+  .itr-hero-grid {
+    grid-template-columns: 1fr 390px !important;
+  }
+
+  .itr-services-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .itr-trust-badges-row {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .itr-process-timeline-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-direction: row !important;
+  }
+
+  .itr-process-step-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .itr-process-icon-circle {
+    margin-bottom: 14px !important;
+  }
+
+  .itr-process-arrow-divider {
+    display: flex !important;
+  }
+
+  .itr-process-hide-mobile {
+    display: flex !important;
+  }
+
+  .itr-process-view-all-wrapper {
+    display: none !important;
+  }
+}
+
+/* MOBILE LAYOUT (MAX-WIDTH 768PX) */
+@media (max-width: 768px) {
+  .itr-hero-section {
+    background-image: none !important;
+    background-color: #FFFFFF !important;
+    padding: 24px 0 32px 0 !important;
+    min-height: auto !important;
+  }
+
+  .itr-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .itr-hero-left {
+    max-width: 100% !important;
+  }
+
+  .itr-hero-title {
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .itr-hero-desc {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .itr-trust-badges-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+    max-width: 100% !important;
+  }
+
+  .itr-trust-badge-item {
+    background: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 10px !important;
+    padding: 10px 8px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .itr-trust-badge-icon {
+    flex-shrink: 0 !important;
+  }
+
+  .itr-trust-badge-label {
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+  }
+
+  .itr-hero-cta-group {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .itr-btn-primary,
+  .itr-btn-secondary {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .itr-hero-right {
+    width: 100% !important;
+  }
+
+  .itr-floating-services-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .itr-process-timeline-container {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+    padding: 0 16px !important;
+  }
+
+  .itr-process-step-item {
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 14px !important;
+    padding: 14px 16px !important;
+    gap: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 2px 8px rgba(15, 45, 82, 0.04) !important;
+  }
+
+  .itr-process-icon-circle {
+    margin-bottom: 0 !important;
+    width: 44px !important;
+    height: 44px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .itr-process-step-info {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+  }
+
+  .itr-process-step-title {
+    max-width: 100% !important;
+    font-size: 14px !important;
+  }
+
+  .itr-process-arrow-divider {
+    display: none !important;
+  }
+
+  .itr-process-hide-mobile {
+    display: none !important;
+  }
+
+  .itr-process-view-all-wrapper {
+    display: block !important;
+  }
+}
+
 @media (max-width: 640px) {
-  .itr-trust-badges-row,
   .itr-services-grid,
   .itr-who-grid,
   .itr-why-features-grid,
@@ -1114,7 +1331,7 @@
   }
 
   .itr-cta-banner-center {
-    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 }

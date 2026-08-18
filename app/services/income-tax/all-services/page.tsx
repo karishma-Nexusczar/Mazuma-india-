@@ -300,7 +300,7 @@ export default function AllIncomeTaxServicesPage() {
                 <span>or call us at</span>
                 <a href="tel:+919936351555" className="itr-cta-phone-link">
                   <PhoneCall size={14} color="#0F2D52" />
-                  +91 99363 51555
+                  +91 99363 51555 <br /> +91 99998 65586
                 </a>
               </div>
             </div>
