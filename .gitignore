@@ -4,5 +4,6 @@ tsconfig.tsbuildinfo
 .env.local
 .env*.local
 *.zip
+!deploy2.zip
 out/
 
