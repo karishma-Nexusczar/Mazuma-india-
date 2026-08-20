@@ -56,33 +56,45 @@ export default function ContactUsPage() {
         </div>
       </div>
 
-      {/* EXECUTIVE PURE WHITE HERO SECTION */}
+      {/* EXECUTIVE 2-COLUMN HERO SECTION */}
       <section className="contact-hero-section">
         <div className="contact-hero-inner">
-          <span className="contact-hero-tag">
-            CONTACT US
-          </span>
+          <div className="contact-hero-content">
+            <span className="contact-hero-tag">
+              CONTACT US
+            </span>
 
-          <h1 className="contact-hero-title">
-            Let's Discuss Your Business
-          </h1>
+            <h1 className="contact-hero-title">
+              Let's Discuss Your Business
+            </h1>
 
-          <p className="contact-hero-desc">
-            Need expert guidance on taxation, GST, company registration or compliance? Speak directly with our senior CAs and corporate legal advisors.
-          </p>
+            <p className="contact-hero-desc">
+              Need expert guidance on taxation, GST, company registration or compliance? Speak directly with our senior CAs and corporate legal advisors.
+            </p>
 
-          <div className="contact-hero-trust-row">
-            <div className="contact-trust-pill">
-              <Zap size={14} />
-              <span>Fast 2-Hour Response</span>
+            <div className="contact-hero-trust-row">
+              <div className="contact-trust-pill">
+                <Zap size={14} />
+                <span>Fast 2-Hour Response</span>
+              </div>
+              <div className="contact-trust-pill">
+                <Award size={14} />
+                <span>Dedicated CA Team</span>
+              </div>
+              <div className="contact-trust-pill">
+                <ShieldCheck size={14} />
+                <span>100% Confidential</span>
+              </div>
             </div>
-            <div className="contact-trust-pill">
-              <Award size={14} />
-              <span>Dedicated CA Team</span>
-            </div>
-            <div className="contact-trust-pill">
-              <ShieldCheck size={14} />
-              <span>100% Confidential</span>
+          </div>
+
+          <div className="contact-hero-image-container">
+            <div className="contact-hero-image-box">
+              <img
+                src="/accounting-hero-hd.jpg"
+                alt="Mazuma India Corporate Advisory Office"
+                className="contact-hero-img"
+              />
             </div>
           </div>
         </div>
@@ -146,7 +158,7 @@ export default function ContactUsPage() {
               </div>
 
               {/* Business Hours Item */}
-              <div className="contact-info-item">
+              <div className="contact-info-item" style={{ borderBottom: "none", paddingBottom: 0 }}>
                 <div className="contact-icon-box">
                   <Clock size={18} />
                 </div>
@@ -155,6 +167,25 @@ export default function ContactUsPage() {
                   <p style={{ fontWeight: 600 }}>Mon - Sat: 9:30 AM – 6:30 PM</p>
                   <span className="contact-closed-tag">Sunday: Closed</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Social Media Row */}
+            <div className="contact-socials-wrapper" style={{ marginTop: "32px", borderTop: "1px solid #E2E8F0", paddingTop: "24px" }}>
+              <h3 style={{ fontFamily: "var(--font-head)", fontSize: "12px", fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "12px" }}>Follow Us</h3>
+              <div style={{ display: "flex", gap: "12px" }}>
+                <a href="https://www.facebook.com/mazumaindiacompany" target="_blank" rel="noopener noreferrer" className="contact-social-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
+                </a>
+                <a href="https://x.com/Mazuma_Indi" target="_blank" rel="noopener noreferrer" className="contact-social-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" /></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/mazuma-india-010344326/" target="_blank" rel="noopener noreferrer" className="contact-social-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
+                </a>
+                <a href="https://www.instagram.com/mazumaindia/" target="_blank" rel="noopener noreferrer" className="contact-social-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+                </a>
               </div>
             </div>
           </div>

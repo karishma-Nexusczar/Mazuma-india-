@@ -63,6 +63,18 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest(".nav-dropdown-item")) {
+        setServicesOpen(false);
+        setResourcesOpen(false);
+      }
+    };
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, []);
+
   // Prevent background scrolling when mobile navigation drawer is open
   useEffect(() => {
     if (menuOpen) {
@@ -211,37 +223,43 @@ export default function Header() {
           </Link>
 
           {/* Services Dropdown */}
-          <div
-            className={`nav-dropdown-item ${servicesOpen ? "dropdown-expanded" : ""}`}
-            onMouseEnter={() => {
-              if (typeof window !== "undefined" && window.innerWidth > 900) {
-                setServicesOpen(true);
-              }
-            }}
-            onMouseLeave={() => {
-              if (typeof window !== "undefined" && window.innerWidth > 900) {
-                setServicesOpen(false);
-              }
-            }}
-          >
-            <Link
-              href="/#services"
-              className="nav-link-dropdown"
-              onClick={(e) => {
-                if (typeof window !== "undefined" && window.innerWidth <= 900) {
+          <div className={`nav-dropdown-item ${servicesOpen ? "dropdown-expanded" : ""}`}>
+            <div className="nav-link-dropdown-container" style={{ display: "inline-flex", alignItems: "center", gap: "2px" }}>
+              <Link
+                href="/#services"
+                className="nav-link-dropdown"
+                onClick={(e) => {
+                  handleNavClick(e, "services");
+                }}
+              >
+                <span>Services</span>
+              </Link>
+              <button
+                type="button"
+                className="dropdown-chevron-btn"
+                aria-label="Toggle services dropdown"
+                onClick={(e) => {
                   e.preventDefault();
+                  e.stopPropagation();
                   setServicesOpen((prev) => !prev);
                   setResourcesOpen(false);
-                } else {
-                  handleNavClick(e, "services");
-                }
-              }}
-            >
-              <span>Services</span>
-              <svg className={`nav-chevron ${servicesOpen ? "is-active" : ""}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </Link>
+                }}
+                style={{
+                  background: "none",
+                  border: "none",
+                  padding: "8px",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "#000000",
+                  transition: "color 0.2s ease"
+                }}
+              >
+                <svg className={`nav-chevron ${servicesOpen ? "is-active" : ""}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
 
             <div className={`services-dropdown-menu ${servicesOpen ? "is-open" : ""}`}>
               {headerServicesList.map((item) => {
@@ -286,37 +304,43 @@ export default function Header() {
           </div>
 
           {/* Resources Dropdown */}
-          <div
-            className={`nav-dropdown-item ${resourcesOpen ? "dropdown-expanded" : ""}`}
-            onMouseEnter={() => {
-              if (typeof window !== "undefined" && window.innerWidth > 900) {
-                setResourcesOpen(true);
-              }
-            }}
-            onMouseLeave={() => {
-              if (typeof window !== "undefined" && window.innerWidth > 900) {
-                setResourcesOpen(false);
-              }
-            }}
-          >
-            <Link
-              href="/blog"
-              className="nav-link-dropdown"
-              onClick={(e) => {
-                if (typeof window !== "undefined" && window.innerWidth <= 900) {
+          <div className={`nav-dropdown-item ${resourcesOpen ? "dropdown-expanded" : ""}`}>
+            <div className="nav-link-dropdown-container" style={{ display: "inline-flex", alignItems: "center", gap: "2px" }}>
+              <Link
+                href="/blog"
+                className="nav-link-dropdown"
+                onClick={() => {
+                  setMenuOpen(false);
+                }}
+              >
+                <span>Resources</span>
+              </Link>
+              <button
+                type="button"
+                className="dropdown-chevron-btn"
+                aria-label="Toggle resources dropdown"
+                onClick={(e) => {
                   e.preventDefault();
+                  e.stopPropagation();
                   setResourcesOpen((prev) => !prev);
                   setServicesOpen(false);
-                } else {
-                  setMenuOpen(false);
-                }
-              }}
-            >
-              <span>Resources</span>
-              <svg className={`nav-chevron ${resourcesOpen ? "is-active" : ""}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </Link>
+                }}
+                style={{
+                  background: "none",
+                  border: "none",
+                  padding: "8px",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "#000000",
+                  transition: "color 0.2s ease"
+                }}
+              >
+                <svg className={`nav-chevron ${resourcesOpen ? "is-active" : ""}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
 
             <div className={`services-dropdown-menu ${resourcesOpen ? "is-open" : ""}`}>
               <Link href="/blog" className="services-dropdown-link" onClick={() => { setResourcesOpen(false); setMenuOpen(false); }}>Latest Articles</Link>
@@ -325,7 +349,7 @@ export default function Header() {
               <button
                 type="button"
                 className="services-dropdown-link"
-                style={{ textAlign: "left", background: "none", border: "none", width: "100%", cursor: "pointer", font: "inherit" }}
+                style={{ textAlign: "left", background: "none", border: "none", width: "100%", cursor: "pointer" }}
                 onClick={() => {
                   setResourcesOpen(false);
                   setMenuOpen(false);

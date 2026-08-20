@@ -6,13 +6,13 @@
   overflow-x: hidden;
 }
 
-/* Shell aligned 100% to site-header (padding: 0 max(32px, calc((100vw - 1520px)/2))) */
+/* Shell aligned 100% to site-header (padding: 0 max(32px, calc((100vw - 1320px)/2))) */
 .gst-section-shell {
   width: 100%;
-  max-width: 1520px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding-left: max(32px, calc((100vw - 1520px) / 2));
-  padding-right: max(32px, calc((100vw - 1520px) / 2));
+  padding-left: max(32px, calc((100vw - 1320px) / 2));
+  padding-right: max(32px, calc((100vw - 1320px) / 2));
 }
 
 /* =========================================================

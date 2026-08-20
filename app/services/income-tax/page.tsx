@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Zap,
   PhoneCall,
+  Phone,
   ChevronRight,
   FileText,
   Building2,
@@ -234,13 +235,13 @@ export default function IncomeTaxPage() {
 
   // 7 Step Process Timeline
   const itrSteps = [
-    { no: "Step 01", title: "Free Tax Consultation", icon: Users },
-    { no: "Step 02", title: "Document Collection & Review", icon: FileText },
-    { no: "Step 03", title: "Income & Tax Computation", icon: Calculator },
-    { no: "Step 04", title: "Return Preparation", icon: CheckCircle2 },
-    { no: "Step 05", title: "Verification & Review", icon: ShieldCheck },
-    { no: "Step 06", title: "Income Tax Return Filing", icon: TrendingUp },
-    { no: "Step 07", title: "Acknowledgement & Post Filing Support", icon: Award }
+    { no: "Step 1", title: "Free Tax Consultation", icon: Users },
+    { no: "Step 2", title: "Document Collection & Review", icon: FileText },
+    { no: "Step 3", title: "Income & Tax Computation", icon: Calculator },
+    { no: "Step 4", title: "Return Preparation", icon: CheckCircle2 },
+    { no: "Step 5", title: "Verification & Review", icon: ShieldCheck },
+    { no: "Step 6", title: "Income Tax Return Filing", icon: TrendingUp },
+    { no: "Step 7", title: "Acknowledgement & Post Filing Support", icon: Award }
   ];
 
   // Why Choose Mazuma India (6 Cards)
@@ -544,7 +545,7 @@ export default function IncomeTaxPage() {
             <div className="itr-about-right">
               <h3 className="itr-who-title">Who Should File ITR?</h3>
               <div className="itr-who-grid">
-                {(showAllWhoShouldFile ? whoShouldFile : whoShouldFile.slice(0, 4)).map((item, idx) => {
+                {whoShouldFile.map((item, idx) => {
                   const IconC = item.icon;
                   return (
                     <div key={idx} className="itr-who-pill-card">
@@ -555,24 +556,6 @@ export default function IncomeTaxPage() {
                     </div>
                   );
                 })}
-              </div>
-
-              {/* View All 10 Taxpayers Toggle Button */}
-              <div style={{ textAlign: "center", marginTop: "18px" }}>
-                <button
-                  type="button"
-                  className="itr-who-toggle-btn"
-                  onClick={() => setShowAllWhoShouldFile(!showAllWhoShouldFile)}
-                >
-                  <span>{showAllWhoShouldFile ? "Show Less Taxpayers" : "View All 10 Taxpayers"}</span>
-                  <ArrowRight
-                    size={14}
-                    style={{
-                      transform: showAllWhoShouldFile ? "rotate(-90deg)" : "rotate(90deg)",
-                      transition: "transform 0.3s ease"
-                    }}
-                  />
-                </button>
               </div>
             </div>
 
@@ -741,19 +724,28 @@ export default function IncomeTaxPage() {
             </div>
 
             {/* Right Button & Phone */}
-            <div className="itr-cta-banner-right">
+            <div className="global-cta-contact-section">
               <button
-                className="itr-cta-btn-orange"
+                className="global-consultation-btn"
                 onClick={() => setIsModalOpen(true)}
               >
                 <span>Book Free Consultation</span>
+                <span className="arrow-circle">
+                  <ArrowRight size={14} />
+                </span>
               </button>
-              <div className="itr-cta-phone-box">
-                <span>or call us at</span>
-                <a href="tel:+919936351555" className="itr-cta-phone-link">
-                  <PhoneCall size={14} color="#0F2D52" />
-                  +91 99363 51555 <br /> +91 99998 65586
-                </a>
+              <div className="global-contact-box">
+                <div className="phone-icon-circle">
+                  <Phone size={18} fill="#FF6B00" stroke="#FF6B00" />
+                </div>
+                <div className="phone-numbers-column">
+                  <a href="tel:+919936351555" className="phone-number-link">
+                    Call Now: +91 99363 51555
+                  </a>
+                  <a href="tel:+919999865586" className="phone-number-link">
+                    Call Now: +91 99998 65586
+                  </a>
+                </div>
               </div>
             </div>
 

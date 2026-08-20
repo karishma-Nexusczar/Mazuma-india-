@@ -502,6 +502,12 @@
   border-bottom: 1px solid #E7EAF0;
 }
 
+.ngo-process-view-all-wrapper,
+.ngo-benefits-view-all-wrapper,
+.ngo-serve-view-all-wrapper {
+  display: none;
+}
+
 .ngo-process-timeline {
   display: flex;
   align-items: flex-start;

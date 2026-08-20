@@ -359,31 +359,31 @@
   margin: 0 auto;
 }
 
-/* Cards Grid Container - Constrained to Left 900px to clear Right 310px Badge */
+/* Cards Grid Container - Centered and spacious */
 .cr-types-left-container {
-  max-width: 900px;
-  margin-left: 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .cr-types-4col-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 20px;
   align-items: stretch;
 }
 
 .cr-type-card-redesign {
   background-color: #FFFFFF;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(15, 45, 82, 0.05);
-  border: 1.5px solid var(--cr-border);
-  padding: 22px 16px;
-  min-height: 225px;
-  height: auto;
+  box-shadow: 0 4px 20px rgba(15, 45, 82, 0.04);
+  border: 1px solid var(--cr-border);
+  padding: 26px 20px;
+  min-height: 240px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   justify-content: space-between;
   box-sizing: border-box;
   text-decoration: none;
@@ -395,7 +395,7 @@
 .cr-type-card-redesign:hover {
   transform: translateY(-6px);
   border-color: var(--cr-orange);
-  box-shadow: 0 16px 36px rgba(255, 107, 0, 0.14);
+  box-shadow: 0 16px 36px rgba(255, 107, 0, 0.12);
 }
 
 .cr-card-top-icon {
@@ -407,7 +407,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 12px auto;
+  margin: 0 0 16px 0;
   transition: all 0.3s ease;
   flex-shrink: 0;
 }
@@ -419,31 +419,31 @@
 
 .cr-card-heading-title {
   color: var(--cr-navy);
-  font-size: 16.5px;
-  font-weight: 800;
-  line-height: 1.25;
-  margin: 0 0 6px 0;
-  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 8px 0;
+  text-align: left;
 }
 
 .cr-card-desc-short {
   color: #64748B;
-  font-size: 12.5px;
-  line-height: 1.45;
+  font-size: 13.5px;
+  line-height: 1.5;
   margin: 0;
-  text-align: center;
+  text-align: left;
 }
 
 .cr-card-bottom-link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 6px;
   color: var(--cr-orange);
-  font-size: 13.5px;
-  font-weight: 800;
-  margin-top: 16px;
-  padding-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 20px;
+  padding-top: 0;
   transition: gap 0.25s ease;
   width: 100%;
 }

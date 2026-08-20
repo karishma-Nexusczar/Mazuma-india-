@@ -299,23 +299,31 @@ export default function AllGSTServicesPage() {
                 </p>
               </div>
 
-              <div className="gst-cta-right-content">
+              <div className="global-cta-contact-section">
                 <button
-                  className="gst-btn-primary"
+                  className="global-consultation-btn"
                   onClick={() => {
                     setSelectedService("General GST Advisory");
                     setIsModalOpen(true);
                   }}
                 >
                   <span>Book Free Consultation</span>
-                  <div className="gst-arrow-circle">➔</div>
+                  <span className="arrow-circle">
+                    <ArrowRight size={14} />
+                  </span>
                 </button>
-                <div className="gst-cta-phone-row">
-                  <Phone size={14} style={{ color: "#FF6B00" }} />
-                  <span>or call us at</span>
-                  <a href="tel:+919936351555" className="gst-cta-phone-link">
-                    +91 99363 51555 <br /> +91 99998 65586
-                  </a>
+                <div className="global-contact-box">
+                  <div className="phone-icon-circle">
+                    <Phone size={18} fill="#FF6B00" stroke="#FF6B00" />
+                  </div>
+                  <div className="phone-numbers-column">
+                    <a href="tel:+919936351555" className="phone-number-link">
+                      Call Now: +91 99363 51555
+                    </a>
+                    <a href="tel:+919999865586" className="phone-number-link">
+                      Call Now: +91 99998 65586
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

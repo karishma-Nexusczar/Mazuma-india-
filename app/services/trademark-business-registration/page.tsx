@@ -22,6 +22,7 @@ import {
   KeyRound,
   Check,
   PhoneCall,
+  Phone,
   X,
   FileCheck,
   Shield,
@@ -606,24 +607,29 @@ export default function TrademarkBusinessRegistrationPage() {
               </div>
             </div>
 
-            <div className="tbr-cta-right">
+            <div className="global-cta-contact-section">
               <button
-                className="tbr-btn-primary"
+                className="global-consultation-btn"
                 onClick={() => openServiceModal("Trademark & Business Registrations")}
               >
                 <span>Book Free Consultation</span>
-                <div className="tbr-btn-arrow-circle">
-                  <ArrowRight size={12} />
-                </div>
+                <span className="arrow-circle">
+                  <ArrowRight size={14} />
+                </span>
               </button>
-              <a
-                href="tel:+919936351555"
-                className="tbr-btn-outline"
-                style={{ textDecoration: "none", justifyContent: "center" }}
-              >
-                <PhoneCall size={16} style={{ color: "#FF6B1A" }} />
-                <span style={{ display: "flex", flexDirection: "column", gap: "2px" }}><span>Call Now: +91 99363 51555</span><span>Call Now: +91 99998 65586</span></span>
-              </a>
+              <div className="global-contact-box">
+                <div className="phone-icon-circle">
+                  <Phone size={18} fill="#FF6B00" stroke="#FF6B00" />
+                </div>
+                <div className="phone-numbers-column">
+                  <a href="tel:+919936351555" className="phone-number-link">
+                    Call Now: +91 99363 51555
+                  </a>
+                  <a href="tel:+919999865586" className="phone-number-link">
+                    Call Now: +91 99998 65586
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

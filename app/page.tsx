@@ -46,7 +46,8 @@ import {
   Menu,
   X,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  Rocket
 } from "lucide-react";
 
 const homeProfessionalServices = [
@@ -60,7 +61,7 @@ const homeProfessionalServices = [
   },
   {
     id: "service-gst",
-    title: "GST Registration & Compliance",
+    title: "GST Services",
     description: "GST registration, return filing, GST audit, refunds, notices and compliance.",
     icon: ReceiptText,
     imageIcon: "/images/service-icons/gst-registration.png",
@@ -68,7 +69,7 @@ const homeProfessionalServices = [
   },
   {
     id: "service-incometax",
-    title: "Income Tax Return (ITR) Filing",
+    title: "Income Tax",
     description: "ITR filing, TDS returns, tax planning and income tax compliance.",
     icon: FileText,
     imageIcon: "/images/service-icons/income-tax.png",
@@ -76,7 +77,7 @@ const homeProfessionalServices = [
   },
   {
     id: "service-accounting",
-    title: "ACCOUNTING & BOOKKEEPING",
+    title: "Accounting & Bookkeeping",
     description: "Bookkeeping, payroll, financial reporting and audit support.",
     icon: Calculator,
     imageIcon: "/images/service-icons/accounting.png",
@@ -85,42 +86,50 @@ const homeProfessionalServices = [
   {
     id: "service-trademark",
     title: "Trademark & Business Registrations",
-    description: "Trademark, MSME, FSSAI, Startup India, IEC and ISO.",
+    description: "Brand protection, government trademark filings, FSSAI, ISO and business licenses.",
     icon: BadgeCheck,
     imageIcon: "/images/service-icons/trademark.png",
-    href: "/services/business-registrations"
+    href: "/services/trademark-business-registration"
+  },
+  {
+    id: "service-msme-udyam",
+    title: "MSME (Udyam) Registration",
+    description: "Official recognition for micro, small, and medium enterprises to access government subsidy & benefits.",
+    icon: FileCheck2,
+    imageIcon: "/images/service-icons/msme-udyam.png",
+    href: "/services/msme-startup-india-registration#msme-udyam"
+  },
+  {
+    id: "service-startup-india",
+    title: "Startup India Registration",
+    description: "DPIIT recognition, tax exemptions, and government funding eligibility for innovative startups.",
+    icon: Rocket,
+    imageIcon: "/images/service-icons/startup-india.png",
+    href: "/services/msme-startup-india-registration#startup-india"
   },
   {
     id: "service-ngo-registration",
     title: "NGO Services",
-    description: "Trust, Society, Section 8, 12A, 80G and FCRA registration.",
+    description: "Trust, Society, Section 8, 12A, 80G and FCRA registration for social enterprises.",
     icon: Users,
-    imageIcon: "/images/service-icons/ngo.png",
+    imageIcon: "/images/service-icons/ngo-updated.png",
     href: "/services/ngo-services"
   },
   {
-    id: "service-roc-compliance",
-    title: "ROC & Corporate Compliance",
-    description: "Annual filings, director change, share transfer, MCA e-filing.",
+    id: "service-business-compliance",
+    title: "Business Compliance",
+    description: "ROC annual filings, statutory records, director changes, and corporate compliance services.",
     icon: ShieldCheck,
-    imageIcon: "/images/service-icons/compliance.png",
-    href: "/services/company-registration"
+    imageIcon: "/images/service-icons/business-compliance.png",
+    href: "/services/business-compliance"
   },
   {
-    id: "service-tds-filings",
-    title: "TDS & Statutory Tax Filings",
-    description: "Quarterly TDS return filing, Form 16/16A generation & advisory.",
-    icon: FileText,
-    imageIcon: "/images/service-icons/income-tax.png",
-    href: "/services/income-tax/all-services"
-  },
-  {
-    id: "service-fssai-iec",
-    title: "FSSAI & Import Export Code (IEC)",
-    description: "Food license, IEC registration, MSME Udyam & ISO certification.",
-    icon: BadgeCheck,
-    imageIcon: "/images/service-icons/trademark.png",
-    href: "/services/gst-services/all-services"
+    id: "service-ffmc-nbfc",
+    title: "FFMC / AD-II / NBFC Registration",
+    description: "RBI licensing, NBFC registration, Full Fledged Money Changer (FFMC) & AD Category-II license support.",
+    icon: Landmark,
+    imageIcon: "/images/service-icons/nbfc.png",
+    href: "/services/ffmc-ad-nbfc-registration"
   }
 ];
 

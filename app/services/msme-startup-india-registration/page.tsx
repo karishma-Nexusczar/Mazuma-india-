@@ -229,7 +229,7 @@ export default function MsmeStartupIndiaPage() {
         {/* ============================================================
             SECTION 3: QUICK BENEFITS STRIP (4 OFFICIAL LOGO CARDS)
             ============================================================ */}
-        <section className="msme-quick-benefits-section">
+        <section className="msme-benefits-strip">
           <div className="msme-container">
             <div className="msme-benefits-strip-grid">
               {/* Card 1: MSME (Udyam) Registration */}
@@ -312,7 +312,7 @@ export default function MsmeStartupIndiaPage() {
               {/* Left Side: Unique MSME Udyam Visual */}
               <div className="msme-udyam-visual-wrapper">
                 <img
-                  src="/msme-udyam-section.jpg"
+                  src="/msme-udyam-section-updated.jpg"
                   alt="MSME Udyam Registration Certificate & Financial Consultation"
                   className="msme-udyam-img"
                 />
@@ -1408,19 +1408,29 @@ export default function MsmeStartupIndiaPage() {
                 </div>
 
                 {/* Buttons Group */}
-                <div className="msme-cta-btn-group">
+                <div className="global-cta-contact-section">
                   <button
-                    className="msme-btn-primary"
+                    className="global-consultation-btn"
                     onClick={() => setIsModalOpen(true)}
                   >
                     <span>Book Free Consultation</span>
-                    <ArrowRight size={18} />
+                    <span className="arrow-circle">
+                      <ArrowRight size={14} />
+                    </span>
                   </button>
-
-                  <a href="tel:+919936351555" className="msme-btn-call">
-                    <Phone size={18} />
-                    <span style={{ display: "flex", flexDirection: "column", gap: "2px" }}><span>Call Now: +91 99363 51555</span><span>Call Now: +91 99998 65586</span></span>
-                  </a>
+                  <div className="global-contact-box">
+                    <div className="phone-icon-circle">
+                      <Phone size={18} fill="#FF6B00" stroke="#FF6B00" />
+                    </div>
+                    <div className="phone-numbers-column">
+                      <a href="tel:+919936351555" className="phone-number-link">
+                        Call Now: +91 99363 51555
+                      </a>
+                      <a href="tel:+919999865586" className="phone-number-link">
+                        Call Now: +91 99998 65586
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
 
