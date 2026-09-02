@@ -1,0 +1,1362 @@
+/* ============================================================
+   INCOME TAX RETURN (ITR) SERVICES PAGE STYLES
+   High-Legibility & Ultra-Readable Typography System
+   ============================================================ */
+
+:root {
+  --itr-navy: #0F2D52;
+  --itr-orange: #FF6B00;
+  --itr-orange-hover: #E56000;
+  --itr-bg-light: #F8F9FB;
+  --itr-card-bg: #FFFFFF;
+  --itr-border: #E2E8F0;
+  --itr-text-dark: #0F172A;
+  --itr-text-muted: #475569;
+  --itr-font-head: var(--font-head, 'Outfit', sans-serif);
+  --itr-font-body: var(--font-body, 'Inter', sans-serif);
+}
+
+.itr-page-wrapper {
+  background-color: #FFFFFF;
+  min-height: 100vh;
+  font-family: var(--itr-font-body);
+  color: var(--itr-text-dark);
+}
+
+/* ------------------------------------------------------------
+   Breadcrumb Bar
+   ------------------------------------------------------------ */
+.itr-breadcrumb-bar {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 14px 0;
+  font-size: 14px;
+  font-family: var(--itr-font-body);
+}
+
+.itr-breadcrumb-inner {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748B;
+}
+
+.itr-breadcrumb-link {
+  color: #64748B;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.itr-breadcrumb-link:hover {
+  color: var(--itr-orange);
+}
+
+.itr-breadcrumb-current {
+  color: #0F2D52;
+  font-weight: 800;
+}
+
+/* ------------------------------------------------------------
+   SECTION 1: HERO SECTION
+   ------------------------------------------------------------ */
+.itr-hero-section {
+  position: relative;
+  background-color: #FFFFFF;
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  padding: 44px 0;
+}
+
+.itr-hero-gradient-overlay {
+  display: none;
+}
+
+.itr-hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.itr-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 390px;
+  gap: 36px;
+  align-items: center;
+}
+
+.itr-hero-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.itr-hero-eyebrow {
+  display: inline-block;
+  color: var(--itr-orange);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.itr-hero-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: clamp(36px, 4.2vw, 50px);
+  font-weight: 900;
+  line-height: 1.14;
+  margin: 0 0 18px 0;
+  letter-spacing: -0.6px;
+}
+
+.itr-hero-desc {
+  color: #334155;
+  font-size: 16px;
+  line-height: 1.65;
+  margin-bottom: 26px;
+  max-width: 620px;
+  font-weight: 500;
+}
+
+/* 4 Trust Badges in One Row */
+.itr-trust-badges-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 30px;
+  max-width: 620px;
+}
+
+.itr-trust-badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.itr-trust-badge-icon {
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itr-trust-badge-label {
+  color: var(--itr-navy);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+/* CTA Buttons */
+.itr-hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.itr-btn-primary {
+  background-color: var(--itr-orange);
+  color: #FFFFFF;
+  font-family: var(--itr-font-head);
+  font-size: 15.5px;
+  font-weight: 800;
+  padding: 14px 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.35);
+  text-decoration: none;
+}
+
+.itr-btn-primary-circle-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itr-btn-primary:hover {
+  background-color: var(--itr-orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 107, 0, 0.45);
+}
+
+.itr-btn-secondary {
+  background-color: #FFFFFF;
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 15.5px;
+  font-weight: 800;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: 1.5px solid #FF6B00;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(15, 45, 82, 0.04);
+}
+
+.itr-btn-secondary:hover {
+  border-color: var(--itr-orange);
+  background-color: #FFF4EC;
+  transform: translateY(-2px);
+}
+
+/* Sidebar Floating Card */
+.itr-hero-right {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.itr-floating-services-card {
+  background: #FFFFFF;
+  border-radius: 18px;
+  border: 1px solid var(--itr-border);
+  box-shadow: 0 16px 44px rgba(15, 45, 82, 0.12);
+  padding: 22px 22px;
+  width: 100%;
+  max-width: 390px;
+}
+
+.itr-services-card-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 17.5px;
+  font-weight: 800;
+  margin: 0 0 12px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--itr-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.itr-services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.itr-service-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.itr-service-list-item-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.itr-service-item-icon {
+  color: var(--itr-orange);
+  flex-shrink: 0;
+}
+
+.itr-service-item-text {
+  color: var(--itr-text-dark);
+  font-size: 14px;
+  font-weight: 700;
+  transition: color 0.2s ease;
+  line-height: 1.35;
+}
+
+.itr-service-item-chevron {
+  color: #94A3B8;
+  transition: all 0.2s ease;
+}
+
+.itr-service-list-item:hover {
+  background-color: #FFF6F0;
+  transform: translateX(3px);
+}
+
+.itr-service-list-item:hover .itr-service-item-text {
+  color: var(--itr-orange);
+}
+
+/* ------------------------------------------------------------
+   SECTION 2: OUR INCOME TAX RETURN SERVICES GRID (12 Cards)
+   ------------------------------------------------------------ */
+.itr-services-section {
+  background-color: #FFFFFF;
+  padding: 56px 0;
+  border-top: 1px solid var(--itr-border);
+  border-bottom: 1px solid var(--itr-border);
+}
+
+.itr-section-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.itr-section-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: clamp(28px, 3.2vw, 36px);
+  font-weight: 900;
+  margin: 0;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+.itr-title-divider-line {
+  width: 48px;
+  height: 4px;
+  background-color: var(--itr-orange);
+  margin: 8px auto 0 auto;
+  border-radius: 99px;
+}
+
+.itr-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.itr-view-all-btn-wrapper {
+  text-align: center;
+  margin-top: 36px;
+}
+
+.itr-view-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--itr-orange);
+  color: #FFFFFF;
+  font-family: var(--itr-font-head);
+  font-size: 15.5px;
+  font-weight: 800;
+  padding: 14px 34px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.35);
+  transition: all 0.25s ease;
+}
+
+.itr-view-all-btn:hover {
+  background-color: var(--itr-orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 107, 0, 0.45);
+}
+
+.itr-service-card-redesign {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 18px;
+  padding: 26px 22px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 240px;
+  box-shadow: 0 4px 18px rgba(15, 45, 82, 0.04);
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.itr-service-card-redesign:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(255, 107, 0, 0.14);
+  border-color: var(--itr-orange);
+}
+
+.itr-service-card-direct-icon {
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease;
+}
+
+.itr-service-card-redesign:hover .itr-service-card-direct-icon {
+  transform: scale(1.1);
+}
+
+.itr-service-card-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.itr-service-card-desc {
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+.itr-service-card-link {
+  color: var(--itr-orange);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s ease;
+}
+
+.itr-service-card-link:hover {
+  gap: 9px;
+}
+
+/* ------------------------------------------------------------
+   SECTION 3: ABOUT ITR & WHO SHOULD FILE ITR
+   ------------------------------------------------------------ */
+.itr-about-section {
+  padding: 56px 0;
+  background-color: #FFFFFF;
+}
+
+.itr-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+  align-items: start;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.itr-about-left h2 {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.itr-about-left p {
+  color: #334155;
+  font-size: 15.5px;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.itr-about-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.itr-about-badge-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 18px 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(15, 45, 82, 0.04);
+  transition: all 0.2s ease;
+}
+
+.itr-about-badge-card:hover {
+  border-color: var(--itr-orange);
+  transform: translateY(-2px);
+}
+
+.itr-about-badge-card span {
+  color: var(--itr-navy);
+  font-size: 13.5px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+/* Who Should File ITR Grid */
+.itr-who-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.itr-who-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.itr-who-pill-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 20px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(15, 45, 82, 0.04);
+  height: 140px;
+  justify-content: center;
+}
+
+.itr-who-pill-card:hover {
+  border-color: var(--itr-orange);
+  box-shadow: 0 10px 24px rgba(255, 107, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+.itr-who-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #FFF4EC;
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itr-who-label {
+  color: var(--itr-navy);
+  font-size: 13.5px;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.itr-who-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FF6B00;
+  color: #FFFFFF;
+  border: 1.5px solid #FF6B00;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 10px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35);
+}
+
+.itr-who-toggle-btn:hover {
+  background: #E56000;
+  border-color: #E56000;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 107, 0, 0.45);
+}
+
+/* ------------------------------------------------------------
+   SECTION 4: OUR ITR FILING PROCESS (7 Steps)
+   ------------------------------------------------------------ */
+.itr-process-section {
+  background-color: #FFFFFF;
+  padding: 56px 0;
+  border-top: 1px solid var(--itr-border);
+  border-bottom: 1px solid var(--itr-border);
+}
+
+.itr-process-timeline-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.itr-process-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.itr-process-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  color: var(--itr-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 16px rgba(15, 45, 82, 0.05);
+  transition: all 0.25s ease;
+}
+
+.itr-process-step-item:hover .itr-process-icon-circle {
+  border-color: var(--itr-orange);
+  color: var(--itr-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 0, 0.15);
+}
+
+.itr-process-step-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.itr-process-step-no {
+  color: var(--itr-orange);
+  font-size: 13.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: block;
+}
+
+.itr-process-step-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+  max-width: 160px;
+  display: block;
+}
+
+.itr-process-arrow-divider {
+  color: #CBD5E1;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+/* ------------------------------------------------------------
+   SECTION 5: WHY CHOOSE MAZUMA INDIA & FAQ ACCORDION
+   ------------------------------------------------------------ */
+.itr-why-faq-section {
+  padding: 56px 0;
+  background-color: #FFFFFF;
+}
+
+.itr-why-faq-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 52px;
+  align-items: start;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Why Choose Us 2-Column Grid */
+.itr-why-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.itr-why-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 20px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  box-shadow: 0 4px 14px rgba(15, 45, 82, 0.04);
+  transition: all 0.25s ease;
+}
+
+.itr-why-card:hover {
+  border-color: var(--itr-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 0, 0.1);
+}
+
+.itr-why-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #FFF4EC;
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.itr-why-card-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.itr-why-card-title {
+  color: var(--itr-navy);
+  font-size: 15.5px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0 0 5px 0;
+}
+
+.itr-why-card-desc {
+  color: #475569;
+  font-size: 13.5px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* FAQ Accordion */
+.itr-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.itr-faq-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+  box-shadow: 0 2px 8px rgba(15, 45, 82, 0.02);
+}
+
+.itr-faq-item.is-open {
+  border-color: var(--itr-orange);
+}
+
+.itr-faq-button {
+  width: 100%;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 15.5px;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: left;
+  gap: 12px;
+}
+
+.itr-faq-answer {
+  padding: 0 20px 18px 20px;
+  color: #475569;
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+/* ------------------------------------------------------------
+   SECTION 6: CTA BANNER
+   ------------------------------------------------------------ */
+.itr-cta-banner-section {
+  padding: 36px 0 56px 0;
+  background-color: #FFFFFF;
+}
+
+.itr-cta-banner-card {
+  background-color: #FFF8F3;
+  border: 1.5px solid #FFE4D1;
+  border-radius: 22px;
+  padding: 36px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1340px;
+  margin: 0 auto;
+  gap: 32px;
+}
+
+.itr-cta-banner-left {
+  max-width: 400px;
+}
+
+.itr-cta-banner-title {
+  color: var(--itr-navy);
+  font-family: var(--itr-font-head);
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.25;
+  margin: 0 0 10px 0;
+}
+
+.itr-cta-banner-desc {
+  color: #475569;
+  font-size: 14.5px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.itr-cta-banner-center {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 24px;
+  box-shadow: 0 4px 20px rgba(15, 45, 82, 0.04);
+  border: 1px solid #E2E8F0;
+  max-width: 480px;
+  width: 100%;
+}
+
+.itr-cta-badge-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.itr-cta-badge-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #FFF4EC;
+  color: var(--itr-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.itr-cta-badge-label {
+  color: var(--itr-navy);
+  font-size: 13.5px;
+  font-weight: 700;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.itr-cta-banner-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.itr-cta-btn-orange {
+  background-color: var(--itr-orange);
+  color: #FFFFFF;
+  font-family: var(--itr-font-head);
+  font-size: 15.5px;
+  font-weight: 800;
+  padding: 14px 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(255, 107, 0, 0.3);
+  white-space: nowrap;
+}
+
+.itr-cta-btn-orange:hover {
+  background-color: var(--itr-orange-hover);
+  transform: translateY(-2px);
+}
+
+.itr-cta-phone-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  color: var(--itr-text-muted);
+  white-space: nowrap;
+}
+
+/* All Income Tax Services Directory CSS Rules */
+.all-tax-hero {
+  position: relative;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(255, 255, 255, 0.70) 100%
+    ),
+    url('/tax-hero-background-hd.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 56px 24px;
+  color: #0F2D52;
+  text-align: center;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.all-tax-hero::before {
+  display: none;
+}
+
+.all-tax-hero > div {
+  position: relative;
+  z-index: 2;
+}
+
+.all-tax-badge {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: 20px;
+  background: #FF6B00;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25);
+}
+
+.all-tax-title {
+  color: #0F2D52;
+  font-size: clamp(28px, 3.8vw, 40px);
+  font-weight: 900;
+  margin: 0 0 12px 0;
+  line-height: 1.18;
+}
+
+.all-tax-desc {
+  font-size: 15px;
+  color: #334155;
+  margin: 0 auto;
+  line-height: 1.6;
+  max-width: 720px;
+  font-weight: 500;
+}
+
+.all-tax-grid-section {
+  padding: 48px 24px;
+  background: #FFFFFF;
+}
+
+.all-tax-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+.all-tax-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 14px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(15, 45, 82, 0.03);
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+  min-height: 290px;
+}
+
+.all-tax-card:hover {
+  transform: translateY(-3px);
+  border-color: #FF6B00;
+  box-shadow: 0 10px 22px rgba(255, 107, 0, 0.1);
+}
+
+.all-tax-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.all-tax-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #FFF4EC;
+  color: #FF6B00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.all-tax-cat-pill {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #0F2D52;
+  background: #F1F5F9;
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+
+.all-tax-card-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0F2D52;
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+
+.all-tax-card-desc {
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.4;
+  margin: 0 0 8px 0;
+}
+
+.all-tax-benefits-box {
+  border-top: 1px dashed #E2E8F0;
+  padding-top: 6px;
+  margin-bottom: 8px;
+}
+
+.all-tax-benefits-label {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #0F2D52;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.all-tax-benefit-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #334155;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.all-tax-form-text {
+  font-size: 11px;
+  color: #64748B;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.all-tax-book-btn {
+  width: 100%;
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: #FF6B00;
+  color: #FFFFFF;
+  font-size: 12.5px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.all-tax-book-btn:hover {
+  background: #E56000;
+  transform: translateY(-2px);
+}
+
+/* Responsive Rules */
+@media (max-width: 1320px) {
+  .itr-cta-banner-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+    padding: 32px 24px;
+  }
+
+  .itr-cta-banner-left {
+    max-width: 100%;
+  }
+
+  .itr-cta-banner-center {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .itr-cta-banner-right {
+    align-items: center;
+  }
+}
+
+@media (max-width: 1100px) {
+  .itr-hero-grid,
+  .itr-about-grid,
+  .itr-why-faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .itr-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .itr-process-timeline-container {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .itr-process-arrow-divider {
+    display: none;
+  }
+}
+
+/* DESKTOP LAYOUT (MIN-WIDTH 1025PX) - 100% UNTOUCHED PRESERVATION */
+@media (min-width: 1025px) {
+  .itr-hero-grid {
+    grid-template-columns: 1fr 390px !important;
+  }
+
+  .itr-services-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .itr-trust-badges-row {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .itr-process-timeline-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-direction: row !important;
+  }
+
+  .itr-process-step-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .itr-process-icon-circle {
+    margin-bottom: 14px !important;
+  }
+
+  .itr-process-arrow-divider {
+    display: flex !important;
+  }
+
+  .itr-process-hide-mobile {
+    display: flex !important;
+  }
+
+  .itr-process-view-all-wrapper {
+    display: none !important;
+  }
+}
+
+/* MOBILE LAYOUT (MAX-WIDTH 768PX) */
+@media (max-width: 768px) {
+  .itr-hero-section {
+    background-image: none !important;
+    background-color: #FFFFFF !important;
+    padding: 24px 0 32px 0 !important;
+    min-height: auto !important;
+  }
+
+  .itr-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .itr-hero-left {
+    max-width: 100% !important;
+  }
+
+  .itr-hero-title {
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .itr-hero-desc {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .itr-trust-badges-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+    max-width: 100% !important;
+  }
+
+  .itr-trust-badge-item {
+    background: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 10px !important;
+    padding: 10px 8px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .itr-trust-badge-icon {
+    flex-shrink: 0 !important;
+  }
+
+  .itr-trust-badge-label {
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+  }
+
+  .itr-hero-cta-group {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .itr-btn-primary,
+  .itr-btn-secondary {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .itr-hero-right {
+    width: 100% !important;
+  }
+
+  .itr-floating-services-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .itr-process-timeline-container {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+    padding: 0 16px !important;
+  }
+
+  .itr-process-step-item {
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 14px !important;
+    padding: 14px 16px !important;
+    gap: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 2px 8px rgba(15, 45, 82, 0.04) !important;
+  }
+
+  .itr-process-icon-circle {
+    margin-bottom: 0 !important;
+    width: 44px !important;
+    height: 44px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .itr-process-step-info {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+  }
+
+  .itr-process-step-title {
+    max-width: 100% !important;
+    font-size: 14px !important;
+  }
+
+  .itr-process-arrow-divider {
+    display: none !important;
+  }
+
+  .itr-process-hide-mobile {
+    display: none !important;
+  }
+
+  .itr-process-view-all-wrapper {
+    display: block !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .itr-services-grid,
+  .itr-who-grid,
+  .itr-why-features-grid,
+  .itr-about-badges-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .itr-cta-banner-center {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (min-width: 1101px) {
+  .itr-hero-section {
+    background-image: linear-gradient(
+        to right,
+        #FFFFFF 0%,
+        #FFFFFF 45%,
+        rgba(255, 255, 255, 0.95) 55%,
+        rgba(255, 255, 255, 0.70) 65%,
+        rgba(255, 255, 255, 0) 85%
+      ),
+      url('/tax-hero-background-hd.png');
+    background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat;
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 641px) {
+  .itr-who-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+}

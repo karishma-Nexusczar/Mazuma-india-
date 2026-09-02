@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# TypeScript
+tsconfig.tsbuildinfo
+
+# Environment & Local configs
+.env.local
+.env*.local
+
+# OS & Archives
+*.zip
+*.tar.gz
+*.rar
+.DS_Store
+*.log
+Thumbs.db
+
+
